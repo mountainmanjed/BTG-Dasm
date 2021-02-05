@@ -40,12 +40,20 @@ unk_102b7c = 0x102b7c
 unk_102b80 = 0x102b80
 unk_102b84 = 0x102b84
 
+unk_102c38 = 0x102c38
+unk_102c4c = 0x102c4c
+unk_102c68 = 0x102c68
+unk_102c6c = 0x102c6c
 unk_102c70 = 0x102c70
 
 unk_102e4a = 0x102e4a
 unk_102e4c = 0x102e4c
 unk_102e4e = 0x102e4e
 unk_102e5e = 0x102e5e
+
+unk_106fd6 = 0x106fd6
+unk_106fe0 = 0x106fe0
+unk_106fe2 = 0x106fe2
 
 unk_107076 = 0x107076;Player Data Pointer
 unk_10707a = 0x10707a;Course Data Pointer
@@ -54,8 +62,11 @@ unk_107082 = 0x107082
 unk_10d4c2 = 0x10d4c2
 unk_10d4c4 = 0x10d4c4
 
+unk_10d4d4 = 0x10d4d4
 unk_10d4f8 = 0x10d4f8
 unk_10d4fa = 0x10d4fa
 
 unk_10d52e = 0x10d52e
 unk_10d58e = 0x10d58e
+
+unk_10ebe4 = 0x10ebe4

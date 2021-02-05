@@ -365,16 +365,20 @@ loc_057ee4:
 	org $580ac
 loc_0580ac:
 ;Hole 00
-	dc.l loc_00f4fa,loc_0a3a68
+	dc.l loc_00f4fa;Course Data
+	dc.l loc_0a3a68;Course Minimap
 	dc.w $0101,$01d6
-	dc.l loc_0a3990
-	dc.w $0118,$01e3,$00fe,$01e3
+	dc.l loc_0a3990 ;Course Par GFX
+	dc.w $0118,$01e3
+	dc.w $00fe,$01e3
 
 ;Hole 01
-	dc.l loc_00f4fa,loc_0a3a68
-	dc.w $0109,$01d7
-	dc.l loc_0a3990
-	dc.w $0118,$01e3,$00fe,$01e3
+	dc.l loc_00f4fa;Course Data
+	dc.l loc_0a3a68;Course Minimap
+	dc.w $0109,$01d7;Course Map Loc
+	dc.l loc_0a3990;Course Par gfx
+	dc.w $0118,$01e3;Hud Par loc
+	dc.w $00fe,$01e3;Hud Hole Number
 
 ;Hole 02
 	dc.l loc_010170,loc_0a3a8c

@@ -1,17 +1,16 @@
 	org $f4fa
 loc_00f4fa:
-	dc.w 4			;Par
-	dc.l loc_010150	;PNT
+	dc.b 0		;Unknown
+	dc.b 4		;Par
+	dc.l loc_010150	;Hole Placement
 	dc.l loc_010024	;PNT
 	dc.l loc_01014a	;PNT
 	dc.l loc_0100ce	;PNT
 
 ;0xf50c 
-;	dc.w $0029,$0089
+;	dc.w $0029,$0089;Width Height
 
 	
-
-
 ;==============================================
 	org $10024
 loc_010024:

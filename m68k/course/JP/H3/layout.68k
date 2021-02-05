@@ -1,16 +1,22 @@
 	org $10f38
 loc_010f38:
-	dc.b 01		;Contest
+	dc.b 01		;Unknown
 	dc.b 03		;Par
-	dc.l loc_0118e0 ;PNT
+	dc.l loc_0118e0 ;Hole Placement
 	dc.l loc_01181a ;PNT
 	dc.l loc_0118da ;PNT
 	dc.l loc_01188e ;PNT
 
-	dc.w $0027,$004b
+;0x10f4a
+;	dc.w $0027,$004b
+
 
 ;=========================================
+	org $1181a
 loc_01181a:
+	org $1188e
 loc_01188e:
+	org $118da
 loc_0118da:
+	org $118e0
 loc_0118e0:
