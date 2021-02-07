@@ -62,22 +62,29 @@ unk_102c54 = 0x102c54
 unk_102c58 = 0x102c58
 unk_102c5c = 0x102c5c
 unk_102c60 = 0x102c60
+unk_102c64 = 0x102c64
 
 unk_102c80 = 0x102c80
 unk_102c84 = 0x102c84
 unk_102c88 = 0x102c88
 unk_102c8c = 0x102c8c
 unk_102c90 = 0x102c90
+unk_102c9c = 0x102c9c
 unk_102cbc = 0x102cbc
 unk_102cc0 = 0x102cc0
 
+unk_102cd0 = 0x102cd0
 unk_102cd6 = 0x102cd6
+unk_102cee = 0x102cee
 unk_102cef = 0x102cef
 unk_102cf0 = 0x102cf0
 unk_102cf1 = 0x102cf1
+unk_102cf2 = 0x102cf2
 
 unk_102d26 = 0x102d26
+unk_102d28 = 0x102d28
 unk_102d29 = 0x102d29
+unk_102d2a = 0x102d2a
 unk_102db6 = 0x102db6
 
 unk_102e4a = 0x102e4a
@@ -91,6 +98,7 @@ unk_106fde = 0x106fde
 unk_106fe0 = 0x106fe0
 unk_106fe2 = 0x106fe2
 unk_106fe4 = 0x106fe4
+unk_106fe6 = 0x106fe6
 unk_106fe8 = 0x106fe8
 
 
