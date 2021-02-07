@@ -3024,7 +3024,7 @@ loc_0030da:
 	moveq #$30,d1
 	bra.w loc_003100
 
-loc_0030e8
+loc_0030e8:
 	move.l #loc_08aaa4,($2c,a6)
 	moveq #$32,d1
 	bra.w loc_003100
@@ -3797,18 +3797,18 @@ loc_004672:
 
 ;==============================================
 loc_004678:
-	move.w #$a0, d1
+	move.w #$a0,d1
 	lea.l loc_004704(pc),a0
 	bra.w loc_00469c
 
 loc_004684:
-	move.w #$a1, d1
-	lea.l loc_004714(pc), a0
+	move.w #$a1,d1
+	lea.l loc_004714(pc),a0
 	bra.w loc_00469c
 
 loc_004690:
-	move.w #$a2, d1
-	lea.l loc_004724(pc), a0
+	move.w #$a2,d1
+	lea.l loc_004724(pc),a0
 	bra.w loc_00469c
 
 loc_00469c:
@@ -4049,21 +4049,491 @@ loc_0049b2:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_0049b8:
+	dc.l loc_0951c8,loc_0951d2,loc_0951dc,loc_0951e6
+	dc.l loc_0951f0,loc_0951fa,loc_095206,loc_095212
+	dc.l loc_095222,loc_095232,loc_095242,loc_095252
+	dc.l loc_095262,loc_095272,loc_095282,loc_095292
+	dc.l loc_0952a2,loc_0952b2,loc_0952c2,loc_0952d2
+	dc.l loc_0952e2,loc_0952f2,loc_095306,loc_09531a
+	dc.l loc_09532e,loc_095342,loc_095352,loc_095362
+	dc.l $ffffffff
 
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-	org $4a2c
 loc_004a2c:
+	dc.l loc_095372,loc_09537c,loc_095386,loc_095390
+	dc.l loc_09539a,loc_0953a4,loc_0953b4,loc_0953c4
+	dc.l loc_0953d4,loc_0953e4,loc_0953f4,loc_095404
+	dc.l loc_095414,loc_095424,loc_095434,$ffffffff
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-	org $4a88
+loc_004a6c:
+	dc.b $01,$01,$01,$02
+	dc.b $02,$03,$02,$02
+	dc.b $01,$01,$01,$01
+	dc.b $01,$01,$01,$01
+	dc.b $01,$01,$01,$01
+	dc.b $02,$02,$03,$03
+	dc.b $04,$04,$05,$05
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_004a88:
+	dc.b $01,$03,$03,$03
+	dc.b $02,$02,$03,$03
+	dc.b $03,$04,$04,$05
+	dc.b $05,$05,$05,$00
+
+;==============================================
+loc_004a98:
+	tst.b unk_107082
+	bmi.w loc_004aae
+	lea.l loc_07d8bc,a1
+	jsr loc_0004c6
+
+loc_004aae:
+	move.w #$ab,d1
+	jsr loc_0b9a22
+	jsr loc_05706a
+	move.w ($3c,a0),d0
+	subq.w #2,d0
+	move.w d0,($3c,a6)
+	jsr loc_05b202
+	add.w d0,($32,a6)
+	jsr loc_05b0b8
+	bcs.w loc_004b72
+	lea.l loc_004b90(pc),a0
+	lea.l loc_004c5c(pc),a1
+	bra.w loc_004b48
+
+loc_004ae8:
+	move.w #$a3,d1
+	jsr loc_0b9a22
+	jsr loc_05706a
+	jsr loc_05b202
+	add.w d0,($32,a6)
+	jsr loc_05b0b8
+	bcs.w loc_004b72
+	movea.l ($c,a6),a0
+	move.w ($3c,a0),d0
+	subq.w #1,d0
+	move.w d0,($3c,a6)
+	lea.l loc_004be4(pc),a0
+	lea.l loc_004c70(pc),a1
+	bra.w loc_004b48
+
+loc_004b26:
+	move.w #$a0,d1
+	jsr loc_0b9a22
+	jsr loc_05706a
+	move.w ($3c,a0),d0
+	subq.w #1,d0
+	move.w d0,($3c,a6)
+	lea.l loc_004c30(pc),a0
+	lea.l loc_004c82(pc),a1
+
+loc_004b48:
+	move.l a0,($16,a6)
+	move.l a1,($1c,a6)
+	move.b #1,($1a,a6)
+	move.l #loc_004b5e,(a6)
+	rts
+
+loc_004b5e:
+	bsr.w loc_00498a
+	bcs.w loc_004b72
+	jsr loc_059218
+	jmp loc_000f2e
+
+loc_004b72:
+	jmp loc_00054a
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004b78:
+	dc.l loc_004b90,loc_004c5c
+	dc.l loc_004be4,loc_004c70
+	dc.l loc_004c30,loc_004c82
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004b90:
+	dc.l loc_0882c6,loc_0882d0,loc_0882da,loc_0882ec
+	dc.l loc_088300,loc_088314,loc_088324,loc_088334
+	dc.l loc_088344,loc_088354,loc_088364,loc_088374
+	dc.l loc_088384,loc_088394,loc_0883a4,loc_0883b8
+	dc.l loc_0883cc,loc_0883e0,loc_0883f2,loc_0883fc
+	dc.l $ffffffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004be4:
+	dc.l loc_088406,loc_088410,loc_08841a,loc_088426
+	dc.l loc_088438,loc_08844a,loc_08845e,loc_088472
+	dc.l loc_088486,loc_08849a,loc_0884ae,loc_0884c2
+	dc.l loc_0884d6,loc_0884ea,loc_0884fe,loc_088510
+	dc.l loc_08851c,loc_088528,$ffffffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004c30:
+	dc.l loc_098614,loc_09861e,loc_098628,loc_098632
+	dc.l loc_09863c,loc_098646,loc_098650,loc_09865a
+	dc.l loc_098664,loc_09866e,$ffffffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004c5c:
+	dc.b $01,$01,$01,$01
+	dc.b $01,$01,$01,$01
+	dc.b $01,$01,$01,$01
+	dc.b $02,$02,$02,$02
+	dc.b $02,$02,$02,$02
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004c70:
+	dc.b $03,$03,$03,$03
+	dc.b $03,$06,$06,$06
+	dc.b $06,$06,$06,$06
+	dc.b $06,$06,$06,$06
+	dc.b $06,$06
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_004c82:
+	dc.b $03,$03,$03,$03
+	dc.b $06,$06,$06,$06
+	dc.b $06,$06,$06,$00
+
+;==============================================
+loc_004c8e:
+	cmpi.b #1,unk_102d29
+	bne.w loc_004cbc
+	jsr loc_080f56
+	cmpi.w #$15,d0
+	bcs.w loc_004cae
+	clr.b unk_102d29
+
+loc_004cae:
+	cmpi.w #9,d0
+	bhi.w loc_004cbc
+	clr.b unk_102d29
+
+loc_004cbc:
+	rts
+
+;==============================================
+loc_004cbe:
+	jsr loc_002d8a
+	jsr loc_00bdc6(pc)
+	jsr loc_005304(pc)
+	jsr loc_005578(pc)
+	jsr loc_004c8e(pc)
+	clr.b unk_102cf0
+	clr.b unk_102cf1
+	clr.l unk_102c80
+	clr.l unk_102c84
+	clr.b unk_102cef
+	clr.b unk_102c38
+	clr.w unk_102cd6
+	clr.b unk_102c39
+	clr.b unk_102c3b
+	clr.b unk_10ebbc
+	clr.b unk_102db6
+	clr.b unk_102d26
+	cmpi.w #$d,unk_106fde
+	bne.w loc_004d30
+	bset.b #0,unk_102c38
+
+loc_004d30:
+	moveq #$11,d0
+	sub.w unk_106fe8,d0
+	swap d0
+	sub.w d0,d0
+	bsr.w loc_0052f0
+	jsr loc_002844
+	asr.l #6,d0
+	move.l d0,-(a7)
+	move.l unk_102c88,d0
+	jsr loc_00277e
+	neg.l d0
+	sub.l (a7)+,d0
+	moveq #$40,d1
+	jsr loc_002820
+	bsr.w loc_0053f0
+	jsr loc_002844
+	move.l unk_102c8c,d1
+	jsr loc_002844
+	bsr.w loc_005dbe
+	jsr loc_002844
+	move.l d0,unk_102c3c
+	move.l unk_102cbc,d0
+	move.l unk_102c3c,d1
+	jsr loc_002844
+	move.l d0,unk_102c40
+	move.l unk_102cc0,d0
+	move.l unk_102c3c,d1
+	jsr loc_002844
+	move.l d0,unk_102c44
+	moveq #$11,d0
+	sub.w unk_106fe8,d0
+	swap d0
+	sub.w d0,d0
+	asr.l #6,d0
+	bsr.w loc_0052fa
+	jsr loc_002844
+	move.l d0,-(a7)
+	move.l unk_102c88,d0
+	jsr loc_0027c0
+	add.l (a7)+,d0
+	moveq #$40,d1
+	jsr loc_002820
+	bsr.w loc_0053f0
+	jsr loc_002844
+	move.l unk_102c8c,d1
+	jsr loc_002844
+	bsr.w loc_005dd0
+	jsr loc_002844
+	asr.l #1,d0
+	move.l d0,unk_102c48
+	move.w unk_106fe4,d0
+	subq.w #4,d0
+	moveq #$11,d1
+	sub.w unk_106fe8,d1
+	lsl.w #2,d1
+	add.w d1,d0
+	swap d0
+	sub.w d0,d0
+	move.l unk_102c88,d1
+	swap d1
+	add.l d0,d1
+	bpl.w loc_004e38
+	moveq #0,d1
+
+loc_004e38:
+	move.l unk_102c8c,d0
+	jsr loc_002844
+	move.l d0,unk_102c4c
+	cmpi.b #1,unk_102d29
+	bne.w loc_004e5c
+	move.l d0,d1
+	add.l d0,d0
+	add.l d1,d0
+
+loc_004e5c:
+	cmpi.b #2,unk_102d29
+	bne.w loc_004e6a
+	moveq #0,d0
+
+loc_004e6a:
+	move.l d0,unk_102c50
+	moveq #0,d0
+	move.w unk_106fe4,d0
+	subq.w #4,d0
+	swap d0
+	move.l unk_102c3c,d1
+	jsr loc_002844
+	move.l #$28e,d1
+	jsr loc_002844
+	move.l #$1555,d1
+	jsr loc_002844
+	neg.l d0
+	move.l d0,unk_102c54
+	move.w unk_106fe4,d0
+	subq.w #4,d0
+	moveq #$11,d1
+	sub.w unk_106fe8,d1
+	asr.w #1,d1
+	add.w d1,d0
+	swap d0
+	sub.w d0,d0
+	move.l unk_102c88,d1
+	swap d1
+	add.l d1,d0
+	move.l #$3dd,d1
+	jsr loc_002844
+	addi.l #$8000,d0
+	move.l unk_102c3c,d1
+	jsr loc_002844
+	move.l #$28e,d1
+	jsr loc_002844
+	move.l #$a000,d1
+	jsr loc_002844
+	tst.l d0
+	bpl.w loc_004f08
+	moveq #0,d0
+
+loc_004f08:
+	move.l d0,unk_102c58
+	move.w unk_106fe2,d0
+	lsl.w #8,d0
+	jsr loc_0027c0
+	moveq #0,d1
+	move.w unk_106fe0,d1
+	jsr loc_002820
+	move.l d0,unk_102c5c
+	move.w unk_106fe2,d0
+	lsl.w #8,d0
+	jsr loc_00277e
+	moveq #0,d1
+	move.w unk_106fe0,d1
+	jsr loc_002820
+	move.l d0,unk_102c60
+	movea.l unk_107076,a0
+	move.l (4,a0),d0
+	asr.l #2,d0
+	move.l d0,unk_102c68
+	move.l (8,a0),d0
+	asr.l #2,d0
+	move.l d0,unk_102c6c
+	jsr loc_057602
+	jsr loc_05929a
+	swap d0
+	sub.w d0,d0
+	asr.l #6,d0
+	move.l d0,unk_102c70
+	move.l d0,unk_102c90
+	tst.b unk_107082
+	bpl.w loc_004f9e
+	clr.b unk_10ebe4
+
+loc_004f9e:
+	cmpi.b #2,unk_10ebe4
+	bne.w loc_004fce
+	clr.l unk_102c40
+	clr.l unk_102c44
+	clr.l unk_102c58
+	clr.l unk_102c4c
+	clr.l unk_102c50
+	clr.l unk_102c54
+
+loc_004fce:
+	movea.l unk_107076,a0
+	move.b (3,a0),d0
+	clr.b (3,a0)
+	cmpi.b #1,unk_10ebe4
+	bne.w loc_00500a
+	bset.b #1,unk_102c38
+	cmpi.w #$b,unk_106fd6
+	bne.w loc_00500a
+	cmpi.b #3,d0
+	bcc.w loc_005006
+	addq.b #1,d0
+
+loc_005006:
+	move.b d0,(3,a0)
+
+loc_00500a:
+	btst.b #3,Debug_Dip0
+	beq.w loc_00501a
+	bsr.w loc_00bb68
+
+loc_00501a:
+	rts
+
+;==============================================
+;Deals with Characters
+loc_00501c:
+	moveq #0,d1
+	movea.l unk_107076,a1
+	move.b (1,a1),d1
+	lsl.w #2,d1
+	movea.l loc_005038(pc,d1.w),a1
+	move.w unk_106fde,d1
+	lsl.w #3,d1
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_005038:
+	dc.l loc_005050;Spinner
+	dc.l loc_0050c0;Almeida
+	dc.l loc_005130;Landolt
+	dc.l loc_0051a0;Takeno
+	dc.l loc_005210;Adams
+	dc.l loc_005280;Stewert
+
+loc_005050:
+	dc.l $00005f13,$00006702,$000064d0,$0000818f
+	dc.l $00005c7b,$00007f44,$00003d3a,$00006c6f
+	dc.l $00003d5b,$0000862a,$00003e5a,$00008d8f
+	dc.l $0000377a,$00008a7a,$0000359c,$00009714
+	dc.l $00002fb4,$000093bf,$00002e6b,$00009ff9
+	dc.l $00002eba,$0000b1b4,$000025dc,$0000b4e4
+	dc.l $00001dc2,$0000c5b4,$00000000,$00000000
+
+loc_0050c0:
+	dc.l $00007023,$00006308,$0000642e,$0000653f
+	dc.l $000065b4,$00006eeb,$00005b68,$00006b36
+	dc.l $000050a1,$00008133,$0000581f,$00009027
+	dc.l $00004b12,$00008a38,$00004ab0,$00009573
+	dc.l $000046b8,$00009cb3,$000046b9,$0000a9d6
+	dc.l $00004449,$0000af9e,$00003e4c,$0000c945
+	dc.l $00003e7f,$000105e9,$00000000,$00000000
+
+loc_005130:
+	dc.l $000051e4,$00006561,$00004cb1,$00006cb0
+	dc.l $000036c4,$0000636b,$000036a1,$0000691a
+	dc.l $00003195,$00006944,$00002d49,$000066db
+	dc.l $00002ddf,$0000734a,$00002b88,$000074f7
+	dc.l $00002701,$000067dc,$00002527,$00006f9b
+	dc.l $00002519,$00007b4d,$00001fbb,$000085f2
+	dc.l $00001633,$000095fa,$00000000,$00000000
+
+loc_0051a0:
+	dc.l $00003a27,$00004217,$00003b22,$00005747
+	dc.l $0000405a,$000074ed,$00004046,$0000906c
+	dc.l $00003f7b,$00009e06,$00003732,$000098be
+	dc.l $00003414,$0000a244,$000030df,$0000a6ec
+	dc.l $00002b45,$0000a0bf,$00002939,$0000ac52
+	dc.l $000028e3,$0000bb46,$0000201c,$0000c1e9
+	dc.l $000017b8,$0000cec1,$00000000,$00000000
+
+loc_005210:
+	dc.l $0000675f,$000074a2,$00006cc9,$00009c1e
+	dc.l $00006a46,$0000abcc,$00007091,$0000f756
+	dc.l $00006b56,$000101b4,$00005aa3,$0000ede0
+	dc.l $000058f0,$000103da,$000054e4,$00010fa0
+	dc.l $00004d93,$000114f5,$00004cc2,$00012b90
+	dc.l $00004b13,$00014826,$00004360,$00014451
+	dc.l $00003c99,$00015393,$00000000,$00000000
+
+loc_005280:
+	dc.l $00005197,$000085b0,$000049d6,$000095d3
+	dc.l $00004a5c,$0000a38f,$00003b5b,$00009ecf
+	dc.l $000034c6,$0000ae00,$000031d3,$0000b3eb
+	dc.l $00002ef4,$0000bda4,$00002d91,$0000cb7f
+	dc.l $00002673,$0000c615,$000025d2,$0000d959
+	dc.l $00002174,$0000dd84,$00001be7,$0000e190
+	dc.l $00001585,$0000db4b,$00000000,$00000000
+
+;==============================================
+loc_0052f0:
+
+	org $52fa
+loc_0052fa:
+
+	org $5304
+loc_005304:
+
+	org $53f0
+loc_0053f0:
+
+	org $5578
+loc_005578:
+
+	org $5dbe
+loc_005dbe:
+
+	org $5dd0
+loc_005dd0:
 
 
+;==============================================
+	org $7446
+loc_007446:
 
 ;==============================================
 	org $bad4
 loc_00bad4:
+
+	org $bb68
+loc_00bb68:
+
+	org $bdc6
+loc_00bdc6:
 
 	org $d54a
 loc_00d54a
@@ -4223,6 +4693,9 @@ loc_068600
 	org $68618
 loc_068618
 
+	org $7d8bc
+loc_07d8bc
+
 	org $8044a
 COIN_SOUND:
 
@@ -4237,13 +4710,96 @@ loc_080aa0:
 
 	org $080aa8
 loc_080aa8:
+
 	org $080b36
 loc_080b36:
-	org $08aa8a
+	
+	
+	org $80f56
+loc_080f56:
+
+	org $882c6
+loc_0882c6
+	org $882d0
+loc_0882d0
+	org $882da
+loc_0882da
+	org $882ec
+loc_0882ec
+	org $88300
+loc_088300
+	org $88314
+loc_088314
+	org $88324
+loc_088324
+	org $88334
+loc_088334
+	org $88344
+loc_088344
+	org $88354
+loc_088354
+	org $88364
+loc_088364
+	org $88374
+loc_088374
+	org $88384
+loc_088384
+	org $88394
+loc_088394
+	org $883a4
+loc_0883a4
+	org $883b8
+loc_0883b8
+	org $883cc
+loc_0883cc
+	org $883e0
+loc_0883e0
+	org $883f2
+loc_0883f2
+	org $883fc
+loc_0883fc
+	org $88406
+loc_088406
+	org $88410
+loc_088410
+	org $8841a
+loc_08841a
+	org $88426
+loc_088426
+	org $88438
+loc_088438
+	org $8844a
+loc_08844a
+	org $8845e
+loc_08845e
+	org $88472
+loc_088472
+	org $88486
+loc_088486
+	org $8849a
+loc_08849a
+	org $884ae
+loc_0884ae
+	org $884c2
+loc_0884c2
+	org $884d6
+loc_0884d6
+	org $884ea
+loc_0884ea
+	org $884fe
+loc_0884fe
+	org $88510
+loc_088510
+	org $8851c
+loc_08851c
+	org $88528
+loc_088528
+
+	org $8aa8a
 loc_08aa8a:
-	org $08aaa4
+	org $8aaa4
 loc_08aaa4:
-	org $08aac4
+	org $8aac4
 loc_08aac4:
 	org $8abb4
 loc_08abb4:
@@ -4348,8 +4904,93 @@ loc_094ee2:
 	org $94eec
 loc_094eec:
 
+	org $951c8
+loc_0951c8
+	org $951d2
+loc_0951d2
+	org $951dc
+loc_0951dc
+	org $951e6
+loc_0951e6
+	org $951f0
+loc_0951f0
+	org $951fa
+loc_0951fa
+	org $95206
+loc_095206
+	org $95212
+loc_095212
+	org $95222
+loc_095222
+	org $95232
+loc_095232
 	org $95240
 loc_095240:
+	org $95242
+loc_095242
+	org $95252
+loc_095252
+	org $95262
+loc_095262
+	org $95272
+loc_095272
+	org $95282
+loc_095282
+	org $95292
+loc_095292
+	org $952a2
+loc_0952a2
+	org $952b2
+loc_0952b2
+	org $952c2
+loc_0952c2
+	org $952d2
+loc_0952d2
+	org $952e2
+loc_0952e2
+	org $952f2
+loc_0952f2
+	org $95306
+loc_095306
+	org $9531a
+loc_09531a
+	org $9532e
+loc_09532e
+	org $95342
+loc_095342
+	org $95352
+loc_095352
+	org $95362
+loc_095362
+	org $95372
+loc_095372
+	org $95386
+loc_095386
+	org $95390
+loc_095390
+	org $9539a
+loc_09539a
+	org $953a4
+loc_0953a4
+	org $953b4
+loc_0953b4
+	org $953c4
+loc_0953c4
+	org $953d4
+loc_0953d4
+	org $953e4
+loc_0953e4
+	org $953f4
+loc_0953f4
+	org $95404
+loc_095404
+	org $95414
+loc_095414
+	org $95424
+loc_095424
+	org $95434
+loc_095434
+
 
 	org $9537c
 loc_09537c:
@@ -4395,6 +5036,26 @@ loc_09848c
 loc_0984d6
 	org $98510
 loc_098510
+	org $98614
+loc_098614
+	org $9861e
+loc_09861e
+	org $98628
+loc_098628
+	org $98632
+loc_098632
+	org $9863c
+loc_09863c
+	org $98646
+loc_098646
+	org $98650
+loc_098650
+	org $9865a
+loc_09865a
+	org $98664
+loc_098664
+	org $9866e
+loc_09866e
 
 	org $98826
 loc_098826:

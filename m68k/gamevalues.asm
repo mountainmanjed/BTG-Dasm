@@ -1,3 +1,5 @@
+Debug_Dip0 = 0x100000
+
 unk_100100 = 0x100100
 unk_100160 = 0x100160
 unk_1001c0 = 0x1001c0
@@ -46,18 +48,57 @@ unk_102c68 = 0x102c68
 unk_102c6c = 0x102c6c
 unk_102c70 = 0x102c70
 
+unk_102c39 = 0x102c39
+unk_102c3a = 0x102c3a
+unk_102c3b = 0x102c3b
+unk_102c3c = 0x102c3c
+
+unk_102c40 = 0x102c40
+unk_102c44 = 0x102c44
+unk_102c48 = 0x102c48
+unk_102c4c = 0x102c4c
+unk_102c50 = 0x102c50
+unk_102c54 = 0x102c54
+unk_102c58 = 0x102c58
+unk_102c5c = 0x102c5c
+unk_102c60 = 0x102c60
+
+unk_102c80 = 0x102c80
+unk_102c84 = 0x102c84
+unk_102c88 = 0x102c88
+unk_102c8c = 0x102c8c
+unk_102c90 = 0x102c90
+unk_102cbc = 0x102cbc
+unk_102cc0 = 0x102cc0
+
+unk_102cd6 = 0x102cd6
+unk_102cef = 0x102cef
+unk_102cf0 = 0x102cf0
+unk_102cf1 = 0x102cf1
+
+unk_102d26 = 0x102d26
+unk_102d29 = 0x102d29
+unk_102db6 = 0x102db6
+
 unk_102e4a = 0x102e4a
 unk_102e4c = 0x102e4c
 unk_102e4e = 0x102e4e
 unk_102e5e = 0x102e5e
 
 unk_106fd6 = 0x106fd6
+unk_106fde = 0x106fde
+
 unk_106fe0 = 0x106fe0
 unk_106fe2 = 0x106fe2
+unk_106fe4 = 0x106fe4
+unk_106fe8 = 0x106fe8
+
 
 unk_107076 = 0x107076;Player Data Pointer
 unk_10707a = 0x10707a;Course Data Pointer
 unk_107082 = 0x107082
+
+unk_107090 = 0x107090;Course Data Tilemap
 
 unk_10d4c2 = 0x10d4c2
 unk_10d4c4 = 0x10d4c4
@@ -69,4 +110,5 @@ unk_10d4fa = 0x10d4fa
 unk_10d52e = 0x10d52e
 unk_10d58e = 0x10d58e
 
+unk_10ebbc = 0x10ebbc
 unk_10ebe4 = 0x10ebe4
