@@ -6821,150 +6821,90 @@ loc_00e558:
 ;f4fa
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Courses
-;course/JP/H1/layout.68k
-;course/JP/H2/layout.68k
-;course/JP/H3/layout.68k
-;course/JP/H4/layout.68k
-;course/JP/H5/layout.68k
-;course/JP/H6/layout.68k
-;course/JP/H7/layout.68k
-;course/JP/H8/layout.68k
-;course/JP/H9/layout.68k
-;course/JP/H10/layout.68k
-;course/JP/H11/layout.68k
-;course/JP/H12/layout.68k
-;course/JP/H13/layout.68k
-;course/JP/H14/layout.68k
-;course/JP/H15/layout.68k
-;course/JP/H16/layout.68k
-;course/JP/H17/layout.68k
-;course/JP/H18/layout.68k
+;	include "course/JP/H1/layout.68k"
+;	include "course/JP/H2/layout.68k"
+;	include "course/JP/H3/layout.68k"
+;	include "course/JP/H4/layout.68k"
+;	include "course/JP/H5/layout.68k"
+;	include "course/JP/H6/layout.68k"
+;	include "course/JP/H7/layout.68k"
+;	include "course/JP/H8/layout.68k"
+;	include "course/JP/H9/layout.68k"
+;	include "course/JP/H10/layout.68k"
+;	include "course/JP/H11/layout.68k"
+;	include "course/JP/H12/layout.68k"
+;	include "course/JP/H13/layout.68k"
+;	include "course/JP/H14/layout.68k"
+;	include "course/JP/H15/layout.68k"
+;	include "course/JP/H16/layout.68k"
+;	include "course/JP/H17/layout.68k"
+;	include "course/JP/H18/layout.68k"
 
-;course/US/H1/layout.68k
-;course/US/H2/layout.68k
-;course/US/H3/layout.68k
-;course/US/H4/layout.68k
-;course/US/H5/layout.68k
-;course/US/H6/layout.68k
-;course/US/H7/layout.68k
-;course/US/H8/layout.68k
-;course/US/H9/layout.68k
-;course/US/H10/layout.68k
-;course/US/H11/layout.68k
-;course/US/H12/layout.68k
-;course/US/H13/layout.68k
-;course/US/H14/layout.68k
-;course/US/H15/layout.68k
-;course/US/H16/layout.68k
-;course/US/H17/layout.68k
-;course/US/H18/layout.68k
+;	include "course/US/H1/layout.68k"
+;	include "course/US/H2/layout.68k"
+;	include "course/US/H3/layout.68k"
+;	include "course/US/H4/layout.68k"
+;	include "course/US/H5/layout.68k"
+;	include "course/US/H6/layout.68k"
+;	include "course/US/H7/layout.68k"
+;	include "course/US/H8/layout.68k"
+;	include "course/US/H9/layout.68k"
+;	include "course/US/H10/layout.68k"
+;	include "course/US/H11/layout.68k"
+;	include "course/US/H12/layout.68k"
+;	include "course/US/H13/layout.68k"
+;	include "course/US/H14/layout.68k"
+;	include "course/US/H15/layout.68k"
+;	include "course/US/H16/layout.68k"
+;	include "course/US/H17/layout.68k"
+;	include "course/US/H18/layout.68k"
 
-;course/AU/H1/layout.68k
-;course/AU/H2/layout.68k
-;course/AU/H3/layout.68k
-;course/AU/H4/layout.68k
-;course/AU/H5/layout.68k
-;course/AU/H6/layout.68k
-;course/AU/H7/layout.68k
-;course/AU/H8/layout.68k
-;course/AU/H9/layout.68k
-;course/AU/H10/layout.68k
-;course/AU/H11/layout.68k
-;course/AU/H12/layout.68k
-;course/AU/H13/layout.68k
-;course/AU/H14/layout.68k
-;course/AU/H15/layout.68k
-;course/AU/H16/layout.68k
-;course/AU/H17/layout.68k
-;course/AU/H18/layout.68k
+;	include "course/AU/H1/layout.68k"
+;	include "course/AU/H2/layout.68k"
+;	include "course/AU/H3/layout.68k"
+;	include "course/AU/H4/layout.68k"
+;	include "course/AU/H5/layout.68k"
+;	include "course/AU/H6/layout.68k"
+;	include "course/AU/H7/layout.68k"
+;	include "course/AU/H8/layout.68k"
+;	include "course/AU/H9/layout.68k"
+;	include "course/AU/H10/layout.68k"
+;	include "course/AU/H11/layout.68k"
+;	include "course/AU/H12/layout.68k"
+;	include "course/AU/H13/layout.68k"
+;	include "course/AU/H14/layout.68k"
+;	include "course/AU/H15/layout.68k"
+;	include "course/AU/H16/layout.68k"
+;	include "course/AU/H17/layout.68k"
+;	include "course/AU/H18/layout.68k"
 
-;course/GR/H1/layout.68k
-;course/GR/H2/layout.68k
-;course/GR/H3/layout.68k
-;course/GR/H4/layout.68k
-;course/GR/H5/layout.68k
-;course/GR/H6/layout.68k
-;course/GR/H7/layout.68k
-;course/GR/H8/layout.68k
-;course/GR/H9/layout.68k
-;course/GR/H10/layout.68k
-;course/GR/H11/layout.68k
-;course/GR/H12/layout.68k
-;course/GR/H13/layout.68k
-;course/GR/H14/layout.68k
-;course/GR/H15/layout.68k
-;course/GR/H16/layout.68k
-;course/GR/H17/layout.68k
-;course/GR/H18/layout.68k ;loc_053962
+;	include "course/GR/H1/layout.68k"
+;	include "course/GR/H2/layout.68k"
+;	include "course/GR/H3/layout.68k"
+;	include "course/GR/H4/layout.68k"
+;	include "course/GR/H5/layout.68k"
+;	include "course/GR/H6/layout.68k"
+;	include "course/GR/H7/layout.68k"
+;	include "course/GR/H8/layout.68k"
+;	include "course/GR/H9/layout.68k"
+;	include "course/GR/H10/layout.68k"
+;	include "course/GR/H11/layout.68k"
+;	include "course/GR/H12/layout.68k"
+;	include "course/GR/H13/layout.68k"
+;	include "course/GR/H14/layout.68k"
+;	include "course/GR/H15/layout.68k"
+;	include "course/GR/H16/layout.68k"
+;	include "course/GR/H17/layout.68k"
+;	include "course/GR/H18/layout.68k"
 
-	org $568c2
-loc_0568c2:
-
-	org $5706a
-loc_05706a:
-
-	org $57602
-loc_057602:
-
-
-;course/coursetable.asm;loc_057b44
-
-
-	org $58274
-loc_058274:
-
-
-	org $59218
-loc_059218:
-	org $5929a
-loc_05929a:
-
-	org $59312
-loc_059312:
-
-	org $5933e
-loc_05933e:
-
-	org $59e0e
-loc_059e0e:
-
-
-
-	org $5b0b8
-loc_05b0b8
-	org $5b202
-loc_05b202
-
-	org $5b20c
-loc_05b20c:
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-	org $60328
-loc_060328:
-	org $68600
-loc_068600
-	org $68618
-loc_068618
-
-	org $68e10
-loc_068e10
-
-	org $7d8bc
-loc_07d8bc
-
+	include "banks/bank05.68k"
+	include "banks/bank06.68k"
+	include "banks/bank07.68k"
 	include "banks/bank08.68k"
 	include "banks/bank09.68k"
+	include "banks/bank0a.68k"
+	include "banks/bank0b.68k"
+	include "banks/bank0c.68k"
 
-	org $abf48
-loc_0abf48:
-
-	org $abfee
-loc_0abfee:
-
-	org $b9a22
-loc_0b9a22:
-
-	org $ca6d8
-loc_0ca6d8:
-
-
-
+;Second Megabyte
+;include "banks/bank20.68k"

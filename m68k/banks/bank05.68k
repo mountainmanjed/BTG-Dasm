@@ -1,0 +1,43 @@
+	org $549bc
+loc_0549bc:
+
+	org $568c2
+loc_0568c2:
+
+	org $5706a
+loc_05706a:
+
+	org $57602
+loc_057602:
+
+
+;	course/coursetable.asm;loc_057b44
+
+
+	org $58274
+loc_058274:
+
+
+	org $59218
+loc_059218:
+	org $5929a
+loc_05929a:
+
+	org $59312
+loc_059312:
+
+	org $5933e
+loc_05933e:
+
+	org $59e0e
+loc_059e0e:
+
+
+
+	org $5b0b8
+loc_05b0b8
+	org $5b202
+loc_05b202
+
+	org $5b20c
+loc_05b20c:
