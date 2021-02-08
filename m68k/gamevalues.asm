@@ -41,6 +41,7 @@ unk_102b78 = 0x102b78
 unk_102b7c = 0x102b7c
 unk_102b80 = 0x102b80
 unk_102b84 = 0x102b84
+unk_102b88 = 0x102b88
 
 unk_102c38 = 0x102c38
 unk_102c4c = 0x102c4c
@@ -69,12 +70,21 @@ unk_102c84 = 0x102c84
 unk_102c88 = 0x102c88
 unk_102c8c = 0x102c8c
 unk_102c90 = 0x102c90
+unk_102c94 = 0x102c94
+unk_102c98 = 0x102c98
 unk_102c9c = 0x102c9c
 unk_102cbc = 0x102cbc
 unk_102cc0 = 0x102cc0
+unk_102cc4 = 0x102cc4
+unk_102cc8 = 0x102cc8
+unk_102ccc = 0x102ccc
+
 
 unk_102cd0 = 0x102cd0
 unk_102cd6 = 0x102cd6
+
+unk_102ce8 = 0x102ce8
+unk_102cea = 0x102cea
 unk_102cee = 0x102cee
 unk_102cef = 0x102cef
 unk_102cf0 = 0x102cf0
@@ -85,6 +95,10 @@ unk_102d26 = 0x102d26
 unk_102d28 = 0x102d28
 unk_102d29 = 0x102d29
 unk_102d2a = 0x102d2a
+unk_102d2e = 0x102d2e
+
+unk_102d32 = 0x102d32
+unk_102d3a = 0x102d3a
 unk_102db6 = 0x102db6
 
 unk_102e4a = 0x102e4a
@@ -108,12 +122,23 @@ unk_107082 = 0x107082
 
 unk_107090 = 0x107090;Course Data Tilemap
 
+unk_108100 = 0x108100
+
+unk_10d4c0 = 0x10d4c0
 unk_10d4c2 = 0x10d4c2
 unk_10d4c4 = 0x10d4c4
+unk_10d4c6 = 0x10d4c6
+unk_10d4ca = 0x10d4ca
 
+unk_10d4d2 = 0x10d4d2
 unk_10d4d4 = 0x10d4d4
+
 unk_10d4f8 = 0x10d4f8
 unk_10d4fa = 0x10d4fa
+
+unk_10d504 = 0x10d504
+unk_10d506 = 0x10d506
+unk_10d510 = 0x10d510
 
 unk_10d52e = 0x10d52e
 unk_10d58e = 0x10d58e

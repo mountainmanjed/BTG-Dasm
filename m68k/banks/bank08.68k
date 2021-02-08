@@ -1,0 +1,137 @@
+
+	org $8044a
+COIN_SOUND:
+
+	org $804de
+loc_0804de
+
+	org $80a7c
+loc_080a7c:
+
+	org $80aa0
+loc_080aa0:
+
+	org $080aa8
+loc_080aa8:
+
+	org $080b36
+loc_080b36:
+	
+	
+	org $80f56
+loc_080f56:
+
+	org $882c6
+loc_0882c6
+	org $882d0
+loc_0882d0
+	org $882da
+loc_0882da
+	org $882ec
+loc_0882ec
+	org $88300
+loc_088300
+	org $88314
+loc_088314
+	org $88324
+loc_088324
+	org $88334
+loc_088334
+	org $88344
+loc_088344
+	org $88354
+loc_088354
+	org $88364
+loc_088364
+	org $88374
+loc_088374
+	org $88384
+loc_088384
+	org $88394
+loc_088394
+	org $883a4
+loc_0883a4
+	org $883b8
+loc_0883b8
+	org $883cc
+loc_0883cc
+	org $883e0
+loc_0883e0
+	org $883f2
+loc_0883f2
+	org $883fc
+loc_0883fc
+	org $88406
+loc_088406
+	org $88410
+loc_088410
+	org $8841a
+loc_08841a
+	org $88426
+loc_088426
+	org $88438
+loc_088438
+	org $8844a
+loc_08844a
+	org $8845e
+loc_08845e
+	org $88472
+loc_088472
+	org $88486
+loc_088486
+	org $8849a
+loc_08849a
+	org $884ae
+loc_0884ae
+	org $884c2
+loc_0884c2
+	org $884d6
+loc_0884d6
+	org $884ea
+loc_0884ea
+	org $884fe
+loc_0884fe
+	org $88510
+loc_088510
+	org $8851c
+loc_08851c
+	org $88528
+loc_088528
+
+	org $8aa8a
+loc_08aa8a:
+	org $8aaa4
+loc_08aaa4:
+	org $8aac4
+loc_08aac4:
+	org $8abb4
+loc_08abb4:
+	org $8abbe
+loc_08abbe:
+	org $8abc8
+loc_08abc8:
+	org $8abd2
+loc_08abd2:
+	org $8abdc
+loc_08abdc:
+	org $8abe6
+loc_08abe6:
+	org $8abf2
+loc_08abf2:
+	org $8abfe
+loc_08abfe:
+	org $8ac08
+loc_08ac08:
+	org $8ac12
+loc_08ac12:
+	org $8ac1c
+loc_08ac1c:
+	org $8ac26
+loc_08ac26:
+
+	org $08b118
+loc_08b118:
+	org $08b1aa
+loc_08b1aa:
+	org $08b152
+loc_08b152:
