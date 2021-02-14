@@ -1,4 +1,9 @@
 
+
+	org $803ce
+loc_0803ce:
+	org $803f6
+loc_0803f6:
 	org $8044a
 COIN_SOUND:
 
@@ -16,10 +21,17 @@ loc_080aa8:
 
 	org $080b36
 loc_080b36:
-	
+
+	org $80b7a
+loc_080b7a
 	
 	org $80f56
 loc_080f56:
+
+	org $84fdc
+loc_084fdc:
+	org $84fec
+loc_084fec:
 
 	org $882c6
 loc_0882c6
@@ -104,6 +116,8 @@ loc_08aa8a:
 loc_08aaa4:
 	org $8aac4
 loc_08aac4:
+
+
 	org $8abb4
 loc_08abb4:
 	org $8abbe

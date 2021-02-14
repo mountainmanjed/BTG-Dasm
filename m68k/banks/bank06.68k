@@ -1,3 +1,5 @@
+	org $601b0
+loc_0601b0:
 	org $60328
 loc_060328:
 	org $68600
@@ -6,6 +8,13 @@ loc_068600
 loc_068618
 
 	org $68e10
-loc_068e10
+loc_068e10:
 
+	org $6a134
+loc_06a134:
+	org $6a2f6
+loc_06a2f6:
+
+	org $6e428
+loc_06e428:
 

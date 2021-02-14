@@ -1,2 +1,8 @@
 	org $ca6d8
 loc_0ca6d8:
+
+	org $ca866
+loc_0ca866
+
+	org $ca892
+loc_0ca892

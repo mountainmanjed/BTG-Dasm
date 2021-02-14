@@ -44,6 +44,7 @@ unk_102b80 = 0x102b80
 unk_102b84 = 0x102b84
 unk_102b88 = 0x102b88
 
+
 unk_102c38 = 0x102c38
 
 unk_102c39 = 0x102c39
@@ -77,6 +78,8 @@ unk_102c9c = 0x102c9c
 unk_102ca8 = 0x102ca8
 unk_102cac = 0x102cac
 unk_102cb0 = 0x102cb0
+unk_102cb4 = 0x102cb4
+unk_102cb8 = 0x102cb8
 unk_102cbc = 0x102cbc
 unk_102cc0 = 0x102cc0
 unk_102cc4 = 0x102cc4
@@ -121,23 +124,54 @@ unk_102d36 = 0x102d36
 unk_102d3a = 0x102d3a
 unk_102db6 = 0x102db6
 
+unk_102e48 = 0x102e48
 unk_102e4a = 0x102e4a
 unk_102e4c = 0x102e4c
 unk_102e4e = 0x102e4e
+unk_102e50 = 0x102e50
+unk_102e52 = 0x102e52
+unk_102e54 = 0x102e54
+unk_102e55 = 0x102e55
+unk_102e56 = 0x102e56
+unk_102e57 = 0x102e57
+unk_102e58 = 0x102e58
+unk_102e59 = 0x102e59
+unk_102e5a = 0x102e5a
+unk_102e5c = 0x102e5c
 unk_102e5e = 0x102e5e
+unk_102e60 = 0x102e60
+unk_102ea0 = 0x102ea0
+unk_102ea1 = 0x102ea1
+unk_102ea2 = 0x102ea2
+unk_102ea4 = 0x102ea4
+unk_102ea5 = 0x102ea5
+unk_102ea6 = 0x102ea6
+unk_102ea8 = 0x102ea8
+unk_102eac = 0x102eac
+
+unk_102eb9 = 0x102eb9
+unk_102eba = 0x102eba
+unk_102ebb = 0x102ebb
+unk_102ebc = 0x102ebc
 
 unk_106fd6 = 0x106fd6
+unk_106fd8 = 0x106fd8
+unk_106fda = 0x106fda
+unk_106fdc = 0x106fdc
 unk_106fde = 0x106fde
-
 unk_106fe0 = 0x106fe0
 unk_106fe2 = 0x106fe2
 unk_106fe4 = 0x106fe4
 unk_106fe6 = 0x106fe6
 unk_106fe8 = 0x106fe8
+unk_106fea = 0x106fea
 
+unk_107002 = 0x107002
 
 unk_107076 = 0x107076;Player Data Pointer
 unk_10707a = 0x10707a;Course Data Pointer
+unk_10707e = 0x10707e
+unk_107080 = 0x107080
 unk_107082 = 0x107082
 unk_107083 = 0x107083
 unk_107084 = 0x107084
@@ -145,6 +179,9 @@ unk_107084 = 0x107084
 unk_107090 = 0x107090;Course Data Tilemap
 
 unk_108100 = 0x108100
+
+unk_10d4aa = 0x10d4aa
+unk_10d4ac = 0x10d4ac
 
 unk_10d4c0 = 0x10d4c0
 unk_10d4c2 = 0x10d4c2
@@ -157,7 +194,7 @@ unk_10d4d2 = 0x10d4d2
 unk_10d4d4 = 0x10d4d4
 unk_10d4d6 = 0x10d4d6
 
-
+unk_10d4ec = 0x10d4ec
 unk_10d4f8 = 0x10d4f8
 unk_10d4fa = 0x10d4fa
 
@@ -167,6 +204,9 @@ unk_10d510 = 0x10d510
 
 unk_10d52e = 0x10d52e
 unk_10d58e = 0x10d58e
+
+unk_10eb9c = 0x10eb9c
+unk_10eba0 = 0x10eba0
 
 unk_10ebbc = 0x10ebbc
 unk_10ebe4 = 0x10ebe4

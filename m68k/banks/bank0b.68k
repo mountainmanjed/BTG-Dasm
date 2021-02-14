@@ -1,2 +1,5 @@
 	org $b9a22
 loc_0b9a22:
+
+	org $b9de6
+loc_0b9de6

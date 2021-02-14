@@ -12,17 +12,20 @@ loc_05706a:
 
 	org $57602
 loc_057602:
-
+	org $57612
+loc_057612:
 
 ;	course/coursetable.asm;loc_057b44
-
 
 	org $58274
 loc_058274:
 
+	org $5897a
+loc_05897a
 
 	org $59218
 loc_059218:
+
 	org $5929a
 loc_05929a:
 
@@ -32,10 +35,26 @@ loc_059312:
 	org $5933e
 loc_05933e:
 
+	org $59d44
+loc_059d44:
+
+	org $59daa
+loc_059daa:
+
+	org $59dc4
+loc_059dc4:
+
 	org $59e0e
 loc_059e0e:
 
+	org $59eb2
+loc_059eb2:
+	
+	org $59ef8
+loc_059ef8
 
+	org $5a3ba
+loc_05a3ba
 
 	org $5b0b8
 loc_05b0b8
