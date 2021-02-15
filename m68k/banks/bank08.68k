@@ -1,4 +1,7 @@
-
+	org $802b4
+loc_0802b4
+	org $802bc
+loc_0802bc
 
 	org $803ce
 loc_0803ce:
@@ -7,8 +10,15 @@ loc_0803f6:
 	org $8044a
 COIN_SOUND:
 
+	org $80454
+loc_080454:
+	org $8045a
+loc_08045a:
 	org $804de
 loc_0804de
+
+	org $804fc
+loc_0804fc
 
 	org $80a7c
 loc_080a7c:
@@ -28,11 +38,40 @@ loc_080b7a
 	org $80f56
 loc_080f56:
 
+	org $83a0c
+loc_083a0c:
+
 	org $84fdc
 loc_084fdc:
 	org $84fec
 loc_084fec:
 
+	org $8500e
+loc_08500e:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+;Switch to anything
+;to play in "How to Play Screen"
+	org $85138
+loc_085138:
+	;dc.w $0000
+
+;==============================================
+	org $8513a
+loc_08513a:
+
+	org $85484
+loc_085484:
+
+	org $85534
+loc_085534:
+
+	org $85672
+loc_085672:
+
+
+	org $8602e
+loc_08602e:
 	org $882c6
 loc_0882c6
 	org $882d0
@@ -149,3 +188,6 @@ loc_08b118:
 loc_08b1aa:
 	org $08b152
 loc_08b152:
+
+	org $8f8c6
+loc_08f8c6:

@@ -1,6 +1,9 @@
 	org $549bc
 loc_0549bc:
 
+	org $55304
+loc_055304:
+
 	org $56752
 loc_056752
 
@@ -19,6 +22,9 @@ loc_057612:
 
 	org $58274
 loc_058274:
+
+	org $5893a
+loc_05893a
 
 	org $5897a
 loc_05897a
@@ -53,8 +59,21 @@ loc_059eb2:
 	org $59ef8
 loc_059ef8
 
+	org $59f26
+loc_059f26:
+
+	org $59f6a
+loc_059f6a
+
+	org $5a054
+loc_05a054:
+
 	org $5a3ba
 loc_05a3ba
+
+
+	org $5abec
+loc_05abec:
 
 	org $5b0b8
 loc_05b0b8

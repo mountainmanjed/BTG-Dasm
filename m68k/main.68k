@@ -10533,43 +10533,1086 @@ loc_00df64:
 	dc.b "PORTUGUESE  "
 
 ;==============================================
+loc_00e230:
+	clr.w Debug_Dip0
+	rts
+
+;==============================================
+loc_00e238:
+	lea.l BIOS_PLAYER_MOD1,a0
+	andi.b #3,BIOS_START_FLAG
+	cmpi.b #1,(a0)
+	bne.w loc_00e256
+	andi.b #2,BIOS_START_FLAG
+
+loc_00e256:
+	cmpi.b #1,(1,a0)
+	bne.w loc_00e268
+	andi.b #1,BIOS_START_FLAG
+
+loc_00e268:
+	tst.b unk_102eb9
+	beq.w loc_00e294
+	cmpi.b #2,(a0)
+	beq.w loc_00e282
+	andi.b #2,BIOS_START_FLAG
+
+loc_00e282:
+	cmpi.b #2,(1,a0)
+	beq.w loc_00e294
+	andi.b #1,BIOS_START_FLAG
+
+loc_00e294:
+	moveq #0,d7
+	btst.b #0,BIOS_START_FLAG
+	beq.w loc_00e2cc
+	move.b BIOS_Game_Dip_Counter0,d0
+	cmpi.b #2,(a0)
+	bne.w loc_00e2b8
+	move.b BIOS_GAME_D0,d0
+	addq.b #1,d0
+
+loc_00e2b8:
+	move.b d0,unk_10d572
+	move.b #1,(a0)
+	move.b #2,BIOS_USER_MODE
+	moveq #1,d7
+
+loc_00e2cc:
+	btst.b #1,BIOS_START_FLAG
+	beq.w loc_00e336
+	tst.b BIOS_MVS_FLAG_OFFSET
+	beq.w loc_00e308
+	cmpi.b #1,BIOS_COUNTRY_CODE
+	beq.w loc_00e308
+	cmpi.b #2,(1,a0)
+	beq.w loc_00e308
+	cmpi.b #0,(a0)
+	beq.w loc_00e336
+	cmpi.b #3,(a0)
+	beq.w loc_00e336
+
+loc_00e308:
+	move.b BIOS_Game_Dip_Counter0,d0
+	cmpi.b #2,(1,a0)
+	bne.w loc_00e320
+	move.b BIOS_GAME_D0,d0
+	addq.b #1,d0
+
 loc_00e320:
+	move.b d0,unk_10d5d2
+	move.b #1,(1,a0)
+	move.b #2,BIOS_USER_MODE
+	moveq #1,d7
+
+loc_00e336:
+	tst.b d7
+	beq.w loc_00e36a
+	tst.b unk_102ebb
+	bne.w loc_00e36a
+	tst.b unk_102eba
+	bne.w loc_00e36a
+	cmpi.b #1,(a0)
+	bne.w loc_00e36a
+	cmpi.b #1,(1,a0)
+	bne.w loc_00e36a
+	move.b #$ff,unk_102e58
+
+loc_00e36a:
+	rts
 
 ;==============================================
-	org $e36e
+loc_00e36c:
+	rts
+
+;==============================================
 USER:
+	move.l #loc_00e43e,unk_102ea8
+	bclr.b #7,BIOS_SYSTEM_MODE
+	move.w #7,REG_IRQACK
+	andi.w #$f8ff,sr
+	moveq #0,d0
+	move.b BIOS_USER_REQUEST,d0
+	add.w d0,d0
+	add.w d0,d0
+	movea.l loc_00e39e(pc,d0.w),a0
+	jmp (a0)
 
-	org $e400
-PLAYERSTART:
-
-
-
-	org $e40c
-loc_00e40c:
-	org $e40e
-loc_00e40e:
-	org $e412
-loc_00e412:
-	org $e414
-loc_00e414:
-
-	org $e406
-DEMO_END:
-	org $e416
-loc_00e416:
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00e39e:
+	dc.l loc_00e3ae
+	dc.l SYSTEM_RETURN
+	dc.l loc_00e3ee
+	dc.l loc_00e3ee
 
 ;==============================================
-	org $e41c
-loc_00e41c:
-	org $e43c
-loc_00e43c:
-	org $e440
-loc_00e440:
-	org $e558
-loc_00e558:
+loc_00e3ae:
+	clr.b BIOS_USER_MODE
+	jsr loc_00e230(pc)
+	move.l BIOS_DEVMODE,d0
+	bne.w loc_00e3cc
+	clr.w Debug_Dip0
+	bra.w loc_00e3d4
 
-	org $ef7e
+loc_00e3cc:
+	move.w #0,Debug_Dip0
+
+loc_00e3d4:
+	jsr loc_0743a6
+	jsr loc_0802b4
+	move.b #$ff,unk_100002
+	jmp SYSTEM_RETURN
+
+;==============================================
+loc_00e3ee:
+	move.b #1,BIOS_USER_MODE
+	bsr.w loc_00e4c6
+	jmp loc_0005b4
+
+;==============================================
+PLAYERSTART:
+	jsr loc_00e238(pc)
+	rts
+
+;==============================================
+DEMO_END:
+	jsr loc_00e36c(pc)
+	rts
+;==============================================
+loc_00e40c:
+	trap #$f
+
+loc_00e40e:
+	trap #$f
+
+loc_00e410:
+	trap #$f
+
+loc_00e412:
+	trap #$f
+
+loc_00e414:
+	trap #$f
+
+;==============================================
+loc_00e416:
+	move.b d0,0.w
+	bra.b loc_00e416
+
+;==============================================
+loc_00e41c:
+	move.w #2,REG_IRQACK
+	move.l a0,-(a7)
+	movea.l unk_102ea8,a0
+	jsr (a0)
+	movea.l (a7)+,a0
+	move.w unk_102e5e,VRAMADDR
+	rte
+
+;==============================================
+loc_00e43c:
+	rte
+
+;==============================================
+loc_00e43e:
+	rts
+
+;==============================================
+loc_00e440:
+	tst.b BIOS_SYSTEM_MODE
+	bmi.w loc_00e450
+	jmp VBlankBios
+
+loc_00e450:
+	movem.l d0-d7/a0-a6,-(a7)
+	move.w unk_102e5e,-(a7)
+	move.w #0,VRAMMOD
+	jsr loc_00d430
+	jsr loc_00e4ae(pc)
+	move.w unk_102eac,d0
+	andi.w #$ffef,d0
+	move.w d0,REG_LSPCMODE
+	jsr MESS_OUT
+	jsr SYSTEM_IO
+	move.w unk_102eac,REG_LSPCMODE
+	move.w #0,VRAMMOD
+	move.w (a7)+,d0
+	move.w d0,unk_102e5e
+	move.w d0,VRAMADDR
+	movem.l (a7)+,d0-d7/a0-a6
+	rte
+
+;==============================================
+loc_00e4ae:
+	move.w REG_LSPCMODE,d1
+	btst #3,d1
+	sne.b d0
+	andi.b #1,d0
+	move.b d0,unk_102eae
+	rts
+
+;==============================================
+loc_00e4c6:
+	jsr FIX_CLEAR
+	jsr loc_00d67c
+	jsr loc_0802bc
+	jsr loc_060198
+	move.w #0,Debug_Dip0
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00e4e8:
+	dc.w $0000,$0000
+	dc.w $0001,$0001
+	dc.w $0002,$0002
+	dc.w $0003,$0003
+	dc.w $0004,$0004
+	dc.w $0005,$0005
+	dc.w $0006,$0006
+	dc.w $0007,$0007
+	dc.w $0008,$0008
+	dc.w $0009,$0009
+	dc.w $000a,$000a
+	dc.w $080b,$0008
+	dc.w $080c,$000c
+	dc.w $000d,$000d
+	dc.w $000e,$000e
+	dc.w $000f,$000f
+
+loc_00e528:
+	dc.w $00ff,$0000
+	dc.w $ffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00e52e:
+	dc.b "TIME",$fe
+
+loc_00e533:
+	dc.b "NO.   HOLE START",$fe
+
+loc_00e544:
+	dc.b "P1_CONT ",$fd
+	dc.b $fd
+	dc.b "P2_CONT ",$fe
+	even
+
+;==============================================
+loc_00e558:
+	clr.b unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #$ff,unk_102eba
+	move.b BIOS_GAME_D4,unk_102eb8
+	moveq #$50,d0
+	moveq #$1e,d1
+	moveq #0,d2
+	jsr loc_00d0f6
+	lea.l loc_00e4e8(pc),a0
+	jsr loc_0b9cb6
+	move.b #5,unk_10ebbe
+	cmpi.b #3,BIOS_USER_REQUEST
+	beq.w loc_00e622
+	move.b unk_100002,d0
+	addq.b #1,d0
+	andi.b #3,d0
+	move.b d0,unk_100002
+	addq.b #1,d0
+	move.b d0,unk_102ebb
+	lea.l loc_06b7c8,a1
+	jsr loc_0004c6
+	move.l #loc_00e5ce,(a6)
+
+loc_00e5ce:
+	clr.b unk_102eb9
+	btst.b #0,Debug_Dip0
+	beq.w loc_00e614
+	btst.b #6,unk_10d520
+	beq.w loc_00e614
+	moveq #$14,d0
+	moveq #0,d1
+	moveq #0,d2
+	jsr loc_00d0f6
+	jsr loc_000598
+	bsr.w loc_00f3f2
+	lea.l loc_0804fc,a1
+	jsr loc_0004c6
+	move.l #loc_00e614,(a6)
+
+loc_00e614:
+	cmpi.b #2,BIOS_USER_MODE
+	beq.w loc_00e688
+	rts
+
+loc_00e622:
+	move.b #1,BIOS_TITLE_MODE
+	jsr loc_000598
+	bsr.w loc_00f3f2
+	jsr loc_0b99fa
+	movea.w #$725a,a1
+	lea.l loc_00e52e(pc),a2
+	move.w #$300,d0
+	jsr loc_00d828
+	lea.l loc_07ec9a,a1
+	jsr loc_0004c6
+	bset.b #7,($13,a0)
+	lea.l loc_06b94c,a1
+	jsr loc_0004c6
+	move.l #loc_00e670,(a6)
+
+loc_00e670:
+	clr.b unk_102eb9
+	bsr.w loc_00f390
+	cmpi.b #2,BIOS_USER_MODE
+	beq.w loc_00e6f2
+	rts
+
+loc_00e688:
+	clr.b unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #5,unk_10ebbe
+	move.b #$ff,unk_102eba
+	jsr loc_00f2fe(pc)
+	clr.b unk_102ebb
+	jsr loc_000598
+	jsr loc_0b99fa
+	jsr loc_080454
+	jsr loc_08045a
+	tst.b BIOS_MVS_FLAG_OFFSET
+	bne.w loc_00e6f2
+	lea.l loc_08602e,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00e6e8,(a6)
+
+loc_00e6e8:
+	tst.b ($11,a6)
+	bne.w loc_00e6f2
+	rts
+
+loc_00e6f2:
+	clr.b unk_102eb9
+	tst.b BIOS_MVS_FLAG_OFFSET
+	beq.w loc_00e70c
+	tst.b BIOS_GAME_D6
+	bne.w loc_00e790
+
+loc_00e70c:
+	move.b #2,BIOS_USER_MODE
+	jsr loc_000598
+	bsr.w loc_00f3f2
+	jsr loc_0b99fa
+	moveq #4,d0
+	jsr loc_08500e
+	move.b #5,unk_102ebb
+	move.w #$32,d0
+	jsr loc_0804de
+	lea.l loc_07d2ce,a1
+	jsr loc_0004c6
+	jsr loc_00f22e(pc)
+	move.l #loc_00e756,(a6)
+	rts
+
+;==============================================
+loc_00e756:
+	tst.b loc_085138
+	bne.w loc_00e77e
+
+
+	move.b unk_10d52d,d0
+	andi.b #$70,d0
+	bne.w loc_00e790
+	btst.b #7,unk_10d514
+	bne.w loc_00e790
+	bra.w loc_00e78a
+
+;Player Control How to play
+loc_00e77e:
+	btst.b #7,unk_10d52d
+	bne.w loc_00e790
+
+loc_00e78a:
+	jsr loc_00f1dc(pc)
+	rts
+
+loc_00e790:
+	move.b #1,unk_104fd0
+	move.b d0,REG_PALBANK0
+	jsr loc_00f2fe(pc)
+	jsr loc_080454
+	clr.b unk_102ebb
+	jsr loc_000598
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #5,unk_10ebbe
+	move.b #$ff,unk_107005
+	move.b #$ff,unk_10702b
+	lea.l loc_085484,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00e7f4,(a6)
+	rts
+
+loc_00e7f4:
+	clr.b unk_104fd0
+	tst.b ($11,a6)
+	bne.w loc_00e804
+	rts
+
+loc_00e804:
+	jsr loc_000598
+	clr.b unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #$ff,unk_102eba
+	move.b #5,unk_10ebbe
+	clr.b unk_102ebb
+	clr.w unk_102cd6
+	clr.b unk_102ebf
+	jsr loc_00d9ec
+	move.b #2,BIOS_USER_MODE
+	bsr.w loc_00f3f2
+	jsr loc_0b99fa
+	move.w #$ffff,d0
+	jsr loc_08500e
+	move.w #$2a,d0
+	jsr loc_0804de
+	bset.b #7,unk_102ec0
+	lea.l loc_06a43e,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00e884,(a6)
+
+loc_00e884:
+	tst.b ($11,a6)
+	bne.w loc_00e88e
+	rts
+
+loc_00e88e:
+	move.b #$ff,unk_107050
+	jsr loc_000598
+	move.b unk_10ef48,d0
+	clr.b unk_10ef48
+	tst.b unk_102eba
+	bne.w loc_00e8d0
+	tst.b d0
+	beq.w loc_00e8cc
+	move.b #$80,unk_102ebd
+	move.b #$80,unk_102ebe
+	bra.w loc_00eca4
+
+loc_00e8cc:
+	bra.w loc_00e8d4
+
+loc_00e8d0:
+	jsr loc_00f48e(pc)
+
+loc_00e8d4:
+	clr.b unk_102ec1
+
+loc_00e8da:
+	jsr loc_00f48e(pc)
+	move.l #loc_00e8d4,unk_102eb0
+	clr.b unk_102eb9
+	bset.b #7,unk_10d5ee
+	clr.b unk_10d4ee
+	bset.b #7,unk_102ec0
+	bne.w loc_00e912
+	move.w #$2a,d0
+	jsr loc_0804de
+
+loc_00e912:
+	move.b #5,unk_10ebbe
+	clr.w unk_102cd6
+	jsr loc_00d9ec
+	move.b #2,BIOS_USER_MODE
+	bsr.w loc_00f3f2
+	move.b #$ff,unk_107005
+	move.b #$ff,unk_10702b
+	lea.l loc_07db0a,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00e958,(a6)
+
+loc_00e958:
+	tst.b ($11,a6)
+	bne.w loc_00e962
+	rts
+
+loc_00e962:
+	jsr loc_000598
+
+loc_00e968:
+	jsr loc_00f48e(pc)
+	move.l #loc_00e968,unk_102eb0
+	cmpi.b #2,unk_102eba
+	beq.w loc_00e98e
+	clr.b unk_102ebd
+	clr.b unk_102ebe
+
+loc_00e98e:
+	bset.b #7,unk_102ec0
+	bne.w loc_00e9a4
+	move.w #$2a,d0
+	jsr loc_0804de
+
+loc_00e9a4:
+	jsr loc_0b99fa
+	move.b #5,unk_10ebbe
+	bsr.w loc_00f3f2
+	clr.b unk_102eb9
+	bset.b #7,unk_10d5ee
+	clr.w unk_10d4b8
+	lea.l loc_06ad20,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00e9e2,(a6)
+	rts
+
+loc_00e9e2:
+	tst.b ($11,a6)
+	bne.w loc_00e9ec
+	rts
+
+loc_00e9ec:
+	jsr loc_000598
+	jsr loc_059f26
+	jsr loc_0b99fa
+	cmpi.b #2,unk_102eba
+	beq.w loc_00ea70
+	jsr loc_083a0c
+
+loc_00ea10:
+	move.l #loc_00ea10,unk_102eb0
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #5,unk_10ebbe
+	move.w #$2b,d0
+	jsr loc_0804de
+	move.b #1,unk_107028
+	clr.b unk_10704e
+	bsr.w loc_00f3f2
+	lea.l loc_0782c6,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ea66,(a6)
+	rts
+
+loc_00ea66:
+	tst.b ($11,a6)
+	bne.w loc_00eab6
+	rts
+
+loc_00ea70
+	move.b #5,unk_10ebbe
+	bsr.w loc_00f3f2
+	move.w #$2b,d0
+	jsr loc_0804de
+	move.b #1,unk_107028
+	clr.b unk_10704e
+	lea.l loc_06f0e2,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00eaac,(a6)
+	rts
+
+loc_00eaac:
+	tst.b ($11,a6)
+	bne.w loc_00eab6
+	rts
+
+loc_00eab6:
+	jsr loc_000598
+	btst.b #0,Debug_Dip0
+	beq.w loc_00eacc
+	bra.w loc_00ead0
+
+loc_00eacc:
+	bra.w loc_00eb2e
+
+loc_00ead0:
+	bsr.w loc_00f3f2
+	jsr loc_0b99fa
+	moveq #$14,d0
+	moveq #0,d1
+	moveq #$28,d2
+	jsr loc_00d0f6
+	movea.w #$714a,a1
+	lea.l loc_00e533(pc),a2
+	move.w #$300,d0
+	jsr loc_00d828
+	lea.l loc_055304,a1
+	jsr loc_0004c6
+	jsr loc_05893a
+	move.l a0,unk_10707a
+	move.l #loc_00eb18,(a6)
+	rts
+
+loc_00eb18:
+	jsr loc_00f31a(pc)
+	jsr loc_060268
+	bne.w loc_00eb28
+	rts
+
+loc_00eb28:
+	jsr loc_000598
+
+loc_00eb2e:
+	clr.b unk_102ec0
+	move.w #$27,d0
+	jsr loc_0804de
+	move.b #5,unk_10ebbe
+	bsr.w loc_00f3f2
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	jsr loc_05893a
+	jsr loc_05a054
+	lea.l loc_078c22,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00eb7e,(a6)
+	rts
+
+loc_00eb7e:
+	tst.b ($11,a6)
+	bne.w loc_00eb88
+	rts
+
+loc_00eb88:
+	jsr loc_000598
+	clr.b unk_102ebc
+	jsr loc_00d9ec
+	lea.l loc_058274,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ebb2,(a6)
+	rts
+
+loc_00ebb2:
+	tst.b ($11,a6)
+	bne.w loc_00ebc0
+	jsr loc_00f1dc(pc)
+	rts
+
+loc_00ebc0:
+	jsr loc_00d9ec
+	jsr loc_00d4ae
+	clr.b unk_104fd0
+	lea.l loc_00e528(pc),a0
+	jsr loc_0b9cb6
+	jsr loc_000598
+	jsr loc_085672
+	jsr loc_00f3d2(pc)
+	tst.w d0
+	beq.w loc_00ee70
+	cmpi.b #2,unk_102eba
+	bne.w loc_00ec0a
+	jsr loc_00f3d2(pc)
+	cmpi.w #1,d0
+	beq.w loc_00ec0e
+
+loc_00ec0a:
+	bra.w loc_00eca4
+
+loc_00ec0e:
+	move.b #5,unk_10ebbe
+	jsr loc_00f3f2(pc)
+	moveq #0,d0
+	moveq #0,d1
+	moveq #$28,d2
+	jsr loc_00d0f6
+	lea.l loc_00f460(pc),a1
+	jsr loc_0004c6
+	clr.b unk_102ebc
+	move.w #$32,d0
+	jsr loc_0804de
+	lea.l loc_06c3a2,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ec56,(a6)
+
+loc_00ec56:
+	tst.b ($11,a6)
+	bne.w loc_00ec60
+	rts
+
+loc_00ec60:
+	move.w #$1e,($14,a6)
+	move.l #loc_00ec6c,(a6)
+
+loc_00ec6c:
+	subq.w #1,($14,a6)
+	bmi.w loc_00ec76
+	rts
+
+loc_00ec76:
+	lea.l loc_06c51e,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ec8c,(a6)
+
+loc_00ec8c:
+	tst.b ($11,a6)
+	bne.w loc_00ec96
+	rts
+
+loc_00ec96:
+	jsr loc_000598
+	movea.l unk_102eb0,a0
+	jmp (a0)
+
+loc_00eca4:
+	move.l #loc_00eca4,unk_102eb0
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.w #$29,d0
+	jsr loc_0804de
+	move.b #5,unk_10ebbe
+	jsr loc_00f3f2(pc)
+	cmpi.b #2,unk_102eba
+	bne.w loc_00ecf0
+	lea.l loc_06f828,a1
+	jsr loc_0004c6
+	bra.w loc_00ecfc
+
+loc_00ecf0:
+	lea.l loc_075898,a1
+	jsr loc_0004c6
+
+loc_00ecfc:
+	clr.b ($11,a6)
+	move.l #loc_00ed08,(a6)
+	rts
+
+loc_00ed08
+	tst.b ($11,a6)
+	bne.w loc_00ed12
+	rts
+
+loc_00ed12:
+	jsr loc_000598
+	jsr loc_0b99fa
+	cmpi.w #$12,unk_10d4bc
+	bls.w loc_00ed36
+	cmpi.b #2,unk_102eba
+	bne.w loc_00ed94
+
+loc_00ed36:
+	jsr loc_05abec
+	bcc.w loc_00ed5a
+	lea.l unk_10d52e,a0
+	tst.b d2
+	bmi.w loc_00ed52
+	lea.l unk_10d58e,a0
+
+loc_00ed52:
+	clr.b ($44,a0)
+	bra.w loc_00eda8
+
+loc_00ed5a:
+	cmpi.b #2,unk_102eba
+	bne.w loc_00ed80
+	cmpi.w #$12,unk_10d4bc
+	bls.w loc_00ed80
+	bset.b #7,unk_10d4ee
+	jsr loc_059f26
+
+loc_00ed80:
+	btst.b #0,Debug_Dip0
+	beq.w loc_00ed90
+	bra.w loc_00ead0
+
+loc_00ed90:
+	bra.w loc_00eb2e
+
+loc_00ed94:
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	bra.w loc_00ee70
+
+loc_00eda8:
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	bra.w loc_00edbc
+
+loc_00edbc:
+	move.b #5,unk_10ebbe
+	jsr loc_00f3f2(pc)
+	tst.b BIOS_MVS_FLAG_OFFSET
+	beq.w loc_00ede8
+	tst.b BIOS_GAME_D3
+	bne.w loc_00ede8
+	clr.b unk_10d572
+	clr.b unk_10d5d2
+
+loc_00ede8:
+	moveq #0,d0
+	moveq #0,d1
+	moveq #$3c,d2
+	jsr loc_00d0f6
+	lea.l loc_00f460(pc),a1
+	jsr loc_0004c6
+	lea.l loc_07cd68,a1
+	jsr loc_0004c6
+	move.w #$11a5,d0
+	jsr loc_0804de
+	clr.b ($11,a6)
+	move.l #loc_00ee1e,(a6)
+
+loc_00ee1e:
+	tst.b ($11,a6)
+	bne.w loc_00ee28
+	rts
+
+loc_00ee28:
+	jsr loc_000598
+	jsr loc_00f3d2(pc)
+	tst.w d0
+	beq.w loc_00ee70
+	cmpi.w #2,d0
+	bne.w loc_00ee68
+	move.w #$106c,d0
+	jsr loc_0804de
+	move.w #$106a,d0
+	jsr loc_0804de
+	move.b #2,unk_102eba
+	bset.b #7,unk_102ec1
+	bra.w loc_00e8da
+
+loc_00ee68:
+	movea.l unk_102eb0,a0
+	jmp (a0)
+
+loc_00ee70:
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	move.b #5,unk_10ebbe
+	cmpi.b #2,unk_102eba
+	beq.w loc_00eefa
+	cmpi.w #$12,unk_10d4bc
+	bls.w loc_00eefa
+	jsr loc_00f3f2(pc)
+	lea.l loc_073b72,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00eeba,(a6)
+
+loc_00eeba:
+	tst.b ($11,a6)
+	bne.w loc_00eec4
+	rts
+
+loc_00eec4:
+	tst.b BIOS_MVS_FLAG_OFFSET
+	bne.w loc_00eefa
+	jsr loc_000598
+	jsr loc_0b99fa
+	lea.l loc_07ce5a,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00eef0,(a6)
+
+loc_00eef0:
+	tst.b ($11,a6)
+	bne.w loc_00eefa
+	rts
+
+loc_00eefa:
+	jsr loc_000598
+	jsr loc_0b99fa
+	jsr loc_00f3f2(pc)
+	move.w #$28,d0
+	jsr loc_0804de
+	lea.l loc_071e1a,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ef2a,(a6)
+
+loc_00ef2a:
+	tst.b ($11,a6)
+	bne.w loc_00ef34
+	rts
+
+loc_00ef34
+	jsr loc_000598
+	bset.b #7,unk_102eb9
+	bset.b #7,unk_10d5ee
+	lea.l loc_085534,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_00ef60,(a6)
+
+loc_00ef60:
+	tst.b ($11,a6)
+	bne.w loc_00ef6a
+	rts
+
+loc_00ef6a:
+	move.b #1,unk_104fd0
+	move.b d0,REG_PALBANK0
+	jmp SYSTEM_RETURN
+
 loc_00ef7e:
+	jsr loc_00d9ec
+	move.b #5,unk_10ebbe
+	clr.b unk_102ec0
+	jsr loc_080454
+	move.w #$26,d0
+	jsr loc_0804de
+	move.w #$1187,d0
+	jsr loc_0804de
+	move.b #$ff,($3a,a6)
+	move.b #$ff,($3b,a6)
+	move.b #1,unk_104fd0
+	move.b d0,REG_PALBANK0
+	jsr loc_00d4ae
+	move.b d0,REG_DIPSW
+	jsr loc_059f6a
+	move.b #2,unk_102eba
+	jsr loc_0b99fa
+	jsr loc_00f3f2(pc)
+	move.b d0,REG_DIPSW
+	moveq #$14,d0
+	moveq #0,d1
+	moveq #$3c,d2
+	jsr loc_00d0f6
+	move.b d0,REG_DIPSW
+	lea.l loc_00f100(pc),a0
+	jsr loc_0b9cb6
+	jsr loc_070a90
+	lea.l loc_00f460(pc),a1
+	jsr loc_0004c6
+	jsr loc_00f4a0(pc)
+	movea.l loc_00f026(pc,d1.w),a0
+	jmp (a0)
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00f026:
+	dc.l loc_00f036
+	dc.l loc_00f07a
+	dc.l loc_00f098
+	dc.l loc_00f0a2
+
+;==============================================
+loc_00f036:
+	move.w #$37,d1
+	jsr loc_0b9a22
+	move.w #$64,($3c,a6)
+	move.w #$a0,($30,a6)
+	move.w #$188,($32,a6)
+	move.l #loc_08f8c6,($2c,a6)
+	move.w #$71eb,d3
+	moveq #$a,d6
+	moveq #2,d5
+	jsr loc_07001c
+	move.w #$710e,d3
+	moveq #$18,d6
+	moveq #2,d5
+	jsr loc_07001c
+	bra.w loc_00f0ac
+
+;==============================================
+loc_00f07a:
+	movea.w #$70cb,a1
+	lea.l loc_00f10e(pc),a2
+
+loc_00f082:
+	move.w #$6400,d0
+	jsr loc_00d828
+	move.l #-1,($2c,a6)
+	bra.w loc_00f0ac
+
+;==============================================
+loc_00f098:
+	movea.w #$70cb,a1
+	lea.l loc_00f155(pc),a2
+	bra.b loc_00f082
+
+loc_00f0a2:
+	movea.w #$70cc,a1
+	lea.l loc_00f1a5(pc),a2
+	bra.b loc_00f082
+
+;==============================================
+loc_00f0ac:
+	move.b #$32,($14,a6)
+	move.l #loc_00f0b8,(a6)
+
+loc_00f0b8:
+	clr.w unk_102cd6
+	clr.b unk_104fd0
+	subq.b #1,($14,a6)
+	beq.w loc_00f0d2
+	jmp loc_000f08
+
+loc_00f0d2:
+	move.w #$119e,d0
+	jsr loc_0804de
+	move.b #$dc,($14,a6)
+	move.l #loc_00f0e8,(a6)
+
+loc_00f0e8:
+	subq.b #1,($14,a6)
+	beq.w loc_00f0f6
+	jmp loc_000f08
+
+loc_00f0f6:
+	jsr loc_000598
+	bra.w loc_00e8d4
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00f100:
+	dc.w $0006,$0033
+	dc.w $0008,$002f
+	dc.w $00ff,$0000
+	dc.w $ffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+;English
+loc_00f10e:
+	dc.b "______HERE_WE_GO_INTO",$fd
+	dc.b $fd
+	dc.b "___THE_MATCH_PLAY_FINALS",$fd
+	dc.b $fd
+	dc.b "______WITH_NEW_COMER.",$fe
+
+;Español
+loc_00f155:
+	dc.b "__Apareci",$b4,"_un_contrincante.",$fd
+	dc.b $fd
+	dc.b "_____Juguemos_la_final",$fd
+	dc.b $fd
+	dc.b "__en_un_partido_por_hoyos.",$fe
+
+;Portugués
+loc_00f1a5:
+	dc.b "____Chegou_o_desafiante.",$fd
+	dc.b $fd
+	dc.b "_Vamos_competir_pela_final.",$fe
+	even
+
+;==============================================
+loc_00f1dc:
+
+
+
+;==============================================
+	org $f22e
+loc_00f22e
+	org $f2fe
+loc_00f2fe:
+	org $f31a
+loc_00f31a:
+	org $f390
+loc_00f390:
+	org $f3d2
+loc_00f3d2:
+	org $f3f2
+loc_00f3f2:
+
+	org $f48e
+loc_00f48e:
+	org $f460
+loc_00f460:
+	org $f4a0
+loc_00f4a0:
 
 ;f4fa
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV

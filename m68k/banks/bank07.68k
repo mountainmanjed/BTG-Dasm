@@ -1,2 +1,35 @@
+
+	org $7001c
+loc_07001c:
+	org $70a90
+loc_070a90:
+	org $71e1a
+loc_071e1a:
+	org $73b72
+loc_073b72:
+	org $743a6
+loc_0743a6
+
+	org $75898
+loc_075898
+	org $782c6
+loc_0782c6
+	org $78c22
+loc_078c22
+
+	org $7cd68
+loc_07cd68
+	org $7ce5a
+loc_07ce5a
+
+	org $7d2ce
+loc_07d2ce:
+
 	org $7d8bc
 loc_07d8bc
+
+	org $7db0a
+loc_07db0a:
+
+	org $7ec9a
+loc_07ec9a:
