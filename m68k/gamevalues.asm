@@ -173,17 +173,24 @@ unk_106fde = 0x106fde
 unk_106fe0 = 0x106fe0
 unk_106fe2 = 0x106fe2
 unk_106fe4 = 0x106fe4
-unk_106fe6 = 0x106fe6
-unk_106fe8 = 0x106fe8
+unk_106fe6 = 0x106fe6;Shot Power
+unk_106fe8 = 0x106fe8;Shot Height
 unk_106fea = 0x106fea
+unk_106fec = 0x106fec
+unk_106fed = 0x106fed
 
 unk_107002 = 0x107002
 unk_107004 = 0x107004
 unk_107005 = 0x107005
 unk_107006 = 0x107006
-
+unk_107008 = 0x107008
+unk_10700c = 0x10700c
+unk_107014 = 0x107014
 unk_107028 = 0x107028
 unk_10702b = 0x10702b
+
+unk_10703a = 0x10703a
+
 unk_10704e = 0x10704e
 unk_107050 = 0x107050
 unk_107076 = 0x107076;Player Data Pointer
@@ -209,6 +216,7 @@ unk_10d4c4 = 0x10d4c4
 unk_10d4c6 = 0x10d4c6
 unk_10d4ca = 0x10d4ca
 unk_10d4ce = 0x10d4ce
+unk_104fcf = 0x104fcf
 unk_10d4d0 = 0x10d4d0
 unk_10d4d2 = 0x10d4d2
 unk_10d4d4 = 0x10d4d4
@@ -223,8 +231,17 @@ unk_10d504 = 0x10d504
 unk_10d506 = 0x10d506
 unk_10d510 = 0x10d510
 unk_10d514 = 0x10d514
+unk_10d515 = 0x10d515
+unk_10d516 = 0x10d516
+
+unk_10d51e = 0x10d51e
+unk_10d51f = 0x10d51f
 unk_10d520 = 0x10d520
-unk_10d52c = 0x10d52d
+unk_10d521 = 0x10d521
+unk_10d522 = 0x10d522
+unk_10d52a = 0x10d52a
+unk_10d52b = 0x10d52b
+unk_10d52c = 0x10d52c
 unk_10d52d = 0x10d52d
 unk_10d52e = 0x10d52e
 

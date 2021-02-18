@@ -11590,108 +11590,339 @@ loc_00f1a5:
 
 ;==============================================
 loc_00f1dc:
+	move.b unk_10d514,d0
+	move.b unk_10d515,d1
+	move.b unk_10d516,d2
+	tst.b unk_102ebb
+	bne.w loc_00f21a
+	move.l unk_107076,d3
+	cmpi.l #unk_107004,d3
+	beq.w loc_00f21a
+	move.b unk_10d51f,d0
+	move.b unk_10d520,d1
+	move.b unk_10d521,d2
 
-
+loc_00f21a:
+	move.b d0,unk_10d52a
+	move.b d1,unk_10d52b
+	move.b d2,unk_10d52c
+	rts
 
 ;==============================================
-	org $f22e
-loc_00f22e
-	org $f2fe
+loc_00f22e:
+	moveq #0,d0
+	move.b d0,unk_10d52a
+	move.b d0,unk_10d52b
+	move.b d0,unk_10d52c
+	clr.b unk_102eba
+	move.b unk_102ebb,d0
+	subq.b #1,d0
+	andi.w #7,d0
+	move.b loc_00f2d0(pc,d0.w),unk_107005
+	move.b #$ff,unk_10702b
+	jsr loc_059f26
+	move.b unk_102ebb,d0
+	subq.b #1,d0
+	andi.w #7,d0
+	lsl.w #2,d0
+	lea.l loc_00f2ea(pc,d0.w),a0
+	move.w (a0)+,unk_10d4b8
+	move.w (a0),unk_10d4bc
+	jsr loc_05893a
+	jsr loc_05a054
+	jsr loc_083a0c
+	move.b unk_102ebb,d0
+	subq.b #1,d0
+	andi.w #7,d0
+	lsl.w #2,d0
+	lea.l loc_00f2d6(pc,d0.w),a0
+	move.w (a0)+,d0
+	beq.w loc_00f2be
+	move.w d0,unk_107008
+	move.w (a0),unk_10700c
+
+loc_00f2be:
+	lea.l loc_058274,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_00f2d0:
+	dc.b $01,$00
+	dc.b $05,$04
+	dc.b $00,$00
+
+loc_00f2d6:
+	dc.w $0000,$0000,$00e9
+	dc.w $0223,$0180,$046f
+	dc.w $011b,$02fa,$0000
+	dc.w $0000
+
+loc_00f2ea:
+	dc.w $0001,$0005
+	dc.w $0002,$0006
+	dc.w $0000,$0007
+	dc.w $0003,$0004
+	dc.w $0003,$0003
+
+;==============================================
 loc_00f2fe:
-	org $f31a
+	move.w #-1,d0
+	jsr loc_08500e
+	lea.l loc_00e528(pc),a0
+	jsr loc_0b9cb6
+	jsr loc_00d4ae
+	rts
+
+;==============================================
 loc_00f31a:
-	org $f390
+	move.w unk_10d4bc,d0
+	btst.b #1,unk_10d52c
+	beq.w loc_00f338
+	addq.w #1,d0
+	cmpi.w #$12,d0
+	bls.w loc_00f338
+	moveq #1,d0
+
+loc_00f338:
+	btst.b #0,unk_10d52c
+	beq.w loc_00f346
+	subq.w #1,d0
+
+loc_00f346:
+	cmpi.w #0,d0
+	bgt.w loc_00f350
+	moveq #$12,d0
+
+loc_00f350:
+	move.w d0,unk_10d4bc
+	movea.w #$71aa,a1
+	move.w a1,d1
+	move.w #$300,d2
+	move.b #$20,d2
+	cmpi.w #$a,d0
+	bcs.w loc_00f374
+	move.b #$31,d2
+	subi.w #$a,d0
+
+loc_00f374:
+	movem.w d1-d2,VRAMADDR
+	addi.w #$20,d1
+	addi.b #$30,d0
+	move.b d0,d2
+	movem.w d1-d2,VRAMADDR
+	rts
+
+;==============================================
 loc_00f390:
-	org $f3d2
+	movea.w #$727b,a1
+	move.w #$1300,d0
+	move.b BIOS_COMPULSION_TIMER,d3
+	move.b d3,d4
+	lsr.b #4,d3
+	addi.b #$30,d3
+	or.b d3,d0
+	moveq #1,d1
+	moveq #1,d2
+	move.l d4,-(a7)
+	jsr loc_00d7a6
+	move.l (a7)+,d4
+	movea.w #$729b,a1
+	move.w #$1300,d0
+	andi.b #$f,d4
+	addi.b #$30,d4
+	or.b d4,d0
+	moveq #1,d1
+	moveq #1,d2
+	jmp loc_00d7a6
+
+;==============================================
 loc_00f3d2:
-	org $f3f2
+	moveq #0,d0
+	cmpi.b #1,BIOS_PLAYER_MOD1
+	bne.w loc_00f3e2
+	addq.w #1,d0
+
+loc_00f3e2:
+	cmpi.b #1,BIOS_PLAYER_MOD2
+	bne.w loc_00f3f0
+	addq.w #1,d0
+
+loc_00f3f0:
+	rts
+
+;==============================================
 loc_00f3f2:
+	move.w #0,VRAMMOD
+	movea.l #VRAMADDR,a1
+	move.w #$7020,d0
+	move.w #$ff,d1
+	move.w #$4bf,d2
+	bsr.w loc_00f420
+	move.w #$c020,d1
+	moveq #$1f,d2
+	bsr.w loc_00f420
+	move.w #$7000,d0
+	moveq #$1f,d2
 
-	org $f48e
-loc_00f48e:
-	org $f460
+loc_00f420:
+	movem.w d0-d1,(a1)
+	addq.w #1,d0
+	dbra d2,loc_00f420
+	rts
+
+;==============================================
+loc_00f42c:
+	moveq #1,d0
+	jsr loc_0b96f0
+	move.l #loc_00f43c,(a6)
+	rts
+
+loc_00f43c:
+	tst.b unk_104fcf
+	bne.w loc_00f448
+	rts
+
+loc_00f448:
+	move.b #1,unk_104fd0
+	movea.l ($c,a6),a0
+	move.b #$ff,($11,a0)
+	jmp loc_00054a
+
+;==============================================
 loc_00f460:
-	org $f4a0
-loc_00f4a0:
+	move.w #$52,d1
+	jsr loc_0b9a22
+	move.w #1,($3c,a6)
+	clr.w ($30,a6)
+	move.w #$200,($32,a6)
+	move.l #loc_08d1c0,($2c,a6)
+	move.l #loc_00f488,(a6)
 
-;f4fa
+loc_00f488:
+	jmp loc_000f08
+
+;==============================================
+loc_00f48e:
+	move.w #1,unk_10d4bc
+	move.w #0,unk_10d4b8
+	rts
+
+;==============================================
+loc_00f4a0:
+	move.b BIOS_COUNTRY_CODE,d0
+	cmpi.b #2,d0
+	bne.w loc_00f4b6
+	move.b BIOS_GAME_D9,d0
+	addq.b #1,d0
+
+loc_00f4b6:
+	andi.w #3,d0
+	move.w d0,d1
+	lsl.w #2,d1
+	rts
+
+;==============================================
+loc_00f4c0:
+	cmpi.b #2,unk_102eba
+	bne.w loc_00f4f8
+	btst.b #7,unk_10d514
+	beq.w loc_00f4f8
+	move.w #$12,unk_10d4bc
+	lea.l unk_107014,a0
+	lea.l unk_10703a,a1
+	moveq #0,d1
+	moveq #$10,d0
+
+loc_00f4f0:
+	move.b d1,(a0)+
+	move.b d1,(a1)+
+	dbra d0,loc_00f4f0
+
+loc_00f4f8:
+	rts
+
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Courses
-;	include "course/JP/H1/layout.68k"
-;	include "course/JP/H2/layout.68k"
-;	include "course/JP/H3/layout.68k"
-;	include "course/JP/H4/layout.68k"
-;	include "course/JP/H5/layout.68k"
-;	include "course/JP/H6/layout.68k"
-;	include "course/JP/H7/layout.68k"
-;	include "course/JP/H8/layout.68k"
-;	include "course/JP/H9/layout.68k"
-;	include "course/JP/H10/layout.68k"
-;	include "course/JP/H11/layout.68k"
-;	include "course/JP/H12/layout.68k"
-;	include "course/JP/H13/layout.68k"
-;	include "course/JP/H14/layout.68k"
-;	include "course/JP/H15/layout.68k"
-;	include "course/JP/H16/layout.68k"
-;	include "course/JP/H17/layout.68k"
-;	include "course/JP/H18/layout.68k"
+	include "course/JP/H1/layout.68k"
+	include "course/JP/H2/layout.68k"
+	include "course/JP/H3/layout.68k"
+	include "course/JP/H4/layout.68k"
+	include "course/JP/H5/layout.68k"
+	include "course/JP/H6/layout.68k"
+	include "course/JP/H7/layout.68k"
+	include "course/JP/H8/layout.68k"
+	include "course/JP/H9/layout.68k"
+	include "course/JP/H10/layout.68k"
+	include "course/JP/H11/layout.68k"
+	include "course/JP/H12/layout.68k"
+	include "course/JP/H13/layout.68k"
+	include "course/JP/H14/layout.68k"
+	include "course/JP/H15/layout.68k"
+	include "course/JP/H16/layout.68k"
+	include "course/JP/H17/layout.68k"
+	include "course/JP/H18/layout.68k"
 
-;	include "course/US/H1/layout.68k"
-;	include "course/US/H2/layout.68k"
-;	include "course/US/H3/layout.68k"
-;	include "course/US/H4/layout.68k"
-;	include "course/US/H5/layout.68k"
-;	include "course/US/H6/layout.68k"
-;	include "course/US/H7/layout.68k"
-;	include "course/US/H8/layout.68k"
-;	include "course/US/H9/layout.68k"
-;	include "course/US/H10/layout.68k"
-;	include "course/US/H11/layout.68k"
-;	include "course/US/H12/layout.68k"
-;	include "course/US/H13/layout.68k"
-;	include "course/US/H14/layout.68k"
-;	include "course/US/H15/layout.68k"
-;	include "course/US/H16/layout.68k"
-;	include "course/US/H17/layout.68k"
-;	include "course/US/H18/layout.68k"
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	include "course/US/H1/layout.68k"
+	include "course/US/H2/layout.68k"
+	include "course/US/H3/layout.68k"
+	include "course/US/H4/layout.68k"
+	include "course/US/H5/layout.68k"
+	include "course/US/H6/layout.68k"
+	include "course/US/H7/layout.68k"
+	include "course/US/H8/layout.68k"
+	include "course/US/H9/layout.68k"
+	include "course/US/H10/layout.68k"
+	include "course/US/H11/layout.68k"
+	include "course/US/H12/layout.68k"
+	include "course/US/H13/layout.68k"
+	include "course/US/H14/layout.68k"
+	include "course/US/H15/layout.68k"
+	include "course/US/H16/layout.68k"
+	include "course/US/H17/layout.68k"
+	include "course/US/H18/layout.68k"
 
-;	include "course/AU/H1/layout.68k"
-;	include "course/AU/H2/layout.68k"
-;	include "course/AU/H3/layout.68k"
-;	include "course/AU/H4/layout.68k"
-;	include "course/AU/H5/layout.68k"
-;	include "course/AU/H6/layout.68k"
-;	include "course/AU/H7/layout.68k"
-;	include "course/AU/H8/layout.68k"
-;	include "course/AU/H9/layout.68k"
-;	include "course/AU/H10/layout.68k"
-;	include "course/AU/H11/layout.68k"
-;	include "course/AU/H12/layout.68k"
-;	include "course/AU/H13/layout.68k"
-;	include "course/AU/H14/layout.68k"
-;	include "course/AU/H15/layout.68k"
-;	include "course/AU/H16/layout.68k"
-;	include "course/AU/H17/layout.68k"
-;	include "course/AU/H18/layout.68k"
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	include "course/AU/H1/layout.68k"
+	include "course/AU/H2/layout.68k"
+	include "course/AU/H3/layout.68k"
+	include "course/AU/H4/layout.68k"
+	include "course/AU/H5/layout.68k"
+	include "course/AU/H6/layout.68k"
+	include "course/AU/H7/layout.68k"
+	include "course/AU/H8/layout.68k"
+	include "course/AU/H9/layout.68k"
+	include "course/AU/H10/layout.68k"
+	include "course/AU/H11/layout.68k"
+	include "course/AU/H12/layout.68k"
+	include "course/AU/H13/layout.68k"
+	include "course/AU/H14/layout.68k"
+	include "course/AU/H15/layout.68k"
+	include "course/AU/H16/layout.68k"
+	include "course/AU/H17/layout.68k"
+	include "course/AU/H18/layout.68k"
 
-;	include "course/GR/H1/layout.68k"
-;	include "course/GR/H2/layout.68k"
-;	include "course/GR/H3/layout.68k"
-;	include "course/GR/H4/layout.68k"
-;	include "course/GR/H5/layout.68k"
-;	include "course/GR/H6/layout.68k"
-;	include "course/GR/H7/layout.68k"
-;	include "course/GR/H8/layout.68k"
-;	include "course/GR/H9/layout.68k"
-;	include "course/GR/H10/layout.68k"
-;	include "course/GR/H11/layout.68k"
-;	include "course/GR/H12/layout.68k"
-;	include "course/GR/H13/layout.68k"
-;	include "course/GR/H14/layout.68k"
-;	include "course/GR/H15/layout.68k"
-;	include "course/GR/H16/layout.68k"
-;	include "course/GR/H17/layout.68k"
-;	include "course/GR/H18/layout.68k"
+;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	include "course/GR/H1/layout.68k"
+	include "course/GR/H2/layout.68k"
+	include "course/GR/H3/layout.68k"
+	include "course/GR/H4/layout.68k"
+	include "course/GR/H5/layout.68k"
+	include "course/GR/H6/layout.68k"
+	include "course/GR/H7/layout.68k"
+	include "course/GR/H8/layout.68k"
+	include "course/GR/H9/layout.68k"
+	include "course/GR/H10/layout.68k"
+	include "course/GR/H11/layout.68k"
+	include "course/GR/H12/layout.68k"
+	include "course/GR/H13/layout.68k"
+	include "course/GR/H14/layout.68k"
+	include "course/GR/H15/layout.68k"
+	include "course/GR/H16/layout.68k"
+	include "course/GR/H17/layout.68k"
+	include "course/GR/H18/layout.68k"
 
 	include "banks/bank05.68k"
 	include "banks/bank06.68k"

@@ -1,3 +1,58 @@
+	org $ca030
+loc_0ca030:
+
+
+;==============================================
+;Palette Decode
+;4 bytes red green blue and a blank byte
+;5 bits for each byte
+;Turned into rgb555
+;than read from a NeoGeo color look up table (at 0xba030)
+
+;in psuedo-code
+;rgb555 = (((Red<<5)|Green)<<5)|Blue
+;colorlookup[rgb555*2]
+
+;color examples
+;white	1f 1f 1f 00
+;red	1f 00 00 00
+;green	00 1f 00 00
+;blue	00 00 1f 00
+;cyan	00 1f 1f 00
+;purple 10 00 1f 00
+
+;=============================================
+;Palette Decode
+	org $ca4b0
+loc_0ca4b0:
+;	movea.l a3,a4
+;	addq.l #2,a3;Skip blank
+;	addq.l #4,a2
+;	move.w #$e,d5;repeats for the dbra
+
+loc_0ca4ba:
+;	moveq #0,d4
+;	move.b (a2)+,d4
+;	lsl.w #5,d4;
+;	or.b (a2)+,d4
+;	lsl.w #5,d4
+;	or.b (a2)+,d4
+;	addq.l #1,a2
+;	lea.l loc_0ba030,a0
+;	add.w d4,d4
+;	adda.l d4,a0
+;	move.w (a0),d4
+;	move.w d4,(a3)+
+;	dbra d5,loc_0ca4ba
+;	andi.b #$fe,(a1,d1.w)
+;	move.w #1,(a4)
+;	rts
+
+;==============================================
+	org $ca4e6
+loc_0ca4e6:
+
+;==============================================
 	org $ca6d8
 loc_0ca6d8:
 

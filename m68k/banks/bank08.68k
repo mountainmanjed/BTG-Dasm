@@ -189,5 +189,8 @@ loc_08b1aa:
 	org $08b152
 loc_08b152:
 
+	org $8d1c0
+loc_08d1c0
+
 	org $8f8c6
 loc_08f8c6:

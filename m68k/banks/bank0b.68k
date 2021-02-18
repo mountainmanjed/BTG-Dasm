@@ -1,4 +1,7 @@
 
+	org $b96f0
+loc_0b96f0
+
 	org $b99fa
 loc_0b99fa:
 
@@ -10,4 +13,7 @@ loc_0b9cb6
 
 	org $b9de6
 loc_0b9de6
+
+
+;	include "sys/colortable.68k"
 
