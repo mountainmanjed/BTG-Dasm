@@ -30,8 +30,12 @@ loc_06ad20
 
 	org $6b7c8
 loc_06b7c8:
+
 	org $6b94c
 loc_06b94c:
+
+	org $6bee6
+loc_06bee6
 
 	org $6c3a2
 loc_06c3a2:

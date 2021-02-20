@@ -1,19 +1,27 @@
 
 	org $7001c
 loc_07001c:
+
 	org $70a90
 loc_070a90:
+
+	org $717b2
+loc_0717b2:
+
 	org $71e1a
 loc_071e1a:
 
 	org $7223e
 loc_07223e:
 
-
 	org $73b72
 loc_073b72:
+
 	org $743a6
-loc_0743a6
+loc_0743a6:
+
+	org $7538e
+loc_07538e:
 
 	org $75898
 loc_075898
@@ -24,7 +32,8 @@ loc_078c22
 
 	org $79c34
 loc_079c34
-
+	org $79e66
+loc_079e66:
 	org $7cd68
 loc_07cd68
 	org $7ce5a

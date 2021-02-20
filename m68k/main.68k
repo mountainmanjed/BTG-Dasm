@@ -24,7 +24,7 @@
 	dc.b "NEO-GEO",00
 	dc.w $200			;108 NGH
 	dc.l $00200000		;10a P ROM size
-	dc.l $00100000		;10e debug DIPs pointer
+	dc.l Debug_Dip0		;10e debug DIPs pointer
 	dc.w $00D4			;112 Save Game Size
 	dc.b $00			;114 let the BIOS show the logo
 	dc.b $68			;115 first tile of the logo
@@ -9939,7 +9939,6 @@ loc_00d70c:
 	dc.l loc_00d726
 	dc.l loc_00d7a4
 	dc.l loc_00d75a
-
 
 ;==============================================
 loc_00d71c:

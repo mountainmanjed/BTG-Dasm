@@ -164,7 +164,8 @@ unk_102ec1 = 0x102ec1
 unk_102ec2 = 0x102ec2
 
 unk_104fd0 = 0x104fd0
-
+unk_106fd2 = 0x106fd2
+unk_106fd4 = 0x106fd4
 unk_106fd6 = 0x106fd6
 unk_106fd8 = 0x106fd8
 unk_106fda = 0x106fda

@@ -1,5 +1,135 @@
+	org $a49d8
+loc_0a49d8:
+	org $a49ea
+loc_0a49ea:
+	org $a49fc
+loc_0a49fc:
+	org $a4a0e
+loc_0a4a0e:
+	org $a4a20
+loc_0a4a20:
+	org $a4a32
+loc_0a4a32:
+
+
+	org $a4a44
+loc_0a4a44:
+	org $a4a4e
+loc_0a4a4e:
+	org $a4a58
+loc_0a4a58:
+	org $a4a62
+loc_0a4a62:
+	org $a4a6e
+loc_0a4a6e:
+	org $a4a7a
+loc_0a4a7a:
+
+	org $a4a84
+loc_0a4a84:
+	org $a4a96
+loc_0a4a96:
+	org $a4aa8
+loc_0a4aa8:
+	org $a4abc
+loc_0a4abc:
+	org $a4ace
+loc_0a4ace:
+
+	org $a4ade
+loc_0a4ade:
+	org $a4ae8
+loc_0a4ae8:
+	org $a4af2
+loc_0a4af2:
+	org $a4afc
+loc_0a4afc:
+	org $a4b06
+loc_0a4b06:
+	org $a4b10
+loc_0a4b10:
+	org $a4b1c
+loc_0a4b1c:
+	org $a4b28
+loc_0a4b28:
+
+	org $a4b3c
+loc_0a4b3c:
+	org $a4b4c
+loc_0a4b4c:
+	org $a4b60
+loc_0a4b60:
+	org $a4b70
+loc_0a4b70:
+	org $a4b80
+loc_0a4b80:
+	org $a4b90
+loc_0a4b90:
+	org $a4ba4
+loc_0a4ba4:
+	org $a4bb4
+loc_0a4bb4:
+	org $a4bc4
+loc_0a4bc4:
+	org $a4bd4
+loc_0a4bd4:
+	org $a4be4
+loc_0a4be4:
+	org $a4bf4
+loc_0a4bf4:
+	org $a4c04
+loc_0a4c04:
+	org $a4c14
+loc_0a4c14:
+	org $a4c28
+loc_0a4c28:
+
+	org $aaede
+loc_0aaede:
+	org $aaef0
+loc_0aaef0:
+	org $aaf02
+loc_0aaf02:
+	org $aaf16
+loc_0aaf16:
+	org $aaf28
+loc_0aaf28:
+	org $aaf3c
+loc_0aaf3c:
+	org $aaf4c
+loc_0aaf4c:
+	org $aaf60
+loc_0aaf60:
+	org $aaf70
+loc_0aaf70:
+	org $aaf80
+loc_0aaf80:
+	org $aaf94
+loc_0aaf94:
+	org $aafa6
+loc_0aafa6:
+	org $aafb6
+loc_0aafb6:
+	org $aafc6
+loc_0aafc6:
+	org $aafd6
+loc_0aafd6:
+	org $aafe6
+loc_0aafe6:
+	org $aaff6
+loc_0aaff6:
+	org $ab00a
+loc_0ab00a:
+	org $ab01a
+loc_0ab01a:
+
 	org $abf48
 loc_0abf48:
 
 	org $abfee
 loc_0abfee:
+
+;==============================================
+;Palette Data Start
+	org $ad730
+loc_0ad730:
