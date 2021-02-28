@@ -321,6 +321,29 @@ loc_08aac4:
 	org $8aaec
 loc_08aaec:
 
+	org $8aaf6
+loc_08aaf6:
+	org $8ab00
+loc_08ab00
+	org $8ab0a
+loc_08ab0a
+	org $8ab14
+loc_08ab14
+	org $8ab1e
+loc_08ab1e
+
+
+	org $8ab82
+loc_08ab82
+	org $8ab8c
+loc_08ab8c
+	org $8ab96
+loc_08ab96
+	org $8aba0
+loc_08aba0
+	org $8abaa
+loc_08abaa
+
 	org $8abb4
 loc_08abb4:
 	org $8abbe

@@ -6,7 +6,6 @@ loc_057b44:
 
 ;==============================================
 ;US_TABLE
-	org $57b54
 loc_057b54:
 ;Hole 00
 	dc.l loc_020a64;Course Data
@@ -164,7 +163,6 @@ loc_057b54:
 
 ;==============================================
 ;AU_TABLE
-	org $57d1c
 loc_057d1c:
 ;Hole 00
 	dc.l loc_0334f6;Course Data
@@ -317,7 +315,6 @@ loc_057d1c:
 
 ;==============================================
 ;GR_TABLE
-	org $57ee4
 loc_057ee4:
 ;Hole 00
 	dc.l loc_044d54;Course Data
@@ -369,7 +366,7 @@ loc_057ee4:
 
 ;Hole 06
 	dc.l loc_048fce
-	dc.w loc_0a4386
+	dc.l loc_0a4386
 	dc.w $0102,$01d7
 	dc.l loc_0a420a
 	dc.w $0118,$01e3
@@ -473,7 +470,6 @@ loc_057ee4:
 
 ;==============================================
 ;JP_TABLE
-	org $580ac
 loc_0580ac:
 ;Hole 00
 	dc.l loc_00f4fa;Course Data

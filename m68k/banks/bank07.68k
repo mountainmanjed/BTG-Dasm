@@ -34,6 +34,10 @@ loc_078c22
 loc_079c34
 	org $79e66
 loc_079e66:
+
+	org $7a150
+loc_07a150
+
 	org $7cd68
 loc_07cd68
 	org $7ce5a

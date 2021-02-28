@@ -328,3 +328,30 @@ loc_098fda:
 loc_098fe4:
 	org $98fee
 loc_098fee:
+
+
+
+	org $9bfe2
+loc_09bfe2:
+	org $9bfec
+loc_09bfec:
+	org $9bff6
+loc_09bff6:
+	org $9c000
+loc_09c000:
+	org $9c00a
+loc_09c00a:
+	org $9c014
+loc_09c014:
+	org $9c01e
+loc_09c01e:
+	org $9c028
+loc_09c028:
+	org $9c032
+loc_09c032:
+	org $9c03c
+loc_09c03c:
+	org $9c046
+loc_09c046:
+	org $9c050
+loc_09c050:

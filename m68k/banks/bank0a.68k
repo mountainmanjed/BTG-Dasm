@@ -1,3 +1,303 @@
+;=================================================
+	org $a3990
+loc_0a3990:
+	org $a399c
+loc_0a399c:
+	org $a39a8
+loc_0a39a8:
+	org $a39b4
+loc_0a39b4:
+	org $a39c0
+loc_0a39c0:
+	org $a39cc
+loc_0a39cc:
+	org $a39d8
+loc_0a39d8:
+	org $a39e4
+loc_0a39e4:
+	org $a39f0
+loc_0a39f0:
+	org $a39fc
+loc_0a39fc:
+	org $a3a08
+loc_0a3a08:
+	org $a3a14
+loc_0a3a14:
+	org $a3a20
+loc_0a3a20:
+	org $a3a2c
+loc_0a3a2c:
+	org $a3a38
+loc_0a3a38:
+	org $a3a44
+loc_0a3a44:
+	org $a3a50
+loc_0a3a50:
+	org $a3a5c
+loc_0a3a5c:
+	org $a3a68
+loc_0a3a68:
+	org $a3a8c
+loc_0a3a8c:
+	org $a3abc
+loc_0a3abc:
+	org $a3ad8
+loc_0a3ad8:
+	org $a3b06
+loc_0a3b06:
+	org $a3b3e
+loc_0a3b3e:
+	org $a3b5a
+loc_0a3b5a:
+	org $a3b8c
+loc_0a3b8c:
+	org $a3bc8
+loc_0a3bc8:
+	org $a3bea
+loc_0a3bea:
+	org $a3c1c
+loc_0a3c1c:
+	org $a3c5a
+loc_0a3c5a:
+	org $a3c92
+loc_0a3c92:
+	org $a3cbc
+loc_0a3cbc:
+	org $a3cd4
+loc_0a3cd4:
+	org $a3d02
+loc_0a3d02:
+	org $a3d44
+loc_0a3d44:
+	org $a3d5c
+loc_0a3d5c:
+;==============================================
+	org $a3d8a
+loc_0a3d8a:
+	org $a3d96
+loc_0a3d96
+	org $a3da2
+loc_0a3da2
+	org $a3dae
+loc_0a3dae
+	org $a3dba
+loc_0a3dba
+	org $a3dc6
+loc_0a3dc6
+	org $a3dd2
+loc_0a3dd2
+	org $a3dde
+loc_0a3dde
+	org $a3dea
+loc_0a3dea
+	org $a3df6
+loc_0a3df6
+	org $a3e02
+loc_0a3e02
+	org $a3e0e
+loc_0a3e0e
+	org $a3e1a
+loc_0a3e1a
+	org $a3e26
+loc_0a3e26
+	org $a3e32
+loc_0a3e32
+	org $a3e3e
+loc_0a3e3e
+	org $a3e4a
+loc_0a3e4a
+	org $a3e56
+loc_0a3e56
+	org $a3e62
+loc_0a3e62:
+	org $a3e9a
+loc_0a3e9a:
+	org $a3ec2
+loc_0a3ec2:
+	org $a3eda
+loc_0a3eda:
+	org $a3f20
+loc_0a3f20:
+	org $a3f54
+loc_0a3f54:
+	org $a3f8c
+loc_0a3f8c:
+	org $a3fbc
+loc_0a3fbc:
+	org $a4000
+loc_0a4000
+	org $a4028
+loc_0a4028:
+	org $a4054
+loc_0a4054:
+	org $a4096
+loc_0a4096:
+	org $a40ae
+loc_0a40ae:
+	org $a40ea
+loc_0a40ea:
+	org $a4118
+loc_0a4118:
+	org $a413e
+loc_0a413e:
+	org $a4166
+loc_0a4166:
+	org $a41ae
+loc_0a41ae:
+
+;==============================================
+;Germany Graphics
+;==============================================
+	org $a41ce
+loc_0a41ce:
+	org $a41da
+loc_0a41da:
+	org $a41e6
+loc_0a41e6:
+	org $a41f2
+loc_0a41f2:
+	org $a41fe
+loc_0a41fe:
+	org $a420a
+loc_0a420a:
+	org $a4216
+loc_0a4216:
+	org $a4222
+loc_0a4222:
+	org $a422e
+loc_0a422e:
+	org $a423a
+loc_0a423a:
+	org $a4246
+loc_0a4246:
+	org $a4252
+loc_0a4252:
+	org $a425e
+loc_0a425e:
+	org $a426a
+loc_0a426a:
+	org $a4276
+loc_0a4276:
+	org $a4282
+loc_0a4282:
+	org $a428e
+loc_0a428e:
+	org $a429a
+loc_0a429a:
+
+	org $a42a6
+loc_0a42a6:
+	org $a42d8
+loc_0a42d8:
+	org $a4300
+loc_0a4300:
+	org $a4318
+loc_0a4318:
+	org $a434c
+loc_0a434c:
+	org $a4386
+loc_0a4386:
+	org $a43b6
+loc_0a43b6:
+	org $a43f0
+loc_0a43f0:
+	org $a4408
+loc_0a4408:
+	org $a442c
+loc_0a442c:
+	org $a4468
+loc_0a4468:
+	org $a4480
+loc_0a4480:
+	org $a44b0
+loc_0a44b0:
+	org $a44d4
+loc_0a44d4:
+	org $a44ec
+loc_0a44ec:
+	org $a451c
+loc_0a451c:
+	org $a4552
+loc_0a4552:
+	org $a4596
+loc_0a4596:
+
+;==============================================
+	org $a45c4
+loc_0a45c4:
+	org $a45d0
+loc_0a45d0:
+	org $a45dc
+loc_0a45dc:
+	org $a45e8
+loc_0a45e8:
+	org $a45f4
+loc_0a45f4:
+	org $a4600
+loc_0a4600:
+	org $a460c
+loc_0a460c:
+	org $a4618
+loc_0a4618:
+	org $a4624
+loc_0a4624:
+	org $a4630
+loc_0a4630:
+	org $a463c
+loc_0a463c:
+	org $a4648
+loc_0a4648:
+	org $a4654
+loc_0a4654:
+	org $a4660
+loc_0a4660:
+	org $a466c
+loc_0a466c:
+	org $a4678
+loc_0a4678:
+	org $a4684
+loc_0a4684:
+	org $a4690
+loc_0a4690:
+
+	org $a469c
+loc_0a469c:
+	org $a46c0
+loc_0a46c0:
+	org $a46f2
+loc_0a46f2:
+	org $a470a
+loc_0a470a:
+	org $a4748
+loc_0a4748:
+	org $a4778
+loc_0a4778:
+	org $a47a8
+loc_0a47a8:
+	org $a47ea
+loc_0a47ea:
+	org $a4802
+loc_0a4802:
+	org $a4836
+loc_0a4836:
+	org $a4860
+loc_0a4860:
+	org $a489c
+loc_0a489c:
+	org $a48b8
+loc_0a48b8:
+	org $a48e0
+loc_0a48e0:
+	org $a490a
+loc_0a490a:
+	org $a494a
+loc_0a494a:
+	org $a496c
+loc_0a496c:
+	org $a499c
+loc_0a499c:
+
+;==============================================
 	org $a49d8
 loc_0a49d8:
 	org $a49ea
