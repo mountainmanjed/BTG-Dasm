@@ -20,6 +20,10 @@ loc_0804de
 	org $804fc
 loc_0804fc
 
+
+	org $809c0
+loc_0809c0:
+
 	org $80a7c
 loc_080a7c:
 
@@ -75,6 +79,9 @@ loc_0830be:
 loc_083126:
 	org $8318e
 loc_08318e:
+
+	org $83ba2
+loc_083ba2:
 
 	org $832f6
 loc_0832f6:

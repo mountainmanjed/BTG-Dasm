@@ -2,6 +2,9 @@
 	org $7001c
 loc_07001c:
 
+	org $70020
+loc_070020:
+
 	org $70a90
 loc_070a90:
 
@@ -35,6 +38,8 @@ loc_079c34
 	org $79e66
 loc_079e66:
 
+	org $7a040
+loc_07a040
 	org $7a150
 loc_07a150
 

@@ -11933,4 +11933,4 @@ loc_00f4f8:
 	include "banks/bank0c.68k"
 
 ;Second Megabyte
-;include "banks/bank20.68k"
+	include "banks/bank20.68k"

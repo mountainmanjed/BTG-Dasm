@@ -191,11 +191,14 @@ unk_107006 = 0x107006
 unk_107008 = 0x107008
 unk_10700c = 0x10700c
 unk_107014 = 0x107014
+unk_107026 = 0x107026
 unk_107028 = 0x107028
+unk_10702a = 0x10702a
 unk_10702b = 0x10702b
 
 unk_10703a = 0x10703a
 
+unk_10704c = 0x10704c
 unk_10704e = 0x10704e
 unk_107050 = 0x107050
 unk_107076 = 0x107076;Player Data Pointer
@@ -205,6 +208,8 @@ unk_107080 = 0x107080
 unk_107082 = 0x107082
 unk_107083 = 0x107083
 unk_107084 = 0x107084
+unk_107085 = 0x107085
+unk_107086 = 0x107086
 
 unk_107090 = 0x107090;Course Data Tilemap
 
@@ -226,12 +231,19 @@ unk_10d4d0 = 0x10d4d0
 unk_10d4d2 = 0x10d4d2
 unk_10d4d4 = 0x10d4d4
 unk_10d4d6 = 0x10d4d6
+unk_10d4d8 = 0x10d4d8
+unk_10d4da = 0x10d4da
+
 
 unk_10d4ec = 0x10d4ec
+unk_10d4ed = 0x10d4ed
 unk_10d4ee = 0x10d4ee
+unk_10d4f0 = 0x10d4f0
+unk_10d4f4 = 0x10d4f4
 unk_10d4f8 = 0x10d4f8
 unk_10d4fa = 0x10d4fa
-
+unk_10d4fc = 0x10d4fc
+unk_10d500 = 0x10d500
 unk_10d504 = 0x10d504
 unk_10d506 = 0x10d506
 unk_10d510 = 0x10d510
@@ -255,13 +267,20 @@ unk_10d58e = 0x10d58e
 unk_10d5d2 = 0x10d5d2
 unk_10d5ee = 0x10d5ee
 
+unk_10d606 = 0x10d606
+unk_10d608 = 0x10d608
 
-
+unk_10eb7e = 0x10eb7e
 unk_10eb9c = 0x10eb9c
 unk_10eba0 = 0x10eba0
 
 unk_10ebbc = 0x10ebbc
 unk_10ebbe = 0x10ebbe
 
+unk_10ebc6 = 0x10ebc6
+
 unk_10ebe4 = 0x10ebe4
+
+unk_10eda0 = 0x10eda0
+
 unk_10ef48 = 0x10ef48

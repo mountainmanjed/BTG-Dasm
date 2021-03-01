@@ -1,0 +1,9 @@
+;second megabyte
+;Rom 000000-fffff
+;Ram 200000-2fffff
+
+	org $200000
+loc_200000:
+
+	org $23c440
+loc_23c440:

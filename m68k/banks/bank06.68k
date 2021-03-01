@@ -11,8 +11,14 @@ loc_060268
 	org $60328
 loc_060328:
 
+	org $61304
+loc_061304:
+
 	org $6181e
 loc_06181e:
+
+	org $621ec
+loc_0621ec:
 
 	org $68600
 loc_068600
@@ -45,6 +51,22 @@ loc_06bee6
 loc_06c3a2:
 	org $6c51e
 loc_06c51e:
+
+	org $6cda2
+loc_06cda2:
+
+	org $6cff4
+loc_06cff4:
+	org $6d4b0
+loc_06d4b0:
+
+	org $6d6fa
+loc_06d6fa:
+
+	org $6daac
+loc_06daac:
+
+
 
 	org $6e428
 loc_06e428:
