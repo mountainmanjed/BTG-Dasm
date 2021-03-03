@@ -26,6 +26,10 @@ loc_0743a6:
 	org $7538e
 loc_07538e:
 
+	org $7545e
+loc_07545e
+
+
 	org $75898
 loc_075898
 	org $782c6

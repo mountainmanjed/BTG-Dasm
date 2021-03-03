@@ -165,6 +165,8 @@ unk_102ec1 = 0x102ec1
 unk_102ec2 = 0x102ec2
 
 unk_104fd0 = 0x104fd0
+unk_104fcf = 0x104fcf
+
 unk_106fd2 = 0x106fd2
 unk_106fd4 = 0x106fd4
 unk_106fd6 = 0x106fd6
@@ -229,33 +231,48 @@ unk_10d4b8 = 0x10d4b8
 unk_10d4ba = 0x10d4ba
 unk_10d4bc = 0x10d4bc
 unk_10d4be = 0x10d4be
+
 unk_10d4c0 = 0x10d4c0
+
 unk_10d4c2 = 0x10d4c2
 unk_10d4c4 = 0x10d4c4
 unk_10d4c6 = 0x10d4c6
 unk_10d4ca = 0x10d4ca
 unk_10d4ce = 0x10d4ce
-unk_104fcf = 0x104fcf
+
 unk_10d4d0 = 0x10d4d0
 unk_10d4d2 = 0x10d4d2
 unk_10d4d4 = 0x10d4d4
 unk_10d4d6 = 0x10d4d6
+unk_10d4d7 = 0x10d4d7
 unk_10d4d8 = 0x10d4d8
 unk_10d4da = 0x10d4da
 
+unk_10d4dc = 0x10d4dc
+unk_10d4de = 0x10d4de
 
+unk_10d4e0 = 0x10d4e0
+unk_10d4e4 = 0x10d4e4
+unk_10d4e8 = 0x10d4e8
 unk_10d4ec = 0x10d4ec
 unk_10d4ed = 0x10d4ed
 unk_10d4ee = 0x10d4ee
+unk_10d4ef = 0x10d4ef
+
 unk_10d4f0 = 0x10d4f0
 unk_10d4f4 = 0x10d4f4
 unk_10d4f8 = 0x10d4f8
 unk_10d4fa = 0x10d4fa
 unk_10d4fc = 0x10d4fc
+
 unk_10d500 = 0x10d500
 unk_10d504 = 0x10d504
 unk_10d506 = 0x10d506
+unk_10d508 = 0x10d508
+unk_10d50c = 0x10d50c
 unk_10d510 = 0x10d510
+unk_10d511 = 0x10d511
+unk_10d512 = 0x10d512
 unk_10d514 = 0x10d514
 unk_10d515 = 0x10d515
 unk_10d516 = 0x10d516
@@ -279,10 +296,13 @@ unk_10d5ee = 0x10d5ee
 unk_10d606 = 0x10d606
 unk_10d608 = 0x10d608
 
+
+
 unk_10eb7e = 0x10eb7e
 unk_10eb9c = 0x10eb9c
 unk_10eba0 = 0x10eba0
 
+unk_10ebb0 = 0x10ebb0
 unk_10ebbc = 0x10ebbc
 unk_10ebbe = 0x10ebbe
 
@@ -291,6 +311,8 @@ unk_10ebca = 0x10ebca
 
 unk_10ebe4 = 0x10ebe4
 
+
+unk_10ed9a = 0x10ed9a
 unk_10eda0 = 0x10eda0
 
 unk_10ef48 = 0x10ef48

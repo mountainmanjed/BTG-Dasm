@@ -1,10 +1,16 @@
-
-
-	org $60198
+;==============================================
 loc_060198:
-	org $601b0
+	clr.b unk_10d514
+	clr.b unk_10d51f
+	move.w #$ffff,d0
+	jsr loc_085086
+	rts
+
+;==============================================
 loc_0601b0:
 
+
+;==============================================
 	org $60268
 loc_060268
 
@@ -24,6 +30,11 @@ loc_0621ec:
 loc_068600
 	org $68618
 loc_068618
+
+	org $68a96
+loc_068a96
+	org $68aee
+loc_068aee
 
 	org $68e10
 loc_068e10:
@@ -47,6 +58,9 @@ loc_06b94c:
 	org $6bee6
 loc_06bee6
 
+	org $6bf06
+loc_06bf06:
+
 	org $6c3a2
 loc_06c3a2:
 	org $6c51e
@@ -65,6 +79,9 @@ loc_06d6fa:
 
 	org $6daac
 loc_06daac:
+
+	org $6daee
+loc_06daee:
 
 
 

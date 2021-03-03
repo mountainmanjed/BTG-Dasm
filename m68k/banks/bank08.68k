@@ -97,6 +97,9 @@ loc_084fec:
 	org $8500e
 loc_08500e:
 
+	org $85086
+loc_085086:
+
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Switch to anything
 ;to play in "How to Play Screen"
@@ -515,12 +518,25 @@ loc_08b1aa:
 	org $08b152
 loc_08b152:
 
-	org $8c5b8
-loc_08c5b8
+	org $8b1e4
+loc_08b1e4:
 
+	org $8c5b8
+loc_08c5b8:
+	org $8c5c2
+loc_08c5c2:
+	org $8c680
+loc_08c680:
+	org $8c68a
+loc_08c68a:
+	org $8cd9e
+loc_08cd9e:
+
+	org $8cda8
+loc_08cda8:
 
 	org $8d1c0
-loc_08d1c0
+loc_08d1c0:
 
 	org $8f8c6
 loc_08f8c6:

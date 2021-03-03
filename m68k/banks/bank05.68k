@@ -1836,7 +1836,7 @@ loc_056536:
 	dc.l loc_05656e,loc_05656e,loc_05656e,loc_05656e
 
 loc_05655a:
-	dc.b "  HOOK  ",$ff
+	dc.b $20,$20,"HOOK",$20,$20,$ff
 	even
 
 loc_056564:
@@ -1850,7 +1850,7 @@ loc_05656e:
 	even
 
 loc_056578:
-	dc.b "        ",$ff
+	dc.b $20,$20,$20,$20,$20,$20,$20,$20,$ff
 	even
 
 ;==============================================
@@ -2019,7 +2019,7 @@ loc_056788:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_0567a0:
-	dc.b "0123456789ABCDEF  "
+	dc.b "0123456789ABCDEF",$20,$20
 
 ;==============================================
 loc_0567b2:
@@ -3379,10 +3379,10 @@ loc_0577c8:
 	moveq #3,d6
 	moveq #4,d5
 	jsr loc_07001c
-	movea.w $40(a6),a1
+	movea.w ($40,a6),a1
 	adda.w #$140,a1
 	move.w #$5700,d0
-	move.w $14(a6),d1
+	move.w ($14,a6),d1
 	move.b loc_0577f8(pc,d1.w),d0
 	moveq #2,d1
 	moveq #2,d2
@@ -3789,7 +3789,7 @@ loc_05853a:
 	jsr loc_057602
 	jsr loc_05b980
 	move.w d0,unk_106fd6
-	btst.b #0,Debug_Dip0
+	btst #0,Debug_Dip0
 	beq.w loc_058578
 	jsr loc_056a40
 
@@ -4257,7 +4257,7 @@ loc_058b5a:
 	rts
 
 loc_058b5e:
-	ori.b #1, ccr
+	ori.b #1,ccr
 	rts
 
 ;==============================================
@@ -4523,7 +4523,7 @@ loc_059238:
 	bra.b loc_059238
 
 loc_059244:
-	btst.b #4,(1,a0)
+	btst #4,(1,a0)
 	beq.w loc_059258
 	lea.l loc_05925a(pc),a0
 	jsr loc_0b9bde
@@ -5482,7 +5482,7 @@ loc_059c5a:
 	jsr (a0)
 
 loc_059c5c:
-	btst.b #4,Debug_Dip0
+	btst #4,Debug_Dip0
 	beq.w loc_059cf0
 	jsr loc_057602
 	jsr loc_056826
@@ -5597,7 +5597,7 @@ loc_059dcc:
 loc_059dd4:
 	cmp.w d1,d0
 	bls.w loc_059ddc
-	dc.w 0xc340;done to match exg.l d1,d0
+	dc.w $c340;done to match exg.l d1,d0
 
 loc_059ddc:
 	tst.w d1
@@ -5637,7 +5637,7 @@ loc_059e16:
 loc_059e1e:
 	cmp.l d1,d0
 	bls.w loc_059e26
-	dc.w 0xc340;done to match exg.l d1,d0
+	dc.w $c340;done to match exg.l d1,d0
 
 loc_059e26:
 	tst.l d1
@@ -5706,7 +5706,7 @@ loc_059eba:
 loc_059ec2:
 	cmp.l d1,d0
 	bls.w loc_059eca
-	dc.w 0xc340;done to match exg.l d1,d0
+	dc.w $c340;done to match exg.l d1,d0
 
 loc_059eca:
 	move.l d1,-(a7)
@@ -5834,39 +5834,3214 @@ loc_05a044:
 
 ;==============================================
 loc_05a054:
+	move.l a0,unk_10707a
+	move.l a0,-(a7)
+	jsr loc_05a3a6(pc)
+	movea.l (a7)+,a0
+	lea.l unk_107004,a1
+	lea.l unk_10702a,a2
+	lea.l unk_107086,a3
+	move.l #unk_1070a2,($e,a3)
+	move.w ($12,a0),($a,a3)
+	move.w ($14,a0),($c,a3)
+	moveq #0,d0
+	moveq #0,d1
+	move.w unk_10d4d8,d0
+	move.w unk_10d4da,d1
+	movem.l d0-d1/a0-a2,-(a7)
+	jsr loc_05929a
+	moveq #0,d2
+	move.w d0,d2
+	movem.l (a7)+,d0-d1/a0-a2
+	swap d0
+	swap d1
+	swap d2
+	move.l d0,(4,a1)
+	move.l d1,(8,a1)
+	move.l d2,($c,a1)
+	move.l d0,(4,a2)
+	move.l d1,(8,a2)
+	move.l d2,($c,a2)
+	moveq #0,d0
+	move.b d0,(2,a1)
+	move.b d0,(2,a2)
+	move.b d0,($22,a1)
+	move.b d0,($22,a2)
+	move.b d0,($25,a1)
+	move.b d0,($25,a2)
+	move.b d0,(3,a1)
+	move.b d0,(3,a2)
+	move.w ($12,a0),d0
+	move.w ($14,a0),d1
+	subq.w #2,d0
+	subq.w #2,d1
+	lsl.w #4,d0
+	lsl.w #4,d1
+	subq.w #1,d0
+	subq.w #1,d1
+	move.w d0,unk_10d4dc
+	move.w d1,unk_10d4de
+	adda.l #$16,a0
+	jsr loc_05a428(pc)
+	jsr loc_05a286(pc)
+	jsr loc_05a31c(pc)
+	jsr loc_05a210(pc)
+	jsr loc_056e80
+	jsr loc_05926c
+	jsr loc_05a3e4(pc)
+	clr.b unk_10d4ef
+	clr.b unk_10d4ed
+	move.b #$ff,unk_10d4ec
+	jsr loc_05aa76(pc)
+	tst.b d0
+	beq.w loc_05a152
+	jsr loc_05a9a2(pc)
+
+loc_05a152:
+	bset.b #7,unk_102ebf
+	moveq #0,d0
+	jsr loc_05ab82(pc)
+	moveq #1,d0
+	jsr loc_05ab82(pc)
+	jsr loc_05a19c(pc)
+	moveq #0,d0
+	jsr loc_05a3ba(pc)
+	jsr loc_05929a
+	swap d0
+	sub.w d0,d0
+	asr.l #6,d0
+	move.l d0,unk_10d4ce
+	move.w unk_10d4b8,d0
+	add.w d0,d0
+	move.w loc_05a194(pc,d0.w),unk_10d4c0
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05a194:
+	dc.w $000a,$0005,$0005,$0004
 
 ;==============================================
-	org $5a3ba
+loc_05a19c:
+	move.w #$ffff,d0
+	move.w d0,unk_10d4d2
+	move.w d0,unk_10d4d4
+	move.w unk_10d4b8,d0
+	swap d0
+	move.w unk_10d4bc,d0
+	lea.l loc_05a1dc-8(pc),a0
+
+loc_05a1be:
+	addq.w #8,a0
+	move.l (a0),d1
+	bmi.w loc_05a1da
+	cmp.l d1,d0
+	bne.b loc_05a1be
+	move.w (4,a0),unk_10d4d2
+	move.w (6,a0),unk_10d4d4
+	
+loc_05a1da
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05a1dc:
+	dc.l $00000002,$05400840
+	dc.l $0000000c,$01b00460
+	dc.l $00020004,$046006d0
+	dc.l $00020011,$01800400
+	dc.l $00030008,$016003c0
+	dc.l $0003000b,$052007f0
+	dc.l $ffffffff
+
+;==============================================
+loc_05a210:
+	cmpi.b #2,BIOS_USER_MODE
+	sne.b d0
+	tst.b unk_102ebb
+	sne.b d1
+	cmpi.b #2,unk_102eba
+	seq.b d2
+	or.b d1,d0
+	or.b d2,d0
+	beq.w loc_05a23e
+	move.w #3,unk_107000
+	rts
+
+loc_05a23e:
+	lea.l unk_10ed9a,a0
+
+loc_05a244:
+	addq.w #8,a0
+	btst #3,(7,a0)
+	bne.b loc_05a244
+	move.b (4,a0),d0
+	lea.l unk_10ed9a,a0
+
+loc_05a258:
+	addq.w #8,a0
+	btst #3,(7,a0)
+	beq.b loc_05a258
+	sub.b (4,a0),d0
+	asr.b #1,d0
+	addq.b #2,d0
+	bpl.w loc_05a270
+	moveq #0,d0
+
+loc_05a270:
+	cmpi.b #7,d0
+	bls.w loc_05a27a
+	moveq #7,d0
+
+loc_05a27a:
+	andi.w #7,d0
+	move.w d0,unk_107000
+	rts
+
+;==============================================
+loc_05a286:
+	tst.b unk_102ebb
+	beq.w loc_05a29e
+	move.b #1,unk_10d4d6
+	moveq #5,d0
+	bra.w loc_05a2da
+
+loc_05a29e:
+	jsr loc_0568c2
+	andi.w #7,d0
+	move.w d0,-(a7)
+	jsr loc_0568c2
+	andi.w #7,d0
+	add.w (a7)+,d0
+	add.b unk_102eb8,d0
+	move.b loc_05a306(pc,d0.w),d0
+	cmpi.w #3,unk_10d4bc
+	bhi.w loc_05a2ce
+	moveq #0,d0
+
+loc_05a2ce:
+	move.b d0,unk_10d4d6
+	jsr loc_0568c2
+
+loc_05a2da:
+	andi.w #7,d0
+	move.b d0,unk_10d4d7
+	lsl.w #8,d0
+	lsl.w #1,d0
+	move.w d0,-(a7)
+	jsr loc_0027c0
+	move.l d0,unk_102ca8
+	move.w (a7)+,d0
+	jsr loc_00277e
+	move.l d0,unk_102cac
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05a306:
+	dc.b $01,$01,$01,$01,$01,$00,$00,$00
+	dc.b $00,$00,$01,$01,$01,$01,$01,$01
+	dc.b $01,$01,$01,$01,$01,$00
+
+;==============================================
+loc_05a31c:
+	jsr loc_0568c2
+	andi.w #7,d0
+	move.w d0,-(a7)
+	jsr loc_0568c2
+	andi.w #7,d0
+	add.w (a7)+,d0
+	add.b unk_102eb8,d0
+	lea.l loc_05a390(pc),a0
+	move.b (a0,d0.w),d0
+	cmpi.w #8,d0
+	bcc.w loc_05a38e
+	tst.b unk_102ebb
+	beq.w loc_05a356
+	sub.w d0,d0
+
+loc_05a356:
+	lsl.w #2,d0
+	movea.l unk_10707a,a0
+	movea.l (2,a0),a1
+	adda.w d0,a1
+	moveq #0,d0
+	moveq #0,d1
+	move.w (a1)+,d0
+	move.w (a1),d1
+	move.w d0,unk_10d4c2
+	move.w d1,unk_10d4c4
+	swap d0
+	swap d1
+	asr.l #2,d0
+	asr.l #2,d1
+	move.l d0,unk_10d4c6
+	move.l d1,unk_10d4ca
+	rts
+
+loc_05a38e:
+	trap #$f
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05a390:
+	dc.b $00,$00,$00,$01
+	dc.b $01,$01,$02,$02
+	dc.b $02,$03,$03,$03
+	dc.b $04,$04,$04,$05
+	dc.b $05,$05,$06,$06
+	dc.b $07,$07
+
+;==============================================
+loc_05a3a6:
+	moveq #7,d0
+	bsr.w loc_05a3ba
+	move.w d0,unk_10d4d8
+	move.w d1,unk_10d4da
+	rts
+
+;==============================================
 loc_05a3ba:
+	movea.l unk_10707a,a0
+	movea.l (6,a0),a0
 
-	org $5a450
+loc_05a3c4:
+	adda.w #6,a0
+	move.b (a0),d1
+	bmi.w loc_05a3de
+	cmp.b d1,d0
+	bne.b loc_05a3c4
+	move.w (2,a0),d0
+	move.w (4,a0),d1
+	and.w d0,d0
+	rts
+
+loc_05a3de:
+	ori.b #1,ccr
+	rts
+
+;==============================================
+loc_05a3e4:
+	movea.l unk_10707a,a0
+	movea.l (6,a0),a0
+	moveq #0,d0
+
+loc_05a3f0:
+	cmpi.b #4,(a0)
+	beq.w loc_05a410
+	cmpi.b #5,(a0)
+	beq.w loc_05a410
+	cmpi.b #$a,(a0)
+	beq.w loc_05a410
+	cmpi.b #$c,(a0)
+	bne.w loc_05a41c
+
+loc_05a410:
+	move.w (4,a0),d1
+	cmp.w d1,d0
+	bgt.w loc_05a426
+	move.w d1,d0
+
+loc_05a41c:
+	addq.w #6,a0
+	cmpi.b #$ff,(a0)
+	bne.b loc_05a3f0
+	rts
+
+loc_05a426:
+	trap #$f
+
+loc_05a428:
+	lea.l unk_1070a2,a1
+
+loc_05a42e:
+	move.w (a0)+,d0
+	cmpi.w #$ffff,d0
+	beq.w loc_05a44e
+	moveq #1,d1
+	bclr #$f,d0
+	bne.w loc_05a444
+	move.w (a0)+,d1
+
+loc_05a444:
+	subq.w #1,d1
+
+loc_05a446:
+	move.w d0,(a1)+
+	dbra d1,loc_05a446
+	bra.b loc_05a42e
+
+loc_05a44e:
+	rts
+
+;==============================================
 loc_05a450:
-	org $5aa9a
+	move.l unk_10eb9c,d0
+	bpl.w loc_05a45c
+	neg.l d0
+
+loc_05a45c:
+	move.l unk_10eba0,d1
+	bpl.w loc_05a468
+	neg.l d1
+
+loc_05a468:
+	lea.l loc_05a4ae(pc),a0
+	move.w #$ffff,d2
+	cmp.l d0,d1
+	bcs.w loc_05a4a0
+
+loc_05a476:
+	addq.w #1,d2
+	cmp.w (a0)+,d0
+	bhi.b loc_05a476
+
+loc_05a47c:
+	tst.w unk_10eba0
+	bmi.w loc_05a48c
+	subi.w #$800,d2
+	neg.w d2
+
+loc_05a48c:
+	tst.w unk_10eb9c
+	bpl.w loc_05a498
+	neg.w d2
+
+loc_05a498:
+	andi.w #$fff,d2
+	move.w d2,d0
+	rts
+
+loc_05a4a0:
+	addq.w #1,d2
+	cmp.w (a0)+,d1
+	bhi.b loc_05a4a0
+	subi.w #$400,d2
+	neg.w d2
+	bra.b loc_05a47c
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05a4ae:
+	dc.w $0032,$0096,$00fb,$015f,$01c4,$0228,$028d,$02f1
+	dc.w $0356,$03bb,$041f,$0484,$04e8,$054d,$05b1,$0616
+	dc.w $067a,$06df,$0743,$07a8,$080c,$0871,$08d5,$0939
+	dc.w $099e,$0a02,$0a67,$0acb,$0b30,$0b94,$0bf9,$0c5d
+	dc.w $0cc1,$0d26,$0d8a,$0def,$0e53,$0eb7,$0f1c,$0f80
+	dc.w $0fe4,$1049,$10ad,$1111,$1176,$11da,$123e,$12a2
+	dc.w $1307,$136b,$13cf,$1433,$1498,$14fc,$1560,$15c4
+	dc.w $1628,$168d,$16f1,$1755,$17b9,$181d,$1881,$18e5
+	dc.w $1949,$19ad,$1a11,$1a75,$1ad9,$1b3d,$1ba1,$1c05
+	dc.w $1c69,$1ccd,$1d31,$1d95,$1df8,$1e5c,$1ec0,$1f24
+	dc.w $1f88,$1feb,$204f,$20b3,$2117,$217a,$21de,$2242
+	dc.w $22a5,$2309,$236c,$23d0,$2433,$2497,$24fa,$255e
+	dc.w $25c1,$2625,$2688,$26ec,$274f,$27b2,$2816,$2879
+	dc.w $28dc,$293f,$29a2,$2a06,$2a69,$2acc,$2b2f,$2b92
+	dc.w $2bf5,$2c58,$2cbb,$2d1e,$2d81,$2de4,$2e47,$2eaa
+	dc.w $2f0d,$2f6f,$2fd2,$3035,$3098,$30fa,$315d,$31c0
+	dc.w $3222,$3285,$32e7,$334a,$33ac,$340f,$3471,$34d4
+	dc.w $3536,$3598,$35fb,$365d,$36bf,$3721,$3783,$37e5
+	dc.w $3848,$38aa,$390c,$396e,$39d0,$3a31,$3a93,$3af5
+	dc.w $3b57,$3bb9,$3c1b,$3c7c,$3cde,$3d40,$3da1,$3e03
+	dc.w $3e64,$3ec6,$3f27,$3f89,$3fea,$404b,$40ad,$410e
+	dc.w $416f,$41d0,$4231,$4292,$42f3,$4354,$43b5,$4416
+	dc.w $4477,$44d8,$4539,$459a,$45fa,$465b,$46bc,$471c
+	dc.w $477d,$47dd,$483e,$489e,$48ff,$495f,$49bf,$4a1f
+	dc.w $4a80,$4ae0,$4b40,$4ba0,$4c00,$4c60,$4cc0,$4d20
+	dc.w $4d80,$4ddf,$4e3f,$4e9f,$4eff,$4f5e,$4fbe,$501d
+	dc.w $507d,$50dc,$513b,$519b,$51fa,$5259,$52b8,$5317
+	dc.w $5377,$53d6,$5435,$5493,$54f2,$5551,$55b0,$560f
+	dc.w $566d,$56cc,$572a,$5789,$57e7,$5846,$58a4,$5902
+	dc.w $5961,$59bf,$5a1d,$5a7b,$5ad9,$5b37,$5b95,$5bf3
+	dc.w $5c50,$5cae,$5d0c,$5d6a,$5dc7,$5e25,$5e82,$5edf
+	dc.w $5f3d,$5f9a,$5ff7,$6054,$60b2,$610f,$616c,$61c9
+	dc.w $6225,$6282,$62df,$633c,$6398,$63f5,$6451,$64ae
+	dc.w $650a,$6567,$65c3,$661f,$667b,$66d7,$6733,$678f
+	dc.w $67eb,$6847,$68a3,$68ff,$695a,$69b6,$6a11,$6a6d
+	dc.w $6ac8,$6b24,$6b7f,$6bda,$6c35,$6c90,$6ceb,$6d46
+	dc.w $6da1,$6dfc,$6e57,$6eb1,$6f0c,$6f67,$6fc1,$701b
+	dc.w $7076,$70d0,$712a,$7184,$71df,$7239,$7292,$72ec
+	dc.w $7346,$73a0,$73fa,$7453,$74ad,$7506,$755f,$75b9
+	dc.w $7612,$766b,$76c4,$771d,$7776,$77cf,$7828,$7881
+	dc.w $78d9,$7932,$798a,$79e3,$7a3b,$7a93,$7aec,$7b44
+	dc.w $7b9c,$7bf4,$7c4c,$7ca4,$7cfb,$7d53,$7dab,$7e02
+	dc.w $7e5a,$7eb1,$7f09,$7f60,$7fb7,$800e,$8065,$80bc
+	dc.w $8113,$816a,$81c0,$8217,$826d,$82c4,$831a,$8371
+	dc.w $83c7,$841d,$8473,$84c9,$851f,$8575,$85cb,$8620
+	dc.w $8676,$86cb,$8721,$8776,$87cb,$8821,$8876,$88cb
+	dc.w $8920,$8974,$89c9,$8a1e,$8a72,$8ac7,$8b1b,$8b70
+	dc.w $8bc4,$8c18,$8c6c,$8cc0,$8d14,$8d68,$8dbc,$8e10
+	dc.w $8e63,$8eb7,$8f0a,$8f5d,$8fb1,$9004,$9057,$90aa
+	dc.w $90fd,$9150,$91a2,$91f5,$9247,$929a,$92ec,$933f
+	dc.w $9391,$93e3,$9435,$9487,$94d9,$952a,$957c,$95ce
+	dc.w $961f,$9670,$96c2,$9713,$9764,$97b5,$9806,$9857
+	dc.w $98a8,$98f8,$9949,$9999,$99ea,$9a3a,$9a8a,$9ada
+	dc.w $9b2a,$9b7a,$9bca,$9c1a,$9c69,$9cb9,$9d08,$9d58
+	dc.w $9da7,$9df6,$9e45,$9e94,$9ee3,$9f32,$9f80,$9fcf
+	dc.w $a01e,$a06c,$a0ba,$a108,$a157,$a1a5,$a1f2,$a240
+	dc.w $a28e,$a2dc,$a329,$a376,$a3c4,$a411,$a45e,$a4ab
+	dc.w $a4f8,$a545,$a592,$a5de,$a62b,$a677,$a6c4,$a710
+	dc.w $a75c,$a7a8,$a7f4,$a840,$a88b,$a8d7,$a922,$a96e
+	dc.w $a9b9,$aa04,$aa50,$aa9b,$aae5,$ab30,$ab7b,$abc6
+	dc.w $ac10,$ac5a,$aca5,$acef,$ad39,$ad83,$adcd,$ae17
+	dc.w $ae60,$aeaa,$aef3,$af3d,$af86,$afcf,$b018,$b061
+	dc.w $b0aa,$b0f2,$b13b,$b183,$b1cc,$b214,$b25c,$b2a4
+	dc.w $b2ec,$b334,$b37c,$b3c3,$b40b,$b452,$b49a,$b4e1
+	dc.w $b528,$b56f,$b5b6,$b5fd,$b643,$b68a
+
+;==============================================
+loc_05a8ba:
+	moveq #0,d0
+	adda.w #$10,a0
+
+loc_05a8c0:
+	move.b (a0)+,d1
+	bmi.w loc_05a8d4
+	cmpi.b #2,d1
+	bne.w loc_05a8d0
+	moveq #-1,d1
+
+loc_05a8d0:
+	add.b d1,d0
+	bra.b loc_05a8c0
+
+loc_05a8d4:
+	rts
+
+;==============================================
+loc_05a8d6:
+	movea.l unk_107076,a0
+	cmpi.b #1,(2,a0)
+	bne.w loc_05a9a0
+	jsr loc_05aa76(pc)
+	tst.b d0
+	beq.w loc_05a9a0
+	bmi.w loc_05a936
+	jsr loc_057602
+	jsr loc_05b980
+	cmpi.b #0,d0
+	bne.w loc_05a9a0
+	jsr loc_059daa
+	cmp.l unk_10d4e4,d0
+	bls.w loc_05a9a0
+	move.l unk_10d4e4,unk_10d4e8
+	move.l d0,unk_10d4e4
+	movea.l unk_107076,a0
+	move.b (a0),unk_10d4ec
+	rts
+
+loc_05a936:
+	jsr loc_057602
+	jsr loc_05b980
+	cmpi.b #3,d0
+	bne.w loc_05a9a0
+	jsr loc_057612
+	moveq #0,d2
+	moveq #0,d3
+	move.w unk_10d4c2,d2
+	move.w unk_10d4c4,d3
+	swap d2
+	swap d3
+	jsr loc_059eb2
+	lsr.l #2,d0
+	tst.b unk_107083
+	beq.w loc_05a978
+	moveq #0,d0
+
+loc_05a978:
+	cmp.l unk_10d4e4,d0
+	bcc.w loc_05a9a0
+	move.l unk_10d4e4,unk_10d4e8
+	move.l d0,unk_10d4e4
+	movea.l unk_107076,a0
+	move.b (a0),unk_10d4ec
+	rts
+
+loc_05a9a0:
+	rts
+
+;==============================================
+loc_05a9a2:
+	tst.b d0
+	bmi.w loc_05aa28
+	moveq #0,d7
+	moveq #0,d0
+	lea.l loc_08318e,a0
+	move.b unk_107005,d0
+	bmi.w loc_05a9c4
+	lsl.w #2,d0
+	movea.l (a0,d0.w),a1
+	move.w (a1),d7
+
+loc_05a9c4:
+	move.b unk_10702b,d0
+	bmi.w loc_05a9e2
+	lsl.w #2,d0
+	movea.l (a0,d0.w),a1
+	move.w d7,d6
+	move.w (a1),d7
+	tst.w d6
+	beq.w loc_05a9e2
+	add.w d6,d7
+	lsr.w #1,d7
+
+loc_05a9e2:
+	move.w d7,-(a7)
+	jsr loc_0568c2
+	andi.w #7,d0
+	move.w d0,-(a7)
+	jsr loc_0568c2
+	andi.w #7,d0
+	add.w (a7)+,d0
+	move.b unk_102eb8,d1
+	andi.w #7,d1
+	add.w d1,d1
+	add.w d1,d0
+	lsl.w #3,d0
+	add.w (a7)+,d0
+	swap d0
+	sub.w d0,d0
+	lsr.l #2,d0
+	addi.l #$a0000,d0
+	move.l d0,unk_10d4e4
+	move.l d0,unk_10d4e8
+	rts
+
+loc_05aa28:
+	jsr loc_0568c2
+	andi.l #7,d0
+	swap d0
+	move.l d0,-(a7)
+	jsr loc_0568c2
+	andi.l #7,d0
+	swap d0
+	add.l (a7)+,d0
+	add.l d0,d0
+	moveq #0,d1
+	move.b unk_102eb8,d1
+	swap d1
+	sub.l d1,d0
+	asr.l #2,d0
+	cmpi.l #$10000,d0
+	bge.w loc_05aa68
+	move.l #$10000,d0
+
+loc_05aa68:
+	move.l d0,unk_10d4e4
+	move.l d0,unk_10d4e8
+	rts
+
+;==============================================
+loc_05aa76:
+	move.w unk_10d4bc,d1
+	lea.l unk_10d4e0,a0
+
+loc_05aa82:
+	move.b (a0),d0
+	move.b d0,d2
+	bpl.w loc_05aa8c
+	neg.b d2
+
+loc_05aa8c:
+	cmp.b d1,d2
+	beq.w loc_05aa98
+	tst.b (a0)+
+	bne.b loc_05aa82
+	moveq #0,d0
+
+loc_05aa98:
+	rts
+
+;==============================================
 loc_05aa9a:
-	org $5ab4e
+	cmpi.b #2,unk_102eba
+	beq.w loc_05ab0a
+	move.l #0,unk_10d4e0
+	jsr loc_0568c2
+	andi.w #7,d0
+	cmpi.b #3,unk_102eb8
+	bhi.w loc_05aacc
+	subq.w #1,d0
+	andi.w #7,d0
+
+loc_05aacc:
+	lsr.w #1,d0
+	lsl.w #3,d0
+	lea.l loc_05ab1e(pc,d0.w),a0
+	move.w unk_10d4b8,d1
+	lsl.w #2,d1
+	lea.l loc_05ab3e(pc,d1.w),a1
+	lea.l unk_10d4e0,a2
+	move.l a1,-(a7)
+	jsr loc_05ab0c(pc)
+	jsr loc_0568c2
+	andi.b #7,d0
+	moveq #5,d1
+	sub.b unk_102eb8,d1
+	movea.l (a7)+,a1
+	cmp.b d1,d0
+	bgt.w loc_05ab0a
+	jsr loc_05ab0c(pc)
+
+loc_05ab0a:
+	rts
+
+;==============================================
+loc_05ab0c:
+	moveq #3,d7
+
+loc_05ab0e:
+	move.b (a1)+,d0
+	and.b (a0)+,d0
+	beq.w loc_05ab18
+	move.b d0,(a2)+
+
+loc_05ab18:
+	dbra d7,loc_05ab0e
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05ab1e:
+	dc.b $ff,$00,$00,$ff
+	dc.b $00,$ff,$00,$00
+	dc.b $00,$ff,$ff,$00
+	dc.b $ff,$00,$00,$00
+	dc.b $ff,$00,$00,$ff
+	dc.b $00,$00,$ff,$00
+	dc.b $00,$ff,$ff,$00
+	dc.b $00,$00,$00,$ff
+
+loc_05ab3e:
+	dc.b $04,$f7,$0b,$f1
+	dc.b $07,$fd,$0a,$f2
+	dc.b $05,$fd,$0c,$f2
+	dc.b $04,$f8,$0f,$f4
+
+;==============================================
 loc_05ab4e:
+	moveq #0,d1
+	tst.b unk_102ebb
+	bne.w loc_05ab7e
+	lea.l unk_10d52e,a0
+	tst.b d0
+	beq.w loc_05ab6c
+	lea.l unk_10d58e,a0
+
+loc_05ab6c:
+	addq.b #1,($44,a0)
+	bpl.w loc_05ab7a
+	move.b #$7f,($44,a0)
+
+loc_05ab7a:
+	move.b ($44,a0),d1
+
+loc_05ab7e:
+	move.b d1,d0
+	rts
+
 ;==============================================
-	org $5abec
+loc_05ab82:
+	moveq #0,d1
+	tst.b unk_102ebb
+	bne.w loc_05abc2
+	lea.l unk_10d52e,a0
+	lea.l unk_107005,a1
+	tst.b d0
+	beq.w loc_05abac
+	lea.l unk_10d58e,a0
+	lea.l unk_10702b,a1
+
+loc_05abac:
+	tst.b (a1)
+	bmi.w loc_05abc2
+	subq.b #1,($44,a0)
+	bpl.w loc_05abbe
+	clr.b ($44,a0)
+
+loc_05abbe:
+	move.b ($44,a0),d1
+
+loc_05abc2:
+	move.b d1,d0
+	rts
+
+;==============================
+loc_05abc6:
+	tst.b unk_102ebb
+	beq.w loc_05abd4
+	moveq #0,d0
+	rts
+
+loc_05abd4:
+	lea.l unk_10d52e,a0
+	tst.b d0
+	beq.w loc_05abe6
+	lea.l unk_10d58e,a0
+
+loc_05abe6:
+	move.b ($44,a0),d0
+	rts
+
+;==============================================
 loc_05abec:
+	cmpi.b #2,unk_102eba
+	bne.w loc_05ac4a
+	lea.l unk_107014,a0
+	moveq #0,d0
+	moveq #$12,d7
 
-	org $5ac54
+loc_05ac02:
+	move.b (a0)+,d1
+	bmi.w loc_05ac3c
+	subq.b #1,d7
+	cmpi.b #1,d1
+	bne.w loc_05ac20
+	moveq #0,d2
+	tst.b unk_10d4ee
+	bne.w loc_05ac4e
+	addq.b #1,d0
+
+loc_05ac20:
+	cmpi.b #2,d1
+	bne.w loc_05ac38
+	move.w #$ffff,d2
+	tst.b unk_10d4ee
+	bne.w loc_05ac4e
+	subq.b #1,d0
+
+loc_05ac38:
+	tst.b d7
+	bne.b loc_05ac02
+
+loc_05ac3c:
+	move.b d0,d2
+	bpl.w loc_05ac44
+	neg.b d0
+
+loc_05ac44:
+	cmp.b d0,d7
+	bcs.w loc_05ac4e
+
+loc_05ac4a:
+	and.w d0,d0
+	rts
+
+loc_05ac4e:
+	ori.b #1,ccr
+	rts
+
+;==============================================
 loc_05ac54:
+	tst.b unk_107082
+	bmi.w loc_05ac6a
+	lea.l loc_07545e,a1
+	jsr loc_0004c6
+
+loc_05ac6a:
+	tst.b unk_102eba
+	beq.w loc_05ac7e
+	lea.l loc_05b510(pc),a1
+	jsr loc_0004c6
+
+loc_05ac7e:
+	clr.b unk_10ebb0
+	tst.b unk_102ebb
+	bne.w loc_05acac
+	tst.b unk_107082
+	bmi.w loc_05acac
+	lea.l loc_068aee,a1
+	jsr loc_0004c6
+	bset.b #7,unk_10ebb0
+
+loc_05acac:
+	jsr loc_05b618(pc)
+	move.w #$ffff,unk_106fd8
+	clr.b unk_10d510
+	clr.b unk_10d512
+	clr.b unk_10d511
+	clr.b ($1a,a6)
+	clr.w ($16,a6)
+	move.w #$8c,($30,a6)
+	move.w #$180,($32,a6)
+	move.l #loc_08b1e4,($2c,a6)
+	lea.l loc_05b216(pc),a1
+	jsr loc_0004c6
+	lea.l loc_00462c,a1
+	jsr loc_0004c6
+	movea.l unk_107076,a0
+	move.l (4,a0),d0
+	move.l (8,a0),d1
+	move.l d0,($42,a6)
+	move.l d1,($46,a6)
+	move.l d0,unk_10d4f0
+	move.l d1,unk_10d4f4
+	bsr.w loc_05b43a
+	move.l #loc_05ad28,(a6)
+
+loc_05ad28:
+	tst.b unk_106fec
+	bpl.w loc_05af94
+	lea.l loc_00cad2,a1
+	jsr loc_0004c6
+	move.l #loc_05ad44,(a6)
+
+loc_05ad44:
+	tst.b unk_10d510
+	beq.w loc_05ad58
+	subq.b #1,unk_10d510
+	bra.w loc_05add8
+
+loc_05ad58:
+	sub.l d0,d0
+	sub.l d1,d1
+	btst #1,unk_102c38
+	bne.w loc_05addc
+	jsr loc_068a96
+	tst.b unk_107082
+	bpl.w loc_05ad84
+	cmpi.w #$c,unk_10d4aa
+	bhi.w loc_05ad84
+
+loc_05ad84:
+	tst.b unk_107083
+	beq.w loc_05ad98
+	jsr loc_00b6a0
+	bra.w loc_05add8
+
+loc_05ad98:
+	jsr loc_007446
+	btst #0,unk_102c38
+	bne.w loc_05add2
+	jsr loc_0076bc
+	btst #1,unk_102c38
+	bne.w loc_05addc
+	btst #0,unk_102c38
+	bne.w loc_05add2
+	jsr loc_0075aa
+	bra.w loc_05add8
+
+loc_05add2:
+	jsr loc_0095aa
+
+loc_05add8:
+	bra.w loc_05ae8c
+
+loc_05addc:
+	clr.w unk_102cd6
+	clr.b unk_10d510
+	lea.l loc_05b62c(pc),a1
+	jsr loc_0004c6
+	tst.b unk_102ebb
+	bne.w loc_05ae04
+	bset.b #7,unk_102eb9
+
+loc_05ae04:
+	jsr loc_05a8d6
+	tst.b unk_107083
+	beq.w loc_05ae2a
+	clr.b unk_102ebc
+	jsr loc_08045a
+	lea.l loc_05b67e(pc),a1
+	jsr loc_0004c6
+
+loc_05ae2a:
+	lea.l loc_06bf06,a1
+	jsr loc_0004c6
+	move.l unk_102c68,d3
+	move.l unk_102c6c,d4
+	lsl.l #2,d3
+	lsl.l #2,d4
+	jsr loc_05b1a0(pc)
+	swap d3
+	swap d4
+	move.w d3,d0
+	move.w d4,d1
+	jsr loc_05b980
+	move.w d0,unk_106fd6
+	move.w d0,unk_106fd8
+	cmpi.w #6,d0
+	beq.w loc_05b3ba
+	jsr loc_06181e
+	tst.b d7
+	beq.w loc_05ae86
+	moveq #4,d0
+	move.w d0,unk_106fd6
+	move.w d0,unk_106fd8
+
+loc_05ae86:
+	move.l #loc_05ae8c,(a6)
+
+loc_05ae8c:
+	btst #0,Debug_Dip0
+	beq.w loc_05ae9c
+	jsr loc_05b0f0(pc)
+
+loc_05ae9c:
+	jmp loc_05aea0(pc)
+
+loc_05aea0:
+	movea.l unk_107076,a0
+	move.l (4,a0),d5
+	move.l (8,a0),d6
+	move.l unk_102c68,d3
+	move.l unk_102c6c,d4
+	lsl.l #2,d3
+	lsl.l #2,d4
+	jsr loc_05b1a0(pc)
+	movem.l d3-d4,-(a7)
+	swap d3
+	swap d4
+	swap d5
+	swap d6
+	sub.w d3,d5
+	sub.w d4,d6
+	sub.w d5,($30,a6)
+	add.w d6,($32,a6)
+	tst.b unk_107083
+	bne.w loc_05af0c
+	btst #1,unk_102c38
+	beq.w loc_05af0c
+	move.l a0,-(a7)
+	jsr loc_057602
+	jsr loc_05929a
+	swap d0
+	sub.w d0,d0
+	movea.l (a7)+,a0
+	asr.l #6,d0
+	move.l d0,unk_102c70
+
+loc_05af0c:
+	move.l unk_102c70,d0
+	lsl.l #6,d0
+	move.l d0,($c,a0)
+	move.w ($30,a6),d2
+	subi.w #$8c,d2
+	neg.w d2
+	move.w d2,d0
+	move.w ($32,a6),d2
+	subi.w #$180,d2
+	neg.w d2
+	move.w d2,d1
+	jsr loc_0594ca
+	tst.b unk_107082
+	bpl.w loc_05af44
+	moveq #0,d0
+	moveq #0,d1
+
+loc_05af44:
+	move.w d0,unk_10d4a2
+	move.w d1,unk_10d4a4
+	swap d0
+	move.w d1,d0
+	move.l d0,unk_10d4a6
+	movem.l (a7)+,d3-d4
+	movea.l unk_107076,a0
+	move.l d3,(4,a0)
+	move.l d4,(8,a0)
+	lea.l loc_059596,a0
+	jsr loc_00d510
+	move.w ($30,a6),unk_10d4f8
+	move.w ($32,a6),unk_10d4fa
+	jsr loc_059218
+	jsr loc_003f86
+
+loc_05af94:
+	move.w ($32,a6),-(a7)
+	jsr loc_05b202(pc)
+	add.w d0,($32,a6)
+	movea.l unk_107076,a0
+	move.w (8,a0),($3c,a6)
+	move.w ($30,a6),unk_10d504
+	move.w ($32,a6),unk_10d506
+	move.w (8,a0),unk_10d508
+	move.w ($c,a0),unk_10d50c
+	tst.b unk_107083
+	bne.w loc_05afea
+	move.w (a7),d0
+	jsr loc_05aff0(pc)
+	bcs.w loc_05afea
+	move.w unk_106fd6,d7
+	jsr loc_05b030(pc)
+
+loc_05afea:
+	move.w (a7)+,($32,a6)
+	rts
 
 ;==============================================
-	org $5b0b8
-loc_05b0b8
+loc_05aff0:
+	movea.l unk_107076,a0
+	move.w (8,a0),d1
+	cmp.w unk_10d4d2,d1
+	bcs.w loc_05b02c
+	cmp.w unk_10d4d4,d1
+	bgt.w loc_05b02c
+	tst.w ($c,a0)
+	bpl.w loc_05b02c
+	sub.w ($32,a6),d0
+	add.w d0,d1
+	cmp.w unk_10d4d4,d1
+	ble.w loc_05b02c
+	ori.b #1,ccr
+	rts
+
+loc_05b02c:
+	and.w d0,d0
+	rts
 
 ;==============================================
-	org $5b202
-loc_05b202
+loc_05b030:
+	move.b unk_102c38,d0
+	btst #1,d0
+	sne.b d1
+	btst #0,d0
+	sne.b d2
+
+loc_05b042:
+	move.w ($22,a6),($20,a6)
+	or.b d2,d1
+	beq.w loc_05b090
+	clr.b ($3e,a6)
+	cmpi.w #2,d7
+	bne.w loc_05b068
+	move.w ($24,a6),($20,a6)
+	move.l #loc_08c680,($2c,a6)
+
+loc_05b068:
+	cmpi.w #6,d7
+	bne.w loc_05b07e
+	move.w ($24,a6),($20,a6)
+	move.l #loc_08c68a,($2c,a6)
+
+loc_05b07e:
+	cmpi.w #7,d7
+	bne.w loc_05b090
+	move.l #$ffffffff,($2c,a6)
+	rts
+
+loc_05b090:
+	tst.b unk_107082
+	bpl.w loc_05b0a8
+	move.w ($22,a6),($20,a6)
+	move.l #loc_08cd9e,($2c,a6)
+
+loc_05b0a8:
+	jsr loc_05b0b8(pc)
+	bcs.w loc_05b0b6
+	jsr loc_000f2e
+
+loc_05b0b6:
+	rts
 
 ;==============================================
-	org $5b20c
+loc_05b0b8:
+	cmpi.w #$d8,($30,a6)
+	ble.w loc_05b0e6
+	tst.b unk_107082
+	bpl.w loc_05b0e6
+	cmpi.w #$1da,($32,a6)
+	bge.w loc_05b0e6
+	cmpi.w #$138,($32,a6)
+	ble.w loc_05b0e6
+	ori.b #1,ccr
+	rts
+
+loc_05b0e6:
+	and.b d0,d0
+	rts
+
+;==============================================
+loc_05b0ea:
+	moveq #1,d1
+	bra.w loc_05b042
+
+;==============================================
+loc_05b0f0:
+	btst #3,Debug_Dip1
+	beq.w loc_05b0fe
+	rts
+
+loc_05b0fe:
+	move.l #$c000,d3
+	move.b unk_10d52b,d2
+	btst #6,d2
+	beq.w loc_05b152
+	clr.w unk_102cd6
+	movea.l unk_107076,a0
+	move.b #1,(2,a0)
+	move.b unk_102c38,d0
+	eori.b #2,d0
+	move.b d0,unk_102c38
+	btst #1,d0
+	bne.w loc_05b146
+	move.l #loc_05addc,(a6)
+	bra.w loc_05b14c
+
+loc_05b146:
+	move.l #loc_05ae8c,(a6)
+
+loc_05b14c:
+	clr.b unk_107083
+
+loc_05b152:
+	move.b unk_10d52a,d2
+	btst #6,d2
+	beq.w loc_05b166
+	move.l #$200,d3
+
+loc_05b166:
+	btst #2,d2
+	beq.w loc_05b174
+	sub.l d3,unk_102c68
+
+loc_05b174:
+	btst #3,d2
+	beq.w loc_05b182
+	add.l d3,unk_102c68
+
+loc_05b182:
+	btst #0,d2
+	beq.w loc_05b190
+	sub.l d3,unk_102c6c
+
+loc_05b190:
+	btst #1,d2
+	beq.w loc_05b19e
+	add.l d3,unk_102c6c
+
+loc_05b19e:
+	rts
+
+;==============================================
+loc_05b1a0:
+	swap d3
+	swap d4
+	moveq #$20,d0
+	cmp.w d0,d3
+	bge.w loc_05b1ba
+	move.w d0,d3
+	bset.b #1,unk_102c38
+	bra.w loc_05b1d0
+
+loc_05b1ba:
+	move.w unk_10d4dc,d0
+	cmp.w d0,d3
+	ble.w loc_05b1d0
+	move.w d0,d3
+	bset.b #1,unk_102c38
+
+loc_05b1d0:
+	moveq #$20,d0
+	cmp.w d0,d4
+	bge.w loc_05b1e6
+	move.w d0,d4
+	bset.b #1,unk_102c38
+	bra.w loc_05b1fc
+
+loc_05b1e6:
+	move.w unk_10d4de,d0
+	cmp.w d0,d4
+	ble.w loc_05b1fc
+	move.w d0,d4
+	bset.b #1,unk_102c38
+
+loc_05b1fc:
+	swap d3
+	swap d4
+	rts
+
+;==============================================
+loc_05b202:
+	movea.l unk_107076,a0
+	move.w ($c,a0),d0
+
 loc_05b20c:
+	move.w d0,d1
+	add.w d0,d0
+	add.w d1,d0
+	asr.w #6,d0
+	rts
 
 ;==============================================
-	org $5b974
-loc_05b974:
+loc_05b216:
+	move.w #$18,d1
+	jsr loc_0b9a22
+	move.w #$8c,($30,a6)
+	move.l #loc_08c5c2,d0
+	tst.b unk_107082
+	bpl.w loc_05b23c
+	move.l #loc_08cda8,d0
 
-	org $5b980
+loc_05b23c:
+	move.l d0,($2c,a6)
+	move.l #loc_05b246,(a6)
+
+loc_05b246:
+	jsr loc_05706a
+	move.w ($3c,a0),d0
+	subq.w #1,d0
+	move.w d0,($3c,a6)
+	jsr loc_057602
+	jsr loc_05929a
+	move.w d0,d1
+	add.w d0,d0
+	add.w d1,d0
+	asr.w #6,d0
+	subq.w #1,d0
+	add.w d0,($32,a6)
+	tst.b unk_107083
+	bne.w loc_05b28a
+	movea.l ($c,a6),a0
+	tst.w ($2c,a0)
+	bmi.w loc_05b28a
+	jsr loc_05b0a8(pc)
+
+loc_05b28a:
+	rts
+
+;==============================================
+loc_05b28c:
+	jsr loc_05b3a6(pc)
+	addi.w #$200,d0
+	andi.w #$fff,d0
+	addi.w #$400,d0
+	andi.w #$c00,d0
+	move.w d0,($40,a6)
+	move.l #loc_05b2aa,(a6)
+
+loc_05b2aa:
+	tst.b unk_10d512
+	bne.w loc_05b2b8
+	jmp loc_05aea0(pc)
+
+loc_05b2b8:
+	move.l #loc_05b2be,(a6)
+
+loc_05b2be:
+	jsr loc_05b3a6(pc)
+	move.w d0,-(a7)
+	jsr loc_00277e
+	add.l d0,d0
+	add.l d0,unk_102c6c
+	move.w (a7)+,d0
+	jsr loc_0027c0
+	add.l d0,d0
+	add.l d0,unk_102c68
+	move.l unk_102c68,d0
+	move.l unk_102c6c,d1
+	lsl.l #2,d0
+	lsl.l #2,d1
+	movea.l unk_107076,a0
+	move.l (4,a0),-(a7)
+	move.l (8,a0),-(a7)
+	move.l d0,(4,a0)
+	move.l d1,(8,a0)
+	jsr loc_05b3a6(pc)
+	movea.l unk_107076,a0
+	move.l (a7)+,(8,a0)
+	move.l (a7)+,(4,a0)
+	andi.w #$c00,d0
+	move.w ($40,a6),d1
+	cmp.w d0,d1
+	beq.w loc_05b33a
+	addi.w #$400,d1
+	andi.w #$c00,d1
+	cmp.w d0,d1
+	beq.w loc_05b33a
+	jmp loc_05aea0(pc)
+
+loc_05b33a:
+	clr.b unk_10d512
+	move.l ($42,a6),d0
+	move.l ($46,a6),d1
+	tst.b unk_107082
+	beq.w loc_05b37c
+	move.w unk_106fd8,d0
+	jsr loc_06d6fa
+	bcs.w loc_05b390
+	lsr.l #2,d0
+	lsr.l #2,d1
+	move.l d0,unk_102c68
+	move.l d1,unk_102c6c
+	move.l #loc_05ae8c,(a6)
+	jmp loc_05aea0(pc)
+
+loc_05b37c:
+	movea.l unk_107076,a0
+	move.l d0,(4,a0)
+	move.l d1,(8,a0)
+	jmp loc_00054a
+
+loc_05b390:
+	move.l ($42,a6),unk_10d4fc
+	move.l ($46,a6),unk_10d500
+	jmp loc_00054a
+
+;==============================================
+loc_05b3a6:
+	jsr loc_057602
+	move.w ($42,a6),d2
+	move.w ($46,a6),d3
+	jmp loc_002c48
+
+;==============================================
+loc_05b3ba:
+	move.w unk_106fd8,d0
+	jsr loc_06d6fa
+	bcc.w loc_05b3da
+	move.w unk_10d4f0,d1
+	move.w unk_10d4f4,d2
+	bra.w loc_05b3e8
+
+loc_05b3da:
+	movea.l unk_107076,a0
+	move.w (4,a0),d1
+	move.w (8,a0),d2
+
+loc_05b3e8:
+	addq.w #1,d2
+	movem.w d1-d2,-(a7)
+	move.w d1,d0
+	move.w d2,d1
+	jsr loc_05b980
+	movem.w (a7)+,d1-d2
+	cmpi.w #$0,d0
+	beq.w loc_05b412
+	cmpi.w #$1,d0
+	beq.w loc_05b412
+	cmpi.w #$2,d0
+	bne.b loc_05b3e8
+
+loc_05b412:
+	addq.w #4,d2
+	move.w d1,($42,a6)
+	move.w d2,($46,a6)
+	tst.b unk_107082
+	beq.w loc_05b33a
+	move.w unk_106fd8,d0
+	jsr loc_06d6fa
+	bcs.w loc_05b33a
+	bra.w loc_05b28c
+
+;==============================================
+loc_05b43a:
+	tst.b unk_107082
+	bmi.w loc_05b4ae
+	movea.l unk_107076,a0
+	lea.l unk_107086,a1
+	move.w (4,a0),d0
+	cmpi.w #$ac,d0
+	bge.w loc_05b468
+	subi.w #$ac,d0
+	add.w d0,($30,a6)
+	bra.w loc_05b47e
+
+loc_05b468:
+	move.w ($a,a1),d1
+	lsl.w #4,d1
+	subi.w #$d4,d1
+	cmp.w d1,d0
+	ble.w loc_05b47e
+	sub.w d1,d0
+	add.w d0,($30,a6)
+
+loc_05b47e:
+	move.w (8,a0),d0
+	cmpi.w #$a0,d0
+	bge.w loc_05b496
+	subi.w #$a0,d0
+	sub.w d0,($32,a6)
+	bra.w loc_05b4ac
+
+loc_05b496:
+	move.w ($c,a1),d1
+	lsl.w #4,d1
+	subi.w #$a0,d1
+	cmp.w d1,d0
+	ble.w loc_05b4ac
+	sub.w d1,d0
+	sub.w d0,($32,a6)
+
+loc_05b4ac:
+	rts
+
+loc_05b4ae:
+	moveq #0,d0
+	jsr loc_05a3ba
+	jsr loc_05929a
+	move.w d0,-(a7)
+	moveq #0,d0
+	jsr loc_05a3ba
+	movea.l unk_107076,a0
+	sub.w (4,a0),d0
+	sub.w (8,a0),d1
+	move.w #$78,d2
+	move.w #$188,d3
+	tst.w ($c,a0)
+	beq.w loc_05b4e8
+	subi.w #$c,d3
+
+loc_05b4e8:
+	sub.w d0,d2
+	add.w d1,d3
+	move.w d2,($30,a6)
+	move.w d3,($32,a6)
+	lea.l loc_06daee,a1
+	jsr loc_0004c6
+	moveq #0,d0
+	tst.w (a7)+
+	beq.w loc_05b50a
+	moveq #$c,d0
+
+loc_05b50a:
+	move.w d0,($14,a0)
+	rts
+
+;==============================================
+loc_05b510:
+	cmpi.b #1,unk_107082
+	bne.w loc_05b5ee
+	lea.l unk_107004,a0
+	cmpa.l unk_107076,a0
+	bne.w loc_05b532
+	lea.l unk_10702a,a0
+
+loc_05b532:
+	tst.b ($22,a0)
+	bne.w loc_05b5ee
+	move.w unk_10d4da,d0
+	cmp.w (8,a0),d0
+	bls.w loc_05b5ee
+	movea.l unk_107076,a1
+	move.w (4,a1),d0
+	move.w (8,a1),d1
+	move.w (4,a0),d2
+	move.w (8,a0),d3
+	sub.w d2,d0
+	sub.w d3,d1
+	move.w unk_10d4f8,d2
+	move.w unk_10d4fa,d3
+	sub.w d0,d2
+	add.w d1,d3
+	tst.l ($c,a0)
+	beq.w loc_05b57e
+	addi.w #$c,d3
+
+loc_05b57e:
+	move.w d2,($30,a6)
+	move.w d3,($32,a6)
+	move.w (8,a0),($3c,a6)
+	move.w (4,a0),d0
+	move.w (8,a0),d1
+	move.l a0,-(a7)
+	jsr loc_05b980
+	movea.l (a7)+,a0
+	move.w d0,($40,a6)
+	cmpi.w #$b,d0
+	bne.w loc_05b5b2
+	tst.b (3,a0)
+	bne.w loc_05b5f4
+
+loc_05b5b2:
+	jsr loc_05b618(pc)
+	move.l #loc_05b5bc,(a6)
+
+loc_05b5bc:
+	jsr loc_059218
+	move.l #loc_08c5c2,($2c,a6)
+	move.w ($24,a6),($20,a6)
+	subq.w #1,($32,a6)
+	jsr loc_000f2e
+	addq.w #1,($32,a6)
+	move.l #loc_08b1e4,($2c,a6)
+	move.w ($40,a6),d7
+	jmp loc_05b0ea(pc)
+
+loc_05b5ee:
+	jmp loc_00054a
+
+loc_05b5f4:
+	move.w #$41,d1
+	jsr loc_0b9a22
+	move.l #loc_09537c,($2c,a6)
+	move.l #loc_05b60c,(a6)
+
+loc_05b60c:
+	jsr loc_059218
+	jmp loc_000f2e
+
+;==============================================
+loc_05b618:
+	move.w #$1d,d1
+	jsr loc_0b9a22
+	move.w #$18,d1
+	jmp loc_0b9a22
+
+;==============================================
+loc_05b62c:
+	jsr loc_05b93a
+	bcs.w loc_05b678
+	cmpi.w #$190,d0
+	bne.w loc_05b678
+	move.w #0,($3c,a6)
+	move.w unk_10d504,($30,a6)
+	move.w unk_10d506,($32,a6)
+	bset.b #1,($12,a6)
+	lea.l loc_003328,a0
+	jsr loc_068600
+	move.l #loc_05b66c,(a6)
+
+loc_05b66c:
+	jsr loc_059218
+	jmp loc_068618
+
+loc_05b678:
+	jmp loc_00054a
+
+;==============================================
+loc_05b67e:
+	jsr loc_06e428
+	lea.l loc_05b71a(pc),a0
+	cmpi.b #$fe,d0
+	ble.w loc_05b6a4
+	addq.w #8,a0
+	cmpi.b #$ff,d0
+	beq.w loc_05b6a4
+	addq.w #8,a0
+	tst.b d0
+	beq.w loc_05b6a4
+	addq.w #8,a0
+
+loc_05b6a4:
+	movem.w (a0)+,d0-d1
+	move.l a0,($2c,a6)
+	move.w d1,-(a7)
+	jsr loc_0804de
+	move.w (a7)+,d0
+	jsr loc_0804de
+	move.w #$b4,($14,a6)
+	move.l #loc_05b6c8,(a6)
+
+loc_05b6c8:
+	subq.w #1,($14,a6)
+	bmi.w loc_05b6d2
+	rts
+
+loc_05b6d2:
+	cmpi.b #2,unk_102eba
+	beq.w loc_05b6fc
+	cmpi.w #$12,unk_10d4bc
+	beq.w loc_05b6fc
+	move.l #loc_05b6f0,(a6)
+
+loc_05b6f0:
+	tst.b unk_10d511
+	bne.w loc_05b6fc
+	rts
+
+loc_05b6fc:
+	movea.l ($2c,a6),a0
+	movem.w (a0)+,d0-d1
+	move.w d1,-(a7)
+	jsr loc_0804de
+	move.w (a7)+,d0
+	jsr loc_0804de
+	jmp loc_00054a
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05b71a:
+	dc.w $1075,$1076,$1083,$1084,$1073,$1074,$1081,$1082
+	dc.w $1077,$1078,$1085,$1086,$1079,$107a,$1087,$1088
+
+loc_05b73a:
+	dc.w $ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff
+	dc.w $ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff
+	dc.w $ffff,$fffe,$fffc,$fff8,$fff0,$ffe0,$ffc0,$ff80
+	dc.w $ff00,$fe00,$fc00,$f800,$f000,$e000,$c000,$8000
+	dc.w $ff00,$ff00,$fe00,$fe00,$fc00,$fc00,$f800,$f800
+	dc.w $f000,$f000,$e000,$e000,$c000,$c000,$8000,$8000
+	dc.w $ffff,$ffff,$fffe,$fffe,$fffc,$fffc,$fff8,$fff8
+	dc.w $fff0,$fff0,$ffe0,$ffe0,$ffc0,$ffc0,$ff80,$ff80
+	dc.w $f000,$f000,$f000,$f000,$e000,$e000,$e000,$e000
+	dc.w $c000,$c000,$c000,$c000,$8000,$8000,$8000,$8000
+	dc.w $ff00,$ff00,$ff00,$ff00,$fe00,$fe00,$fe00,$fe00
+	dc.w $fc00,$fc00,$fc00,$fc00,$f800,$f800,$f800,$f800
+	dc.w $fff0,$fff0,$fff0,$fff0,$ffe0,$ffe0,$ffe0,$ffe0
+	dc.w $ffc0,$ffc0,$ffc0,$ffc0,$ff80,$ff80,$ff80,$ff80
+	dc.w $ffff,$ffff,$ffff,$ffff,$fffe,$fffe,$fffe,$fffe
+	dc.w $fffc,$fffc,$fffc,$fffc,$fff8,$fff8,$fff8,$fff8
+	dc.w $c000,$c000,$c000,$c000,$c000,$c000,$c000,$c000
+	dc.w $8000,$8000,$8000,$8000,$8000,$8000,$8000,$8000
+	dc.w $f000,$f000,$f000,$f000,$f000,$f000,$f000,$f000
+	dc.w $e000,$e000,$e000,$e000,$e000,$e000,$e000,$e000
+	dc.w $fc00,$fc00,$fc00,$fc00,$fc00,$fc00,$fc00,$fc00
+	dc.w $f800,$f800,$f800,$f800,$f800,$f800,$f800,$f800
+	dc.w $ff00,$ff00,$ff00,$ff00,$ff00,$ff00,$ff00,$ff00
+	dc.w $fe00,$fe00,$fe00,$fe00,$fe00,$fe00,$fe00,$fe00
+	dc.w $ffc0,$ffc0,$ffc0,$ffc0,$ffc0,$ffc0,$ffc0,$ffc0
+	dc.w $ff80,$ff80,$ff80,$ff80,$ff80,$ff80,$ff80,$ff80
+	dc.w $fff0,$fff0,$fff0,$fff0,$fff0,$fff0,$fff0,$fff0
+	dc.w $ffe0,$ffe0,$ffe0,$ffe0,$ffe0,$ffe0,$ffe0,$ffe0
+	dc.w $fffc,$fffc,$fffc,$fffc,$fffc,$fffc,$fffc,$fffc
+	dc.w $fff8,$fff8,$fff8,$fff8,$fff8,$fff8,$fff8,$fff8
+	dc.w $ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff,$ffff
+	dc.w $fffe,$fffe,$fffe,$fffe,$fffe,$fffe,$fffe,$fffe
+
+;==============================================
+loc_05b93a:
+	jsr loc_057602
+	movem.w d0-d1,-(a7)
+	jsr loc_05929a
+	jsr loc_05b20c
+	move.w d0,d2
+	movem.w (a7)+,d0-d1
+	sub.w d2,d1
+	jsr loc_059312
+	andi.w #$1fff,d0
+	cmpi.w #$90,d0
+	beq.w loc_05b96e
+	and.b d0,d0
+	rts
+
+loc_05b96e:
+	ori.b #1,ccr
+	rts
+
+;==============================================
+loc_05b974:
+	lsl.l #2,d0
+	lsl.l #2,d1
+	swap d0
+	swap d1
+	bra.w loc_05b980
+
+;==============================================
 loc_05b980:
+	movem.w d0-d1,-(a7)
+	jsr loc_05929a
+	move.w d0,-(a7)
+	jsr loc_05b20c
+	move.w (a7)+,d3
+	move.w d0,d2
+	movem.w (a7)+,d0-d1
+	sub.w d2,d1
+	tst.w d3
+	bpl.w loc_05b9b0
+	cmp.w unk_10d4d4,d1
+	bls.w loc_05b9b0
+	moveq #7,d0
+	rts
+
+loc_05b9b0:
+	lea.l unk_107086,a0
+	lea.l unk_1070a2,a1
+	move.w d0,d2
+	move.w d1,d3
+	andi.w #$f,d0
+	andi.w #$f,d1
+	lsr.w #4,d2
+	lsr.w #4,d3
+	move.w ($c,a0),d4
+	add.w d4,d4
+	mulu.w d2,d4
+	add.w d3,d3
+	andi.l #$ffff,d3
+	add.l d3,d4
+	adda.l d4,a1
+	move.w (a1),d2
+	andi.w #$1fff,d2
+	move.w d2,d3
+	moveq #2,d4
+	cmpi.w #$190,d2
+	beq.w loc_05bad4
+	cmpi.w #$90,d2
+	beq.w loc_05bad4
+	cmpi.w #$c80,d2
+	bcc.w loc_05bb4a
+	cmpi.w #$b00,d2
+	beq.w loc_05bad4
+	andi.w #$f0f,d3
+	cmpi.w #$200,d3
+	beq.w loc_05bad4
+	andi.w #$f00,d3
+	cmpi.w #$400,d3
+	beq.w loc_05bc20
+	move.w d2,d3
+	subi.w #$b80,d3
+	cmpi.w #$100,d3
+	bcs.w loc_05bc18
+	move.w d2,d3
+	andi.w #$f80,d3
+	cmpi.w #$b00,d3
+	beq.w loc_05bc10
+	move.w d2,d3
+	andi.b #$7f,d3
+	moveq #0,d4
+	cmpi.b #$10,d3
+	beq.w loc_05bad4
+	move.w d2,d3
+	andi.w #$1f,d3
+	cmpi.b #$11,d3
+	beq.w loc_05bad4
+	move.w d2,d3
+	andi.w #$70,d3
+	lsr.w #2,d3
+	movea.l loc_05ba6a(pc,d3.w),a0
+	jmp (a0)
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05ba6a:
+	dc.l loc_05baac,loc_05ba8a,loc_05ba90,loc_05ba96
+	dc.l loc_05baaa,loc_05ba9e,loc_05baa8,loc_05baa6
+
+;==============================================
+loc_05ba8a:
+	exg.l d0,d1
+	bra.w loc_05baac
+
+loc_05ba90:
+	not.w d0
+	bra.w loc_05baac
+
+loc_05ba96:
+	exg.l d0,d1
+	not.w d0
+	bra.w loc_05baac
+
+loc_05ba9e:
+	exg.l d0,d1
+	not.w d1
+	bra.w loc_05baac
+
+loc_05baa6:
+	exg.l d0,d1
+
+loc_05baa8:
+	not.w d0
+
+loc_05baaa:
+	not.w d1
+
+loc_05baac:
+	move.w d2,d3
+	andi.w #$f,d3
+	lsl.w #5,d3
+	lea.l loc_05b73a(pc),a0
+	adda.w d3,a0
+	andi.w #$f,d1
+	add.w d1,d1
+	adda.w d1,a0
+	move.w (a0),d1
+	not.w d0
+	andi.w #$f,d0
+	moveq #0,d4
+	btst.l d0,d1
+	beq.w loc_05bad4
+	moveq #2,d4
+
+loc_05bad4:
+	andi.w #$ff80,d2
+	lsr.w #5,d2
+	add.w d4,d2
+	move.w loc_05bae2(pc,d2.w),d0
+
+loc_05bae0:
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05bae2:
+	dc.w $0000,$0001,$0000,$0006
+	dc.w $0001,$0005,$0000,$0007
+	dc.w $0001,$0006,$0001,$0007
+	dc.w $0001,$0002,$0005,$0007
+	dc.w $0003,$0000,$0003,$0001
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0003,$0003,$0003,$0003
+	dc.w $0001,$0002,$000b,$0000
+	dc.w $000b,$0001,$0005,$0005
+
+;==============================================
+loc_05bb4a:
+	cmpi.w #$d00,d2
+	bcs.w loc_05bbd6
+	cmpi.w #$1000,d2
+	bcs.w loc_05bb82
+	cmpi.w #$1280,d2
+	bcc.w loc_05bb9c
+	cmpi.w #$100d,d2
+	beq.w loc_05bb7c
+	andi.w #$1f80,d2
+	cmpi.w #$1080,d2
+	beq.w loc_05bb7c
+	moveq #5,d0
+	bra.w loc_05bae0
+
+loc_05bb7c:
+	moveq #7,d0
+	bra.w loc_05bae0
+
+loc_05bb82:
+	moveq #0,d0
+	cmpi.w #$e00,d2
+	bcs.w loc_05bae0
+	moveq #1,d0
+	cmpi.w #$f00,d2
+	bcs.w loc_05bae0
+	moveq #5,d0
+	bra.w loc_05bae0
+
+loc_05bb9c:
+	move.w d0,d3
+	moveq #8,d0
+	cmpi.w #$12af,d2
+	bls.w loc_05bae0
+	moveq #7,d0
+	cmpi.w #$12bf,d2
+	bls.w loc_05bae0
+	cmpi.b #8,d3
+	scs.b d3
+	andi.w #1,d3
+	cmpi.b #8,d1
+	scs.b d1
+	andi.w #2,d1
+	or.w d3,d1
+	moveq #7,d0
+	btst.l d1,d2
+	beq.w loc_05bbd2
+	moveq #8,d0
+
+loc_05bbd2:
+	bra.w loc_05bae0
+
+loc_05bbd6:
+	move.w d0,d3
+	moveq #8,d0
+	cmpi.w #$c9f,d2
+	bls.w loc_05bae0
+	moveq #5,d0
+	cmpi.w #$c9f,d2
+	bls.w loc_05bae0
+	cmpi.b #8,d3
+	scs.b d3
+	andi.w #1,d3
+	cmpi.b #8,d1
+	scs.b d1
+	andi.w #2,d1
+	or.w d3,d1
+	moveq #5,d0
+	btst.l d1,d2
+	beq.w loc_05bc0c
+	moveq #8,d0
+
+loc_05bc0c:
+	bra.w loc_05bae0
+
+;==============================================
+loc_05bc10:
+	lea.l loc_05fc98(pc),a0
+	bra.w loc_05bc24
+
+loc_05bc18:
+	lea.l loc_05dc98(pc),a0
+	bra.w loc_05bc24
+
+loc_05bc20:
+	lea.l loc_05bc98(pc),a0
+
+loc_05bc24:
+	move.w d2,d3
+	andi.w #$60,d3
+	lsr.w #3,d3
+	movea.l loc_05bc32(pc,d3.w),a1
+	jmp (a1)
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05bc32:
+	dc.l loc_05bc66
+	dc.l loc_05bc42
+	dc.l loc_05bc4e
+	dc.l loc_05bc5e
+
+;==============================================
+loc_05bc42:
+	exg.l d0,d1
+	subi.w #$f,d1
+	neg.w d1
+	bra.w loc_05bc66
+
+loc_05bc4e:
+	subi.w #$f,d0
+	neg.w d0
+	subi.w #$f,d1
+	neg.w d1
+	bra.w loc_05bc66
+
+loc_05bc5e:
+	exg.l d0,d1
+	subi.w #$f,d0
+	neg.w d0
+
+loc_05bc66:
+	moveq #0,d3
+	btst #4,d2
+	beq.w loc_05bc74
+	move.w #$1000,d3
+
+loc_05bc74:
+	move.w d2,d5
+	andi.w #$f,d5
+	mulu.w #$100,d5
+	mulu.w #$10,d1
+	add.w d5,d3
+	add.w d3,d1
+	add.w d1,d0
+	moveq #0,d4
+	tst.b (a0,d0.w)
+	bne.w loc_05bc94
+	moveq #2,d4
+
+loc_05bc94:
+	bra.w loc_05bad4
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_05bc98:
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5bd98
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5be98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+
+
+;5bf98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c098
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c198
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c298
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c398
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c498
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c598
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+
+;5c698
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c798
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+
+;5c898
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5c998
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+
+;5ca98
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+
+;5cb98
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+
+;5cc98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5cd98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5ce98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5cf98
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d098
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d198
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+
+;5d298
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d398
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d498
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d598
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d698
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5d798
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+
+;5d898
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+
+;5d998
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5da98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5db98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+loc_05dc98:
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+
+;5dd98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5de98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5df98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+
+;5e098
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5e198
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+
+;5e298
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5e398
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+
+;5e498
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5e598
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5e698
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5e798
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5e898
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5e998
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5ea98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5eb98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5ec98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+
+;5ed98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5ee98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5ef98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+
+;5f098
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5f198
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+
+;5f298
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5f398
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+
+;5f498
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5f598
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5f698
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5f798
+	dc.b 01,01,01,01,01,01,01,01,01,01,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5f898
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+
+;5f998
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5fa98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5fb98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+loc_05fc98:
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5fd98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,01,01,01,01,01
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,01,01,01
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,01,01
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,01
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;5fe98
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,00,00,00,00,00
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,00,00,00
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,00,00
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,00
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,00
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
+;5ff98
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,01,01,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,01,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,01,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,01,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,01,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,01,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,01,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+
+;60098
+	dc.b 00,00,00,00,00,00,00,00,00,00,00,00,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,00,00,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,00,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,00,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,00,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,00,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,00,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,00,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 00,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+	dc.b 01,01,01,01,01,01,01,01,01,01,01,01,01,01,01,01
+
