@@ -13,6 +13,15 @@ loc_208240:
 	org $2391b8
 loc_2391b8:
 
+	org $23ab98
+loc_23ab98
+	org $23ae98
+loc_23ae98
+	org $23b198
+loc_23b198
+	org $23b498
+loc_23b498
+
 	org $23bd60
 loc_23bd60:
 
@@ -150,6 +159,16 @@ loc_249aac:
 loc_249b1c:
 	org $249b7c
 loc_249b7c:
+
+;============================================
+	org $249bdc
+loc_249bdc:
+	org $24a03c
+loc_24a03c:
+	org $24a57c
+loc_24a57c:
+	org $24ab9c
+loc_24ab9c:
 
 ;============================================
 	org $24b29c
