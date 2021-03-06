@@ -349,6 +349,8 @@ unk_10d844 = 0x10d844
 
 unk_10d972 = 0x10d972
 unk_10d974 = 0x10d974
+unk_10d976 = 0x10d976
+unk_10d978 = 0x10d978
 unk_10d97a = 0x10d97a
 unk_10d97c = 0x10d97c
 unk_10d97e = 0x10d97e
@@ -390,7 +392,7 @@ unk_10eb9c = 0x10eb9c
 unk_10eba0 = 0x10eba0
 unk_10eba4 = 0x10eba4
 unk_10eba8 = 0x10eba8
-
+unk_10ebac = 0x10ebac
 unk_10ebb0 = 0x10ebb0
 unk_10ebbc = 0x10ebbc
 unk_10ebbe = 0x10ebbe
