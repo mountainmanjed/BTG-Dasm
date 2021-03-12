@@ -404,7 +404,7 @@ unk_10ebba = 0x10ebba
 unk_10ebbc = 0x10ebbc
 unk_10ebbe = 0x10ebbe
 unk_10ebc0 = 0x10ebc0
-
+unk_10ebc4 = 0x10ebc4
 unk_10ebc6 = 0x10ebc6
 unk_10ebca = 0x10ebca
 unk_10ebce = 0x10ebce

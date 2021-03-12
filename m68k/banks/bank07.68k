@@ -5,8 +5,25 @@ loc_07001c:
 	org $70020
 loc_070020:
 
+	org $70258
+loc_070258
+	org $70260
+loc_070260
+
 	org $70a90
 loc_070a90:
+
+	org $70a86
+loc_070a86:
+	org $70d92
+loc_070d92:
+	org $70fe4
+loc_070fe4:
+	org $70ff6
+loc_070ff6:
+
+	org $713fe
+loc_0713fe:
 
 	org $717b2
 loc_0717b2:
@@ -54,10 +71,20 @@ loc_07a040
 	org $7a150
 loc_07a150
 
+	org $7afec
+loc_07afec:
+	org $7b398
+loc_07b398:
+	org $7c24e
+loc_07c24e:
+	org $7c258
+loc_07c258:
+
 	org $7cd68
-loc_07cd68
+loc_07cd68:
+
 	org $7ce5a
-loc_07ce5a
+loc_07ce5a:
 
 	org $7d2ce
 loc_07d2ce:
