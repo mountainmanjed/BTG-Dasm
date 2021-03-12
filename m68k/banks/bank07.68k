@@ -20,6 +20,9 @@ loc_07223e:
 	org $73b72
 loc_073b72:
 
+	org $73d34
+loc_073d34
+
 	org $743a6
 loc_0743a6:
 
@@ -32,6 +35,10 @@ loc_07545e
 
 	org $75898
 loc_075898
+
+	org $770a0
+loc_0770a0:
+
 	org $782c6
 loc_0782c6
 	org $78c22
@@ -60,6 +67,9 @@ loc_07d8bc
 
 	org $7db0a
 loc_07db0a:
+
+	org $7e2d4
+loc_07e2d4
 
 	org $7ec9a
 loc_07ec9a:

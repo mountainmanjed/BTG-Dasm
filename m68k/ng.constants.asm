@@ -120,8 +120,6 @@ CONTROLLER_SETUP = 0xC004D4
 
 REG_DIPSW = $300001
 
-CREDCOUNT = $D00034
-SOUNDSTOP = $D00046
 
 SOUNDREG = $320000
 
@@ -143,3 +141,9 @@ REG_TIMERSTOP = 0x3c000e
 palramaddr = $400000
 palramend = $401ffe
 
+
+;==============================================
+;Back Up Ram
+;==============================================
+CREDCOUNT = $D00034
+SOUNDSTOP = $D00046

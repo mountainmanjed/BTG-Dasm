@@ -9615,6 +9615,9 @@ loc_00d326:
 	bsr.w loc_00d172
 	movem.l (a7)+,d2-d4/d7/a0
 	bra.b loc_00d2e2
+
+;==============================================
+loc_00d33c:
 	movem.l d0/d2-d3/d5-d7,-(a7)
 	bsr.b loc_00d2ce
 	movea.w d0,a0
