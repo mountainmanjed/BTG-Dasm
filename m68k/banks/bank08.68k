@@ -7,6 +7,7 @@ loc_0802bc
 loc_0803ce:
 	org $803f6
 loc_0803f6:
+
 	org $8044a
 COIN_SOUND:
 
@@ -82,6 +83,12 @@ loc_08318e:
 
 	org $83ba2
 loc_083ba2:
+
+	org $83cfe
+loc_083cfe:
+
+	org $83d58
+loc_083d58
 
 	org $832f6
 loc_0832f6:
@@ -537,11 +544,150 @@ loc_08c5c2:
 loc_08c680:
 	org $8c68a
 loc_08c68a:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8c702
+loc_08c702
+	org $8c70c
+loc_08c70c
+	org $8c716
+loc_08c716
+	org $8c720
+loc_08c720
+	org $8c72a
+loc_08c72a
+	org $8c734
+loc_08c734
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8c73e
+loc_08c73e
+	org $8c74c
+loc_08c74c
+	org $8c75a
+loc_08c75a
+	org $8c766
+loc_08c766
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8c772
+loc_08c772
+	org $8c788
+loc_08c788
+	org $8c79e
+loc_08c79e
+	org $8c7aa
+loc_08c7aa
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8c7b6
+loc_08c7b6
+	org $8c7ca
+loc_08c7ca
+	org $8c7de
+loc_08c7de
+	org $8c7ee
+loc_08c7ee
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8c7fe
+loc_08c7fe
+	org $8c80c
+loc_08c80c
+	org $8c81a
+loc_08c81a
+	org $8c826
+loc_08c826
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8cb46
+loc_08cb46
+	org $8cb5c
+loc_08cb5c
+	org $8cb72
+loc_08cb72
+	org $8cb7e
+loc_08cb7e
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8cb8a
+loc_08cb8a
+	org $8cb98
+loc_08cb98
+	org $8cba6
+loc_08cba6
+	org $8cbb2
+loc_08cbb2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8cbbe
+loc_08cbbe
+	org $8cbd2
+loc_08cbd2
+	org $8cbe6
+loc_08cbe6
+	org $8cbf2
+loc_08cbf2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8cbfc
+loc_08cbfc
+	org $8cc0a
+loc_08cc0a
+	org $8cc18
+loc_08cc18
+	org $8cc24
+loc_08cc24
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8cc30
+loc_08cc30
+	org $8cc3e
+loc_08cc3e
+	org $8cc4c
+loc_08cc4c
+	org $8cc5a
+loc_08cc5a
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $8cd9e
 loc_08cd9e:
 
 	org $8cda8
 loc_08cda8:
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8d05a
+loc_08d05a
+	org $8d082
+loc_08d082
+	org $8d0aa
+loc_08d0aa
+	org $8d0d2
+loc_08d0d2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8d0ec
+loc_08d0ec
+	org $8d10c
+loc_08d10c
+	org $8d12c
+loc_08d12c
+	org $8d150
+loc_08d150
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8d164
+loc_08d164
+	org $8d17c
+loc_08d17c
+	org $8d194
+loc_08d194
+	org $8d1ac
+loc_08d1ac
+
 
 	org $8d1c0
 loc_08d1c0:
