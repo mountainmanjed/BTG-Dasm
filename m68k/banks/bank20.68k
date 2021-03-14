@@ -35,6 +35,34 @@ loc_23b198
 	org $23b498
 loc_23b498
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $23b798
+loc_23b798:
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $23b860
+loc_23b860
+	org $23b8e0
+loc_23b8e0
+	org $23b960
+loc_23b960
+	org $23b9e0
+loc_23b9e0
+	org $23ba60
+loc_23ba60
+	org $23bae0
+loc_23bae0
+	org $23bb60
+loc_23bb60
+	org $23bbe0
+loc_23bbe0
+	org $23bc60
+loc_23bc60
+	org $23bce0
+loc_23bce0
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $23bd60
 loc_23bd60:
 

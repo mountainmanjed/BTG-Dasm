@@ -1646,6 +1646,33 @@ loc_09c76e:
 	org $9c778
 loc_09c778:
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9c782
+loc_09c782
+	org $9c7ac
+loc_09c7ac
+	org $9c7d6
+loc_09c7d6
+	org $9c800
+loc_09c800
+	org $9c82a
+loc_09c82a
+	org $9c854
+loc_09c854
+	org $9c87e
+loc_09c87e
+	org $9c8a6
+loc_09c8a6
+	org $9c8ce
+loc_09c8ce
+	org $9c8f4
+loc_09c8f4
+	org $9c91c
+loc_09c91c
+	org $9c94c
+loc_09c94c
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 	org $9da74
 loc_09da74:
@@ -1799,9 +1826,63 @@ loc_09e392:
 	org $9e3be
 loc_09e3be:
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9e3ea
+loc_09e3ea
+	org $9e43a
+loc_09e43a
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9e46e
+loc_09e46e
+	org $9e4c6
+loc_09e4c6
+	org $9e50a
+loc_09e50a
+	org $9e526
+loc_09e526
+	org $9e57e
+loc_09e57e
+	org $9e5c2
+loc_09e5c2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9e5de
+loc_09e5de
+
+	org $9e6d6
+loc_09e6d6
+	org $9e6ee
+loc_09e6ee
+	org $9e6fa
+loc_09e6fa
+	org $9e706
+loc_09e706
+	org $9e710
+loc_09e710
+	org $9e71a
+loc_09e71a
+	org $9e724
+loc_09e724
+	org $9e760
+loc_09e760
+	org $9e786
+loc_09e786
+	org $9e7ac
+loc_09e7ac
+	org $9e7d2
+loc_09e7d2
+	org $9e7f2
+loc_09e7f2
+	org $9e818
+loc_09e818
+	org $9e83e
+loc_09e83e
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $9f60e
 loc_09f60e:
 	org $9f618
 loc_09f618:
+
+
