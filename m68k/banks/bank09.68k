@@ -1880,6 +1880,153 @@ loc_09e818
 loc_09e83e
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9e862
+loc_09e862
+	org $9e86c
+loc_09e86c
+	org $9e876
+loc_09e876
+	org $9e882
+loc_09e882
+	org $9e88e
+loc_09e88e
+	org $9e89a
+loc_09e89a
+	org $9e8a6
+loc_09e8a6
+	org $9e8b2
+loc_09e8b2
+	org $9e8c2
+loc_09e8c2
+	org $9e8d2
+loc_09e8d2
+	org $9e8e2
+loc_09e8e2
+	org $9e8f2
+loc_09e8f2
+	org $9e902
+loc_09e902
+	org $9e912
+loc_09e912
+	org $9e922
+loc_09e922
+	org $9e932
+loc_09e932
+	org $9e946
+loc_09e946
+	org $9e95a
+loc_09e95a
+	org $9e96e
+loc_09e96e
+	org $9e982
+loc_09e982
+	org $9e996
+loc_09e996
+	org $9e9ae
+loc_09e9ae
+	org $9e9c6
+loc_09e9c6
+	org $9e9de
+loc_09e9de
+	org $9e9f6
+loc_09e9f6
+	org $9ea12
+loc_09ea12
+	org $9ea2e
+loc_09ea2e
+	org $9ea4a
+loc_09ea4a
+	org $9ea66
+loc_09ea66
+	org $9ea82
+loc_09ea82
+	org $9ea9e
+loc_09ea9e
+	org $9eaba
+loc_09eaba
+	org $9ead6
+loc_09ead6
+	org $9eaf2
+loc_09eaf2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9eb0e
+loc_09eb0e
+	org $9eb18
+loc_09eb18
+	org $9eb22
+loc_09eb22
+	org $9eb2c
+loc_09eb2c
+	org $9eb38
+loc_09eb38
+	org $9eb44
+loc_09eb44
+	org $9eb50
+loc_09eb50
+	org $9eb5c
+loc_09eb5c
+	org $9eb6c
+loc_09eb6c
+	org $9eb7c
+loc_09eb7c
+	org $9eb8c
+loc_09eb8c
+	org $9eb9c
+loc_09eb9c
+	org $9ebac
+loc_09ebac
+	org $9ebbc
+loc_09ebbc
+	org $9ebcc
+loc_09ebcc
+	org $9ebdc
+loc_09ebdc
+	org $9ebf0
+loc_09ebf0
+	org $9ec04
+loc_09ec04
+	org $9ec18
+loc_09ec18
+	org $9ec2c
+loc_09ec2c
+	org $9ec40
+loc_09ec40
+	org $9ec54
+loc_09ec54
+	org $9ec68
+loc_09ec68
+	org $9ec7c
+loc_09ec7c
+	org $9ec94
+loc_09ec94
+	org $9ecac
+loc_09ecac
+	org $9ecc4
+loc_09ecc4
+	org $9ecdc
+loc_09ecdc
+	org $9ecf4
+loc_09ecf4
+	org $9ed0c
+loc_09ed0c
+	org $9ed24
+loc_09ed24
+	org $9ed3c
+loc_09ed3c
+	org $9ed54
+loc_09ed54
+	org $9ed6c
+loc_09ed6c
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9ed84
+loc_09ed84:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $9f60e
 loc_09f60e:
 	org $9f618

@@ -78,6 +78,12 @@ loc_23bf40
 loc_23c440:
 
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $241508
+loc_241508
+	org $241a08
+loc_241a08
+
 ;==============================================
 	org $241f08
 loc_241f08

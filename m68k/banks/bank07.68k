@@ -1,73 +1,4601 @@
 ;==============================================
 loc_070014:
+	move.w #$7063,d3
+	moveq #$22,d6
+	moveq #$1a,d5
 
-
-	org $7001c
 loc_07001c:
+	move.w #$ff,d7
 
-	org $70020
 loc_070020:
+	subq.w #1,d6
+	subq.w #1,d5
+	move.w d5,d4
 
-	org $70258
-loc_070258
-	org $70260
-loc_070260
+loc_070026:
+	movem.w d3/d7,VRAMADDR
+	addq.w #1,d3
+	dbra d5,loc_070026
+	sub.w d4,d3
+	subq.w #1,d3
+	move.w d4,d5
+	addi.w #$20,d3
+	dbra d6,loc_070026
+	rts
 
-	org $70a90
-loc_070a90:
+;==============================================
+loc_070044:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.b loc_070054
+	st.b ($11,a6)
+	rts
 
-	org $70a86
+loc_070054:
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	rts
+
+;==============================================
+loc_070060:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.b loc_07006c
+	rts
+
+loc_07006c:
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	addi.w #$20,d6
+	bra.b loc_070060
+
+;==============================================
+loc_07007c:
+	moveq #0,d4
+
+loc_07007e:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.w loc_07008c
+	rts
+
+loc_07008c:
+	cmpi.b #$ff,d7
+	bne.w loc_07009e
+	addq.w #1,d4
+	addi.w #$20,d6
+	bra.w loc_07007e
+
+loc_07009e:
+	cmpi.b #$fd,d7
+	bne.w loc_0700b2
+	lsl.w #5,d4
+	sub.w d4,d6
+	addq.w #1,d6
+	moveq #0,d4
+	bra.w loc_07007e
+
+loc_0700b2:
+	cmpi.w #$7043,d6
+	bcs.w loc_0700cc
+	cmpi.w #$74bd,d6
+	bhi.w loc_0700cc
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+
+loc_0700cc:
+	addi.w #$20,d6
+	addq.w #1,d4
+	bra.w loc_07007e
+
+;==============================================
+loc_0700d6:
+	moveq #0,d4
+
+loc_0700d8:
+	cmpi.w #$7043,d6
+	bcs.w loc_0700f2
+	cmpi.w #$74bd,d6
+	bhi.w loc_0700f2
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+
+loc_0700f2:
+	addi.w #$20,d6
+	addq.w #1,d4
+	addq.w #1,d7
+	cmp.w d4,d3
+	bne.w loc_070116
+	sub.w d4,d7
+	addi.w #$10,d7
+	lsl.w #5,d4
+	sub.w d4,d6
+	subq.w #1,d2
+	bne.w loc_070112
+	rts
+
+loc_070112:
+	addq.w #1,d6
+	moveq #0,d4
+
+loc_070116:
+	bra.w loc_0700d8
+
+;==============================================
+loc_07011a:
+	moveq #0,d4
+
+loc_07011c:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.w loc_07012a
+	rts
+
+loc_07012a:
+	cmpi.b #$fd,d7
+	bne.w loc_07013e
+	lsl.w #5,d4
+	sub.w d4,d6
+	addq.w #1,d6
+	moveq #0,d4
+	bra.w loc_07011c
+
+loc_07013e:
+	cmpi.w #$7043,d6
+	bcs.w loc_070158
+	cmpi.w #$74bd,d6
+	bhi.w loc_070158
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+
+loc_070158:
+	addi.w #$20,d6
+	addq.w #1,d4
+	bra.w loc_07011c
+
+;==============================================
+loc_070162:
+	moveq #0,d4
+
+loc_070164:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.w loc_070172
+	rts
+
+loc_070172:
+	cmpi.b #$ff,d7
+	bne.w loc_070184
+	addq.w #1,d4
+	addi.w #$20,d6
+	jmp loc_070164(pc)
+
+loc_070184:
+	cmpi.b #$fd,d7
+	bne.w loc_070198
+	lsl.w #5,d4
+	sub.w d4,d6
+	addq.w #1,d6
+	moveq #0,d4
+	jmp loc_070164(pc)
+
+loc_070198:
+	cmpi.w #$7043,d6
+	bcs.w loc_0701e8
+	cmpi.w #$749d,d6
+	bhi.w loc_0701e8
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	addi.w #$20,d6
+	addq.w #1,d7
+	movem.w d6-d7,VRAMADDR
+	subi.w #$20,d6
+	addq.w #1,d6
+	addi.w #$10,d7
+	subq.w #1,d7
+	movem.w d6-d7,VRAMADDR
+	addi.w #$20,d6
+	addq.w #1,d7
+	movem.w d6-d7,VRAMADDR
+	subi.w #$20,d6
+	subq.w #1,d6
+
+loc_0701e8:
+	addi.w #$40,d6
+	addq.w #2,d4
+	jmp loc_070164(pc)
+
+;==============================================
+loc_0701f2:
+	subq.w #1,d4
+	move.w d4,d3
+	lsl.w #5,d3
+	sub.w d3,d6
+
+loc_0701fa:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$fe,d7
+	bne.w loc_070208
+	rts
+
+loc_070208:
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	addi.w #$20,d6
+	dbra d4,loc_0701fa
+	rts
+
+;==============================================
+loc_07021c:
+	moveq #0,d7
+	move.b (a5)+,d7
+	addq.w #1,d3
+	cmpi.b #$fe,d7
+	bne.w loc_07022e
+	jmp loc_070232(pc)
+
+loc_07022e:
+	jmp loc_07021c(pc)
+
+loc_070232:
+	subq.w #1,d4
+	move.w d4,d3
+	lsl.w #5,d3
+	add.w d3,d6
+	suba.l #1,a5
+
+loc_070240:
+	moveq #0,d7
+	move.b -(a5),d7
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	subi.w #$20,d6
+	dbra d4,loc_070240
+	rts
+
+;==============================================
+loc_070258:
+	move.b #1,($4a,a6)
+	bra.b loc_070264
+
+loc_070260:
+	clr.b ($4a,a6)
+
+loc_070264:
+	clr.b ($11,a6)
+	clr.b ($13,a6)
+	tst.b unk_102eba
+	bne.w loc_0702ec
+	lea.l loc_070436(pc),a1
+	jsr loc_0004c6
+	move.b ($4a,a6),($4a,a0)
+
+loc_070286:
+	clr.b ($11,a6)
+	move.l #loc_070290,(a6)
+
+loc_070290:
+	tst.b ($11,a6)
+	beq.w loc_0702b8
+	jsr loc_000598
+	lea.l loc_07034e(pc),a1
+	jsr loc_0004c6
+	lea.l loc_0703dc(pc),a1
+	jsr loc_0004c6
+	clr.b ($13,a6)
+	bra.b loc_0702ba
+
+loc_0702b8:
+	rts
+
+loc_0702ba:
+	clr.b ($11,a6)
+	move.l #loc_0702c4,(a6)
+
+loc_0702c4:
+	tst.b ($11,a6)
+	beq.w loc_0702ea
+	jsr loc_000598
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+	move.l unk_10d4e4,unk_10d4e8
+	jmp loc_00054a
+
+loc_0702ea:
+	rts
+
+loc_0702ec:
+	tst.b ($40,a6)
+	beq.w loc_070308
+	lea.l loc_070436(pc),a1
+	jsr loc_0004c6
+	move.b ($4a,a6),($4a,a0)
+	bra.w loc_070286
+
+loc_070308:
+	lea.l loc_070436(pc),a1
+	jsr loc_0004c6
+	move.b ($4a,a6),($4a,a0)
+	clr.b ($11,a6)
+	move.l #loc_070322,(a6)
+
+loc_070322:
+	tst.b ($11,a6)
+	beq.w loc_07034c
+	movea.l ($c,a6),a1
+	st.b ($11,a1)
+	jsr loc_000598
+	jsr loc_070d92(pc)
+	move.l unk_10d4e4,unk_10d4e8
+	jmp loc_00054a
+
+loc_07034c:
+	rts
+
+;==============================================
+loc_07034e:
+	move.l #$16b013c,($30,a6)
+	move.w #$811e,($3c,a6)
+	move.w #$11d,d1
+	jsr loc_0b9a22
+	move.l #loc_089802,($2c,a6)
+	move.l #loc_070374,(a6)
+
+loc_070374:
+	subq.w #8,($30,a6)
+	cmpi.w #$9f,($30,a6)
+	bhi.w loc_070398
+	move.w #$9f,($30,a6)
+	clr.b ($13,a6)
+	move.l #loc_07039c,(a6)
+	move.w #$78,($14,a6)
+
+loc_070398:
+	bra.w loc_0703b2
+
+loc_07039c:
+	subq.w #1,($14,a6)
+	bne.w loc_0703b2
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+	move.l #loc_0703b2,(a6)
+
+loc_0703b2:
+	move.l #loc_089802,($2c,a6)
+	jsr loc_000f2e
+	addi.w #$5f,($30,a6)
+	move.l #loc_089828,($2c,a6)
+	jsr loc_000f2e
+	subi.w #$5f,($30,a6)
+	rts
+
+;==============================================
+loc_0703dc:
+	move.l #$11015a,($30,a6)
+	move.w #$811d,($3c,a6)
+	move.w #$190,d1
+	jsr loc_0b9a22
+	move.l #loc_089848,($2c,a6)
+	cmpi.b #1,unk_10d4ec
+	bne.w loc_070410
+	move.l #loc_089870,($2c,a6)
+
+loc_070410:
+	move.l #loc_070416,(a6)
+
+loc_070416:
+	addq.w #8,($30,a6)
+	cmpi.w #$dd,($30,a6)
+	blt.w loc_070430
+	move.w #$dd,($30,a6)
+	move.l #loc_000f2e,(a6)
+
+loc_070430:
+	jmp loc_000f2e
+
+;==============================================
+loc_070436:
+	lea.l loc_070db2,a0
+	jsr loc_0b9cb6
+	move.w #$11e,d1
+	jsr loc_0b9a22
+	move.w #$8114,($3c,a6)
+	move.l #loc_0897a2,($2c,a6)
+	move.w #$a8,($48,a6)
+	move.w #$167,($32,a6)
+	clr.b ($3a,a6)
+	clr.b ($11,a6)
+	move.l #loc_070474,(a6)
+
+loc_070474:
+	move.b ($3a,a6),d0
+	lsr.b #4,d0
+	andi.w #$f,d0
+	mulu.w #$b,d0
+	lsr.w #1,d0
+	add.w ($48,a6),d0
+	move.w d0,($30,a6)
+	addi.b #$10,($3a,a6)
+	bcc.w loc_0704e0
+	st.b ($3a,a6)
+	move.w #$f8,($30,a6)
+	tst.b ($4a,a6)
+	bne.w loc_0704b6
+	lea.l loc_070540(pc),a1
+	jsr loc_0004c6
+	bra.w loc_0704da
+
+loc_0704b6:
+	cmpi.b #1,BIOS_COUNTRY_CODE
+	bne.w loc_0704d0
+	lea.l loc_07068c(pc),a1
+	jsr loc_0004c6
+	bra.w loc_0704da
+
+loc_0704d0:
+	lea.l loc_070844(pc),a1
+	jsr loc_0004c6
+
+loc_0704da:
+	move.l #loc_0704e0,(a6)
+
+loc_0704e0:
+	cmpi.b #1,($11,a6)
+	bne.w loc_0704fe
+	move.w #$7171,d3
+	moveq #$13,d6
+	moveq #1,d5
+	jsr loc_07001c
+	move.l #loc_070504,(a6)
+
+loc_0704fe:
+	jmp loc_000f2e
+
+loc_070504:
+	subi.b #$10,($3a,a6)
+	bcc.w loc_070522
+	clr.b ($3a,a6)
+	movea.l ($c,a6),a1
+	move.b #3,($11,a1)
+	jmp loc_00054a
+
+loc_070522:
+	move.b ($3a,a6),d0
+	lsr.b #4,d0
+	andi.w #$f,d0
+	mulu.w #$b,d0
+	lsr.w #1,d0
+	add.w ($48,a6),d0
+	move.w d0,($30,a6)
+	jmp loc_000f2e
+
+;==============================================
+loc_070540:
+	move.l unk_10d4e8,d0
+	swap d0
+	move.w d0,($40,a6)
+	move.l unk_10d4e4,d1
+	swap d1
+	move.w d1,($42,a6)
+	jsr loc_07066a(pc)
+	clr.b ($13,a6)
+	clr.b ($44,a6)
+	jsr loc_0705dc(pc)
+	clr.b ($13,a6)
+	move.l #loc_070572,(a6)
+
+loc_070572:
+	addq.b #1,($13,a6)
+	move.b ($13,a6),d0
+	cmp.b ($14,a6),d0
+	bne.w loc_07059e
+	clr.b ($13,a6)
+	move.w ($40,a6),d0
+	cmp.w ($42,a6),d0
+	bne.w loc_07059a
+	move.l #loc_0705b6,(a6)
+	rts
+
+loc_07059a:
+	addq.w #1,($40,a6)
+
+loc_07059e:
+	move.w ($40,a6),d0
+	jsr loc_056826
+	movea.w #$7271,a1
+	move.w #$6300,d1
+	jmp loc_0567c2
+
+;==============================================
+loc_0705b6:
+	clr.b ($44,a6)
+	clr.b ($13,a6)
+	move.l #loc_0705c4,(a6)
+
+loc_0705c4:
+	move.w ($42,a6),d0
+	jsr loc_056826
+	movea.w #$7271,a1
+	move.w #$6300,d1
+	jsr loc_0567c2
+
+loc_0705dc:
+	lea.l loc_070dc1,a5
+	move.w #$7171,d6
+	move.w #$6300,d5
+	jsr loc_070060
+	lea.l loc_070dc8,a5
+	move.w #$7311,d6
+	move.w #$6300,d5
+	jsr loc_070060
+	move.w #$7251,d0
+	move.w #$6331,d3
+	tst.b unk_10d4ec
+	beq.w loc_070618
+	addq.w #1,d3
+
+loc_070618:
+	movem.w d0/d3,VRAMADDR
+	addq.b #1,($13,a6)
+	cmpi.b #5,($13,a6)
+	bls.w loc_07063c
+	move.w #$7171,d3
+	moveq #$13,d6
+	moveq #1,d5
+	jsr loc_07001c
+
+loc_07063c:
+	cmpi.b #$a,($13,a6)
+	bls.w loc_07064a
+	clr.b ($13,a6)
+
+loc_07064a:
+	addq.b #1,($44,a6)
+	cmpi.b #$b4,($44,a6)
+	bne.w loc_070668
+	movea.l ($c,a6),a1
+	move.b #1,($11,a1)
+	jmp loc_00054a
+
+loc_070668:
+	rts
+
+;==============================================
+loc_07066a:
+	sub.w d0,d1
+	cmpi.w #$64,d1
+	bls.w loc_070676
+	moveq #$64,d1
+
+loc_070676:
+	moveq #0,d7
+	move.w d1,d7
+	divu.w #$a,d7
+	lea.l loc_070f2b,a0
+	move.b (a0,d7.w),($14,a6)
+	rts
+
+;==============================================
+loc_07068c:
+	move.l unk_10d4e8,d0
+	jsr loc_059bf8
+	move.l d0,($40,a6)
+	move.l unk_10d4e4,d0
+	jsr loc_059bf8
+	move.l d0,($44,a6)
+	moveq #0,d1
+	move.w d0,d1
+	mulu.w #$c,d1
+	swap d0
+	add.w d1,d0
+	moveq #0,d1
+	move.w ($42,a6),d1
+	mulu.w #$c,d1
+	add.w ($40,a6),d1
+	jsr loc_07066a(pc)
+	jsr loc_07079a(pc)
+	clr.b ($13,a6)
+	move.l #loc_0706d8,(a6)
+
+loc_0706d8:
+	move.w #$7291,d3
+	moveq #2,d6
+	moveq #1,d5
+	jsr loc_07001c
+	move.w #$7331,d3
+	moveq #2,d6
+	moveq #1,d5
+	jsr loc_07001c
+	jsr loc_0707d8(pc)
+	move.l ($40,a6),d5
+	cmp.l ($44,a6),d5
+	bne.w loc_070714
+	clr.b ($13,a6)
+	clr.b ($48,a6)
+	move.l #loc_070748,(a6)
+	rts
+
+loc_070714:
+	addq.b #1,($13,a6)
+	move.b ($13,a6),d0
+	cmp.b ($14,a6),d0
+	bne.w loc_070746
+	clr.b ($13,a6)
+	move.l ($40,a6),d5
+	cmp.l ($44,a6),d5
+	beq.w loc_070746
+	subq.w #1,($40,a6)
+	bcc.w loc_070746
+	subq.w #1,($42,a6)
+	move.w #$b,($40,a6)
+
+loc_070746:
+	rts
+
+loc_070748:
+	move.w #$7171,d3
+	moveq #$13,d6
+	moveq #1,d5
+	jsr loc_07001c
+	addq.b #1,($13,a6)
+	cmpi.b #5,($13,a6)
+	bhi.w loc_07076c
+	jsr loc_07079a(pc)
+	jsr loc_0707d8(pc)
+
+loc_07076c:
+	cmpi.b #$a,($13,a6)
+	bls.w loc_07077a
+	clr.b ($13,a6)
+
+loc_07077a:
+	addq.b #1,($48,a6)
+	cmpi.b #$78,($48,a6)
+	bne.w loc_070798
+	movea.l ($c,a6),a1
+	move.b #1,($11,a1)
+	jmp loc_00054a
+
+loc_070798:
+	rts
+
+;==============================================
+loc_07079a:
+	move.w #$7251,d0
+	move.w #$6331,d3
+	tst.b unk_10d4ec
+	beq.w loc_0707ae
+	addq.w #1,d3
+
+loc_0707ae:
+	movem.w d0/d3,VRAMADDR
+	lea.l loc_070dc1,a5
+	move.w #$7171,d6
+	move.w #$6300,d5
+	jsr loc_070060
+	move.w #$72d1,d6
+	lea.l loc_070db8,a5
+	bra.w loc_070060
+
+;==============================================
+loc_0707d8:
+	moveq #0,d7
+	move.w ($40,a6),d7
+	cmpi.w #9,d7
+	bls.w loc_0707fe
+	swap d7
+	move.w #$6331,d7
+	move.w #$7331,d6
+	movem.w d6-d7,VRAMADDR
+	swap d7
+	subi.w #$a,d7
+
+loc_0707fe:
+	ori.w #$6330,d7
+	move.w #$7351,d6
+	movem.w d6-d7,VRAMADDR
+	moveq #0,d7
+	move.w ($42,a6),d7
+	cmpi.w #9,d7
+	bls.w loc_070832
+	divu.w #$a,d7
+	ori.w #$6330,d7
+	move.w #$7291,d6
+	movem.w d6-d7,VRAMADDR
+	swap d7
+
+loc_070832:
+	ori.w #$6330,d7
+	move.w #$72b1,d6
+	movem.w d6-d7,VRAMADDR
+	rts
+
+;==============================================
+loc_070844:
+	move.l unk_10d4e8,d0
+	jsr loc_059c12
+	move.l d0,($40,a6)
+	move.l unk_10d4e4,d0
+	jsr loc_059c12
+	move.l d0,($44,a6)
+	moveq #0,d1
+	move.w d0,d1
+	mulu.w #$64,d1
+	swap d0
+	add.w d1,d0
+	moveq #0,d1
+	move.w ($42,a6),d1
+	mulu.w #$64,d1
+	add.w ($40,a6),d1
+	jsr loc_07066a(pc)
+	jsr loc_070952(pc)
+	clr.b ($13,a6)
+	move.l #loc_070890,(a6)
+
+loc_070890:
+	move.w #$72b1,d3
+	moveq #2,d6
+	moveq #1,d5
+	jsr loc_07001c
+	move.w #$7331,d3
+	moveq #2,d6
+	moveq #1,d5
+	jsr loc_07001c
+	move.l ($40,a6),d5
+	cmp.l ($44,a6),d5
+	bne.w loc_0708c8
+	clr.b ($13,a6)
+	clr.b ($48,a6)
+	move.l #loc_070900,(a6)
+	rts
+
+loc_0708c8:
+	jsr loc_0709b0(pc)
+	addq.b #1,($13,a6)
+	move.b ($13,a6),d0
+	cmp.b ($14,a6),d0
+	bne.w loc_0708fe
+	clr.b ($13,a6)
+	move.l ($40,a6),d5
+	cmp.l ($44,a6),d5
+	beq.w loc_0708fe
+	subq.w #1,($40,a6)
+	bcc.w loc_0708fe
+	subq.w #1,($42,a6)
+	move.w #$63,($40,a6)
+
+loc_0708fe:
+	rts
+
+loc_070900:
+	move.w #$7171,d3
+	moveq #$13,d6
+	moveq #1,d5
+	jsr loc_07001c
+	addq.b #1,($13,a6)
+	cmpi.b #5,($13,a6)
+	bhi.w loc_070924
+	jsr loc_070952(pc)
+	jsr loc_0709b0(pc)
+
+loc_070924:
+	cmpi.b #$a,($13,a6)
+	bls.w loc_070932
+	clr.b ($13,a6)
+
+loc_070932:
+	addq.b #1,($48,a6)
+	cmpi.b #$78,($48,a6)
+	bne.w loc_070950
+	movea.l ($c,a6),a1
+	move.b #1,($11,a1)
+	jmp loc_00054a
+
+loc_070950:
+	rts
+
+
+;==============================================
+loc_070952:
+	move.w #$7251,d0
+	move.w #$6331,d3
+	tst.b unk_10d4ec
+	beq.w loc_070966
+	addq.w #1,d3
+
+loc_070966:
+	movem.w d0/d3,VRAMADDR
+	move.w #$72f1,d0
+	move.w #$636d,d3
+	movem.w d0/d3,VRAMADDR
+	addi.w #$80,d0
+	move.w #$6363,d3
+	movem.w d0/d3,VRAMADDR
+	addi.w #$20,d0
+	move.w #$636d,d3
+	movem.w d0/d3,VRAMADDR
+	lea.l loc_070dc1,a5
+	move.w #$7171,d6
+	move.w #$6300,d5
+	bra.w loc_070060
+
+;==============================================
+loc_0709b0:
+	moveq #0,d7
+	move.w ($40,a6),d7
+	cmpi.w #9,d7
+	bls.w loc_0709d4
+	divu.w #$a,d7
+	ori.w #$6330,d7
+	move.w #$7331,d6
+	movem.w d6-d7,VRAMADDR
+	swap d7
+
+loc_0709d4:
+	ori.w #$6330,d7
+	move.w #$7351,d6
+	movem.w d6-d7,VRAMADDR
+	moveq #0,d7
+	move.w ($42,a6),d7
+	cmpi.w #9,d7
+	bls.w loc_070a08
+	divu.w #$a,d7
+	ori.w #$6330,d7
+	move.w #$72b1,d6
+	movem.w d6-d7,VRAMADDR
+	swap d7
+
+loc_070a08:
+	ori.w #$6330,d7
+	move.w #$72d1,d6
+	movem.w d6-d7,VRAMADDR
+	rts
+
+
+;==============================================
+loc_070a1a:
+	move.l unk_10d4e8,d0
+	jsr loc_059c12
+	move.l d0,d1
+	move.l unk_10d4e4,d0
+	jsr loc_059c12
+	bra.w loc_070a52
+	move.l unk_10d4e8,d0
+	jsr loc_059bf8
+	move.l d0,d1
+	move.l unk_10d4e4,d0
+	jsr loc_059bf8
+
+loc_070a52:
+	swap d0
+	swap d1
+	tst.b d7
+	bne.w loc_070a68
+	moveq #0,d7
+	cmp.l d0,d1
+	bcs.w loc_070a66
+	moveq #1,d7
+
+loc_070a66:
+	rts
+
+loc_070a68:
+	tst.b d7
+	beq.w loc_070a7a
+	moveq #0,d7
+	cmp.l d0,d1
+	bhi.w loc_070a78
+	moveq #1,d7
+
+loc_070a78:
+	rts
+
+loc_070a7a
+	rts
+
+;==============================================
+loc_070a7c:
+	move.w #$70aa,d0
+	move.w #$728a,d1
+	bra.b loc_070a98
+
 loc_070a86:
-	org $70d92
+	move.w #$70ac,d0
+	move.w #$728c,d1
+	bra.b loc_070a98
+
+loc_070a90:
+	move.w #$70a9,d0
+	move.w #$7289,d1
+
+loc_070a98:
+	lea.l loc_070df5,a5
+	move.w #$8900,d5
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	addq.w #1,d0
+	move.w d0,d6
+	jsr loc_070060
+	lea.l loc_070e95,a5
+	move.w #$8a00,d5
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	jsr loc_070060
+	addq.w #1,d1
+	move.w d1,d6
+	bra.w loc_070060
+
+;==============================================
+loc_070b6e:
+	move.w d4,d2
+	lea.l loc_070df5,a5
+	move.w #$7269,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$10,a5
+	move.w #$726a,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$20,a5
+	move.w #$726b,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$30,a5
+	move.w #$726c,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$40,a5
+	move.w #$726d,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$50,a5
+	move.w #$726e,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$60,a5
+	move.w #$726f,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$70,a5
+	move.w #$7270,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$80,a5
+	move.w #$7271,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_0701f2
+	lea.l loc_070df5,a5
+	adda.l #$90,a5
+	move.w #$7272,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	bra.w loc_0701f2
+
+;==============================================
+loc_070c80:
+	move.w d4,d2
+	lea.l loc_070e95,a5
+	move.w #$7289,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$f,a5
+	move.w #$728a,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$1e,a5
+	move.w #$728b,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$2d,a5
+	move.w #$728c,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$3c,a5
+	move.w #$728d,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$4b,a5
+	move.w #$728e,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$5a,a5
+	move.w #$728f,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$69,a5
+	move.w #$7290,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$78,a5
+	move.w #$7291,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	jsr loc_07021c
+	lea.l loc_070e95,a5
+	adda.l #$87,a5
+	move.w #$7292,d6
+	move.w #$8900,d5
+	move.w d2,d4
+	bra.w loc_07021c
+
+;==============================================
 loc_070d92:
-	org $70fe4
+	move.w #$70a7,d3
+	moveq #$1d,d6
+	moveq #$d,d5
+	bra.w loc_07001c
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_070d9e:
+	dc.w $0006,$0030
+	dc.w $0008,$002b
+	dc.w $ffff
+
+loc_070da8:
+	dc.w $0006,$0031
+	dc.w $0008,$002c
+	dc.w $ffff
+
+loc_070db2:
+	dc.w $0006,$0017
+	dc.w $ffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_070db8:
+	dc.b "ft.",$ff,$ff,"in.",$fe
+
+loc_070dc1:
+	dc.b "PLAYER",$fe
+loc_070dc8:
+	dc.b "YARDS",$fe
+loc_070dce:
+	dc.b "PRIZE",$fe
+loc_070dd4:
+	dc.b "FOR",$fe
+loc_070dd8:
+	dc.b "THIS",$fe
+loc_070ddd:
+	dc.b "CONTEST",$fe
+loc_070de5:
+	dc.b "REST",$fe
+loc_070dea:
+	dc.b "HOLES",$fe
+loc_070df0:
+	dc.b "HOLE",$fe
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_070df5:
+	dc.b $01,$02,$03,$04,$05,$06,$07,$08
+	dc.b $09,$0a,$0b,$0c,$0d,$0e,$0f,$fe
+	dc.b $11,$12,$13,$14,$15,$16,$17,$18
+	dc.b $19,$1a,$1b,$1c,$1d,$1e,$1f,$fe
+	dc.b $21,$22,$23,$24,$25,$26,$27,$28
+	dc.b $29,$2a,$2b,$2c,$2d,$2e,$2f,$fe
+	dc.b $31,$32,$33,$34,$35,$36,$37,$38
+	dc.b $39,$3a,$3b,$3c,$3d,$3e,$3f,$fe
+	dc.b $41,$42,$43,$44,$45,$46,$47,$48
+	dc.b $49,$4a,$4b,$4c,$4d,$4e,$4f,$fe
+	dc.b $51,$52,$53,$54,$55,$56,$57,$58
+	dc.b $59,$5a,$5b,$5c,$5d,$5e,$5f,$fe
+	dc.b $61,$62,$63,$64,$65,$66,$67,$68
+	dc.b $69,$6a,$6b,$6c,$6d,$6e,$6f,$fe
+	dc.b $71,$72,$73,$74,$75,$76,$77,$78
+	dc.b $79,$7a,$7b,$7c,$7d,$7e,$7f,$fe
+	dc.b $81,$82,$83,$84,$85,$86,$87,$88
+	dc.b $89,$8a,$8b,$8c,$8d,$8e,$8f,$fe
+	dc.b $91,$92,$93,$94,$95,$96,$97,$98
+	dc.b $99,$9a,$9b,$9c,$9d,$9e,$9f,$fe
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_070e95:
+	dc.b $00,$01,$02,$03
+	dc.b $04,$05,$06,$07
+	dc.b $08,$09,$0a,$0b
+	dc.b $0c,$0d,$fe,$10
+	dc.b $11,$12,$13,$14
+	dc.b $15,$16,$17,$18
+	dc.b $19,$1a,$1b,$1c
+	dc.b $1d,$fe,$20,$21
+	dc.b $22,$23,$24,$25
+	dc.b $26,$27,$28,$29
+	dc.b $2a,$2b,$2c,$2d
+	dc.b $fe,$30,$31,$32
+	dc.b $33,$34,$35,$36
+	dc.b $37,$38,$39,$3a
+	dc.b $3b,$3c,$3d,$fe
+	dc.b $40,$41,$42,$43
+	dc.b $44,$45,$46,$47
+	dc.b $48,$49,$4a,$4b
+	dc.b $4c,$4d,$fe,$50
+	dc.b $51,$52,$53,$54
+	dc.b $55,$56,$57,$58
+	dc.b $59,$5a,$5b,$5c
+	dc.b $5d,$fe,$60,$61
+	dc.b $62,$63,$64,$65
+	dc.b $66,$67,$68,$69
+	dc.b $6a,$6b,$6c,$6d
+	dc.b $fe,$70,$71,$72
+	dc.b $73,$74,$75,$76
+	dc.b $77,$78,$79,$7a
+	dc.b $7b,$7c,$7d,$fe
+	dc.b $80,$81,$82,$83
+	dc.b $84,$85,$86,$87
+	dc.b $88,$89,$8a,$8b
+	dc.b $8c,$8d,$fe,$90
+	dc.b $91,$92,$93,$94
+	dc.b $95,$96,$97,$98
+	dc.b $99,$9a,$9b,$9c
+	dc.b $9d,$fe
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_070f2b:
+	dc.b $0f,$08,$05,$04
+	dc.b $03,$03,$02,$02
+	dc.b $02,$01,$01
+	even
+
+;==============================================
+loc_070f36:
+	lea.l loc_071862,a5
+	jsr loc_07376e
+	move.l #loc_070f48,(a6)
+
+loc_070f48:
+	subi.b #$10,($35,a6)
+	bcs.b loc_070f54
+	bra.w loc_0737de
+
+loc_070f54:
+	jsr loc_06cdd6
+	move.l a0,($2c,a6)
+	move.w #$118,d1
+	jsr loc_0b9a22
+	clr.b ($35,a6)
+	move.l #loc_070f72,(a6)
+
+loc_070f72:
+	addi.b #$10,($35,a6)
+	bcs.b loc_070f7e
+	bra.w loc_0737de
+
+loc_070f7e:
+	st.b ($35,a6)
+	move.w #$11a6,d0
+	jsr loc_0804de
+	clr.b ($13,a6)
+	move.l #loc_070f96,(a6)
+
+loc_070f96:
+	addq.b #1,($13,a6)
+	cmpi.b #$1e,($13,a6)
+	beq.b loc_070fa6
+	bra.w loc_0737de
+
+loc_070fa6:
+	move.l #loc_070fac,(a6)
+
+loc_070fac:
+	jsr loc_060268
+	bne.b loc_070fc4
+	addq.b #1,($13,a6)
+	cmpi.b #$78,($13,a6)
+	beq.b loc_070fc4
+	bra.w loc_0737de
+
+loc_070fc4:
+	move.w #$11a6,d0
+	jsr loc_0803ae
+	movea.l ($c,a6),a0
+	move.b #2,($11,a0)
+	jsr loc_070d92
+	jmp loc_00054a
+
 loc_070fe4:
-	org $70ff6
+	move.b #1,($41,a6)
+	move.w #$119f,d0
+	jsr loc_0804de
+	bra.b loc_071012
+
 loc_070ff6:
+	clr.b ($40,a6)
+	jsr loc_05b93a
+	bcs.w loc_070f36
+	clr.b ($41,a6)
+	move.w #$119b,d0
+	jsr loc_0804de
+
+loc_071012:
+	jsr loc_0713e6(pc)
+	move.l #loc_07101e,(a6)
+	rts
 
 ;==============================================
-	org $71386
+loc_07101e:
+	move.w #$70aa,d0
+	jsr loc_071386(pc)
+	tst.b ($41,a6)
+	bne.w loc_071088
+	tst.b BIOS_COUNTRY_CODE
+	beq.w loc_07105c
+	jsr loc_00f4a0
+	subq.w #4,d1
+	lea.l loc_071a16,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ab,a1
+	jsr loc_00d828
+	bra.w loc_071084
+
+loc_07105c:
+	move.w #$8500,d5
+	move.w #$90,d7
+	moveq #$10,d3
+	moveq #2,d2
+	move.w #$70eb,d6
+	jsr loc_0700d6
+	move.w #$b0,d7
+	moveq #$a,d3
+	moveq #2,d2
+	move.w #$72eb,d6
+	jsr loc_0700d6
+
+loc_071084:
+	bra.w loc_0710e2
+
+loc_071088:
+	tst.b BIOS_COUNTRY_CODE
+	beq.w loc_0710b6
+	jsr loc_00f4a0
+	subq.w #4,d1
+	lea.l loc_071aba,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ab,a1
+	jsr loc_00d828
+	bra.w loc_0710e2
+
+loc_0710b6:
+	move.w #$8c00,d5
+	move.w #0,d7
+	moveq #$10,d3
+	moveq #2,d2
+	move.w #$714b,d6
+	jsr loc_0700d6
+	move.w #$8500,d5
+	move.w #$ba,d7
+	moveq #4,d3
+	moveq #2,d2
+	move.w #$734b,d6
+	jsr loc_0700d6
+
+loc_0710e2:
+	move.b #2,($40,a6)
+	move.w #$258,($14,a6)
+	clr.b ($13,a6)
+	move.l #loc_0710f8,(a6)
+
+loc_0710f8:
+	btst.b #3,unk_10d52b
+	beq.w loc_071114
+	move.w #$1067,d0
+	jsr loc_0804de
+	move.b #2,($40,a6)
+
+loc_071114:
+	btst.b #2,unk_10d52b
+	beq.w loc_071130
+	move.w #$1067,d0
+	jsr loc_0804de
+	move.b #1,($40,a6)
+
+loc_071130:
+	move.b ($40,a6),d0
+	moveq #1,d1
+	jsr loc_071364(pc)
+	jsr loc_07132e(pc)
+	moveq #5,d3
+	moveq #3,d2
+	move.w #$71af,d6
+	jsr loc_0700d6
+	move.b ($40,a6),d0
+	moveq #2,d1
+	jsr loc_071364(pc)
+	cmpi.b #2,BIOS_COUNTRY_CODE
+	bne.w loc_071172
+	cmpi.b #1,BIOS_GAME_D9
+	bne.w loc_071172
+	subi.w #$800,d5
+
+loc_071172:
+	jsr loc_07132a(pc)
+	moveq #5,d3
+	moveq #3,d2
+	move.w #$72cf,d6
+	jsr loc_0700d6
+	addq.b #1,($13,a6)
+	cmpi.b #$14,($13,a6)
+	bcs.w loc_0711a4
+	move.b #$14,($13,a6)
+	btst.b #4,unk_10d52b
+	bne.w loc_0711ac
+
+loc_0711a4:
+	subq.w #1,($14,a6)
+	beq.b loc_0711ac
+	rts
+
+loc_0711ac:
+	move.w #$1061,d0
+	jsr loc_0804de
+	clr.b ($13,a6)
+	clr.w ($14,a6)
+	cmpi.b #2,($40,a6)
+	beq.w loc_071276
+	move.l #loc_0711d0,(a6)
+	rts
+
+loc_0711d0:
+	addq.b #1,($13,a6)
+	addq.w #1,($14,a6)
+	cmpi.w #$1e,($14,a6)
+	bne.w loc_071232
+	tst.b ($41,a6)
+	bne.w loc_071232
+	move.w unk_10d4bc,d0
+	move.w unk_10d4b8,d1
+	jsr loc_058988
+	movea.l unk_107076,a0
+	moveq #0,d1
+	move.w unk_10d4bc,d1
+	subq.w #1,d1
+	move.b ($10,a0,d1.w),d1
+	move.w #$106b,d7
+	subq.w #3,d0
+	lea.l loc_071975,a0
+	move.b (a0,d0.w),d2
+	cmp.b d2,d1
+	bhi.w loc_07122a
+	move.w #$106a,d7
+
+loc_07122a:
+	move.w d7,d0
+	jsr loc_0804de
+
+loc_071232:
+	cmpi.b #$78,($13,a6)
+	bls.w loc_071252
+
+loc_07123c:
+	movea.l ($c,a6),a1
+	move.b ($40,a6),($11,a1)
+	jsr loc_070d92
+	jmp loc_00054a
+
+loc_071252:
+	moveq #1,d0
+	btst.b #1,($13,a6)
+	bne.w loc_071260
+	moveq #2,d0
+
+loc_071260:
+	moveq #1,d1
+	jsr loc_071364(pc)
+	jsr loc_07132e(pc)
+	moveq #5,d3
+	moveq #3,d2
+	move.w #$71af,d6
+	bra.w loc_0700d6
+
+loc_071276:
+	move.l #loc_07127e,(a6)
+	rts
+
+loc_07127e:
+	cmpi.b #$78,($13,a6)
+	bne.w loc_0712dc
+	cmpi.b #1,($41,a6)
+	beq.b loc_07123c
+	move.w #$70aa,d0
+	jsr loc_071386(pc)
+	jsr loc_00f4a0
+	lea.l loc_071dbc,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ac,a1
+	jsr loc_00d828
+	move.b ($40,a6),d0
+	moveq #1,d1
+	jsr loc_071364(pc)
+	jsr loc_07132e(pc)
+	moveq #5,d3
+	moveq #3,d2
+	move.w #$71af,d6
+	jsr loc_0700d6
+	move.w #$11a6,d0
+	jsr loc_0804de
+
+loc_0712dc:
+	addq.b #1,($13,a6)
+	cmpi.b #$f0,($13,a6)
+	bhi.w loc_07123c
+	moveq #1,d0
+	btst.b #1,($13,a6)
+	bne.w loc_0712f8
+	moveq #2,d0
+
+loc_0712f8:
+	moveq #1,d1
+	jsr loc_071364(pc)
+	cmpi.b #2,BIOS_COUNTRY_CODE
+	bne.w loc_07131a
+	cmpi.b #1,BIOS_GAME_D9
+	bne.w loc_07131a
+	subi.w #$800,d5
+
+loc_07131a:
+	jsr loc_07132a(pc)
+	moveq #5,d3
+	moveq #3,d2
+	move.w #$72cf,d6
+	bra.w loc_0700d6
+
+;==============================================
+loc_07132a:
+	moveq #-1,d0
+	bra.b loc_071330
+
+loc_07132e:
+	moveq #0,d0
+
+loc_071330:
+	moveq #0,d7
+	move.b BIOS_COUNTRY_CODE,d7
+	cmpi.b #2,d7
+	bne.w loc_071346
+	add.b BIOS_GAME_D9,d7
+
+loc_071346:
+	lsl.w #1,d7
+	lea.l loc_07135a(pc),a0
+	tst.b d0
+	beq.w loc_071354
+	addq.w #1,d7
+
+loc_071354:
+	move.b (a0,d7.w),d7
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_07135a:
+	dc.b $60,$65,$60,$65
+	dc.b $60,$65,$da,$65
+	dc.b $d0,$d5
+
+;==============================================
+loc_071364:
+	jsr loc_073746
+	beq.w loc_071376
+	move.w #$5500,d5
+	bra.w loc_07137a
+
+loc_071376:
+	move.w #$5d00,d5
+
+loc_07137a:
+	cmp.b d0,d1
+	beq.w loc_071384
+	addi.w #$2000,d5
+
+loc_071384:
+	rts
+
+;==============================================
 loc_071386:
-	org $713fe
+	move.w d0,d1
+	addi.w #$1e0,d1
+	move.w d0,-(a7)
+	jsr loc_070a98
+	move.w (a7)+,d0
+	bra.b loc_0713a2
+
+loc_071398:
+	jsr loc_070a90
+	move.w #$70a9,d0
+
+loc_0713a2:
+	move.w d0,d1
+	addi.w #$23e,d1
+	move.w d0,d6
+	move.w #$854b,d7
+	movem.w d6-d7,VRAMADDR
+	lea.l loc_071914,a5
+	addi.w #$fffe,d6
+	move.w #$6500,d5
+	jsr loc_07007c
+	lea.l loc_071954,a5
+	tst.b ($11,a6)
+	bne.w loc_0713de
+	lea.l loc_071950,a5
+
+loc_0713de:
+	move.w d1,d6
+	jmp loc_07007c
+
+;==============================================
+loc_0713e6:
+	lea.l loc_071890,a0
+	tst.b ($11,a6)
+	bne.b loc_0713f8
+	lea.l loc_07187e,a0
+
+loc_0713f8:
+	jmp loc_0b9cb6
+
+ ;==============================================
 loc_0713fe:
-	org $71510
-loc_071510
-	org $71678
+	movea.l unk_107076,a0
+	move.b (a0),($11,a6)
+	jsr loc_0713e6(pc)
+	move.l #loc_071414,(a6)
+	rts
+
+loc_071414:
+	movea.l unk_107076,a0
+	move.b (a0),($11,a6)
+	move.w #$70aa,d0
+	jsr loc_071386(pc)
+	tst.b BIOS_COUNTRY_CODE
+	beq.w loc_071454
+	jsr loc_00f4a0
+	subq.w #4,d1
+	lea.l loc_071c76,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ab,a1
+	jsr loc_00d828
+	bra.w loc_0714b4
+
+loc_071454:
+	move.w #$8d00,d5
+	move.w #$70,d7
+	moveq #8,d3
+	moveq #2,d2
+	move.w #$71ab,d6
+	jsr loc_0700d6
+	move.w #$78,d7
+	moveq #5,d3
+	moveq #2,d2
+	move.w #$72cb,d6
+	jsr loc_0700d6
+	move.w #$90,d7
+	moveq #$10,d3
+	moveq #2,d2
+	move.w #$70ce,d6
+	jsr loc_0700d6
+	move.w #$b0,d7
+	moveq #$c,d3
+	moveq #2,d2
+	move.w #$72ce,d6
+	jsr loc_0700d6
+	lea.l loc_0718e1,a5
+	move.w #$7171,d6
+	move.w #$6400,d5
+	jsr loc_07007c
+
+loc_0714b4:
+	move.w #$119c,d0
+	jsr loc_0804de
+	move.w #$1068,d0
+	jsr loc_0804de
+	clr.b ($13,a6)
+	move.l #loc_0714d2,(a6)
+
+loc_0714d2:
+	addq.b #1,($13,a6)
+	cmpi.b #$1e,($13,a6)
+	beq.b loc_0714e0
+	rts
+
+loc_0714e0:
+	move.l #loc_0714e6,(a6)
+
+loc_0714e6:
+	jsr loc_060268
+	bne.b loc_0714fc
+	addq.b #1,($13,a6)
+	cmpi.b #$b4,($13,a6)
+	beq.b loc_0714fc
+	rts
+
+loc_0714fc:
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+	jsr loc_070d92
+	jmp loc_00054a
+
+;==============================================
+loc_071510:
+	move.w #$11a3,d0
+	jsr loc_0804de
+	moveq #-1,d0
+	move.l d0,($2c,a6)
+	lea.l loc_071874,a0
+	jsr loc_0b9cb6
+	move.b #2,($40,a6)
+	move.l #loc_07153a,(a6)
+	rts
+
+loc_07153a:
+	moveq #0,d4
+	move.b ($40,a6),d4
+	jsr loc_070b6e
+	moveq #0,d4
+	move.b ($40,a6),d4
+	subq.w #1,d4
+	cmpi.w #$d,d4
+	bls.w loc_07155a
+	move.w #$d,d4
+
+loc_07155a:
+	jsr loc_070c80
+	addq.b #1,($40,a6)
+	cmpi.b #$e,($40,a6)
+	beq.b loc_07156e
+	rts
+
+loc_07156e:
+	jsr loc_070a90
+	tst.b BIOS_COUNTRY_CODE
+	beq.w loc_0715a2
+	jsr loc_00f4a0
+	subq.w #4,d1
+	lea.l loc_071bb8,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ab,a1
+	jsr loc_00d828
+	bra.w loc_0715c6
+
+loc_0715a2:
+	move.w #$37,d1
+	jsr loc_0b9a22
+	move.w #$a0,($30,a6)
+	move.w #$188,($32,a6)
+	move.w #$100,($3c,a6)
+	move.l #loc_08f982,($2c,a6)
+
+loc_0715c6:
+	jsr loc_000f08
+	move.l #loc_0715d4,(a6)
+	rts
+
+loc_0715d4
+	tst.b BIOS_COUNTRY_CODE
+	bne.w loc_071602
+	move.w #$718b,d3
+	move.w #$10,d6
+	move.w #2,d5
+	jsr loc_07001c
+	move.w #$70ee,d3
+	move.w #$1a,d6
+	move.w #2,d5
+	jsr loc_07001c
+
+loc_071602:
+	clr.b ($13,a6)
+	jsr loc_000f08
+	move.l #loc_071614,(a6)
+	rts
+
+loc_071614:
+	addq.b #1,($13,a6)
+	cmpi.b #$1e,($13,a6)
+	beq.w loc_071628
+	jmp loc_000f08
+
+loc_071628:
+	move.l #loc_07162e,(a6)
+
+loc_07162e:
+	addq.b #1,($13,a6)
+	cmpi.b #$b4,($13,a6)
+	beq.w loc_07164c
+	jsr loc_060268
+	bne.w loc_07164c
+	jmp loc_000f08
+
+loc_07164c:
+	lea.l loc_00f42c,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_071662,(a6)
+
+loc_071662:
+	tst.b ($11,a6)
+	beq.w loc_071672
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+
+loc_071672:
+	jmp loc_000f08
+
+;==============================================
 loc_071678:
+	lea.l loc_071874,a0
+	jsr loc_0b9cb6
+	move.b #2,($40,a6)
+	move.l #loc_071692,(a6)
+	rts
 
-	org $717b2
+loc_071692:
+	moveq #0,d4
+	move.b ($40,a6),d4
+	jsr loc_070b6e
+	moveq #0,d4
+	move.b ($40,a6),d4
+	subq.w #1,d4
+	cmpi.w #$d,d4
+	bls.w loc_0716b2
+	move.w #$d,d4
+
+loc_0716b2:
+	jsr loc_070c80
+	addq.b #1,($40,a6)
+	cmpi.b #$e,($40,a6)
+	beq.b loc_0716c6
+	rts
+
+loc_0716c6:
+	jsr loc_070a90
+	tst.b BIOS_COUNTRY_CODE
+	bne.w loc_071712
+	lea.l loc_0719d0,a5
+	move.w #$718b,d6
+	move.w #$8c00,d5
+	jsr loc_07007c
+	lea.l loc_0719f8,a5
+	move.w #$71ce,d6
+	move.w #$8500,d5
+	jsr loc_07007c
+	move.w #$71af,d6
+	move.w #$8cfd,d7
+	movem.w d6-d7,VRAMADDR
+	bra.w loc_071732
+
+loc_071712:
+	jsr loc_00f4a0
+	subq.w #4,d1
+	lea.l loc_071b12,a0
+	movea.l (a0,d1.w),a2
+	move.w #$6400,d0
+	movea.w #$70ab,a1
+	jsr loc_00d828
+
+loc_071732:
+	move.w #$1e,($14,a6)
+	move.l #loc_07173e,(a6)
+
+loc_07173e:
+	subq.w #1,($14,a6)
+	bmi.w loc_071748
+	rts
+
+loc_071748:
+	clr.b ($13,a6)
+	move.l #loc_071752,(a6)
+
+loc_071752:
+	jsr loc_060268
+	bne.b loc_07176a
+	addq.b #1,($13,a6)
+	cmpi.b #$b4,($13,a6)
+	beq.w loc_07176a
+	rts
+
+loc_07176a:
+	bra.w loc_0745f2
+
+;==============================================
+loc_07176e:
+	lea.l loc_00f42c,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_071784,(a6)
+
+loc_071784:
+	tst.b ($11,a6)
+	beq.w loc_071794
+	movea.l ($c,a6),a1
+	st.b ($11,a1)
+
+loc_071794:
+	rts
+
+;==============================================
+loc_071796:
+	moveq #0,d7
+	move.b (a5)+,d7
+	cmpi.b #$ff,d7
+	bne.b loc_0717a2
+	rts
+
+loc_0717a2:
+	or.w d5,d7
+	movem.w d6-d7,VRAMADDR
+	addi.w #$20,d6
+	bra.b loc_071796
+
+;==============================================
 loc_0717b2:
+	lea.l loc_07186e,a0
+	jsr loc_0b9cb6
+	move.w #$1e,($14,a6)
+	move.l #loc_0717ca,(a6)
 
-	org $71e1a
+loc_0717ca:
+	subq.w #1,($14,a6)
+	bmi.w loc_0717d4
+	rts
+
+loc_0717d4:
+	move.w #$6900,d5
+	move.w #$c6,d7
+	moveq #$a,d3
+	moveq #4,d2
+	move.w #$70ca,d6
+	jsr loc_0700d6
+	move.w #$69e5,d7
+	move.w #$71ed,d6
+	movem.w d6-d7,VRAMADDR
+	move.w #$6a00,d5
+	move.w #$c0,d7
+	moveq #$d,d3
+	moveq #4,d2
+	move.w #$720a,d6
+	jsr loc_0700d6
+	move.w #$11a8,d0
+	jsr loc_0804de
+	move.w #$1e,($14,a6)
+	move.l #loc_071826,(a6)
+
+loc_071826:
+	subq.w #1,($14,a6)
+	bmi.w loc_071830
+	rts
+
+loc_071830:
+	move.w #$3c,($14,a6)
+	move.l #loc_07183c,(a6)
+
+loc_07183c:
+	subq.w #1,($14,a6)
+	beq.b loc_07184c
+	jsr loc_060268
+	beq.w loc_071860
+
+loc_07184c:
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+	jsr loc_070d92
+	jmp loc_00054a
+
+loc_071860:
+	rts
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071862:
+	dc.l loc_08f5d2
+	dc.w $0090,$0198
+	dc.w $8000,$0119
+
+loc_07186e:
+	dc.w $0006,$003b
+	dc.w $ffff
+
+loc_071874:
+	dc.w $0006,$0033
+	dc.w $0008,$002f
+	dc.w $ffff
+
+loc_07187e:
+	dc.w $0005,$0038
+	dc.w $0006,$0030
+	dc.w $0007,$0037
+	dc.w $0008,$002b
+	dc.w $ffff
+
+loc_071890:
+	dc.w $0005,$003a
+	dc.w $0006,$0031
+	dc.w $0007,$0039
+	dc.w $0008,$002c
+	dc.w $ffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_0718a2:
+	dc.b "YOU",$ff,"MUST",$ff,"GIVE",$ff,"UP",$fe
+
+loc_0718b3:
+	dc.b "PLAYING",$ff,"THIS",$ff,"HOLE.",$fe
+
+loc_0718c6:
+	dc.b "(",$ff,"for",$ff,"over",$ff,"PAR+3",$ff,"strokes",$ff,")",$fe
+
+loc_0718e1:
+	dc.b "+1",$ff,"STROKE",$ff,"PENALTY",$fe
+
+loc_0718f3:
+	dc.b "WILL",$ff,"YOU",$ff,"TRY",$ff,"TO",$ff,"PLAY",$fe
+
+loc_071908:
+	dc.b "FROM",$ff,"HERE",$ff,"?",$fe
+
+loc_071914:
+	dc.b $40,$49,$49,$49,$49,$49,$49,$49,$49,$49,$49,$41,$42,$43,$44
+	dc.b $45,$46,$49,$49,$49,$49,$49,$49,$49,$49,$49,$49,$49,$4a,$fd
+	dc.b $50,$59,$59,$59,$59,$59,$59,$59,$59,$59,$59,$51,$52,$53,$54
+	dc.b $55,$56,$59,$59,$59,$59,$59,$59,$59,$59,$59,$59,$59,$5a,$fe
+
+loc_071950:
+	dc.b $47,$fd
+	dc.b $57,$fe
+
+loc_071954:
+	dc.b $48,$fd
+	dc.b $58,$fe
+
+loc_071958:
+	dc.b "GIVE",$ff,"UP",$ff,"THIS",$ff,"HOLE",$ff,"?",$fe
+
+loc_07196c:
+	dc.b "GIVE",$ff,"UP",$ff,"?"
+
+loc_071975:
+	dc.b 01,02,03,$ff,$ff,$ff
+	dc.b "THE",$ff,"GAME",$ff,"GOES",$fd,$fd
+	dc.b "INTO",$ff,"A",$ff,"SUDDEN-DEATH",$fd,$fd
+	dc.b $ff,$ff,$ff,$ff,$ff,"PLAY",$ff,"OFF!",$fe
+
+loc_0719ae:
+	dc.b "THE",$ff,"FINAL",$ff,"MATCH",$fd
+	dc.b $fd
+	dc.b $fd
+	dc.b $ff,$ff,"HAS",$ff,"FINISHED.",$fe
+
+loc_0719d0:
+	dc.b $ff,$ce,$cf,$e0,$e1,$e2,$e3,$e4
+	dc.b $e5,$e6,$e7,$e8,$e9,$ea,$eb,$fd
+	dc.b $ff,$de,$df,$f0,$f1,$f2,$f3,$f4
+	dc.b $f5,$f6,$f7,$f8,$f9,$fa,$fb,$fd
+	dc.b $fd,$ec,$ed,$ee,$ef,$fd,$fc,$fe
+
+loc_0719f8:
+	dc.b $ff,$ff,$4c,$4d,$4e,$4f,$6a,$6b
+	dc.b $6c,$6d,$6e,$6f,$8a,$8b,$fd,$fb
+	dc.b $fc,$5c,$5d,$5e,$5f,$7a,$7b,$7c
+	dc.b $7d,$7e,$7f,$8c,$8d,$fe
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071a16:
+	dc.l loc_071a22
+	dc.l loc_071a52
+	dc.l loc_071a87
+
+loc_071a22:
+	dc.b "_____WILL_YOU_TRY_TO_PLAY",$fd
+	dc.b $fd
+	dc.b "__________FROM_HERE?",$fe
+
+loc_071a52:
+	dc.b "___",$bd,"desea_tratar_de_golpear",$fd
+	dc.b $fd
+	dc.b "_______dentro_del_agua?",$fe
+
+loc_071a87:
+	dc.b "_______Vai_tentar_tacar",$fd
+	dc.b $fd
+	dc.b "_______de_dentro_d'",$b1,"gua?",$fe
+	even
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071aba:
+	dc.l loc_071ac6
+	dc.l loc_071ae1
+	dc.l loc_071afb
+
+loc_071ac6:
+	dc.b $fd
+	dc.b "______GIVE_UP_THIS_HOLE_?",$fe
+
+loc_071ae1:
+	dc.b $fd
+	dc.b "_____",$bd,"Se_ha_por_vencido?",$fe
+
+loc_071afb:
+	dc.b $fd
+	dc.b "________Vai_desistir?",$fe
+	even
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071b12:
+	dc.l loc_071b1e
+	dc.l loc_071b4e
+	dc.l loc_071b98
+
+loc_071b1e:
+	dc.b "_______THE_FINAL_MATCH",$fd
+	dc.b $fd
+	dc.b $fd
+	dc.b "_________HAS_FINISHED.",$fe
+
+
+loc_071b4e:
+	dc.b "_______Se_ha_terminado",$fd
+	dc.b $fd
+	dc.b "_______la_eliminatoria",$fd
+	dc.b $fd
+	dc.b "_____del_juego_por_hoyos.",$fe
+
+loc_071b98:
+	dc.b $fd
+	dc.b $fd
+	dc.b "__Terminada_a_partida_final.",$fe
+	even
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071bb8:
+	dc.l loc_071bc4
+	dc.l loc_071c09
+	dc.l loc_071c3f
+
+loc_071bc4:
+	dc.b "________THE_GAME_GOES",$fd
+	dc.b $fd
+	dc.b "_____INTO_A_SUDDEN-DEATH",$fd
+	dc.b $fd
+	dc.b "__________PLAY_OFF!",$fe
+
+loc_071c09:
+	dc.b $fd
+	dc.b "____Se_juega_el_desempate",$fd
+	dc.b $fd
+	dc.b "_____del_juego_por_hoyos.",$fe
+
+loc_071c3f:
+	dc.b $fd
+	dc.b "_____Esta_partida_vai_ser",$fd
+	dc.b $fd
+	dc.b "____sudden_death_play-off.",$fe
+	even
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071c76:
+	dc.l loc_071c82
+	dc.l loc_071cee
+	dc.l loc_071d50
+
+loc_071c82:
+	dc.b "_______YOU_MUST_GIVE_UP",$fd
+	dc.b $fd
+	dc.b "_______PLAYING_THIS_HOLE.",$fd
+	dc.b $fd
+	dc.b "__(_for_over_PAR+3_strokes_)",$fd
+	dc.b $fd
+	dc.b "_______+1_STROKE_PENALTY.",$fe
+
+loc_071cee:
+	dc.b "______Abandone_el_hoyo.",$fd
+	dc.b $fd
+	dc.b "________Hay_un_l",$b3,"mite",$fd
+	dc.b $fd
+	dc.b "_______de_golpes_Par+3.",$fd
+	dc.b $fd
+	dc.b "______Multa_de_+1_golpe.",$fe
+
+loc_071d50:
+	dc.b "_____Desista_esta_jogada.",$fd
+	dc.b $fd
+	dc.b "_____O_limite_de_tacada",$fd
+	dc.b $fd
+	dc.b "___para_cada_hole_",$b2,"_par+3.",$fd
+	dc.b $fd
+	dc.b "_____+1_tacada_em_penalty.",$fe
+	even
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_071dbc:
+	dc.l loc_071dcc
+	dc.l loc_071dcc
+	dc.l loc_071de6
+	dc.l loc_071dff
+
+loc_071dcc:
+	dc.b "_______+1_STROKE_PENALTY.",$fe
+
+loc_071de6:
+	dc.b "______Multa_de_+1_golpe.",$fe
+
+loc_071dff:
+	dc.b "_____+1_tacada_em_penalty.",$fe
+	even
+
+;==============================================
 loc_071e1a:
+	jsr loc_070014
+	jsr loc_071ed2(pc)
+	lea.l loc_072092(pc),a1
+	jsr loc_0004c6
+	lea.l loc_0720d2(pc),a1
+	jsr loc_0004c6
+	move.l #loc_071e40,(a6)
+	rts
+
+loc_071e40:
+	jsr loc_071ee4(pc)
+	clr.b ($11,a6)
+	move.l #loc_071e4e,(a6)
+
+loc_071e4e:
+	tst.b ($11,a6)
+	bne.w loc_071e58
+	rts
+
+loc_071e58:
+	lea.l loc_071fd6(pc),a1
+	jsr loc_0004c6
+	lea.l loc_071efa(pc),a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_071e76,(a6)
+
+loc_071e76:
+	cmpi.b #4,($11,a6)
+	beq.w loc_071e82
+	rts
+
+loc_071e82:
+	move.b #$78,($13,a6)
+	cmpi.b #1,unk_102eae
+	bne.w loc_071e9a
+	move.b #$1e,($13,a6)
+
+loc_071e9a:
+	move.l #loc_071ea0,(a6)
+
+
+loc_071ea0:
+	subq.b #1,($13,a6)
+	beq.w loc_071eaa
+	rts
+
+loc_071eaa:
+	lea.l loc_00f42c,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_071ec0,(a6)
+
+loc_071ec0:
+	tst.b ($11,a6)
+	beq.w loc_071ed0
+	movea.l ($c,a6),a0
+	st.b ($11,a0)
+
+loc_071ed0:
+	rts
 
 ;==============================================
-	org $7223e
+loc_071ed2:
+	jsr loc_073b66
+	lea.l loc_072234,a0
+	jmp loc_0b9bde
+
+;==============================================
+loc_071ee4:
+	lea.l loc_241a08,a0
+	jsr loc_073b56
+	lea.l loc_241508,a0
+	bra.w loc_073b56
+
+;==============================================
+loc_071efa:
+	move.w #$102,d1
+	jsr loc_0b9a22
+	move.l #$e80153,($30,a6)
+	move.w #$8014,($3c,a6)
+	move.l #loc_07211c,($40,a6)
+	move.l #loc_07211c,($44,a6)
+	addi.l #$78,($44,a6)
+	clr.b ($13,a6)
+	move.l #loc_071f34,(a6)
+
+loc_071f34:
+	addq.b #1,($13,a6)
+	cmpi.b #4,($13,a6)
+	bcs.w loc_071f4a
+	clr.b ($13,a6)
+	addq.l #4,($40,a6)
+
+loc_071f4a:
+	movea.l ($40,a6),a1
+	cmpi.l #$ffffffff,(a1)
+	beq.w loc_071fc0
+	move.l (a1),($2c,a6)
+	cmpa.l ($44,a6),a1
+	bne.w loc_071f74
+	movea.l ($c,a6),a0
+	move.b #2,($11,a0)
+	move.l #loc_071f74,(a6)
+
+loc_071f74:
+	movea.l ($c,a6),a1
+	cmpi.b #3,($11,a1)
+	bne.w loc_071f8e
+	move.b #2,($13,a6)
+	move.l #loc_071f94,(a6)
+
+loc_071f8e:
+	jmp loc_000f08
+
+loc_071f94:
+	addq.b #1,($13,a6)
+	cmpi.b #6,($13,a6)
+	bcs.w loc_071fba
+	clr.b ($13,a6)
+	addq.l #4,($40,a6)
+	movea.l ($40,a6),a1
+	cmpi.l #$ffffffff,(a1)
+	beq.b loc_071fc0
+	move.l (a1),($2c,a6)
+
+loc_071fba:
+	jmp loc_000f08
+
+loc_071fc0:
+	movea.l ($c,a6),a0
+	move.b #4,($11,a0)
+	move.l #loc_000f08,(a6)
+	jmp loc_000f08
+
+;==============================================
+loc_071fd6:
+	movea.l ($c,a6),a1
+	cmpi.b #2,($11,a1)
+	beq.b loc_071fe4
+	rts
+
+loc_071fe4:
+	move.w #$102,d1
+	jsr loc_0b9a22
+	move.l #$1200153,($30,a6)
+	move.w #$8014,($3c,a6)
+	move.l #loc_0721a8,($40,a6)
+	move.l #loc_0721a8,($44,a6)
+	addi.l #$78,($44,a6)
+	clr.b ($13,a6)
+	move.l #loc_07201e,(a6)
+
+loc_07201e:
+	addq.b #1,($13,a6)
+	cmpi.b #4,($13,a6)
+	bcs.w loc_072034
+	clr.b ($13,a6)
+	addq.l #4,($40,a6)
+
+loc_072034:
+	movea.l ($40,a6),a1
+	move.l (a1),($2c,a6)
+	cmpa.l ($44,a6),a1
+	bne.w loc_072054
+	movea.l ($c,a6),a1
+	move.b #3,($11,a1)
+	move.l #loc_07205a,(a6)
+
+loc_072054:
+	jmp loc_000f08
+
+loc_07205a:
+	addq.b #1,($13,a6)
+	cmpi.b #6,($13,a6)
+	bcs.w loc_072080
+	clr.b ($13,a6)
+	addq.l #4,($40,a6)
+	movea.l ($40,a6),a1
+	cmpi.l #$ffffffff,(a1)
+	beq.b loc_072086
+	move.l (a1),($2c,a6)
+
+loc_072080:
+	jmp loc_000f08
+
+loc_072086:
+	move.l #loc_000f08,(a6)
+	jmp loc_000f08
+
+;==============================================
+loc_072092:
+	move.l #loc_09ed84,($2c,a6)
+	move.l #$1200180,($30,a6)
+	move.w #$8014,($3c,a6)
+	move.w #$102,d1
+	jsr loc_0b9a22
+	move.l #loc_0720b8,(a6)
+
+loc_0720b8:
+	cmpi.w #$1b8,($32,a6)
+	bne.w loc_0720c8
+	move.l #loc_0720cc,(a6)
+
+loc_0720c8:
+	addq.w #1,($32,a6)
+
+loc_0720cc:
+	jmp loc_000f08
+
+;==============================================
+loc_0720d2:
+	move.l #loc_09ed84,($2c,a6)
+	move.l #$1200102,($30,a6)
+	move.w #$8014,($3c,a6)
+	move.w #$102,d1
+	jsr loc_0b9a22
+	move.l #loc_0720f8,(a6)
+
+loc_0720f8:
+	cmpi.w #$ca,($32,a6)
+	bne.w loc_072112
+	movea.l ($c,a6),a0
+	move.b #1,($11,a0)
+	move.l #loc_072116,(a6)
+
+loc_072112:
+	subq.w #1,($32,a6)
+
+loc_072116:
+	jmp loc_000f08
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_07211c:
+	dc.l loc_09e862,loc_09e86c,loc_09e876,loc_09e882
+	dc.l loc_09e88e,loc_09e89a,loc_09e8a6,loc_09e8b2
+	dc.l loc_09e8c2,loc_09e8d2,loc_09e8e2,loc_09e8f2
+	dc.l loc_09e902,loc_09e912,loc_09e922,loc_09e932
+	dc.l loc_09e946,loc_09e95a,loc_09e96e,loc_09e982
+	dc.l loc_09e996,loc_09e9ae,loc_09e9c6,loc_09e9de
+	dc.l loc_09e9f6,loc_09ea12,loc_09ea2e,loc_09ea4a
+	dc.l loc_09ea66,loc_09ea82,loc_09ea9e,loc_09eaba
+	dc.l loc_09ead6,loc_09eaf2,$ffffffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_0721a8:
+	dc.l loc_09eb0e,loc_09eb18,loc_09eb22,loc_09eb2c
+	dc.l loc_09eb38,loc_09eb44,loc_09eb50,loc_09eb5c
+	dc.l loc_09eb6c,loc_09eb7c,loc_09eb8c,loc_09eb9c
+	dc.l loc_09ebac,loc_09ebbc,loc_09ebcc,loc_09ebdc
+	dc.l loc_09ebf0,loc_09ec04,loc_09ec18,loc_09ec2c
+	dc.l loc_09ec40,loc_09ec54,loc_09ec68,loc_09ec7c
+	dc.l loc_09ec94,loc_09ecac,loc_09ecc4,loc_09ecdc
+	dc.l loc_09ecf4,loc_09ed0c,loc_09ed24,loc_09ed3c
+	dc.l loc_09ed54,loc_09ed6c,$ffffffff
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072234:
+	dc.w $0024,$01aa
+	dc.w $0025,$01ab
+	dc.w $ffff
+
+;==============================================
 loc_07223e:
+	clr.b unk_102d29
+	clr.b unk_106fec
+	jsr loc_080c0a
+	moveq #0,d0
+	move.w d0,unk_106fe6
+	lea.l loc_072a3e(pc),a1
+	jsr loc_0004c6
+	move.l #loc_072268,(a6)
+
+loc_072268:
+	movea.l ($c,a6),a1
+	tst.b ($11,a1)
+	bne.b loc_072274
+	rts
+
+loc_072274:
+	lea.l loc_072286(pc),a1
+	jsr loc_0004c6
+	move.l #loc_0725da,(a6)
+	rts
 
 ;==============================================
-	org $73760
+loc_072286:
+	clr.b ($4f,a6)
+	clr.b ($13,a6)
+	move.l #$1000130,($30,a6)
+	move.w #$8005,($3c,a6)
+	move.w #$1b,d1
+	jsr loc_0b9a22
+	move.w #$1e,d1
+	jsr loc_0b9a22
+	clr.b ($4d,a6)
+	clr.b ($4e,a6)
+
+loc_0722b8:
+	clr.b ($4c,a6)
+	movea.l unk_107076,a1
+	moveq #0,d0
+	move.b (1,a1),d0
+	lsl.w #1,d0
+	lea.l loc_072e32,a1
+	move.w (a1,d0.w),d0
+	move.w d0,($44,a6)
+	move.b #0,($41,a6)
+	lea.l loc_072e4a,a1
+	moveq #0,d0
+	move.w unk_106fd6,d0
+	cmpi.w #$b,d0
+	bne.w loc_072300
+	subq.w #2,d0
+	movea.l unk_107076,a2
+	add.b (3,a2),d0
+
+loc_072300:
+	lsl.w #1,d0
+	adda.l d0,a1
+	move.w (a1),d0
+	add.w d0,($44,a6)
+	move.w ($44,a6),d0
+	jsr loc_072574(pc)
+	move.w d0,($44,a6)
+	move.b #1,($43,a6)
+	move.w unk_106fde,($46,a6)
+	move.b ($43,a6),($40,a6)
+	moveq #0,d0
+	move.b #$3e,($42,a6)
+	movea.l unk_107076,a2
+	move.b ($23,a2),d0
+	lsl.w #1,d0
+	add.b d0,($42,a6)
+	cmpi.b #$46,($42,a6)
+	bls.w loc_072352
+	move.b #$46,($42,a6)
+
+loc_072352:
+	clr.b ($48,a6)
+	cmpi.w #$d,unk_106fde
+	bne.w loc_07236e
+	move.b #$3c,($42,a6)
+	move.b #1,($43,a6)
+
+loc_07236e:
+	moveq #0,d0
+	movea.l unk_107076,a2
+	move.b ($23,a2),d0
+	lsl.w #1,d0
+	move.w #$100,($4a,a6)
+	add.w d0,($4a,a6)
+	move.l #loc_07238c,(a6)
+
+loc_07238c:
+	move.w unk_106fde,d0
+	cmp.w ($46,a6),d0
+	bne.w loc_0722b8
+	move.b ($40,a6),d0
+	cmp.b ($42,a6),d0
+	bls.w loc_0723ce
+	move.b ($42,a6),($40,a6)
+	neg.w ($44,a6)
+	movea.l unk_107076,a0
+	cmpi.b #2,(1,a0)
+	bne.w loc_0723ce
+	tst.b ($4c,a6)
+	bne.w loc_0723ce
+	move.b #4,($4c,a6)
+
+loc_0723ce:
+	move.b ($40,a6),d0
+	cmp.b ($43,a6),d0
+	bcc.w loc_0723e4
+	move.b ($43,a6),($40,a6)
+	neg.w ($44,a6)
+
+loc_0723e4:
+	moveq #0,d0
+	lea.l loc_072c6e,a1
+	move.b ($40,a6),d0
+	lsl.w #2,d0
+	move.l (a1,d0.w),($2c,a6)
+	moveq #0,d0
+	move.b ($40,a6),d0
+	lea.l loc_072e64,a1
+	move.b (a1,d0.w),d0
+	move.w d0,unk_106fe6
+	tst.b unk_107084
+	bne.w loc_072496
+	tst.b ($48,a6)
+	bne.w loc_07242e
+	cmpi.b #6,($40,a6)
+	bcs.w loc_07242e
+	st.b ($48,a6)
+
+loc_07242e:
+	tst.b ($48,a6)
+	beq.w loc_072440
+	btst.b #4,unk_10d52b
+	bne.b loc_072474
+
+loc_072440:
+	jsr loc_07249c(pc)
+	tst.b ($4c,a6)
+	bne.w loc_07246e
+	move.w ($44,a6),d1
+	add.w d1,($40,a6)
+	move.b ($43,a6),d0
+	cmp.b ($40,a6),d0
+	ble.w loc_07246a
+	neg.w ($44,a6)
+	move.b ($43,a6),($40,a6)
+
+loc_07246a:
+	bra.w loc_072472
+
+loc_07246e:
+	subq.b #1,($4c,a6)
+
+loc_072472:
+	rts
+
+loc_072474:
+	move.b #1,unk_106fec
+	cmpi.w #$d,unk_106fde
+	bne.w loc_072496
+	st.b unk_106fec
+	move.w #$11,unk_106fe8
+
+loc_072496:
+	move.l #loc_07249c,(a6)
+
+loc_07249c:
+	tst.b unk_106fec
+	beq.w loc_0724d2
+	cmpi.b #$3c,($40,a6)
+	bne.w loc_0724d2
+	addq.b #1,($13,a6)
+	btst.b #1,($13,a6)
+	beq.w loc_0724c4
+	moveq #$e,d2
+	bra.w loc_0724c6
+
+loc_0724c4:
+	moveq #9,d2
+
+loc_0724c6:
+	moveq #9,d1
+	moveq #-1,d3
+	moveq #$1f,d4
+	jsr loc_0b9d86
+
+loc_0724d2:
+	move.b ($40,a6),d0
+	cmp.b ($42,a6),d0
+	bne.w loc_072562
+	cmpi.w #$d,unk_106fde
+	beq.w loc_072562
+	tst.b unk_106fec
+	beq.w loc_072540
+	addq.b #1,($4d,a6)
+	cmpi.b #2,($4d,a6)
+	bcs.w loc_072540
+	jsr loc_0ca6d8
+	addq.b #1,($4e,a6)
+	cmpi.b #$d,($4e,a6)
+	bls.w loc_07251a
+	clr.b ($4e,a6)
+
+loc_07251a:
+	moveq #0,d0
+	move.b ($4e,a6),d0
+	lea.l loc_072e16,a0
+	add.w d0,d0
+	move.w (a0,d0.w),d1
+	jsr loc_0b9a22
+	move.w #$1e,d1
+	jsr loc_0b9a22
+	clr.b ($4d,a6)
+
+loc_072540:
+	move.w ($24,a6),($20,a6)
+	move.w ($4a,a6),($30,a6)
+	move.l ($2c,a6),-(a7)
+	move.l #loc_08a826,($2c,a6)
+	jsr loc_000f2e
+	move.l (a7)+,($2c,a6)
+
+loc_072562:
+	move.w ($22,a6),($20,a6)
+	move.w #$100,($30,a6)
+	jmp loc_000f2e
+
+;==============================================
+loc_072574:
+	tst.b unk_102c3a
+	bne.w loc_07257e
+
+loc_07257e:
+	cmpi.w #6,unk_106fd6
+	bne.w loc_07258c
+	lsl.w #1,d0
+
+loc_07258c:
+	rts
+
+;==============================================
+loc_07258e:
+	moveq #0,d7
+	move.w unk_106fe6,d7
+	move.w #$7244,d6
+	move.w #$1330,d5
+	jmp loc_06ffb0
+
+;==============================================
+loc_0725a4:
+	moveq #0,d7
+	move.w unk_106fe8,d7
+	move.w #$71a6,d6
+	move.w #$1330,d5
+	jsr loc_06ffb0
+	moveq #0,d7
+	move.b ($4b,a6),d7
+	move.w #$71a7,d6
+	jsr loc_06ffb0
+	moveq #0,d7
+	move.b ($4a,a6),d7
+	move.w #$71a8,d6
+	jmp loc_06ffb0
+
+;==============================================
+loc_0725da:
+	move.l #$1030130,($30,a6)
+	move.w #$8005,($3c,a6)
+	move.w #$19,d1
+	jsr loc_0b9a22
+	move.w #$1e,d1
+	jsr loc_0b9a22
+	move.w #$1b,d1
+	jsr loc_0b9a22
+	move.b #1,($3e,a6)
+	clr.b unk_10ebe4
+	clr.b ($48,a6)
+	clr.b ($4c,a6)
+	move.l #loc_072620,(a6)
+
+loc_072620:
+	cmpi.b #1,unk_106fec
+	beq.b loc_07262c
+	rts
+
+loc_07262c:
+	clr.b ($13,a6)
+	move.l #loc_072638,(a6)
+	rts
+
+loc_072638:
+	movea.l unk_107076,a1
+	moveq #0,d0
+	move.b (1,a1),d0
+	lsl.w #1,d0
+	lea.l loc_072e3e,a1
+	move.w (a1,d0.w),d0
+	move.w d0,($44,a6)
+	clr.b ($41,a6)
+	lea.l loc_072e4a,a1
+	moveq #0,d0
+	move.w unk_106fd6,d0
+	cmpi.w #$b,d0
+	bne.w loc_07267a
+	subq.w #2,d0
+	movea.l unk_107076,a2
+	add.b (3,a2),d0
+
+loc_07267a:
+	lsl.w #1,d0
+	adda.l d0,a1
+	move.w (a1),d0
+	add.w d0,($44,a6)
+	move.w ($44,a6),d0
+	jsr loc_072574(pc)
+	move.w d0,($44,a6)
+	clr.b ($43,a6)
+	moveq #0,d0
+	moveq #0,d2
+	move.w unk_106fd6,d2
+	movea.l unk_107076,a3
+	cmpi.w #$b,d2
+	bne.w loc_0726b2
+	subq.w #2,d2
+	add.b (3,a3),d2
+
+loc_0726b2:
+	mulu.w #$1c,d2
+	moveq #0,d6
+	move.b (1,a3),d6
+	mulu.w #$16c,d6
+	lea.l loc_072ebe,a2
+	add.w d2,d6
+	add.w unk_106fde,d6
+	move.b (a2,d6.w),d0
+	subi.b #$b,d0
+	bpl.w loc_0726dc
+	neg.b d0
+
+loc_0726dc:
+	move.b d0,($43,a6)
+	move.b d0,($40,a6)
+	moveq #$22,d1
+	sub.b d0,d1
+	move.b d1,($42,a6)
+	lea.l loc_072ebe,a2
+	move.b (a2,d6.w),d0
+	subi.b #$b,d0
+	bpl.w loc_072700
+	neg.b d0
+
+loc_072700:
+	lea.l loc_072ecc,a2
+	move.b (a2,d6.w),d1
+	add.b d0,d1
+	move.b d1,($4a,a6)
+	subq.b #1,($4a,a6)
+	subi.b #$22,d1
+	bpl.w loc_07271e
+	neg.b d1
+
+loc_07271e:
+	addq.b #1,d1
+	move.b d1,($4b,a6)
+	move.l #loc_07272a,(a6)
+
+loc_07272a:
+	moveq #0,d0
+	move.b ($40,a6),d0
+	cmp.b ($42,a6),d0
+	bls.w loc_072742
+	move.b ($42,a6),($40,a6)
+	neg.w ($44,a6)
+
+loc_072742:
+	moveq #0,d0
+	move.b ($43,a6),d0
+	cmp.b ($40,a6),d0
+	bls.w loc_07275a
+	move.b ($43,a6),($40,a6)
+	neg.w ($44,a6)
+
+loc_07275a:
+	lea.l loc_072d8a,a1
+	move.b ($40,a6),d0
+	lsl.w #2,d0
+	move.l (a1,d0.w),($2c,a6)
+	tst.b unk_107084
+	beq.w loc_07277c
+	jmp loc_00054a
+
+loc_07277c:
+	addq.b #1,($13,a6)
+	cmpi.b #$a,($13,a6)
+	bcs.w loc_07279a
+	move.b #$a,($13,a6)
+	btst.b #4,unk_10d52b
+	bne.b loc_0727c6
+
+loc_07279a:
+	move.w ($44,a6),d1
+	add.w d1,($40,a6)
+	cmpi.b #$c8,($40,a6)
+	bls.w loc_0727b6
+	neg.w ($44,a6)
+	move.b ($43,a6),($40,a6)
+
+loc_0727b6:
+	move.w ($22,a6),($20,a6)
+	jmp loc_000f2e
+
+loc_0727c2:
+	bra.w loc_0729d2
+
+loc_0727c6:
+	st.b unk_106fec
+	moveq #0,d2
+	move.w unk_106fd6,d2
+	move.b ($40,a6),d0
+	cmp.b ($4b,a6),d0
+	bls.w loc_0727e8
+	move.b #1,unk_10ebe4
+
+loc_0727e8:
+	cmp.b ($4a,a6),d0
+	bcc.w loc_0727f8
+	move.b #2,unk_10ebe4
+
+loc_0727f8:
+	clr.b unk_102d29
+	tst.b unk_10ebe4
+	bne.w loc_0728a6
+	move.w unk_106fd6,d0
+	cmpi.w #0,d0
+	beq.b loc_072844
+	cmpi.w #4,d0
+	beq.b loc_072844
+	movea.l unk_107076,a0
+	cmpi.b #1,(1,a0)
+	beq.w loc_0728a6
+	cmpi.w #1,d0
+	beq.b loc_072844
+	cmpi.b #4,(1,a0)
+	bne.w loc_072840
+	cmpi.w #2,d0
+	beq.b loc_072844
+
+loc_072840:
+	bra.w loc_0728a6
+
+loc_072844:
+	cmpi.w #$d,unk_106fde
+	bcc.w loc_0728a6
+	movea.l unk_107076,a5
+	moveq #0,d6
+	move.b (1,a5),d6
+	lsl.w #2,d6
+	lea.l loc_08318e,a5
+	movea.l (a5,d6.w),a5
+	moveq #0,d0
+	move.w unk_106fde,d0
+	lsl.w #2,d0
+	move.w (2,a5,d0.w),d6
+	cmpi.w #9,d6
+	bls.w loc_0728a6
+	btst.b #0,unk_10d52a
+	beq.w loc_072892
+	move.b #2,unk_102d29
+
+loc_072892:
+	btst.b #1,unk_10d52a
+	beq.w loc_0728a6
+	move.b #1,unk_102d29
+
+loc_0728a6:
+	moveq #0,d0
+	move.b ($40,a6),d0
+	move.w d0,unk_106fe8
+	tst.b unk_10ebe4
+	bne.w loc_07296e
+	cmpi.b #$f,d0
+	bcs.w loc_07296e
+	cmpi.b #$13,d0
+	bhi.w loc_07296e
+	cmpi.w #$5f,unk_106fe6
+	bcs.w loc_07296e
+	move.w unk_10d4bc,d0
+	move.w unk_10d4b8,d1
+	jsr loc_058988
+	movea.l unk_107076,a0
+	moveq #0,d1
+	move.w unk_10d4bc,d1
+	subq.w #1,d1
+	move.b ($10,a0,d1.w),d1
+	moveq #0,d7
+	cmpi.w #5,d0
+	bne.w loc_072912
+	cmpi.b #2,d1
+	bgt.w loc_072912
+	moveq #1,d7
+
+loc_072912:
+	cmpi.w #4,d0
+	bne.w loc_072924
+	cmpi.b #1,d1
+	bgt.w loc_072924
+	moveq #1,d7
+
+loc_072924:
+	tst.b d7
+	beq.w loc_07296e
+	movea.l unk_107076,a5
+	moveq #0,d6
+	move.b (1,a5),d6
+	lsl.w #2,d6
+	lea.l loc_08318e,a5
+	movea.l (a5,d6.w),a5
+	moveq #0,d0
+	move.w unk_106fde,d0
+	lsl.w #2,d0
+	move.w (2,a5,d0.w),d6
+	cmpi.w #9,d6
+	bhi.w loc_072960
+	move.b #1,($48,a6)
+	bra.b loc_07296e
+
+loc_072960:
+	cmpi.w #$12,d6
+	bhi.w loc_07296e
+	move.b #2,($48,a6)
+
+loc_07296e:
+	clr.w ($14,a6)
+	move.l #loc_072978,(a6)
+
+loc_072978:
+	tst.b unk_102cef
+	beq.w loc_072986
+	clr.b ($48,a6)
+
+loc_072986:
+	addq.w #1,($14,a6)
+	cmpi.b #1,unk_102eae
+	bne.w loc_0729b6
+	cmpi.w #$46,($14,a6)
+	bne.w loc_0729a4
+	jsr loc_0729de(pc)
+
+loc_0729a4:
+	cmpi.w #$64,($14,a6)
+	bne.w loc_0729b2
+	jsr loc_072a20(pc)
+
+loc_0729b2:
+	bra.w loc_0729d2
+
+loc_0729b6:
+	cmpi.w #$64,($14,a6)
+	bne.w loc_0729c4
+	jsr loc_0729de(pc)
+
+loc_0729c4:
+	cmpi.w #$78,($14,a6)
+	bne.w loc_0729d2
+	jsr loc_072a20(pc)
+
+loc_0729d2:
+	move.w ($22,a6),($20,a6)
+	jmp loc_000f2e
+
+;==============================================
+loc_0729de:
+	tst.b unk_10ebe4
+	bne.b loc_072a1e
+	cmpi.b #1,($48,a6)
+	bne.b loc_072a02
+	move.w #$106d,d0
+	jsr loc_0804de
+	move.w #$116a,d0
+	jsr loc_0804de
+
+loc_072a02:
+	cmpi.b #2,($48,a6)
+	bne.b loc_072a1e
+	move.w #$106e,d0
+	jsr loc_0804de
+	move.w #$116e,d0
+	jsr loc_0804de
+
+loc_072a1e:
+	rts
+
+;==============================================
+loc_072a20:
+	tst.b unk_10ebe4
+	beq.b loc_072a3c
+	move.w #$1068,d0
+	jsr loc_0804de
+	move.w #$1177,d0
+	jsr loc_0804de
+
+loc_072a3c:
+	rts
+
+;==============================================
+loc_072a3e:
+	move.w #$130,($32,a6)
+	move.w #$19,d1
+	jsr loc_0b9a22
+	move.w #$2e,d1
+	jsr loc_0b9a22
+	move.l #loc_072a5e,(a6)
+
+loc_072a5e:
+	moveq #-1,d0
+	move.l d0,($40,a6)
+	move.l d0,($44,a6)
+	moveq #0,d0
+	moveq #0,d2
+	move.w unk_106fd6,d2
+	movea.l unk_107076,a3
+	cmpi.w #$b,d2
+	bne.w loc_072a86
+	subq.w #2,d2
+	add.b (3,a3),d2
+
+loc_072a86:
+	mulu.w #$1c,d2
+	moveq #0,d6
+	move.b (1,a3),d6
+	mulu.w #$16c,d6
+	lea.l loc_072ebe,a2
+	add.w d2,d6
+	add.w unk_106fde,d6
+	move.b (a2,d6.w),d0
+	lsl.w #2,d0
+	lea.l loc_072bae,a1
+	move.l (a1,d0.w),($48,a6)
+	lea.l loc_072ebe,a2
+	move.b (a2,d6.w),d0
+	subi.b #$b,d0
+	bpl.w loc_072ac8
+	neg.b d0
+
+loc_072ac8:
+	lea.l loc_072ecc,a2
+	moveq #0,d1
+	move.b (a2,d6.w),d1
+	add.b d0,d1
+	lsl.w #2,d1
+	lea.l loc_072bde,a1
+	move.l (a1,d1.w),($40,a6)
+	lea.l loc_072c26,a1
+	move.l (a1,d1.w),($44,a6)
+	tst.b unk_106fec
+	beq.w loc_072b00
+	move.l #loc_072b00,(a6)
+
+loc_072b00:
+	move.w #$100,($30,a6)
+	move.w #$8003,($3c,a6)
+	move.w ($22,a6),($20,a6)
+	lea.l loc_072b96,a1
+	moveq #0,d0
+	movea.l unk_107076,a2
+	move.b ($23,a2),d0
+	cmpi.w #$d,unk_106fde
+	bne.w loc_072b32
+	moveq #5,d0
+
+loc_072b32:
+	lsl.w #2,d0
+	move.l (a1,d0.w),($2c,a6)
+	jsr loc_000f2e
+	move.w #$8000,($3c,a6)
+	move.l #loc_089d14,($2c,a6)
+	jsr loc_000f2e
+	move.w #$8001,($3c,a6)
+	move.w ($24,a6),($20,a6)
+	move.l ($40,a6),($2c,a6)
+	jsr loc_000f2e
+	move.l ($44,a6),($2c,a6)
+	jsr loc_000f2e
+	move.w #$102,($30,a6)
+	move.w #$8002,($3c,a6)
+	move.w ($22,a6),($20,a6)
+	move.l ($48,a6),($2c,a6)
+	jmp loc_000f2e
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072b96:
+	dc.l loc_089c90,loc_089ca4,loc_089cc0
+	dc.l loc_089cdc,loc_089cf8,loc_08a830
+
+loc_072bae:
+	dc.l loc_08a77e,loc_08a78c,loc_08a79a
+	dc.l loc_08a7a8,loc_08a7b6,loc_08a7c4
+	dc.l loc_08a7d2,loc_08a7e0,loc_08a7ee
+	dc.l loc_08a7fc,loc_08a80a,loc_08a818
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072bde:
+	dc.l $ffffffff
+	dc.l loc_089dc4,loc_089dba,loc_089db0
+	dc.l loc_089da6,loc_089d9c,loc_089d92
+	dc.l loc_089d88,loc_089d7e,loc_089d74
+	dc.l loc_089d6a,loc_089d60,loc_089d56
+	dc.l loc_089d4c,loc_089d42,loc_089d38
+	dc.l loc_089d2e,loc_089d22
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072c26:
+	dc.l $ffffffff
+	dc.l loc_089e70,loc_089e66,loc_089e5c,loc_089e52
+	dc.l loc_089e48,loc_089e3e,loc_089e34,loc_089e2a
+	dc.l loc_089e20,loc_089e16,loc_089e0c,loc_089e02
+	dc.l loc_089df8,loc_089dee,loc_089de4,loc_089dda
+	dc.l loc_089dce
+	
+loc_072c6e:
+	dc.l loc_08a156,loc_08a160,loc_08a16a
+	dc.l loc_08a174,loc_08a17e,loc_08a188,loc_08a192
+	dc.l loc_08a19c,loc_08a1a6,loc_08a1b0,loc_08a1ba
+	dc.l loc_08a1c4,loc_08a1ce,loc_08a1d8,loc_08a1e2
+	dc.l loc_08a1ec,loc_08a1f6,loc_08a200,loc_08a20c
+	dc.l loc_08a218,loc_08a224,loc_08a230,loc_08a23c
+	dc.l loc_08a248,loc_08a254,loc_08a266,loc_08a278
+	dc.l loc_08a28a,loc_08a29c,loc_08a2ae,loc_08a2c0
+	dc.l loc_08a2d2,loc_08a2ec,loc_08a306,loc_08a320
+	dc.l loc_08a33a,loc_08a354,loc_08a36e,loc_08a388
+	dc.l loc_08a3a2,loc_08a3bc,loc_08a3d6,loc_08a3f0
+	dc.l loc_08a40a,loc_08a424,loc_08a43e,loc_08a458
+	dc.l loc_08a472,loc_08a48c,loc_08a4a8,loc_08a4c4
+	dc.l loc_08a4e0,loc_08a4fc,loc_08a518,loc_08a534
+	dc.l loc_08a550,loc_08a572,loc_08a594,loc_08a5b6
+	dc.l loc_08a5d8,loc_08a5fa,loc_08a616,loc_08a63a
+	dc.l loc_08a65e,loc_08a682,loc_08a6a6,loc_08a6ca
+	dc.l loc_08a6ee,loc_08a712,loc_08a736,loc_08a75a
+
+loc_072d8a:
+	dc.l loc_089a7e,loc_089a88,loc_089a92,loc_089a9c
+	dc.l loc_089aa6,loc_089ab0,loc_089aba,loc_089ac4
+	dc.l loc_089ace,loc_089ad8,loc_089ae2,loc_089aec
+	dc.l loc_089af6,loc_089b00,loc_089b0a,loc_089b14
+	dc.l loc_089b1e,loc_089b28,loc_089b32,loc_089b3c
+	dc.l loc_089b46,loc_089b50,loc_089b5a,loc_089b64
+	dc.l loc_089b6e,loc_089b78,loc_089b82,loc_089b8c
+	dc.l loc_089b96,loc_089ba0,loc_089baa,loc_089bb4
+	dc.l loc_089bbe,loc_089bc8,loc_089bd2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072e16
+	dc.w $0270,$0271,$0272,$0273
+	dc.w $0274,$0275,$0276,$0277
+	dc.w $0278,$0279,$027a,$027b
+	dc.w $027c,$027d
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072e32:
+	dc.w $00f0,$012e
+	dc.w $0097,$0110
+	dc.w $00bc,$0097
+
+loc_072e3e:
+	dc.w $0078,$0097
+	dc.w $004b,$0088
+	dc.w $005e,$004b
+
+loc_072e4a:
+	dc.w $0000,$0020,$0040,$0000
+	dc.w $0000,$0000,$0080,$0000
+	dc.w $0000,$0010,$0020,$0030
+	dc.w $0040
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072e64:
+	dc.b $01,$02,$03,$05,$07,$08,$0a,$0c
+	dc.b $0d,$0f,$11,$12,$14,$15,$17,$19
+	dc.b $1b,$1c,$1e,$20,$21,$23,$25,$26
+	dc.b $28,$2a,$2b,$2d,$2f,$30,$32,$34
+	dc.b $35,$37,$39,$3a,$3c,$3e,$3f,$41
+	dc.b $43,$44,$46,$48,$49,$4b,$4d,$4e
+	dc.b $50,$52,$53,$55,$57,$58,$5a,$5c
+	dc.b $5d,$5f,$60,$61,$64,$66,$68,$6a
+	dc.b $6c,$6e,$70,$72,$74,$76,$78
+	even
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072eac:
+	dc.w $0040,$0039
+	dc.w $002a,$003f
+	dc.w $0020,$0030
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+loc_072eb8:
+	dc.w $0102,$0000,$0201
+
+loc_072ebe:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b
+
+loc_072ecc:
+	dc.w $0c04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404
+	dc.w $0400
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_072ef6:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c08,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_072f12:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_072f2e:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0404
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_072f4a:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_072f66:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c08,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_072f82:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c08,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_072f9e:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_072fba:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c08
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_072fd6:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c09,$0909,$0909,$0909
+	dc.w $0909,$0900
+
+loc_072ff2:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_07300e:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c0b,$0b0b,$0b0b,$0b0b
+	dc.w $0b0b,$0b00
+
+loc_07302a:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_073046:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a08
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_073062:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_07307e:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_07309a:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0606
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0730b6:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a08
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_0730d2:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_0730ee:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_07310a:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a08
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_073126:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a09
+	dc.w $0909,$0909,$0909,$0909
+	dc.w $0909,$0900
+
+loc_073142:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0909,$0909,$0909
+	dc.w $0909,$0900
+
+loc_07315e:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_07317a:
+	dc.w $0404,$0404,$0506,$0606
+	dc.w $0707,$0708,$080b,$0a0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_073196:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_0731b2:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0706
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0731ce:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0708
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_0731ea:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_073206:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0404
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_073222:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0706
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_07323e:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0708
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_07325a:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0708
+	dc.w $0808,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_073276:
+	dc.w $0102,$0303,$0304,$0404
+	dc.w $0505,$0506,$060b,$0706
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_073292:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b09
+	dc.w $0909,$0909,$0909,$0909
+	dc.w $0909,$0900
+
+loc_0732ae:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b0b
+	dc.w $0909,$0909,$0909,$0909
+	dc.w $0909,$0900
+
+loc_0732ca:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b0b
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_0732e6:
+	dc.w $0505,$0606,$0607,$0707
+	dc.w $0808,$0809,$090b,$0b0b
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_073302:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d03
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_07331e:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_07333a:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_073356:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d03
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_073372:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0303
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_07338e:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0733aa:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_0733c6:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_0733e2:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0733fe:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0a
+	dc.w $0a0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+loc_07341a:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0b,$0b0b,$0b0b,$0b0b
+	dc.w $0b0b,$0b00
+
+loc_073436:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0c,$0c0c,$0c0c,$0c0c
+	dc.w $0c0c,$0c00
+
+loc_073452:
+	dc.w $0707,$0708,$0809,$0909
+	dc.w $0a0a,$0a0b,$0b0b,$0d0d
+	dc.w $0d0d,$0d0d,$0d0d,$0d0d
+	dc.w $0d0d,$0d00
+
+loc_07346e:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0803
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_07348a:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0a04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_0734a6:
+	dc.w $0202,$0307,$0708,$0808
+	dc.w $0809,$0909,$090b,$0805
+	dc.w $0505,$0505,$0505,$0505
+	dc.w $0505,$0500
+
+loc_0734c2:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0803
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_0734de:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0303
+	dc.w $0303,$0303,$0303,$0303
+	dc.w $0303,$0300
+
+loc_0734fa:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0a04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_073516:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0202
+	dc.w $0205,$0505,$0505,$0505
+	dc.w $0505,$0500
+
+loc_073532:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0202
+	dc.w $0205,$0505,$0505,$0505
+	dc.w $0505,$0500
+
+loc_07354e:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0a04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_07356a:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c05
+	dc.w $0505,$0505,$0505,$0505
+	dc.w $0505,$0500
+
+loc_073586:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c06,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0735a2:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c07,$0707,$0707,$0707
+	dc.w $0707,$0700
+
+loc_0735be:
+	dc.w $0606,$0607,$0708,$0808
+	dc.w $0909,$090a,$0a0b,$0c0c
+	dc.w $0c08,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_0735da:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0e02
+	dc.w $0202,$0202,$0202,$0202
+	dc.w $0202,$0200
+
+loc_0735f6:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_073612:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f06,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_07362e:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0e02
+	dc.w $0202,$0202,$0202,$0202
+	dc.w $0202,$0200
+
+loc_07364a:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0202
+	dc.w $0202,$0202,$0202,$0202
+	dc.w $0202,$0200
+
+loc_073666:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_073682:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f06,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_07369e:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f06,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0736ba:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f04
+	dc.w $0404,$0404,$0404,$0404
+	dc.w $0404,$0400
+
+loc_0736d6:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f06
+	dc.w $0606,$0606,$0606,$0606
+	dc.w $0606,$0600
+
+loc_0736f2:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f07,$0707,$0707,$0707
+	dc.w $0707,$0700
+
+loc_07370e:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f08,$0808,$0808,$0808
+	dc.w $0808,$0800
+
+loc_07372a:
+	dc.w $0909,$090a,$0a0a,$0a0a
+	dc.w $0b0b,$0b0b,$0b0b,$0f0f
+	dc.w $0f0a,$0a0a,$0a0a,$0a0a
+	dc.w $0a0a,$0a00
+
+;==============================================
+loc_073746:
+	cmpi.b #2,BIOS_COUNTRY_CODE
+	bne.b loc_07375c
+	tst.b BIOS_GAME_D9
+	beq.b loc_07375c
+	moveq #0,d7
+	rts
+
+loc_07375c:
+	moveq #-1,d7
+	rts
+
+;==============================================
 loc_073760:
-	org $73764
+	jsr loc_07376e(pc)
+
 loc_073764:
-	org $7376e
+	move.l #loc_073912,(a6)
+	bra.w loc_073912
+
+;==============================================
 loc_07376e:
-	org $73786
+	jsr loc_073786(pc)
+	move.l (a5)+,($2c,a6)
+	move.l (a5)+,($30,a6)
+	move.w (a5)+,($36,a6)
+	move.w (a5)+,d1
+	jmp loc_0b9a22
+
+;==============================================
 loc_073786:
-	org $73912
+	clr.b ($38,a6)
+	move.w #$ffff,($34,a6)
+	rts
+
+;==============================================
+loc_073792:
+	moveq #2,d6
+	bra.b loc_0737b0
+
+;==============================================
+loc_073796:
+	moveq #1,d6
+	tst.b unk_102eba
+	bne.w loc_0737b0
+	cmpi.b #$ff,unk_107005
+	bne.w loc_0737b0
+	moveq #2,d6
+
+loc_0737b0:
+	moveq #0,d7
+	moveq #1,d4
+	lea.l unk_10eda2,a5
+	move.b (4,a5),d5
+
+loc_0737be:
+	cmp.b (4,a5),d5
+	beq.w loc_0737c8
+	move.w d4,d7
+
+loc_0737c8:
+	btst d6,(7,a5)
+	beq.w loc_0737d2
+	rts
+
+loc_0737d2:
+	addq.w #1,d4
+	move.b (4,a5),d5
+	addq.l #8,a5
+	bra.w loc_0737be
+
+;==============================================
+loc_0737de:
+	lea.l ($2c,a6),a5
+	movea.l (a5)+,a0
+	move.l (a5)+,d0
+	move.b (a5)+,d4
+	move.b (a5)+,d3
+	move.w (a5)+,d1
+	move.b (a5)+,d5
+	move.w ($20,a6),d2
+	jmp loc_00071e
+
+;==============================================
+loc_0737f8:
+	move.l ($30,a6),($56,a6)
+	clr.b ($39,a6)
+	clr.b ($3e,a6)
+	clr.w ($34,a6)
+	move.w ($40,a6),d0
+	subi.w #$a0,d0
+	bpl.w loc_073818
+	neg.w d0
+
+loc_073818:
+	move.w d0,d1
+	lsl.w #3,d1
+	andi.w #$ff,d1
+	move.b d1,($54,a6)
+	lsr.w #5,d0
+	move.w d0,($3a,a6)
+	move.w ($42,a6),d0
+	subi.w #$170,d0
+	bpl.w loc_073838
+	neg.w d0
+
+loc_073838:
+	move.w d0,d1
+	lsl.w #3,d1
+	andi.w #$ff,d1
+	move.b d1,($55,a6)
+	lsr.w #5,d0
+	move.w d0,($3c,a6)
+	move.l #loc_073850,(a6)
+
+loc_073850:
+	move.l ($40,a6),d7
+	cmpi.w #$170,d7
+	bls.w loc_073874
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	addx.w d2,d0
+	move.w d0,($32,a6)
+	bra.b loc_07388e
+
+loc_073874:
+	bcc.w loc_07388e
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	subx.w d2,d0
+	move.w d0,($32,a6)
+
+loc_07388e:
+	swap d7
+	cmpi.w #$a0,d7
+	bls.w loc_0738b0
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	addx.w d2,d0
+	move.w d0,($30,a6)
+	bra.b loc_0738ca
+
+loc_0738b0:
+	bcc.w loc_0738ca
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	subx.w d2,d0
+	move.w d0,($30,a6)
+
+loc_0738ca:
+	addi.w #$808,($34,a6)
+	bcc.w loc_073912
+	move.w #$ffff,($34,a6)
+	move.w ($40,a6),($30,a6)
+	move.w ($42,a6),($32,a6)
+	move.l #loc_0738ec,(a6)
+
+loc_0738ec:
+	move.b ($11,a6),d0
+	cmp.b unk_10ebe4,d0
+	bne.w loc_073912
+	cmpi.b #1,d0
+	bne.w loc_07390c
+	move.l #loc_073a20,(a6)
+	bra.w loc_073912
+
+loc_07390c:
+	move.l #loc_07392c,(a6)
+
 loc_073912:
+	lea.l ($2c,a6),a5
+	movea.l (a5)+,a0
+	move.l (a5)+,d0
+	move.b (a5)+,d4
+	move.b (a5)+,d3
+	move.w (a5)+,d1
+	move.b (a5)+,d5
+	move.w ($20,a6),d2
+	jmp loc_000728
 
+;==============================================
+loc_07392c:
+	tst.b unk_102eba
+	bne.w loc_073956
+	move.w ($42,a6),d0
+	subi.w #$14d,d0
+	bpl.w loc_073944
+	neg.w d0
 
-	org $73b72
+loc_073944:
+	move.w d0,d1
+	lsl.w #3,d1
+	andi.w #$ff,d1
+	move.b d1,($55,a6)
+	lsr.w #5,d0
+	move.w d0,($3c,a6)
+
+loc_073956:
+	moveq #0,d1
+	move.w ($3a,a6),d0
+	move.b ($54,a6),d2
+	lsl.b #1,d2
+	addx.w d1,d0
+	lsl.w #1,d0
+	move.w d0,($3a,a6)
+	move.b d2,($54,a6)
+	moveq #0,d1
+	move.w ($3c,a6),d0
+	move.b ($55,a6),d2
+	lsl.b #1,d2
+	addx.w d1,d0
+	lsl.w #1,d0
+	move.w d0,($3c,a6)
+	move.b d2,($55,a6)
+	move.l #loc_07398c,(a6)
+
+loc_07398c:
+	move.l ($40,a6),d7
+	cmpi.w #$14d,d7
+	bls.w loc_0739b0
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	addx.w d2,d0
+	move.w d0,($32,a6)
+	bra.b loc_0739ca
+
+loc_0739b0:
+	bcc.w loc_0739ca
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	subx.w d2,d0
+	move.w d0,($32,a6)
+
+loc_0739ca:
+	swap d7
+	cmpi.w #$a0,d7
+	bls.w loc_0739ec
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	addx.w d2,d0
+	move.w d0,($30,a6)
+	bra.b loc_073a06
+
+loc_0739ec:
+	bcc.w loc_073a06
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	subx.w d2,d0
+	move.w d0,($30,a6)
+
+loc_073a06:
+	lea.l ($2c,a6),a5
+	movea.l (a5)+,a0
+	move.l (a5)+,d0
+	move.b (a5)+,d4
+	move.b (a5)+,d3
+	move.w (a5)+,d1
+	move.b (a5)+,d5
+	move.w ($20,a6),d2
+	jmp loc_000728
+
+;==============================================
+loc_073a20:
+	move.w #$a8,($40,a6)
+	move.w #$170,($42,a6)
+	move.l ($30,a6),($56,a6)
+	clr.b ($39,a6)
+	clr.b ($3e,a6)
+	move.w ($40,a6),d0
+	sub.w ($30,a6),d0
+	bpl.w loc_073a48
+	neg.w d0
+
+loc_073a48:
+	move.w d0,d1
+	lsl.w #3,d1
+	andi.w #$ff,d1
+	move.b d1,($54,a6)
+	lsr.w #5,d0
+	move.w d0,($3a,a6)
+	move.w ($42,a6),d0
+	sub.w ($32,a6),d0
+	bpl.w loc_073a68
+	neg.w d0
+
+loc_073a68:
+	move.w d0,d1
+	lsl.w #3,d1
+	andi.w #$ff,d1
+	move.b d1,($55,a6)
+	lsr.w #5,d0
+	move.w d0,($3c,a6)
+	move.l #loc_073a80,(a6)
+
+loc_073a80:
+	move.l ($40,a6),d7
+	cmp.w ($58,a6),d7
+	bls.w loc_073aa4
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	addx.w d2,d0
+	move.w d0,($32,a6)
+	bra.b loc_073abe
+
+loc_073aa4:
+	bcc.w loc_073abe
+	move.w ($32,a6),d0
+	move.w ($3c,a6),d2
+	move.b ($55,a6),d1
+	add.b d1,($3e,a6)
+	subx.w d2,d0
+	move.w d0,($32,a6)
+
+loc_073abe:
+	swap d7
+	move.w ($40,a6),d7
+	cmp.w ($56,a6),d7
+	bls.w loc_073ae4
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	addx.w d2,d0
+	move.w d0,($30,a6)
+	bra.b loc_073afe
+
+loc_073ae4:
+	bcc.w loc_073afe
+	move.w ($30,a6),d0
+	move.w ($3a,a6),d2
+	move.b ($54,a6),d1
+	add.b d1,($39,a6)
+	subx.w d2,d0
+	move.w d0,($30,a6)
+
+loc_073afe:
+	subi.w #$808,($34,a6)
+	bcc.w loc_073b0e
+	jmp loc_00054a
+
+loc_073b0e:
+	lea.l ($2c,a6),a5
+	movea.l (a5)+,a0
+	move.l (a5)+,d0
+	move.b (a5)+,d4
+	move.b (a5)+,d3
+	move.w (a5)+,d1
+	move.b (a5)+,d5
+	move.w ($20,a6),d2
+	jmp loc_000728
+
+;==============================================
+loc_073b28:
+	movea.l #unk_107014,a5
+	tst.b d7
+	beq.w loc_073b3a
+	movea.l #unk_10703a,a5
+
+loc_073b3a:
+	moveq #0,d7
+	moveq #$11,d6
+
+loc_073b3e:
+	add.b (a5)+,d7
+	dbra d6,loc_073b3e
+	rts
+
+;==============================================
+loc_073b46:
+	moveq #$10,d6
+	adda.l d6,a5
+	moveq #0,d7
+	moveq #8,d6
+
+loc_073b4e:
+	add.b (a5)+,d7
+	dbra d6,loc_073b4e
+	rts
+
+;==============================================
+loc_073b56:
+	moveq #$14,d0
+	moveq #$10,d1
+	moveq #0,d2
+	moveq #0,d3
+	moveq #0,d4
+	jmp loc_00d2ce
+
+;==============================================
+loc_073b66:
+	moveq #$28,d0
+	moveq #0,d1
+	moveq #0,d2
+	jmp loc_00d0f6
+
+;==============================================
 loc_073b72:
+	jsr loc_070014
+	jsr loc_073b66
+	lea.l loc_07900e,a1
+	jsr loc_0004c6
+	move.l #loc_073b92,(a6)
+	rts
 
-	org $73d34
-loc_073d34
+loc_073b92:
+	jsr loc_073d7c(pc)
+
+loc_073b96:
+	move.w #$1e,($14,a6)
+	move.l #loc_073ba2,(a6)
+
+loc_073ba2:
+	subq.w #1,($14,a6)
+	bmi.w loc_073bac
+	rts
+
+loc_073bac:
+	clr.b ($11,a6)
+	tst.b unk_102eba
+	bne.b loc_073c2a
+	cmpi.b #$ff,unk_107005
+	beq.w loc_073bd6
+	moveq #0,d7
+	jsr loc_073b28
+	move.l #unk_107004,unk_107076
+
+loc_073bd6:
+	cmpi.b #$ff,unk_10702b
+	beq.w loc_073bf4
+	moveq #1,d7
+	jsr loc_073b28
+	move.l #unk_10702a,unk_107076
+
+loc_073bf4:
+	movea.l #unk_100018,a1
+	move.b (a1),d2
+	addi.b #$48,d2
+	cmp.b d7,d2
+	bls.w loc_073d38
+	lea.l loc_073d3c(pc),a1
+	jsr loc_0004c6
+	move.b #1,($11,a0)
+	clr.b ($11,a6)
+	move.l #loc_073c20,(a6)
+
+loc_073c20:
+	tst.b ($11,a6)
+	bne.w loc_073d02
+	rts
+
+loc_073c2a
+	moveq #0,d7
+	jsr loc_073b28
+	move.b d7,d0
+	moveq #1,d7
+	jsr loc_073b28
+	cmp.b d7,d0
+	bhi.w loc_073c5c
+	move.l #unk_107004,($40,a6)
+	move.l #unk_10702a,($44,a6)
+	move.b d0,($54,a6)
+	move.b d7,($56,a6)
+	bra.b loc_073c74
+
+loc_073c5c:
+	move.l #unk_10702a,($40,a6)
+	move.l #unk_107004,($44,a6)
+	move.b d7,($54,a6)
+	move.b d0,($56,a6)
+
+loc_073c74:
+	movea.l #unk_100018,a1
+	move.b (a1),d2
+	addi.b #$48,d2
+	cmp.b ($54,a6),d2
+	bls.w loc_073d38
+	move.l ($40,a6),unk_107076
+	lea.l loc_073d3c(pc),a1
+	jsr loc_0004c6
+	move.b #1,($11,a0)
+	clr.b ($11,a6)
+	move.l #loc_073caa,(a6)
+
+loc_073caa:
+	tst.b ($11,a6)
+	bne.b loc_073cb2
+	rts
+
+loc_073cb2:
+	move.l #loc_073cb8,(a6)
+
+loc_073cb8:
+	movea.l #unk_100018,a1
+	move.b (a1),d2
+	addi.b #$48,d2
+	cmp.b ($56,a6),d2
+	bls.w loc_073d02
+	jsr loc_000598
+	jsr loc_070014
+	move.l ($44,a6),unk_107076
+	lea.l loc_073d3c(pc),a1
+	jsr loc_0004c6
+	move.b #1,($11,a0)
+	clr.b ($11,a6)
+	move.l #loc_073cfa,(a6)
+
+loc_073cfa:
+	tst.b ($11,a6)
+	bne.b loc_073d02
+	rts
+
+loc_073d02:
+	move.w #$a0,d0
+	jsr loc_080494
+	lea.l loc_00f42c,a1
+	jsr loc_0004c6
+	clr.b ($11,a6)
+	move.l #loc_073d22,(a6)
+
+loc_073d22:
+	tst.b ($11,a6)
+	beq.w loc_073d32
+	movea.l ($c,a6),a1
+	st.b ($11,a1)
+
+loc_073d32:
+	rts
+
+loc_073d34:
+	jsr loc_073d76(pc)
+
+loc_073d38:
+	clr.b ($11,a6)
+
+loc_073d3c:
+	lea.l loc_074590,a0
+	jsr loc_0b9cb6
+	tst.b ($11,a6)
+	beq.w loc_073d5a
+	lea.l loc_073dc4(pc),a1
+	jsr loc_0004c6
+
+loc_073d5a:
+	lea.l loc_074120(pc),a1
+	jsr loc_0004c6
+	lea.l loc_0740a0(pc),a1
+	jsr loc_0004c6
+	move.l #loc_073d74,(a6)
+
+loc_073d74:
+	rts
+
+;==============================================
+loc_073d76:
+	jsr loc_073b66
+
+loc_073d7c:
+	moveq #0,d0
+	move.w unk_10d4b8,d0
+	lea.l loc_074580,a0
+	lsl.w #2,d0
+	movea.l (a0,d0.w),a0
+	movem.l d0,-(a7)
+	jsr loc_0b9bde
+	lea.l loc_074570,a0
+	movem.l (a7)+,d0
+	movea.l (a0,d0.w),a0
+	cmpi.w #3,unk_10d4b8
+	bne.w loc_073dc0
+	jsr loc_073b56
+	lea.l loc_239798,a0
+
+loc_073dc0:
+	bra.w loc_073b56
+
+;==============================================
+loc_073dc4:
+	movea.l unk_107076,a1
+	moveq #0,d0
+	moveq #$11,d1
+
+loc_073dce:
+	add.b ($10,a1),d0
+	addq.l #1,a1
+	dbra d1,loc_073dce
+	lea.l unk_100004,a1
+	subi.b #$48,d0
+	moveq #4,d1
+	clr.b ($46,a6)
+
+loc_073de8:
+	addq.b #1,($46,a6)
+	cmp.b (a1),d0
+	blt.b loc_073df6
+	addq.l #5,a1
+	dbra d1,loc_073de8
+
+loc_073df6:
+	movea.l #unk_100013,a1
+	movea.l a1,a2
+	addq.l #5,a2
+
+loc_073e00:
+	move.b (a1)+,(a2)+
+	move.b (a1)+,(a2)+
+	move.b (a1)+,(a2)+
+	move.b (a1)+,(a2)+
+	move.b (a1)+,(a2)+
+	suba.l #$a,a2
+	suba.l #$a,a1
+	dbra d1,loc_073e00
+	lea.l unk_100004,a1
+	moveq #0,d1
+	move.b ($46,a6),d1
+	subq.l #1,d1
+	mulu.w #5,d1
+	adda.l d1,a1
+	move.b d0,(a1)+
+	move.l a1,($42,a6)
+	move.b #0,(a1)+
+	move.b #$e6,(a1)+
+	move.b #$e6,(a1)+
+	move.b unk_10d4b9,(a1)
+	move.w #$724d,($40,a6)
+	move.b ($46,a6),d1
+	subq.l #1,d1
+	mulu.w #3,d1
+	add.w d1,($40,a6)
+	clr.b ($13,a6)
+	clr.b ($46,a6)
+	move.w #$258,($14,a6)
+	move.w #$708,($4a,a6)
+	move.l #loc_073e74,(a6)
+
+loc_073e74:
+	move.b unk_10d515,unk_10d52b
+	move.b unk_10d516,unk_10d52c
+	cmpi.l #unk_10702a,unk_107076
+	bne.w loc_073eaa
+	move.b unk_10d520,unk_10d52b
+	move.b unk_10d521,unk_10d52c
+
+loc_073eaa:
+	btst.b #4,unk_10d52b
+	beq.w loc_073ef8
+	move.w #$1061,d0
+	jsr loc_0804de
+	addq.b #1,($46,a6)
+	movea.l ($42,a6),a1
+	cmpi.b #$e8,(a1)
+	bne.w loc_073ed8
+	move.b #$e6,(a1)
+	bra.w loc_074014
+
+loc_073ed8:
+	cmpi.b #3,($46,a6)
+	beq.w loc_074014
+	addi.w #$40,($40,a6)
+	addq.l #1,($42,a6)
+	addq.l #1,a1
+	cmpi.b #$e6,(a1)
+	bne.w loc_073ef8
+	clr.b (a1)
+
+loc_073ef8:
+	btst.b #6,unk_10d52b
+	bne.b loc_073f0e
+	btst.b #5,unk_10d52b
+	beq.w loc_073f2c
+
+loc_073f0e:
+	tst.b ($46,a6)
+	beq.w loc_073f2c
+	movea.l ($42,a6),a1
+	move.b #$e6,(a1)
+	subq.b #1,($46,a6)
+	subi.w #$40,($40,a6)
+	subq.l #1,($42,a6)
+
+loc_073f2c:
+	btst.b #2,unk_10d52c
+	beq.w loc_073f66
+	move.w #$1067,d0
+	jsr loc_0804de
+	clr.b ($13,a6)
+	movea.l ($42,a6),a1
+	cmpi.b #$e6,(a1)
+	bne.w loc_073f56
+	move.b #$8e,(a1)
+
+loc_073f56:
+	tst.b (a1)
+	bne.w loc_073f60
+	move.b #$ea,(a1)
+
+loc_073f60:
+	subq.b #2,(a1)
+	bclr.b #4,(a1)
+
+loc_073f66:
+	btst.b #3,unk_10d52c
+	beq.w loc_073fb4
+	move.w #$1067,d0
+	jsr loc_0804de
+	clr.b ($13,a6)
+	movea.l ($42,a6),a1
+	cmpi.b #$8c,(a1)
+	bne.w loc_073f90
+	move.b #$e4,(a1)
+
+loc_073f90:
+	move.b (a1),d0
+	andi.b #$f,d0
+	cmpi.b #$e,d0
+	bne.w loc_073fa2
+	addi.b #$10,(a1)
+
+loc_073fa2:
+	cmpi.b #$e8,(a1)
+	bne.w loc_073fae
+	move.b #$fe,(a1)
+
+loc_073fae:
+	addq.b #2,(a1)
+	bclr.b #4,(a1)
+
+loc_073fb4:
+	addq.b #1,($13,a6)
+	cmpi.b #$f,($13,a6)
+	bls.w loc_073fd0
+	move.w ($40,a6),d3
+	moveq #2,d6
+	moveq #2,d5
+	jsr loc_07001c
+
+loc_073fd0:
+	cmpi.b #$1f,($13,a6)
+	bls.w loc_073fde
+	clr.b ($13,a6)
+
+loc_073fde:
+	tst.b unk_10d52a
+	beq.w loc_073fee
+	move.w #$258,($14,a6)
+
+loc_073fee:
+	subq.w #1,($4a,a6)
+	beq.b loc_073ffc
+	subq.w #1,($14,a6)
+	bne.w loc_074012
+
+loc_073ffc:
+	move.w #$1061,d0
+	jsr loc_0804de
+	clr.b ($11,a6)
+	move.b #$ef,($13,a6)
+	bra.b loc_074018
+
+loc_074012:
+	rts
+
+loc_074014:
+	clr.b ($11,a6)
+
+loc_074018:
+	move.w #$106d,d0
+	jsr loc_0804de
+	lea.l unk_100004,a1
+	addq.l #1,a1
+	moveq #4,d0
+
+loc_07402c:
+	movea.l a1,a2
+	cmpi.b #$44,(a2)
+	bne.w loc_07404c
+	addq.l #1,a2
+	cmpi.b #8,(a2)
+	bne.w loc_07404c
+	addq.l #1,a2
+	cmpi.b #$4e,(a2)
+	bne.w loc_07404c
+	clr.b (a2)
+
+loc_07404c:
+	addq.l #5,a1
+	dbra d0,loc_07402c
+	subi.w #$200,($40,a6)
+	clr.b ($13,a6)
+	move.l #loc_074062,(a6)
+
+loc_074062:
+	btst.b #1,($13,a6)
+	bne.w loc_07407a
+	move.w ($40,a6),d3
+	moveq #$20,d6
+	moveq #2,d5
+	jsr loc_07001c
+
+loc_07407a:
+	addq.b #1,($13,a6)
+	cmpi.b #$b4,($13,a6)
+	beq.b loc_074088
+	rts
+
+loc_074088:
+	clr.b ($13,a6)
+	movea.l ($c,a6),a1
+	movea.l ($c,a1),a2
+	st.b ($11,a2)
+	move.l #loc_07409e,(a6)
+
+loc_07409e:
+	rts
+
+;==============================================
+loc_0740a0:
+
+;==============================================
+	org $74120
+loc_074120:
 
 ;==============================================
 	org $743a6
 loc_0743a6:
+	org $74570
+loc_074570:
+	org $74580
+loc_074580:
+	org $74590
+loc_074590:
 
+;==============================================
+	org $745f2
+loc_0745f2:
 ;==============================================
 	org $751ec
 loc_0751ec
@@ -110,6 +4638,9 @@ loc_0782c6
 loc_078c22
 
 ;==============================================
+	org $7900e
+loc_07900e:
+
 	org $79c34
 loc_079c34
 	org $79e66
@@ -162,3 +4693,5 @@ loc_07e2d4
 loc_07ec9a:
 
 ;==============================================
+	org $7fd7e
+loc_07fd7e:

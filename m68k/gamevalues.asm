@@ -1,6 +1,10 @@
 Debug_Dip0 = 0x100000
 Debug_Dip1 = 0x100001
 unk_100002 = 0x100002
+unk_100004 = 0x100004
+
+unk_100013 = 0x100013
+unk_100018 = 0x100018
 
 unk_100100 = 0x100100
 unk_100160 = 0x100160
@@ -231,6 +235,7 @@ unk_10d4ae = 0x10d4ae
 
 
 unk_10d4b8 = 0x10d4b8
+unk_10d4b9 = 0x10d4b9
 unk_10d4ba = 0x10d4ba
 unk_10d4bc = 0x10d4bc
 unk_10d4bd = 0x10d4bd
@@ -425,6 +430,7 @@ unk_10ebf6 = 0x10ebf6
 
 unk_10ed9a = 0x10ed9a
 unk_10eda0 = 0x10eda0
+unk_10eda2 = 0x10eda2
 
 
 unk_10ef24 = 0x10ef24
