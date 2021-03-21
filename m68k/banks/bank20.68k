@@ -76,6 +76,22 @@ loc_23bf40
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $23c440
 loc_23c440:
+	org $23cf08
+loc_23cf08
+	org $23d408
+loc_23d408
+	org $23e808
+loc_23e808
+	org $23d908
+loc_23d908
+	org $23de08
+loc_23de08
+	org $23e308
+loc_23e308
+	org $23f708
+loc_23f708
+	org $23fc08
+loc_23fc08
 
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
@@ -256,7 +272,17 @@ loc_24bf94
 	org $24c034
 loc_24c034
 
-;============================================
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $24014c
+loc_24014c
+
+	org $240b08
+loc_240b08:
+	org $241008
+loc_241008:
+
+;==============================================
 	org $24c0f4
 loc_24c0f4:
 	org $24c484

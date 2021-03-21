@@ -4,9 +4,6 @@
 ;	    										;
 ;   											;
 ;===============================================;
-;10fdb6
-;10fadc
-;10fadf
 
 BIOS_SYSTEM_MODE = 0x10FD80
 BIOS_MVS_FLAG_OFFSET = 0x10fd82
@@ -115,7 +112,7 @@ CONTROLLER_SETUP = 0xC004D4
 REG_DIPSW = $300001
 
 
-SOUNDREG = $320000
+SOUNDREG = 0x320000
 
 
 REG_NOSHADOW = 0x3a0001

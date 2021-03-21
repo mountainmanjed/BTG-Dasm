@@ -10,6 +10,15 @@ loc_0803ce:
 	org $803f6
 loc_0803f6:
 
+
+;==============================================
+;Write to Sound Register
+loc_080412:
+
+
+
+;==============================================
+
 	org $8044a
 COIN_SOUND:
 
@@ -153,6 +162,32 @@ loc_085672:
 	org $8602e
 loc_08602e:
 
+
+	org $88146
+loc_088146:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $88168
+loc_088168:
+	org $8818a
+loc_08818a:
+	org $881ac
+loc_0881ac:
+	org $881ce
+loc_0881ce:
+	org $881f0
+loc_0881f0:
+	org $88212
+loc_088212:
+	org $88234
+loc_088234:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $88256
+loc_088256:
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $8826c
 loc_08826c:
 	org $88276
@@ -248,6 +283,74 @@ loc_08851c
 	org $88528
 loc_088528
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $888fa
+loc_0888fa
+	org $88912
+loc_088912
+	org $88932
+loc_088932
+	org $88952
+loc_088952
+	org $88972
+loc_088972
+	org $88992
+loc_088992
+	org $889b2
+loc_0889b2
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $88ac8
+loc_088ac8:
+	org $88bde
+loc_088bde:
+	org $88bfe
+loc_088bfe:
+	org $88c1e
+loc_088c1e:
+	org $88c3e
+loc_088c3e:
+	org $88c5e
+loc_088c5e:
+	org $88c7e
+loc_088c7e:
+	org $88c9e
+loc_088c9e:
+	org $88cbe
+loc_088cbe:
+	org $88cde
+loc_088cde:
+	org $88cea
+loc_088cea:
+	org $88cf6
+loc_088cf6:
+	org $88d00
+loc_088d00:
+	org $88d0a
+loc_088d0a:
+	org $88d14
+loc_088d14:
+	org $88d1e
+loc_088d1e:
+	org $88d28
+loc_088d28:
+	org $88d32
+loc_088d32:
+	org $88d3c
+loc_088d3c:
+	org $88d46
+loc_088d46:
+	org $88d50
+loc_088d50:
+	org $88d5a
+loc_088d5a:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $8974e
+loc_08974e
+	org $89794
+loc_089794
+
 	org $897a2
 loc_0897a2
 	org $89802
@@ -262,6 +365,14 @@ loc_089870
 	org $88892
 loc_088892:
 
+	org $89898
+loc_089898:
+	org $898c2
+loc_0898c2:
+
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $899f0
 loc_0899f0:
 	org $89a10

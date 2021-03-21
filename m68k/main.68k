@@ -9839,6 +9839,8 @@ loc_00d54a:
 
 loc_00d59c:
 	addq.w #1,unk_102e5a
+
+;Render Check
 	tst.b unk_102e54
 	beq.b loc_00d59c
 	jsr loc_0803ce

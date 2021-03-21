@@ -1,4 +1,7 @@
 
+	org $a3986
+loc_0a3986:
+
 ;=================================================
 	org $a3990
 loc_0a3990:
@@ -424,6 +427,19 @@ loc_0ab00a:
 	org $ab01a
 loc_0ab01a:
 
+	org $abed6
+loc_0abed6
+	org $abefc
+loc_0abefc
+	org $abe64
+loc_0abe64
+	org $abe8a
+loc_0abe8a
+	org $abeb0
+loc_0abeb0
+	org $abf22
+loc_0abf22
+
 	org $abf48
 loc_0abf48:
 
@@ -434,6 +450,12 @@ loc_0abfee:
 ;==============================================
 	org $ac0e2
 loc_0ac0e2:
+
+	org $acde2
+loc_0acde2
+	org $aceda
+loc_0aceda
+
 
 ;==============================================
 ;Palette Data Start

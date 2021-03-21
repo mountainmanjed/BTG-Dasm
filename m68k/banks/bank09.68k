@@ -1673,6 +1673,20 @@ loc_09c91c
 loc_09c94c
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9c97a
+loc_09c97a:
+	org $9c996
+loc_09c996:
+	org $9c9b2
+loc_09c9b2:
+	org $9c9ce
+loc_09c9ce:
+	org $9c9ea
+loc_09c9ea:
+	org $9ca06
+loc_09ca06:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
 	org $9da74
 loc_09da74:
@@ -2025,6 +2039,122 @@ loc_09ed6c
 loc_09ed84:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9eecc
+loc_09eecc:
+	org $9eefc
+loc_09eefc:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9ef2c
+loc_09ef2c:
+	org $9ef5c
+loc_09ef5c:
+	org $9ef8c
+loc_09ef8c:
+	org $9efbc
+loc_09efbc:
+	org $9efec
+loc_09efec:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9f01c
+loc_09f01c
+	org $9f04c
+loc_09f04c
+	org $9f082
+loc_09f082
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9f0b2
+loc_09f0b2
+	org $9f0fa
+loc_09f0fa
+	org $9f13e
+loc_09f13e
+	org $9f17e
+loc_09f17e
+	org $9f1c6
+loc_09f1c6
+	org $9f20e
+loc_09f20e
+	org $9f242
+loc_09f242
+	org $9f282
+loc_09f282
+	org $9f2c4
+loc_09f2c4
+	org $9f2fa
+loc_09f2fa
+	org $9f32e
+loc_09f32e
+	org $9f346
+loc_09f346
+	org $9f362
+loc_09f362
+	org $9f392
+loc_09f392
+	org $9f39e
+loc_09f39e
+	org $9f3ae
+loc_09f3ae
+	org $9f3be
+loc_09f3be
+	org $9f3ce
+loc_09f3ce
+	org $9f3de
+loc_09f3de
+	org $9f3ee
+loc_09f3ee
+	org $9f3fe
+loc_09f3fe
+	org $9f40e
+loc_09f40e
+	org $9f41e
+loc_09f41e
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+	org $9f43e
+loc_09f43e
+	org $9f45a
+loc_09f45a
+	org $9f46a
+loc_09f46a
+	org $9f47a
+loc_09f47a
+	org $9f48a
+loc_09f48a
+	org $9f49a
+loc_09f49a
+	org $9f4ae
+loc_09f4ae
+	org $9f4ba
+loc_09f4ba
+	org $9f4ca
+loc_09f4ca
+	org $9f4da
+loc_09f4da
+	org $9f4ea
+loc_09f4ea
+	org $9f4fa
+loc_09f4fa
+	org $9f50a
+loc_09f50a
+	org $9f51a
+loc_09f51a
+	org $9f52a
+loc_09f52a
+	org $9f53a
+loc_09f53a
+	org $9f56a
+loc_09f56a
+	org $9f58e
+loc_09f58e
+	org $9f5b6
+loc_09f5b6
+	org $9f5de
+loc_09f5de
+
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $9f60e

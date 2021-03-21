@@ -3,8 +3,23 @@ Debug_Dip1 = 0x100001
 unk_100002 = 0x100002
 unk_100004 = 0x100004
 
+unk_100008 = 0x100008
+unk_10000d = 0x10000d
+
+unk_100012 = 0x100012
 unk_100013 = 0x100013
+
+unk_100017 = 0x100017
 unk_100018 = 0x100018
+
+unk_10001c = 0x10001c
+unk_10001e = 0x10001e
+
+
+unk_100042 = 0x100042
+unk_100066 = 0x100066
+unk_10008a = 0x10008a
+unk_1000ae = 0x1000ae
 
 unk_100100 = 0x100100
 unk_100160 = 0x100160
@@ -426,7 +441,17 @@ unk_10ebe0 = 0x10ebe0
 unk_10ebe2 = 0x10ebe2
 unk_10ebe4 = 0x10ebe4
 
+unk_10ebea = 0x10ebea
+unk_10ebec = 0x10ebec
+unk_10ebee = 0x10ebee
+unk_10ebf2 = 0x10ebf2
+unk_10ebf3 = 0x10ebf3
+
 unk_10ebf6 = 0x10ebf6
+
+
+unk_10ecb6 = 0x10ecb6 ;Start of Sound 
+
 
 unk_10ed9a = 0x10ed9a
 unk_10eda0 = 0x10eda0
