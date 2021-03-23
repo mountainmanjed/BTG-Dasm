@@ -17,6 +17,9 @@ loc_0b99fa:
 	org $b9a22
 loc_0b9a22:
 
+	org $b9b4c
+loc_0b9b4c
+
 	org $b9bde
 loc_0b9bde:
 

@@ -2044,6 +2044,27 @@ loc_08f650:
 	org $8f6a0
 loc_08f6a0
 
+	org $8f6e0
+loc_08f6e0
+	org $8f710
+loc_08f710
+	org $8f74c
+loc_08f74c
+	org $8f76c
+loc_08f76c
+	org $8f79c
+loc_08f79c
+	org $8f7c8
+loc_08f7c8
+	org $8f7f4
+loc_08f7f4
+	org $8f81c
+loc_08f81c
+	org $8f844
+loc_08f844
+	org $8f880
+loc_08f880
+
 ;==============================================
 	org $8f8c6
 loc_08f8c6:
@@ -2063,5 +2084,41 @@ loc_08fa52
 loc_08fada
 	org $8fb62
 loc_08fb62
+
+	org $8fb84
+loc_08fb84:
+	org $8fba6
+loc_08fba6:
+
 	org $8fbc8
 loc_08fbc8
+
+;==============================================
+	org $8fbea
+loc_08fbea:
+	org $8fc0c
+loc_08fc0c:
+	org $8fc2e
+loc_08fc2e:
+	org $8fc50
+loc_08fc50:
+	org $8fc72
+loc_08fc72:
+	org $8fc94
+loc_08fc94:
+	org $8fcb6
+loc_08fcb6:
+	org $8fcd8
+loc_08fcd8:
+	org $8fcfa
+loc_08fcfa:
+	org $8fd1c
+loc_08fd1c:
+	org $8fd3e
+loc_08fd3e:
+	org $8fd60
+loc_08fd60:
+	org $8fd82
+loc_08fd82:
+	org $8fda4
+loc_08fda4:

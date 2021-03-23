@@ -575,6 +575,164 @@ loc_0ab00a:
 	org $ab01a
 loc_0ab01a:
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $ab02e
+loc_0ab02e:
+	org $ab05c
+loc_0ab05c:
+	org $ab084
+loc_0ab084:
+	org $ab0b2
+loc_0ab0b2:
+	org $ab0e2
+loc_0ab0e2:
+	org $ab126
+loc_0ab126:
+	org $ab162
+loc_0ab162:
+	org $ab190
+loc_0ab190:
+	org $ab1d0
+loc_0ab1d0:
+	org $ab20c
+loc_0ab20c:
+	org $ab244
+loc_0ab244:
+	org $ab276
+loc_0ab276:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $ab2a8
+loc_0ab2a8
+	org $ab2d2
+loc_0ab2d2
+	org $ab2fa
+loc_0ab2fa
+	org $ab328
+loc_0ab328
+	org $ab354
+loc_0ab354
+	org $ab39a
+loc_0ab39a
+	org $ab3d6
+loc_0ab3d6
+	org $ab404
+loc_0ab404
+	org $ab43c
+loc_0ab43c
+	org $ab478
+loc_0ab478
+	org $ab4b4
+loc_0ab4b4
+	org $ab4e6
+loc_0ab4e6
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $ab518
+loc_0ab518:
+	org $ab540
+loc_0ab540:
+	org $ab568
+loc_0ab568:
+	org $ab596
+loc_0ab596:
+	org $ab5c6
+loc_0ab5c6:
+	org $ab60a
+loc_0ab60a:
+	org $ab64c
+loc_0ab64c:
+	org $ab67a
+loc_0ab67a:
+	org $ab6b6
+loc_0ab6b6:
+	org $ab6ec
+loc_0ab6ec:
+	org $ab728
+loc_0ab728:
+	org $ab75e
+loc_0ab75e:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $ab78c
+loc_0ab78c
+	org $ab7b4
+loc_0ab7b4
+	org $ab7dc
+loc_0ab7dc
+	org $ab84c
+loc_0ab84c
+	org $ab80a
+loc_0ab80a
+	org $ab87c
+loc_0ab87c
+	org $ab8b8
+loc_0ab8b8
+	org $ab8e6
+loc_0ab8e6
+	org $ab922
+loc_0ab922
+	org $ab95e
+loc_0ab95e
+	org $ab99a
+loc_0ab99a
+	org $ab9cc
+loc_0ab9cc
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $ab9fe
+loc_0ab9fe:
+	org $aba26
+loc_0aba26:
+	org $aba4e
+loc_0aba4e:
+	org $aba7c
+loc_0aba7c:
+	org $abab2
+loc_0abab2:
+	org $abaea
+loc_0abaea:
+	org $abb1a
+loc_0abb1a:
+	org $abb48
+loc_0abb48:
+	org $abb78
+loc_0abb78:
+	org $abbac
+loc_0abbac:
+	org $abbe0
+loc_0abbe0:
+	org $abc0a
+loc_0abc0a:
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $abc34
+loc_0abc34:
+	org $abc5e
+loc_0abc5e:
+	org $abc7e
+loc_0abc7e:
+	org $abcb0
+loc_0abcb0:
+	org $abce0
+loc_0abce0:
+	org $abd26
+loc_0abd26:
+	org $abd5e
+loc_0abd5e:
+	org $abd8c
+loc_0abd8c:
+	org $abdc4
+loc_0abdc4:
+	org $abdea
+loc_0abdea:
+	org $abe10
+loc_0abe10:
+	org $abe3a
+loc_0abe3a:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $abed6
 loc_0abed6
 	org $abefc
@@ -599,6 +757,84 @@ loc_0abfee:
 	org $ac0e2
 loc_0ac0e2:
 
+;==============================================
+	org $ac0fa
+loc_0ac0fa:
+	org $ac1a6
+loc_0ac1a6:
+	org $ac1b0
+loc_0ac1b0:
+	org $ac1c6
+loc_0ac1c6:
+	org $ac1fe
+loc_0ac1fe:
+	org $ac27a
+loc_0ac27a:
+	org $ac2b6
+loc_0ac2b6:
+	org $ac2ce
+loc_0ac2ce:
+	org $ac3b0
+loc_0ac3b0:
+	org $ac3dc
+loc_0ac3dc:
+	org $ac3f4
+loc_0ac3f4:
+	org $ac496
+loc_0ac496:
+	org $ac4b8
+loc_0ac4b8:
+	org $ac4e8
+loc_0ac4e8:
+	org $ac5b6
+loc_0ac5b6:
+	org $ac622
+loc_0ac622:
+	org $ac65e
+loc_0ac65e:
+	org $ac724
+loc_0ac724:
+	org $ac73e
+loc_0ac73e:
+	org $ac76a
+loc_0ac76a:
+	org $ac822
+loc_0ac822:
+	org $ac856
+loc_0ac856:
+	org $ac88c
+loc_0ac88c:
+	org $ac96e
+loc_0ac96e:
+	org $ac9a4
+loc_0ac9a4:
+	org $ac9c6
+loc_0ac9c6:
+	org $aca92
+loc_0aca92:
+	org $acac0
+loc_0acac0:
+	org $acad4
+loc_0acad4:
+	org $acb7a
+loc_0acb7a:
+	org $acba4
+loc_0acba4:
+	org $acbb4
+loc_0acbb4:
+	org $acca2
+loc_0acca2:
+	org $accdc
+loc_0accdc:
+	org $acd92
+loc_0acd92:
+	org $acdb6
+loc_0acdb6:
+
+
+
+;==============================================
+
 	org $acde2
 loc_0acde2
 	org $aceda
@@ -619,7 +855,82 @@ loc_0acfc4
 	org $acff8
 loc_0acff8
 	org $ad042
-loc_0ad042
+loc_0ad042:
+
+	org $ad090
+loc_0ad090:
+	org $ad0ca
+loc_0ad0ca:
+	org $ad104
+loc_0ad104:
+	org $ad13e
+loc_0ad13e:
+	org $ad178
+loc_0ad178:
+	org $ad1b4
+loc_0ad1b4:
+	org $ad1f2
+loc_0ad1f2:
+	org $ad230
+loc_0ad230:
+
+	org $ad26e
+loc_0ad26e
+	org $ad292
+loc_0ad292
+	org $ad2b6
+loc_0ad2b6
+	org $ad2da
+loc_0ad2da
+	org $ad2fe
+loc_0ad2fe
+	org $ad32a
+loc_0ad32a
+	org $ad356
+loc_0ad356
+	org $ad37a
+loc_0ad37a
+
+	org $ad39e
+loc_0ad39e:
+	org $ad3d6
+loc_0ad3d6:
+	org $ad40e
+loc_0ad40e:
+	org $ad446
+loc_0ad446:
+	org $ad47e
+loc_0ad47e:
+	org $ad4a2
+loc_0ad4a2:
+	org $ad4c6
+loc_0ad4c6:
+	org $ad4ea
+loc_0ad4ea:
+	org $ad50e
+loc_0ad50e:
+	org $ad53c
+loc_0ad53c:
+	org $ad560
+loc_0ad560:
+	org $ad584
+loc_0ad584:
+	org $ad5b0
+loc_0ad5b0:
+	org $ad5ec
+loc_0ad5ec:
+	org $ad628
+loc_0ad628:
+	org $ad664
+loc_0ad664:
+	org $ad6a0
+loc_0ad6a0:
+	org $ad6c4
+loc_0ad6c4:
+	org $ad6e8
+loc_0ad6e8:
+	org $ad70c
+loc_0ad70c:
 
 ;==============================================
 ;Palette Data Start

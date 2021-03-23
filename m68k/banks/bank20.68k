@@ -327,3 +327,14 @@ loc_24d734:
 loc_24d7a4:
 	org $24d814
 loc_24d814:
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $24d884
+loc_24d884:
+	org $24e084
+loc_24e084:
+	org $24e884
+loc_24e884:
+	org $24f084
+loc_24f084:
