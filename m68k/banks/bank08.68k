@@ -364,6 +364,237 @@ loc_088f3c
 loc_088fbc
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $88ffc
+loc_088ffc:
+	org $89006
+loc_089006:
+	org $89010
+loc_089010:
+	org $8901c
+loc_08901c:
+	org $89028
+loc_089028:
+	org $89034
+loc_089034:
+	org $89040
+loc_089040:
+	org $89052
+loc_089052:
+	org $89064
+loc_089064:
+	org $89076
+loc_089076:
+	org $89088
+loc_089088:
+	org $8909c
+loc_08909c:
+	org $890b0
+loc_0890b0:
+	org $890cc
+loc_0890cc:
+	org $890e8
+loc_0890e8:
+	org $89104
+loc_089104:
+	org $89120
+loc_089120:
+	org $8913c
+loc_08913c:
+	org $89158
+loc_089158:
+	org $8917c
+loc_08917c:
+	org $891a0
+loc_0891a0:
+	org $891c6
+loc_0891c6:
+	org $891ec
+loc_0891ec:
+	org $89212
+loc_089212:
+	org $89238
+loc_089238:
+	org $89266
+loc_089266:
+	org $89294
+loc_089294:
+	org $892c2
+loc_0892c2:
+	org $892f0
+loc_0892f0:
+	org $8931e
+loc_08931e:
+	org $89348
+loc_089348:
+	org $89372
+loc_089372:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $893a4
+loc_0893a4:
+	org $893ae
+loc_0893ae:
+	org $893b8
+loc_0893b8:
+	org $893c2
+loc_0893c2:
+	org $893cc
+loc_0893cc:
+	org $893d8
+loc_0893d8:
+	org $893e4
+loc_0893e4:
+	org $893f0
+loc_0893f0:
+	org $893fc
+loc_0893fc:
+	org $89406
+loc_089406:
+	org $89410
+loc_089410:
+	org $8941c
+loc_08941c:
+	org $89428
+loc_089428:
+	org $89434
+loc_089434:
+	org $89440
+loc_089440:
+	org $8944c
+loc_08944c:
+	org $8945e
+loc_08945e:
+	org $89468
+loc_089468:
+	org $89472
+loc_089472:
+	org $8947c
+loc_08947c:
+	org $89486
+loc_089486:
+	org $89492
+loc_089492:
+	org $8949e
+loc_08949e:
+	org $894aa
+loc_0894aa:
+	org $894b6
+loc_0894b6:
+	org $894c0
+loc_0894c0:
+	org $894ca
+loc_0894ca:
+	org $894d4
+loc_0894d4:
+	org $894de
+loc_0894de:
+	org $894ea
+loc_0894ea:
+	org $894f6
+loc_0894f6:
+	org $89508
+loc_089508:
+	org $8951a
+loc_08951a:
+	org $89524
+loc_089524:
+	org $8952e
+loc_08952e:
+	org $89538
+loc_089538:
+	org $89542
+loc_089542:
+	org $8954e
+loc_08954e:
+	org $8955a
+loc_08955a:
+	org $8956c
+loc_08956c:
+	org $8957e
+loc_08957e:
+	org $89588
+loc_089588:
+	org $89592
+loc_089592:
+	org $8959e
+loc_08959e:
+	org $895aa
+loc_0895aa:
+	org $895b6
+loc_0895b6:
+	org $895c2
+loc_0895c2:
+	org $895ce
+loc_0895ce:
+	org $895da
+loc_0895da:
+	org $895e4
+loc_0895e4:
+	org $895ee
+loc_0895ee:
+	org $895f8
+loc_0895f8:
+	org $89602
+loc_089602:
+	org $8960e
+loc_08960e:
+	org $8961a
+loc_08961a:
+	org $89626
+loc_089626:
+	org $8963a
+loc_08963a:
+	org $89644
+loc_089644:
+	org $8964e
+loc_08964e:
+	org $89658
+loc_089658:
+	org $89664
+loc_089664:
+	org $89670
+loc_089670:
+	org $8967c
+loc_08967c:
+	org $89688
+loc_089688:
+	org $89694
+loc_089694:
+	org $8969e
+loc_08969e:
+	org $896a8
+loc_0896a8:
+	org $896b2
+loc_0896b2:
+	org $896bc
+loc_0896bc:
+	org $896c8
+loc_0896c8:
+	org $896d4
+loc_0896d4:
+	org $896e0
+loc_0896e0:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $896ec
+loc_0896ec
+	org $896f6
+loc_0896f6
+	org $89700
+loc_089700
+	org $8970c
+loc_08970c
+	org $89718
+loc_089718
+	org $89724
+loc_089724
+	org $89730
+loc_089730
+	org $8973c
+loc_08973c
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $8974e
 loc_08974e
 	org $89794
@@ -1824,3 +2055,13 @@ loc_08f908
 loc_08f940
 	org $8f982
 loc_08f982:
+
+;==============================================
+	org $8fa52
+loc_08fa52
+	org $8fada
+loc_08fada
+	org $8fb62
+loc_08fb62
+	org $8fbc8
+loc_08fbc8

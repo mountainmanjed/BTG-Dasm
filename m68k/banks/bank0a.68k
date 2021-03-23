@@ -1,8 +1,156 @@
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $a0d56
+loc_0a0d56:
+	org $a0df0
+loc_0a0df0:
+	org $a0e7c
+loc_0a0e7c:
+	org $a0ee8
+loc_0a0ee8:
+	org $a0f70
+loc_0a0f70:
+	org $a1000
+loc_0a1000:
+	org $a1092
+loc_0a1092:
+	org $a1118
+loc_0a1118:
+	org $a11b6
+loc_0a11b6:
+	org $a1240
+loc_0a1240:
+	org $a12d2
+loc_0a12d2:
+	org $a1390
+loc_0a1390:
+	org $a1428
+loc_0a1428:
+	org $a14b8
+loc_0a14b8:
+	org $a1544
+loc_0a1544:
+	org $a15d4
+loc_0a15d4:
+	org $a1668
+loc_0a1668:
+	org $a16ee
+loc_0a16ee:
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $a1786
+loc_0a1786:
+	org $a180a
+loc_0a180a:
+	org $a189c
+loc_0a189c:
+	org $a1950
+loc_0a1950:
+	org $a19e4
+loc_0a19e4:
+	org $a1a66
+loc_0a1a66:
+	org $a1af0
+loc_0a1af0:
+	org $a1b78
+loc_0a1b78:
+	org $a1c02
+loc_0a1c02:
+	org $a1c9a
+loc_0a1c9a:
+	org $a1d1a
+loc_0a1d1a:
+	org $a1dbc
+loc_0a1dbc:
+	org $a1e18
+loc_0a1e18:
+	org $a1eb0
+loc_0a1eb0:
+	org $a1f34
+loc_0a1f34:
+	org $a1fc6
+loc_0a1fc6:
+	org $a205e
+loc_0a205e:
+	org $a20e0
+loc_0a20e0:
+	org $a217c
+loc_0a217c:
+	org $a2208
+loc_0a2208:
+	org $a22b0
+loc_0a22b0:
+	org $a2362
+loc_0a2362:
+	org $a23f6
+loc_0a23f6:
+	org $a2476
+loc_0a2476:
+	org $a250a
+loc_0a250a:
+	org $a25c8
+loc_0a25c8:
+	org $a2656
+loc_0a2656:
+	org $a2714
+loc_0a2714:
+	org $a27a6
+loc_0a27a6:
+	org $a2838
+loc_0a2838:
+	org $a28d8
+loc_0a28d8:
+	org $a2970
+loc_0a2970:
+	org $a2a00
+loc_0a2a00:
+	org $a2a8a
+loc_0a2a8a:
+	org $a2b0e
+loc_0a2b0e:
+	org $a2b9e
+loc_0a2b9e:
+	org $a2c44
+loc_0a2c44:
+	org $a2cee
+loc_0a2cee:
+	org $a2db0
+loc_0a2db0:
+	org $a2e60
+loc_0a2e60:
+	org $a2f00
+loc_0a2f00:
+	org $a2f9a
+loc_0a2f9a:
+	org $a303a
+loc_0a303a:
+	org $a30d0
+loc_0a30d0:
+	org $a3158
+loc_0a3158:
+	org $a31f2
+loc_0a31f2:
+	org $a3288
+loc_0a3288:
+	org $a3308
+loc_0a3308:
+	org $a3390
+loc_0a3390:
+	org $a3430
+loc_0a3430:
+	org $a34dc
+loc_0a34dc:
+	org $a357e
+loc_0a357e:
+	org $a363c
+loc_0a363c:
+	org $a36da
+loc_0a36da:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $a3986
 loc_0a3986:
 
-;=================================================
+;==============================================
 	org $a3990
 loc_0a3990:
 	org $a399c

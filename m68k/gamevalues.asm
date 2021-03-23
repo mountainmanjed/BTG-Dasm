@@ -1,5 +1,6 @@
 Debug_Dip0 = 0x100000
 Debug_Dip1 = 0x100001
+
 unk_100002 = 0x100002
 unk_100004 = 0x100004
 
@@ -450,6 +451,7 @@ unk_10ebf3 = 0x10ebf3
 unk_10ebf6 = 0x10ebf6
 unk_10ebf8 = 0x10ebf8
 unk_10ebf9 = 0x10ebf9
+unk_10ebfa = 0x10ebfa
 
 unk_10ecb6 = 0x10ecb6 ;Start of Sound 
 
