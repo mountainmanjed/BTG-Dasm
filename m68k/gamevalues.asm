@@ -448,7 +448,8 @@ unk_10ebf2 = 0x10ebf2
 unk_10ebf3 = 0x10ebf3
 
 unk_10ebf6 = 0x10ebf6
-
+unk_10ebf8 = 0x10ebf8
+unk_10ebf9 = 0x10ebf9
 
 unk_10ecb6 = 0x10ecb6 ;Start of Sound 
 

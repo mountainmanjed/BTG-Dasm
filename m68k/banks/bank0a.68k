@@ -457,6 +457,22 @@ loc_0acde2
 loc_0aceda
 
 
+	org $acf56
+loc_0acf56
+	org $acf70
+loc_0acf70
+	org $acf96
+loc_0acf96
+
+	org $acfaa
+loc_0acfaa
+	org $acfc4
+loc_0acfc4
+	org $acff8
+loc_0acff8
+	org $ad042
+loc_0ad042
+
 ;==============================================
 ;Palette Data Start
 	org $ad730

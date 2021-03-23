@@ -345,6 +345,24 @@ loc_088d50:
 	org $88d5a
 loc_088d5a:
 
+	org $88d64
+loc_088d64:
+	org $88dac
+loc_088dac:
+	org $88db6
+loc_088db6:
+
+	org $88e36
+loc_088e36
+	org $88e7a
+loc_088e7a
+	org $88ebc
+loc_088ebc
+	org $88f3c
+loc_088f3c
+	org $88fbc
+loc_088fbc
+
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $8974e
 loc_08974e
@@ -370,7 +388,11 @@ loc_089898:
 	org $898c2
 loc_0898c2:
 
-
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $898f0
+loc_0898f0:
+	org $89970
+loc_089970:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $899f0

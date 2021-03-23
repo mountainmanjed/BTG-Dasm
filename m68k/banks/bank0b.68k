@@ -2,6 +2,15 @@
 	org $b96f0
 loc_0b96f0:
 
+	org $b9704
+loc_0b9704:
+
+	org $b9718
+loc_0b9718:
+
+	org $b972c
+loc_0b972c:
+
 	org $b99fa
 loc_0b99fa:
 

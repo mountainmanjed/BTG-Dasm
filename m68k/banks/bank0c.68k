@@ -57,7 +57,12 @@ loc_0ca4e6:
 loc_0ca6d8:
 
 	org $ca866
-loc_0ca866
+loc_0ca866:
 
 	org $ca892
-loc_0ca892
+loc_0ca892:
+
+;$ca99c
+;Filler
+;EndofRom:
+;	dcb.b $100000-EndofRom,00
