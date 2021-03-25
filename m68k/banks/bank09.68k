@@ -1,5 +1,149 @@
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $905d0
+loc_0905d0:
+	org $905f2
+loc_0905f2:
+	org $90616
+loc_090616:
+	org $9063a
+loc_09063a:
+	org $9065e
+loc_09065e:
+	org $90680
+loc_090680:
+	org $906a4
+loc_0906a4:
+	org $906c6
+loc_0906c6:
+	org $906e8
+loc_0906e8:
+	org $9070a
+loc_09070a:
+	org $90728
+loc_090728:
+	org $90744
+loc_090744:
+	org $90760
+loc_090760:
+	org $90782
+loc_090782:
+	org $907a0
+loc_0907a0:
+	org $907bc
+loc_0907bc:
+	org $907d8
+loc_0907d8:
+	org $907ec
+loc_0907ec:
+	org $90800
+loc_090800:
+	org $90814
+loc_090814:
+	org $90828
+loc_090828:
+	org $9083c
+loc_09083c:
+	org $90850
+loc_090850:
+	org $90864
+loc_090864:
+	org $90878
+loc_090878:
+	org $9088c
+loc_09088c:
+	org $908b8
+loc_0908b8:
+	org $908e2
+loc_0908e2:
+	org $90918
+loc_090918:
+	org $90948
+loc_090948:
+	org $90970
+loc_090970:
+	org $90996
+loc_090996:
+	org $909ca
+loc_0909ca:
+	org $909fe
+loc_0909fe:
+	org $90a72
+loc_090a72:
+	org $90ae6
+loc_090ae6:
+	org $90af6
+loc_090af6:
+	org $90b06
+loc_090b06:
+	org $90b16
+loc_090b16:
+	org $90b2a
+loc_090b2a:
+	org $90b58
+loc_090b58:
+	org $90b80
+loc_090b80:
+	org $90bac
+loc_090bac:
+	org $90bd2
+loc_090bd2:
+	org $90bfe
+loc_090bfe:
+	org $90c1a
+loc_090c1a:
+	org $90c3a
+loc_090c3a:
+	org $90c6e
+loc_090c6e:
+	org $90ca2
+loc_090ca2:
+	org $90cbc
+loc_090cbc:
+	org $90ce8
+loc_090ce8:
+	org $90d10
+loc_090d10:
+	org $90d38
+loc_090d38:
+	org $90d60
+loc_090d60:
+	org $90d84
+loc_090d84:
+	org $90db0
+loc_090db0:
+	org $90ddc
+loc_090ddc:
+	org $90e12
+loc_090e12:
+	org $90e4a
+loc_090e4a:
+	org $90e6a
+loc_090e6a:
+	org $90e92
+loc_090e92:
+	org $90ebc
+loc_090ebc:
+	org $90ee6
+loc_090ee6:
+	org $90f02
+loc_090f02:
+	org $90f2a
+loc_090f2a:
+	org $90f50
+loc_090f50:
+	org $90f76
+loc_090f76:
+	org $90fae
+loc_090fae:
+	org $90fdc
+loc_090fdc:
+	org $9100a
+loc_09100a:
+	org $91034
+loc_091034:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $9105e
 loc_09105e:
 	org $91228
@@ -1871,6 +2015,158 @@ loc_09c9ea:
 loc_09ca06:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9ca22
+loc_09ca22
+	org $9ca36
+loc_09ca36
+	org $9ca4a
+loc_09ca4a
+	org $9ca5e
+loc_09ca5e
+	org $9ca72
+loc_09ca72
+	org $9ca86
+loc_09ca86
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9ca9e
+loc_09ca9e
+	org $9cab2
+loc_09cab2
+	org $9cac6
+loc_09cac6
+	org $9cada
+loc_09cada
+	org $9caee
+loc_09caee
+	org $9cb02
+loc_09cb02
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9cb16
+loc_09cb16
+	org $9cb42
+loc_09cb42
+	org $9cb70
+loc_09cb70
+	org $9cb9c
+loc_09cb9c
+	org $9cbbc
+loc_09cbbc
+	org $9cbdc
+loc_09cbdc
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9cc12
+loc_09cc12:
+	org $9cc48
+loc_09cc48:
+	org $9cc7e
+loc_09cc7e:
+	org $9ccbc
+loc_09ccbc:
+	org $9ccf2
+loc_09ccf2:
+	org $9cd28
+loc_09cd28:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9cd66
+loc_09cd66:
+	org $9cd9c
+loc_09cd9c:
+	org $9cdd2
+loc_09cdd2:
+	org $9ce10
+loc_09ce10:
+	org $9ce46
+loc_09ce46:
+	org $9ce7c
+loc_09ce7c:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9d00e
+loc_09d00e:
+	org $9d02c
+loc_09d02c:
+	org $9d052
+loc_09d052:
+	org $9d070
+loc_09d070:
+	org $9d096
+loc_09d096:
+	org $9d0bc
+loc_09d0bc:
+	org $9d0e2
+loc_09d0e2:
+	org $9d100
+loc_09d100:
+	org $9d126
+loc_09d126:
+	org $9d144
+loc_09d144:
+	org $9d16a
+loc_09d16a:
+	org $9d190
+loc_09d190:
+	org $9d1b6
+loc_09d1b6:
+	org $9d206
+loc_09d206:
+	org $9d256
+loc_09d256:
+	org $9d2a6
+loc_09d2a6:
+	org $9d2f6
+loc_09d2f6:
+	org $9d346
+loc_09d346:
+	org $9d396
+loc_09d396:
+	org $9d3e6
+loc_09d3e6:
+	org $9d436
+loc_09d436:
+	org $9d486
+loc_09d486:
+	org $9d4d6
+loc_09d4d6:
+	org $9d526
+loc_09d526:
+	org $9d576
+loc_09d576:
+	org $9d5c6
+loc_09d5c6:
+	org $9d616
+loc_09d616:
+	org $9d632
+loc_09d632:
+	org $9d656
+loc_09d656:
+	org $9d6a6
+loc_09d6a6:
+	org $9d6f6
+loc_09d6f6:
+	org $9d746
+loc_09d746:
+	org $9d796
+loc_09d796:
+	org $9d7e6
+loc_09d7e6:
+	org $9d836
+loc_09d836:
+	org $9d886
+loc_09d886:
+	org $9d8d6
+loc_09d8d6:
+	org $9d926
+loc_09d926:
+	org $9d976
+loc_09d976:
+	org $9d9c6
+loc_09d9c6:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $9da16
 loc_09da16:
 
@@ -2388,3 +2684,12 @@ loc_09f802
 loc_09f80e
 	org $9f81a
 loc_09f81a
+
+	org $9faa2
+loc_09faa2:
+	org $9fab6
+loc_09fab6:
+	org $9fad2
+loc_09fad2:
+	org $9faec
+loc_09faec:

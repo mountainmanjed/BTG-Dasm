@@ -2,6 +2,7 @@ Debug_Dip0 = 0x100000
 Debug_Dip1 = 0x100001
 
 unk_100002 = 0x100002
+unk_100003 = 0x100003
 unk_100004 = 0x100004
 
 unk_100008 = 0x100008
@@ -225,7 +226,10 @@ unk_10703a = 0x10703a
 
 unk_10704c = 0x10704c
 unk_10704e = 0x10704e
+
 unk_107050 = 0x107050
+unk_107051 = 0x107051
+
 unk_107076 = 0x107076;Player Data Pointer
 unk_10707a = 0x10707a;Course Data Pointer
 unk_10707e = 0x10707e
@@ -356,6 +360,7 @@ unk_10d62c = 0x10d62c
 
 unk_10d730 = 0x10d730
 unk_10d750 = 0x10d750
+
 unk_10d770 = 0x10d770
 unk_10d790 = 0x10d790
 
@@ -453,7 +458,11 @@ unk_10ebf8 = 0x10ebf8
 unk_10ebf9 = 0x10ebf9
 unk_10ebfa = 0x10ebfa
 unk_10ebfb = 0x10ebfb
+unk_10ebfc = 0x10ebfc
+unk_10ebfd = 0x10ebfd
+unk_10ebfe = 0x10ebfe
 
+unk_10ecb2 = 0x10ecb2
 unk_10ecb6 = 0x10ecb6 ;Start of Sound 
 
 

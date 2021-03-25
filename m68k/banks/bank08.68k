@@ -157,12 +157,48 @@ loc_085534:
 loc_085672:
 
 
-
-
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $8602e
 loc_08602e:
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $88000
+loc_088000
+	org $8800a
+loc_08800a
+	org $88014
+loc_088014
+	org $8801e
+loc_08801e
+	org $88028
+loc_088028
+	org $88032
+loc_088032
+	org $8803c
+loc_08803c
+	org $88046
+loc_088046
+	org $88050
+loc_088050
+	org $88062
+loc_088062
+	org $88074
+loc_088074
+	org $88086
+loc_088086
+	org $88096
+loc_088096
+	org $880a6
+loc_0880a6
+	org $880cc
+loc_0880cc
+	org $880f2
+loc_0880f2
+	org $88118
+loc_088118
 
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $88146
 loc_088146:
 
@@ -2076,6 +2112,18 @@ loc_08f908
 loc_08f940
 	org $8f982
 loc_08f982:
+
+;==============================================
+	org $8d994
+loc_08d994:
+	org $8f9c6
+loc_08f9c6:
+	org $8f9de
+loc_08f9de:
+	org $8d9e6
+loc_08d9e6:
+	org $8f9f6
+loc_08f9f6:
 
 ;==============================================
 	org $8fa52
