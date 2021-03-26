@@ -1,3 +1,92 @@
+	org $a00b8
+loc_0a00b8
+	org $a01a0
+loc_0a01a0
+	org $a0294
+loc_0a0294
+	org $a0492
+loc_0a0492
+	org $a04e0
+loc_0a04e0
+	org $a052e
+loc_0a052e
+	org $a057c
+loc_0a057c
+	org $a05d0
+loc_0a05d0
+	org $a0600
+loc_0a0600
+	org $a0618
+loc_0a0618
+	org $a0654
+loc_0a0654
+	org $a06ba
+loc_0a06ba
+	org $a06e0
+loc_0a06e0
+	org $a0706
+loc_0a0706
+	org $a074c
+loc_0a074c
+	org $a07a0
+loc_0a07a0
+	org $a07f0
+loc_0a07f0
+	org $a08a6
+loc_0a08a6
+	org $a08ca
+loc_0a08ca
+	org $a084c
+loc_0a084c
+	org $a0902
+loc_0a0902
+	org $a0910
+loc_0a0910
+	org $a0922
+loc_0a0922
+	org $a092e
+loc_0a092e
+	org $a093e
+loc_0a093e
+	org $a094c
+loc_0a094c
+	org $a095c
+loc_0a095c
+	org $a096c
+loc_0a096c
+	org $a097c
+loc_0a097c
+	org $a099c
+loc_0a099c
+	org $a09b6
+loc_0a09b6
+	org $a0a4e
+loc_0a0a4e
+	org $a0a92
+loc_0a0a92
+	org $a0abe
+loc_0a0abe
+	org $a0ad2
+loc_0a0ad2
+	org $a0bb2
+loc_0a0bb2
+	org $a0c92
+loc_0a0c92
+	org $a0cac
+loc_0a0cac
+	org $a0cbc
+loc_0a0cbc
+	org $a0ccc
+loc_0a0ccc
+	org $a0cde
+loc_0a0cde
+	org $a0ce8
+loc_0a0ce8
+	org $a0cf2
+loc_0a0cf2
+	org $a0cfc
+loc_0a0cfc
+
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $a0d56
 loc_0a0d56:
@@ -145,6 +234,10 @@ loc_0a357e:
 loc_0a363c:
 	org $a36da
 loc_0a36da:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $a38a0
+loc_0a38a0:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	org $a3986

@@ -2693,3 +2693,74 @@ loc_09fab6:
 loc_09fad2:
 	org $9faec
 loc_09faec:
+
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9fae2
+loc_09fae2
+	org $9faf6
+loc_09faf6
+	org $9fb02
+loc_09fb02
+	org $9fb0e
+loc_09fb0e
+	org $9fb1a
+loc_09fb1a
+	org $9fb26
+loc_09fb26
+	org $9fb32
+loc_09fb32
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9fb3e
+loc_09fb3e
+	org $9fb48
+loc_09fb48
+	org $9fb52
+loc_09fb52
+	org $9fb5c
+loc_09fb5c
+	org $9fb66
+loc_09fb66
+	org $9fb70
+loc_09fb70
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9fb7a
+loc_09fb7a:
+	org $9fb84
+loc_09fb84:
+	org $9fb8e
+loc_09fb8e:
+	org $9fb98
+loc_09fb98:
+	org $9fba2
+loc_09fba2:
+	org $9fbac
+loc_09fbac:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9fbb6
+loc_09fbb6
+	org $9fc02
+loc_09fc02
+	org $9fc46
+loc_09fc46
+	org $9fc92
+loc_09fc92
+	org $9fcde
+loc_09fcde
+	org $9fd34
+loc_09fd34
+	org $9fd80
+loc_09fd80
+	org $9fdec
+loc_09fdec
+	org $9fea0
+loc_09fea0
+	org $9fefa
+loc_09fefa
+	org $9ff66
+loc_09ff66
+	org $9ffd2
+loc_09ffd2

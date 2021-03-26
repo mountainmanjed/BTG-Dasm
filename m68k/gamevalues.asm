@@ -186,9 +186,15 @@ unk_102ec0 = 0x102ec0
 unk_102ec1 = 0x102ec1
 unk_102ec2 = 0x102ec2
 
-unk_104fd0 = 0x104fd0
+
+unk_104fc8 = 0x104fc8
+unk_104fc9 = 0x104fc9
+unk_104fca = 0x104fca
+unk_104fcb = 0x104fcb
+unk_104fcc = 0x104fcc
 unk_104fcf = 0x104fcf
 
+unk_104fd0 = 0x104fd0
 unk_106fd2 = 0x106fd2
 unk_106fd4 = 0x106fd4
 unk_106fd6 = 0x106fd6
@@ -463,6 +469,7 @@ unk_10ebfd = 0x10ebfd
 unk_10ebfe = 0x10ebfe
 
 unk_10ecb2 = 0x10ecb2
+unk_10ecb4 = 0x10ecb4
 unk_10ecb6 = 0x10ecb6 ;Start of Sound 
 
 
