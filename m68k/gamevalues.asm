@@ -502,10 +502,33 @@ unk_10ee92 = 0x10ee92
 unk_10ee9a = 0x10ee9a
 unk_10eea2 = 0x10eea2
 
+unk_10eeb6 = 0x10eeb6
+unk_10eeb7 = 0x10eeb7
+unk_10eeb8 = 0x10eeb8
+unk_10eeb9 = 0x10eeb9
+
+unk_10eed6 = 0x10eed6
+
+unk_10ef22 = 0x10ef22
 unk_10ef24 = 0x10ef24
 unk_10ef25 = 0x10ef25
 unk_10ef26 = 0x10ef26
+unk_10ef28 = 0x10ef28
 unk_10ef2a = 0x10ef2a
 unk_10ef2b = 0x10ef2b
 unk_10ef2c = 0x10ef2c
+unk_10ef2e = 0x10ef2e
+unk_10ef2f = 0x10ef2f
+unk_10ef30 = 0x10ef30
+unk_10ef34 = 0x10ef34
+unk_10ef36 = 0x10ef36
+unk_10ef38 = 0x10ef38
+unk_10ef3a = 0x10ef3a
+unk_10ef3b = 0x10ef3b
+unk_10ef3c = 0x10ef3c
+unk_10ef3e = 0x10ef3e
+unk_10ef42 = 0x10ef42
+unk_10ef44 = 0x10ef44
+unk_10ef46 = 0x10ef46
+unk_10ef47 = 0x10ef47
 unk_10ef48 = 0x10ef48

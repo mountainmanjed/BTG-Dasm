@@ -14877,7 +14877,7 @@ loc_07c444:
 	jsr loc_0004c6
 	lea.l loc_07c91c(pc),a1
 	jsr loc_0004c6
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	moveq #0,d0
 	move.b ($43,a6),d0
 	move.b #2,(a0,d0.w)
@@ -14886,7 +14886,7 @@ loc_07c444:
 	move.l #loc_07c478,(a6)
 
 loc_07c478:
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	moveq #0,d0
 	move.b ($43,a6),d0
 	cmpi.b #1,(a0,d0.w)
@@ -14940,7 +14940,7 @@ loc_07c524:
 
 loc_07c52c:
 	move.b #1,($47,a6)
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	moveq #0,d0
 	move.b ($43,a6),d0
 	move.b #3,(a0,d0.w)
@@ -14990,7 +14990,7 @@ loc_07c5ce:
 	rts
 
 loc_07c5dc:
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	moveq #0,d0
 	move.b ($43,a6),d0
 	cmpi.b #3,(a0,d0.w)
@@ -16942,7 +16942,7 @@ loc_07dbf2:
 	clr.b ($44,a6)
 	move.b #$1e,($46,a6)
 	move.b #$3c,($47,a6)
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	moveq #1,d0
 	move.b #2,($13,a6)
 

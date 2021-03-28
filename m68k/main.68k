@@ -10173,12 +10173,12 @@ loc_00d8f8:
 	bne.w loc_00d958
 	move.b BIOS_STATCHANGE,d0
 	move.b #$a,d1
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_00d926
 	andi.b #8,d1
 
 loc_00d926:
-	cmpi.b #1,BIOS_PLAYER_MOD2
+	cmpi.b #1,BIOS_PLAYER2_MOD
 	beq.w loc_00d936
 	andi.b #2,d1
 
@@ -10196,12 +10196,12 @@ loc_00d954:
 loc_00d958:
 	move.b BIOS_STATCHANGE,d0
 	move.b #$a,d1
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_00d972
 	andi.b #8,d1
 
 loc_00d972:
-	cmpi.b #1,BIOS_PLAYER_MOD2
+	cmpi.b #1,BIOS_PLAYER2_MOD
 	beq.w loc_00d982
 	andi.b #2,d1
 
@@ -10546,7 +10546,7 @@ loc_00e230:
 
 ;==============================================
 loc_00e238:
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	andi.b #3,BIOS_START_FLAG
 	cmpi.b #1,(a0)
 	bne.w loc_00e256
@@ -11747,12 +11747,12 @@ loc_00f390:
 ;==============================================
 loc_00f3d2:
 	moveq #0,d0
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	bne.w loc_00f3e2
 	addq.w #1,d0
 
 loc_00f3e2:
-	cmpi.b #1,BIOS_PLAYER_MOD2
+	cmpi.b #1,BIOS_PLAYER2_MOD
 	bne.w loc_00f3f0
 	addq.w #1,d0
 

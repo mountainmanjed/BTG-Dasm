@@ -19,7 +19,7 @@ loc_0601b0:
 	moveq #0,d1
 	moveq #0,d2
 	moveq #0,d4
-	move.b BIOS_PLAYER_MOD1,d3
+	move.b BIOS_PLAYER1_MOD,d3
 	beq.w loc_060224
 	cmpi.b #3,d3
 	beq.w loc_060224
@@ -29,7 +29,7 @@ loc_0601b0:
 	move.b BIOS_P1CURRENT,d4
 
 loc_060224:
-	move.b BIOS_PLAYER_MOD2,d3
+	move.b BIOS_PLAYER2_MOD,d3
 	beq.w loc_06024e
 	cmpi.b #3,d3
 	beq.w loc_06024e
@@ -135,14 +135,14 @@ loc_060322:
 ;==============================================
 loc_060328:
 	clr.b ($44,a6)
-	move.l #BIOS_PLAYER_MOD1,d0
+	move.l #BIOS_PLAYER1_MOD,d0
 	lea.l loc_06031d(pc),a0
 	lea.l loc_0602b2(pc),a1
 	lea.l loc_060290(pc),a2
 	moveq #0,d1
 	cmpa.l #unk_10d52e,a6
 	beq.w loc_06035e
-	move.l #BIOS_PLAYER_MOD2,d0
+	move.l #BIOS_PLAYER2_MOD,d0
 	lea.l loc_060322(pc),a0
 	lea.l loc_0602c4(pc),a1
 	lea.l loc_0602a1(pc),a2
@@ -205,7 +205,7 @@ loc_060400:
 	move.b ($13,a6),d0
 	ext.w d0
 	eori.b #1,d0
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	move.b (a0,d0.w),d0
 	seq.b d1
 	cmpi.b #3,d0
@@ -12844,7 +12844,7 @@ loc_06c436:
 loc_06c4b6:
 	moveq #1,d1
 	moveq #2,d2
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_06c4ca
 	exg.l d3,d4
 	exg.l d5,d6
@@ -12897,7 +12897,7 @@ loc_06c51e:
 loc_06c562:
 	jsr loc_070a90
 	lea.l unk_107004,a0
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_06c580
 	lea.l unk_10702a,a0
 
@@ -14219,7 +14219,7 @@ loc_06d60e:
 loc_06d618:
 	cmpi.b #1,unk_102eba
 	bne.w loc_06d650
-	lea.l BIOS_PLAYER_MOD1,a0
+	lea.l BIOS_PLAYER1_MOD,a0
 	movea.l unk_107076,a1
 	moveq #0,d0
 	move.b (a1),d0

@@ -4232,7 +4232,7 @@ loc_058aee:
 	tst.b unk_102eba
 	bne.w loc_058b30
 	move.b unk_107026,d0
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_058b26
 	move.b unk_10704c,d0
 
@@ -5802,7 +5802,7 @@ loc_059fa0:
 loc_059fc6:
 	lea.l unk_107004,a0
 	lea.l unk_10702a,a1
-	cmpi.b #1,BIOS_PLAYER_MOD1
+	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_059fe0
 	exg.l a0,a1
 
