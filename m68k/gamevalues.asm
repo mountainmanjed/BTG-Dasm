@@ -22,6 +22,7 @@ unk_100042 = 0x100042
 unk_100066 = 0x100066
 unk_10008a = 0x10008a
 unk_1000ae = 0x1000ae
+unk_1000d2 = 0x1000d2
 
 unk_100100 = 0x100100
 unk_100160 = 0x100160
@@ -227,6 +228,7 @@ unk_107026 = 0x107026
 unk_107028 = 0x107028
 unk_10702a = 0x10702a
 unk_10702b = 0x10702b
+unk_10702c = 0x10702c
 
 unk_10703a = 0x10703a
 
@@ -472,11 +474,33 @@ unk_10ecb2 = 0x10ecb2
 unk_10ecb4 = 0x10ecb4
 unk_10ecb6 = 0x10ecb6 ;Start of Sound 
 
+unk_10ecd6 = 0x10ecd6
+unk_10ecd8 = 0x10ecd8
+unk_10ecda = 0x10ecda
+unk_10ecdb = 0x10ecdb
+unk_10ecdc = 0x10ecdc
+unk_10ecde = 0x10ecde
 
+unk_10ece2 = 0x10ece2
+unk_10ece4 = 0x10ece4
+unk_10ece6 = 0x10ece6
+unk_10ece8 = 0x10ece8
+
+unk_10ecf0 = 0x10ecf0
+unk_10ecf4 = 0x10ecf4
+unk_10ecf8 = 0x10ecf8
+
+
+unk_10ed98 = 0x10ed98
 unk_10ed9a = 0x10ed9a
+unk_10ed9e = 0x10ed9e
+
 unk_10eda0 = 0x10eda0
 unk_10eda2 = 0x10eda2
 
+unk_10ee92 = 0x10ee92
+unk_10ee9a = 0x10ee9a
+unk_10eea2 = 0x10eea2
 
 unk_10ef24 = 0x10ef24
 unk_10ef25 = 0x10ef25
