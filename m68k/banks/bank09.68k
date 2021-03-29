@@ -2231,9 +2231,25 @@ loc_09dbc4:
 	org $9dc50
 loc_09dc50:
 
-
 	org $9dcbc
 loc_09dcbc:
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	org $9dd50
+loc_09dd50:
+	org $9dd5c
+loc_09dd5c:
+	org $9dd68
+loc_09dd68:
+	org $9dd74
+loc_09dd74:
+	org $9dd80
+loc_09dd80:
+	org $9dd8c
+loc_09dd8c:
+	org $9dd98
+loc_09dd98:
+
 
 	org $9dda4
 loc_09dda4
