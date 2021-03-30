@@ -2249,8 +2249,6 @@ loc_09dd80:
 loc_09dd8c:
 	org $9dd98
 loc_09dd98:
-
-
 	org $9dda4
 loc_09dda4
 

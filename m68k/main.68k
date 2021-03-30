@@ -2,7 +2,6 @@
 	include "ng.constants.asm"
 	include "gamevalues.asm"
 
-
 	dc.l	$0010F300, BiosStartup, BusError,AddrsError;	$00
 	dc.l	IllInstrct, loc_00e40c, loc_00e40e, loc_00e416;	$10
 	dc.l	PrivViolat, TraceInstr, loc_00e412, loc_00e414;	$20
