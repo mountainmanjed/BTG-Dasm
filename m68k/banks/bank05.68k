@@ -51,7 +51,7 @@ loc_054bbe:
 loc_054c3c:
 	clr.w Selected_Club
 	clr.b unk_106fec
-	clr.w unk_106fe6
+	clr.w Shot_Power
 	clr.b unk_106fed
 	lea.l loc_07223e,a1
 	jsr loc_0004c6
@@ -621,7 +621,7 @@ loc_05532a:
 
 ;==============================================
 loc_05538e:
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	lsl.w #2,d0
 	move.l loc_0553a2(pc,d0.w),($2c,a6)
 	jmp loc_000f2e
@@ -705,7 +705,7 @@ loc_0554c4:
 
 loc_0554dc:
 	bsr.w loc_05551c
-	jsr loc_055640(pc)
+	jsr Debug_Wind_Control(pc)
 	bcc.w loc_0554ec
 	jsr loc_0554f2(pc)
 
@@ -714,10 +714,10 @@ loc_0554ec:
 
 ;==============================================
 loc_0554f2:
-	move.w unk_106fe2,d0
+	move.w Wind_Direction,d0
 	lsl.w #2,d0
 	movea.l loc_055570(pc,d0.w),a0
-	tst.w unk_106fe0
+	tst.w Wind_Power
 	bne.w loc_05550e
 	lea.l loc_08a11e,a0
 
@@ -730,7 +730,7 @@ loc_05550e:
 loc_05551c:
 	subq.b #1,($14,a6)
 	bne.w loc_05555e
-	move.w unk_106fe0,d0
+	move.w Wind_Power,d0
 	move.b loc_055560(pc,d0.w),($14,a6)
 	tst.w d0
 	beq.w loc_05555e
@@ -787,9 +787,9 @@ loc_0555d6:
 	move.w #$150,($32,a6)
 	movea.w #$7453,a1
 	clr.b ($44,a6)
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	lsl.w #8,d0
-	add.w unk_10d4bc,d0
+	add.w HoleNumber,d0
 	lea.l loc_055622(pc),a0
 
 loc_0555fc:
@@ -818,7 +818,7 @@ loc_055622:
 	dc.w $0000
 
 ;==============================================
-loc_055640:
+Debug_Wind_Control:
 	btst #1,Debug_Dip1
 	beq.w loc_0556d6
 	move.b unk_10d516,d0
@@ -832,29 +832,29 @@ loc_055666:
 	beq.w loc_0556d6
 	btst #3,d0
 	beq.w loc_055682
-	addq.w #1,unk_106fe2
-	andi.w #$f,unk_106fe2
+	addq.w #1,Wind_Direction
+	andi.w #$f,Wind_Direction
 
 loc_055682:
 	btst #2,d0
 	beq.w loc_055698
-	subq.w #1,unk_106fe2
-	andi.w #$f,unk_106fe2
+	subq.w #1,Wind_Direction
+	andi.w #$f,Wind_Direction
 
 loc_055698:
 	btst #0,d0
 	beq.w loc_0556b8
-	addq.w #1,unk_106fe0
-	cmpi.w #$f,unk_106fe0
+	addq.w #1,Wind_Power
+	cmpi.w #$f,Wind_Power
 	ble.w loc_0556b8
-	clr.w unk_106fe0
+	clr.w Wind_Power
 
 loc_0556b8:
 	btst #1,d0
 	beq.w loc_0556d2
-	subq.w #1,unk_106fe0
+	subq.w #1,Wind_Power
 	bge.w loc_0556d2
-	move.w #$f,unk_106fe0
+	move.w #$f,Wind_Power
 
 loc_0556d2:
 	and.b d0,d0
@@ -2345,7 +2345,7 @@ loc_056bf8:
 
 ;==============================================
 loc_056c38:
-	move.w unk_106fe0,d0
+	move.w Wind_Power,d0
 	cmpi.w #$a,d0
 	bcs.w loc_056c4a
 	subi.w #$a,d0
@@ -2358,7 +2358,7 @@ loc_056c4a:
 	adda.w #$20,a1
 	jsr loc_00d6f8
 	lea.l loc_056cf2(pc),a0
-	cmpi.w #$a,unk_106fe0
+	cmpi.w #$a,Wind_Power
 	bcs.w loc_056c72
 	lea.l loc_056cfa(pc),a0
 	
@@ -2530,12 +2530,13 @@ loc_056e7e:
 	rts
 
 ;==============================================
-loc_056e80:
-	jsr loc_05701e(pc)
-	add.w d0,d0
+;Initial Windwrite
+Set_Wind_Init:
+	jsr RNG_14_FUNC(pc)
+	add.w d0,d0;0-28 evens
 	moveq #0,d1
 	move.b Game_Difficulty,d1
-	cmpi.w #1,unk_10d4bc
+	cmpi.w #1,HoleNumber
 	bne.w loc_056ea4
 	cmpi.w #2,d1
 	bls.w loc_056ea4
@@ -2551,15 +2552,15 @@ loc_056eb4:
 	add.w unk_107000,d1
 	lsr.w #1,d1
 	add.w (a0,d0.w),d1
-	move.w d1,unk_106fe0
-	jsr loc_056f7a(pc)
+	move.w d1,Wind_Power
+	jsr Wind_Hole_Factor(pc)
 	jsr RNG_Function(pc)
 	andi.w #$f,d0
-	move.w d0,unk_106fe2
+	move.w d0,Wind_Direction
 	rts
 
 ;==============================================
-loc_056eda:
+Set_Wind_Game:
 	move.b unk_102ebb,d0
 	beq.w loc_056f02
 	subq.b #1,d0
@@ -2567,8 +2568,8 @@ loc_056eda:
 	lsl.w #2,d0
 	lea.l loc_056f66(pc),a0
 	lea.l (a0,d0.w),a0
-	move.w (a0)+,unk_106fe2
-	move.w (a0),unk_106fe0
+	move.w (a0)+,Wind_Direction
+	move.w (a0),Wind_Power
 	rts
 
 loc_056f02:
@@ -2584,20 +2585,20 @@ loc_056f02:
 	lea.l loc_057000(pc),a1
 
 loc_056f2c:
-	jsr loc_05701e(pc)
+	jsr RNG_14_FUNC(pc)
 	add.w d0,d0
 	move.w d0,d1
-	move.w unk_106fe0,d0
+	move.w Wind_Power,d0
 	add.w (a0,d1.w),d0
-	move.w d0,unk_106fe0
-	jsr loc_056f7a(pc)
-	jsr loc_05701e(pc)
+	move.w d0,Wind_Power
+	jsr Wind_Hole_Factor(pc)
+	jsr RNG_14_FUNC(pc)
 	add.w d0,d0
 	move.w d0,d1
-	move.w unk_106fe2,d0
+	move.w Wind_Direction,d0
 	add.w (a1,d1.w),d0
 	andi.w #$f,d0
-	move.w d0,unk_106fe2
+	move.w d0,Wind_Direction
 	rts
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
@@ -2609,13 +2610,13 @@ loc_056f66:
 	dc.w $0001,$0003
 
 ;==============================================
-loc_056f7a:
-	move.w unk_106fe0,d0
+Wind_Hole_Factor:
+	move.w Wind_Power,d0
 	bpl.w loc_056f86
 	moveq #0,d0
 
 loc_056f86:
-	move.w unk_10d4bc,d1
+	move.w HoleNumber,d1
 	cmp.b loc_056fb0(pc,d1.w),d0
 	bls.w loc_056f9c
 	move.b loc_056fb0(pc,d1.w),d0
@@ -2627,7 +2628,7 @@ loc_056f9c:
 	move.w #$f,d0
 
 loc_056fa8:
-	move.w d0,unk_106fe0
+	move.w d0,Wind_Power
 	rts
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
@@ -2660,7 +2661,9 @@ loc_057000:
 	dc.w $0000,$0001,$0002
 
 ;==============================================
-loc_05701e:
+;Add 2 RNG varibles to get a number 0~14
+;==============================================
+RNG_14_FUNC:
 	jsr RNG_Function(pc)
 	andi.w #7,d0
 	move.w d0,-(a7)
@@ -2669,6 +2672,8 @@ loc_05701e:
 	add.w (a7)+,d0
 	rts
 
+;==============================================
+;
 ;==============================================
 loc_057034:
 	move.b ($37,a6),d0
@@ -2681,6 +2686,8 @@ loc_057034:
 	rts
 
 ;==============================================
+;
+;==============================================
 loc_05704c:
 	move.b ($39,a6),d0
 	move.b ($38,a6),d1
@@ -2691,6 +2698,8 @@ loc_05704c:
 	add.w d1,($32,a6)
 	rts
 
+;==============================================
+;
 ;==============================================
 loc_057064:
 	jsr loc_057034(pc)
@@ -3631,7 +3640,7 @@ loc_057ad2:
 ;==============================================
 loc_058274:
 	moveq #0,d0
-	cmpi.w #$12,unk_10d4bc
+	cmpi.w #$12,HoleNumber
 	bcs.w loc_058286
 	move.b #$ff,d0
 
@@ -3696,7 +3705,7 @@ loc_058376:
 	move.w d0,($c,a0)
 	cmpi.w #3,unk_106fd6
 	beq.w loc_058680
-	jsr loc_056eda
+	jsr Set_Wind_Game
 	jsr loc_0621ec
 	moveq #$20,d0
 	moveq #0,d1
@@ -3859,7 +3868,7 @@ loc_058632:
 	jsr loc_058aee(pc)
 	bcc.w loc_058678
 	jsr loc_083ba2
-	addq.w #1,unk_10d4bc
+	addq.w #1,HoleNumber
 	movea.l ($c,a6),a0
 	bset.b #7,($11,a0)
 	move.l #loc_058676,(a6)
@@ -3996,7 +4005,7 @@ loc_058840:
 	bne.w loc_058874
 	bset.b #7,unk_102ebc
 	bne.w loc_058874
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	add.w d0,d0
 	move.w loc_058876(pc,d0.w),d0
 	jsr loc_0804de
@@ -4070,11 +4079,11 @@ loc_058938:
 
 ;==============================================
 loc_05893a:
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	lsl.w #2,d0
 	lea.l loc_057b44(pc),a0
 	movea.l (a0,d0.w),a0
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	mulu.w #$18,d0
 	adda.w d0,a0
 	move.w (8,a0),d1
@@ -4285,7 +4294,7 @@ loc_058ba4:
 	cmpi.b #2,unk_102eba
 	beq.w loc_058bc6
 	movea.l Player_Pointer,a0
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	subq.w #1,d0
 	move.b (2,a0),($10,a0,d0.w)
 	rts
@@ -4307,7 +4316,7 @@ loc_058be4:
 	clr.b ($24,a2)
 
 loc_058bee:
-	move.w unk_10d4bc,d3
+	move.w HoleNumber,d3
 	subq.w #1,d3
 	move.b d1,($10,a1,d3.w)
 	move.b d2,($10,a2,d3.w)
@@ -5749,7 +5758,7 @@ loc_059f08:
 
 ;==============================================
 loc_059f26:
-	move.w #1,unk_10d4bc
+	move.w #1,HoleNumber
 	clr.b unk_10ebca
 	move.b #0,unk_107004
 	move.b #1,unk_10702a
@@ -5793,8 +5802,8 @@ loc_059f90:
 loc_059fa0:
 	move.b (a0)+,(a1)+
 	dbra d7,loc_059fa0
-	move.w unk_10d4bc,unk_10d4be
-	move.w unk_10d4b8,unk_10d4ba
+	move.w HoleNumber,unk_10d4be
+	move.w Course_ID,unk_10d4ba
 	move.l unk_102eb0,unk_102eb4
 	rts
 
@@ -5825,8 +5834,8 @@ loc_05a018:
 	dbra d7,loc_05a018
 
 loc_05a026:
-	move.w unk_10d4be,unk_10d4bc
-	move.w unk_10d4ba,unk_10d4b8
+	move.w unk_10d4be,HoleNumber
+	move.w unk_10d4ba,Course_ID
 	move.l unk_102eb4,unk_102eb0
 
 loc_05a044:
@@ -5888,7 +5897,7 @@ loc_05a054:
 	jsr loc_05a286(pc)
 	jsr Hole_Spawn(pc)
 	jsr loc_05a210(pc)
-	jsr loc_056e80
+	jsr Set_Wind_Init
 	jsr loc_05926c
 	jsr loc_05a3e4(pc)
 	clr.b unk_10d4ef
@@ -5913,7 +5922,7 @@ loc_05a152:
 	sub.w d0,d0
 	asr.l #6,d0
 	move.l d0,unk_10d4ce
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	add.w d0,d0
 	move.w loc_05a194(pc,d0.w),unk_10d4c0
 	rts
@@ -5927,9 +5936,9 @@ loc_05a19c:
 	move.w #$ffff,d0
 	move.w d0,unk_10d4d2
 	move.w d0,unk_10d4d4
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	swap d0
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	lea.l loc_05a1dc-8(pc),a0
 
 loc_05a1be:
@@ -6015,7 +6024,7 @@ loc_05a29e:
 	add.w (a7)+,d0
 	add.b Game_Difficulty,d0
 	move.b loc_05a306(pc,d0.w),d0
-	cmpi.w #3,unk_10d4bc
+	cmpi.w #3,HoleNumber
 	bhi.w loc_05a2ce
 	moveq #0,d0
 
@@ -6064,6 +6073,7 @@ loc_05a356:
 	movea.l HoleData_Pointer,a0
 	movea.l (2,a0),a1
 	adda.w d0,a1
+
 	moveq #0,d0
 	moveq #0,d1
 	move.w (a1)+,d0
@@ -6432,7 +6442,7 @@ loc_05aa68:
 
 ;==============================================
 loc_05aa76:
-	move.w unk_10d4bc,d1
+	move.w HoleNumber,d1
 	lea.l unk_10d4e0,a0
 
 loc_05aa82:
@@ -6467,7 +6477,7 @@ loc_05aacc:
 	lsr.w #1,d0
 	lsl.w #3,d0
 	lea.l loc_05ab1e(pc,d0.w),a0
-	move.w unk_10d4b8,d1
+	move.w Course_ID,d1
 	lsl.w #2,d1
 	lea.l loc_05ab3e(pc,d1.w),a1
 	lea.l unk_10d4e0,a2
@@ -7428,7 +7438,7 @@ loc_05b6c8:
 loc_05b6d2:
 	cmpi.b #2,unk_102eba
 	beq.w loc_05b6fc
-	cmpi.w #$12,unk_10d4bc
+	cmpi.w #$12,HoleNumber
 	beq.w loc_05b6fc
 	move.l #loc_05b6f0,(a6)
 

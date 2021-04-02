@@ -1080,7 +1080,7 @@ loc_080e52:
 loc_080e5a:
 	cmpi.w #$d,Selected_Club
 	beq.w loc_080e8c
-	move.w unk_106fe6,d0
+	move.w Shot_Power,d0
 	lea.l loc_080e88(pc),a0
 
 loc_080e70:
@@ -1101,7 +1101,7 @@ loc_080e88:
 ;==============================================
 loc_080e8c:
 	lea.l loc_080ed0(pc),a0
-	move.w unk_106fe6,d0
+	move.w Shot_Power,d0
 	cmpi.w #$1e,d0
 	bcs.w loc_080ea2
 	lea.l loc_080ec7(pc),a0
@@ -1168,10 +1168,10 @@ loc_080f26:
 	move.w #$1038,d2
 
 loc_080f32:
-	cmpi.w #$64,unk_106fe6
+	cmpi.w #$64,Shot_Power
 	bcc.w loc_080f4e
 	move.w d1,d0
-	cmpi.w #$4b,unk_106fe6
+	cmpi.w #$4b,Shot_Power
 	bcc.w loc_080f4e
 	move.w d2,d0
 
@@ -2275,7 +2275,7 @@ loc_0839f6:
 ;==============================================
 loc_083a0c:
 	jsr loc_083cdc(pc)
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	lsl.w #2,d0
 	lea.l loc_083352(pc),a1
 	movea.l (a1,d0.w),a1
@@ -2480,7 +2480,7 @@ loc_083c50:
 	move.l a0,-(a7)
 	moveq #0,d0
 	move.b (6,a0),d0
-	move.w unk_10d4b8,d1
+	move.w Course_ID,d1
 	jsr loc_058988
 	movea.l (a7)+,a0
 	lea.l loc_083c92(pc),a1
@@ -2578,7 +2578,7 @@ loc_083d20:
 
 ;==============================================
 loc_083d38:
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	lsl.w #2,d0
 	lea.l loc_083352(pc),a0
 	movea.l (a0,d0.w),a0
@@ -4014,7 +4014,7 @@ loc_085534:
 	tst.b unk_102eba
 	bne.w loc_08565c
 	move.b #0,($42,a6)
-	cmpi.w #$13,unk_10d4bc
+	cmpi.w #$13,HoleNumber
 	blt.w loc_08558c
 	move.b #$ff,($42,a6)
 	move.l unk_10ef3e,($46,a6)
@@ -4222,7 +4222,7 @@ loc_085812:
 	moveq #2,d2
 	jsr loc_00d8c8
 	movea.w #$7288,a1
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	move.w #$1000,d1
 	move.w #1,d2
 	jsr loc_085e04(pc)
@@ -4273,9 +4273,9 @@ loc_0858d4:
 loc_0858ec:
 	lea.l unk_10eea2,a0
 	move.b #$ff,($14,a0)
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	move.b d0,($15,a0)
-	move.w unk_10d4bc,d0
+	move.w HoleNumber,d0
 	beq.w loc_085914
 	cmpi.w #$13,d0
 	blt.w loc_085996
@@ -4338,7 +4338,7 @@ loc_085996:
 	move.b unk_10ef47,($33,a0)
 	bsr.w loc_085966
 	lea.l loc_083352,a0
-	move.w unk_10d4b8,d0
+	move.w Course_ID,d0
 	add.w d0,d0
 	add.w d0,d0
 	movea.l (a0,d0.w),a0
@@ -4396,10 +4396,10 @@ loc_085a96
 	move.b ($16,a0),d1
 	beq.w loc_085c8e
 	andi.w #$ff,d1
-	move.w d1,unk_10d4bc
+	move.w d1,HoleNumber
 	move.b ($15,a0),d1
 	andi.w #$ff,d1
-	move.w d1,unk_10d4b8
+	move.w d1,Course_ID
 	move.l ($36,a0),unk_10d4e0
 	subq.b #1,d0
 	lea.l loc_0864ae(pc),a1
@@ -4415,7 +4415,7 @@ loc_085a96
 	move.l ($24,a0),($1c,a4)
 	move.w ($28,a0),($20,a4)
 	lea.l loc_083352,a2
-	move.w unk_10d4b8,d2
+	move.w Course_ID,d2
 	add.w d2,d2
 	add.w d2,d2
 	movea.l (a2,d2.w),a2

@@ -213,12 +213,12 @@ unk_106fd8 = 0x106fd8
 unk_106fda = 0x106fda
 unk_106fdc = 0x106fdc
 Selected_Club = 0x106fde
-unk_106fe0 = 0x106fe0
-unk_106fe2 = 0x106fe2
+Wind_Power = 0x106fe0
+Wind_Direction = 0x106fe2
 unk_106fe4 = 0x106fe4
 unk_106fe5 = 0x106fe5
-unk_106fe6 = 0x106fe6;Shot Power
-unk_106fe8 = 0x106fe8;Shot Height
+Shot_Power = 0x106fe6;Shot Power
+Shot_Height = 0x106fe8;Shot Height
 unk_106fea = 0x106fea
 unk_106fec = 0x106fec
 unk_106fed = 0x106fed
@@ -271,10 +271,10 @@ unk_10d4ac = 0x10d4ac
 unk_10d4ae = 0x10d4ae
 
 
-unk_10d4b8 = 0x10d4b8
+Course_ID = 0x10d4b8
 unk_10d4b9 = 0x10d4b9
 unk_10d4ba = 0x10d4ba
-unk_10d4bc = 0x10d4bc
+HoleNumber = 0x10d4bc
 unk_10d4bd = 0x10d4bd
 unk_10d4be = 0x10d4be
 
