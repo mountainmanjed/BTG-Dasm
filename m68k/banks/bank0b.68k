@@ -257,7 +257,7 @@ loc_0b9a22:
 	beq.w loc_0b9b00
 	andi.l #$ffff,d1
 	lsl.l #6,d1
-	lea.l loc_0ad730,a1
+	lea.l PaletteData,a1
 	add.l a1,d1
 	move.l d1,d4
 	lea.l unk_102fc8,a1
@@ -320,7 +320,7 @@ loc_0b9b02:
 	clr.b d2
 	andi.l #$ffff,d1
 	lsl.l #6,d1
-	lea.l loc_0ad730,a1
+	lea.l PaletteData,a1
 	add.l a1,d1
 	move.w ($2a,a6),d3
 
@@ -353,7 +353,7 @@ loc_0b9b4c:
 	beq.b loc_0b9b00
 	andi.l #$ffff,d1
 	lsl.l #6,d1
-	lea.l loc_0ad730,a1
+	lea.l PaletteData,a1
 	add.l a1,d1
 	subq.w #1,unk_102fc2
 	move.w unk_102fc4,d3
@@ -403,7 +403,7 @@ loc_0b9bde:
 	beq.w loc_0b9c3a
 	andi.l #$ffff,d2
 	lsl.l #6,d2
-	lea.l loc_0ad730,a2
+	lea.l PaletteData,a2
 	add.l a2,d2
 	move.l d2,(2,a1,d1.w)
 	move.w #1,(6,a1,d1.w)
@@ -442,7 +442,7 @@ loc_0b9c4c:
 	beq.w loc_0b9ca8
 	andi.l #$ffff,d2
 	lsl.l #6,d2
-	lea.l loc_0ad730,a2
+	lea.l PaletteData,a2
 	add.l a2,d2
 	move.l d2,(2,a1,d1.w)
 	move.w #1,(6,a1,d1.w)
@@ -479,7 +479,7 @@ loc_0b9cd4:
 	beq.w loc_0b9d12
 	andi.l #$ffff,d2
 	lsl.l #6,d2
-	lea.l loc_0ad730+$A7C0,a2
+	lea.l PaletteData+$A7C0,a2
 	add.l a2,d2
 	move.l d2,(2,a1,d1.w)
 	move.w #1,(6,a1,d1.w)
@@ -529,11 +529,11 @@ loc_0b9d80:
 ;==============================================
 loc_0b9d86:
 	;points to loc_0b7ef0
-	lea.l loc_0ad730+$A7C0,a2
+	lea.l PaletteData+$A7C0,a2
 	bra.w loc_0b9d96
 
 loc_0b9d90:
-	lea.l loc_0ad730,a2
+	lea.l PaletteData,a2
 
 loc_0b9d96:
 	andi.l #$ffff,d2

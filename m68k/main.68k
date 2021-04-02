@@ -2750,7 +2750,7 @@ loc_002d92:
 	rts
 
 loc_002da4:
-	movea.l unk_10707a,a1
+	movea.l HoleData_Pointer,a1
 	movea.l (6,a1),a1
 	lea.l unk_102b84,a2
 
@@ -2789,8 +2789,8 @@ loc_002df8:
 
 ;==============================================
 loc_002e34:
-	movea.l unk_10707a,a3
-	movea.l unk_107076,a0
+	movea.l HoleData_Pointer,a3
+	movea.l Player_Pointer,a0
 	move.w (8,a0),d0
 	cmpi.w #$a0,d0
 	bge.w loc_002e54
@@ -3057,7 +3057,7 @@ loc_003142:
 	bsr.w loc_002e34
 	bcc.w loc_002f9e
 	jsr loc_080b36
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.w (4,a1),d0
 	sub.w ($54,a6),d0
 	bpl.w loc_00316e
@@ -3173,7 +3173,7 @@ loc_0032ae:
 
 ;==============================================
 loc_0032ca:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (8,a0),d0
 	movea.l ($40,a6),a1
 	sub.w (4,a1),d0
@@ -3478,7 +3478,7 @@ loc_003f86:
 	bne.w loc_003fca
 	btst #1,d0
 	bne.w loc_003fca
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.w ($c,a1),d0
 	lea.l loc_00405c(pc),a2
 
@@ -4238,7 +4238,7 @@ loc_004cbe:
 	clr.b unk_10ebbc
 	clr.b unk_102db6
 	clr.b unk_102d26
-	cmpi.w #$d,unk_106fde
+	cmpi.w #$d,Selected_Club
 	bne.w loc_004d30
 	bset.b #0,unk_102c38
 
@@ -4376,7 +4376,7 @@ loc_004f08:
 	move.w unk_106fe0,d1
 	jsr loc_002820
 	move.l d0,unk_102c60
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.l (4,a0),d0
 	asr.l #2,d0
 	move.l d0,unk_102c68
@@ -4405,7 +4405,7 @@ loc_004f9e:
 	clr.l unk_102c54
 
 loc_004fce:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (3,a0),d0
 	clr.b (3,a0)
 	cmpi.b #1,unk_10ebe4
@@ -4432,11 +4432,11 @@ loc_00501a:
 ;Deals with Characters
 loc_00501c:
 	moveq #0,d1
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (1,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005038(pc,d1.w),a1
-	move.w unk_106fde,d1
+	move.w Selected_Club,d1
 	lsl.w #3,d1
 	rts
 
@@ -4518,11 +4518,11 @@ loc_0052fa:
 ;==============================================
 loc_005304:
 	moveq #0,d1
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (1,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005330(pc,d1.w),a1
-	move.w unk_106fde,d1
+	move.w Selected_Club,d1
 	add.w d1,d1
 	move.w (a1,d1.w),d1
 	andi.l #$ffff,d1
@@ -4577,11 +4577,11 @@ loc_0053d4:
 ;==============================================
 loc_0053f0:
 	moveq #0,d1
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (1,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005410(pc,d1.w),a1
-	move.w unk_106fde,d1
+	move.w Selected_Club,d1
 	lsl.w #2,d1
 	move.l (a1,d1.w),d1
 	rts
@@ -4634,12 +4634,12 @@ loc_005540:
 ;==============================================
 loc_005578:
 	moveq #0,d1
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (1,a1),d1
 	lsl.w #2,d1
 	movea.l loc_0055b2(pc,d1.w),a1
 	move.w unk_106fe6,d1
-	cmpi.w #$d,unk_106fde
+	cmpi.w #$d,Selected_Club
 	bne.w loc_0055a4
 	lea.l loc_005c2a(pc),a1
 	bra.w loc_0055a6
@@ -4827,17 +4827,17 @@ loc_005dd0:
 ;==============================================
 loc_005de2:
  	moveq #0,d1
- 	movea.l unk_107076,a1
+ 	movea.l Player_Pointer,a1
  	move.b (1,a1),d1
  	lsl.w #2,d1
  	movea.l loc_005e16(pc,d1.w),a1
  	moveq #0,d1
- 	movea.l unk_107076,a0
+ 	movea.l Player_Pointer,a0
  	move.b (3,a0),d1
  	add.w unk_106fd6,d1
  	lsl.w #2,d1
  	movea.l (a1,d1.w),a1
- 	move.w unk_106fde,d1
+ 	move.w Selected_Club,d1
  	lsl.w #2,d1
  	rts
 
@@ -6041,10 +6041,10 @@ loc_0078a8:
 	andi.w #$1f80,d0
 	cmpi.w #$1280,d0
 	bne.w loc_0078dc
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.b #1,d0
 	bne.w loc_0078dc
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.b #$f,d0
 	move.b d0,unk_102d28
 
@@ -6272,7 +6272,7 @@ loc_007be0:
 
 ;==============================================
 loc_007c1a:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (8,a0),($3c,a6)
 	move.w #$218,d1
 	jsr loc_0b9a22
@@ -6371,7 +6371,7 @@ loc_007d6c:
 
 ;==============================================
 loc_007d96:
-	jsr loc_0568c2
+	jsr RNG_Function
 	lea.l unk_102b88,a0
 	andi.b #3,d0
 	bne.w loc_007db0
@@ -6669,7 +6669,7 @@ loc_008122:
 	bset.b #1,($12,a6)
 	move.w unk_10d504,($30,a6)
 	move.w unk_10d506,($32,a6)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (8,a0),($3c,a6)
 	move.l #loc_008150,(a6)
 
@@ -7386,7 +7386,7 @@ loc_0093fa:
 	jsr loc_0004c6
 
 loc_009446:
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.w #7,d0
 	move.w unk_102c48,d1
 	lea.l loc_009104(pc),a0
@@ -7407,7 +7407,7 @@ loc_00947e:
 	sub.w d0,d0
 
 loc_009490:
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b d0,(3,a1)
 	beq.w loc_0094ac
 	lea.l loc_0048f6(pc),a1
@@ -8543,7 +8543,7 @@ loc_00bc78:
 
 loc_00bc8a:
 	move.b #$ff,unk_107083
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b #1,($22,a0)
 	cmpi.b #1,unk_107082
 	bne.w loc_00bcc6
@@ -8995,7 +8995,7 @@ loc_00cbf0:
 	jmp loc_00054a
 
 loc_00cbf6:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #1,(2,a0)
 	bne.w loc_00cc2c
 	move.b (a0),d0
@@ -9095,7 +9095,7 @@ loc_00cd3a:
 
 loc_00cd42:
 	jsr loc_00cea4(pc)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #1,(2,a0)
 	bne.w loc_00cd74
 	move.b (a0),d0
@@ -9202,7 +9202,7 @@ loc_00ce9e:
 loc_00cea4:
 	moveq #0,d0
 	jsr loc_05a3ba
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (4,a0),d2
 	move.w (8,a0),d3
 	jsr loc_059dc4
@@ -9360,7 +9360,7 @@ loc_00d0ca:
 ;==============================================
 loc_00d0cc:
 	jsr loc_05897a
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (2,a0),d1
 	moveq #1,d2
 	cmpi.w #4,d0
@@ -9857,7 +9857,7 @@ loc_00d5d4:
 	jsr loc_0006f2
 	clr.w unk_102e5a
 	clr.w unk_102e5c
-	addq.b #1,unk_107002
+	addq.b #1,RNG_Counter
 	movea.l (a7)+,a6
 	rts
 
@@ -10807,7 +10807,7 @@ loc_00e558:
 	clr.b unk_102eb9
 	bset.b #7,unk_10d5ee
 	move.b #$ff,unk_102eba
-	move.b BIOS_GAME_D4,unk_102eb8
+	move.b BIOS_GAME_D4,Game_Difficulty
 	moveq #$50,d0
 	moveq #$1e,d1
 	moveq #0,d2
@@ -11147,7 +11147,7 @@ loc_00ead0:
 	lea.l loc_055304,a1
 	jsr loc_0004c6
 	jsr loc_05893a
-	move.l a0,unk_10707a
+	move.l a0,HoleData_Pointer
 	move.l #loc_00eb18,(a6)
 	rts
 
@@ -11601,7 +11601,7 @@ loc_00f1dc:
 	move.b unk_10d516,d2
 	tst.b unk_102ebb
 	bne.w loc_00f21a
-	move.l unk_107076,d3
+	move.l Player_Pointer,d3
 	cmpi.l #unk_107004,d3
 	beq.w loc_00f21a
 	move.b unk_10d51f,d0

@@ -541,7 +541,7 @@ loc_061304:
 	clr.b unk_10d5f1
 	move.l #$ffffffff,unk_10eb8e
 	move.b d0,REG_DIPSW
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l ($e,a0),a0
 	tst.w (a0)
 	beq.w loc_061392
@@ -563,7 +563,7 @@ loc_061392:
 	move.w #$7707,unk_10eb92
 	jsr loc_06219a(pc)
 	jsr loc_061652(pc)
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l ($e,a0),a0
 	tst.w (a0)
 	beq.w loc_06141a
@@ -787,7 +787,7 @@ loc_0616d6:
 ;==============================================
 loc_0616e8:
 	movem.l d0/a0,-(a7)
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	btst #1,(a0)
 	movem.l (a7)+,d0/a0
 	bne.w loc_061702
@@ -919,7 +919,7 @@ loc_061834:
 loc_061848:
 	cmpi.w #$e,d1
 	bhi.w loc_061862
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	moveq #1,d7
 	btst #0,(a0)
 	beq.w loc_061862
@@ -1067,7 +1067,7 @@ loc_0619de:
 	moveq #8,d2
 	move.w d3,d4
 	lea.l loc_0628dc(pc),a1
-	movea.l unk_107076,a2
+	movea.l Player_Pointer,a2
 	tst.w ($c,a2)
 	beq.w loc_0619fc
 	lea.l loc_0628d2(pc),a1
@@ -1191,9 +1191,9 @@ loc_061b32:
 	bls.w loc_061c06
 	tst.w unk_10eb8e
 	bpl.w loc_061c06
-	movea.l unk_107076,a2
+	movea.l Player_Pointer,a2
 	move.w (8,a2),d3
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l ($a,a0),a0
 	suba.l a1,a1
 	suba.l a2,a2
@@ -1477,7 +1477,7 @@ loc_061dfe:
 
 ;==============================================
 loc_061e34:
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_061e3e:
@@ -1776,11 +1776,11 @@ loc_0621ea:
 loc_0621ec:
 	move.l #$ffffffff,unk_10eb7e
 	move.w #$7fff,d7
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	tst.w ($c,a0)
 	beq.w loc_062264
 	jsr loc_057602
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_062218:
@@ -2183,7 +2183,7 @@ loc_062666:
 	jsr loc_05929a
 
 loc_06266c:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	sub.w ($c,a0),d0
 
 loc_062676:
@@ -2571,7 +2571,7 @@ loc_062a40:
 loc_062a4a:
 	jsr loc_063546(pc)
 	moveq #$33,d7
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l ($e,a0),a0
 	lea.l unk_10d840,a1
 	tst.w (a0)
@@ -2814,7 +2814,7 @@ loc_062ce0:
 ;==============================================
 loc_062ce2:
 	jsr loc_063546(pc)
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_062cf0:
@@ -3421,7 +3421,7 @@ loc_06325c:
 	bgt.w loc_063170
 	move.w (2,a0),d0
 	move.w (4,a0),d1
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.w (4,a1),d2
 	move.w (8,a1),d3
 	jsr loc_059dc4
@@ -3677,7 +3677,7 @@ loc_063544:
 
 ;==============================================
 loc_063546:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (8,a0),d0
 	swap d0
 	sub.w d0,d0
@@ -3686,7 +3686,7 @@ loc_063546:
 	move.w d1,d0
 	swap d0
 	move.l d0,-(a7)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (4,a0),d0
 	swap d0
 	sub.w d0,d0
@@ -3696,14 +3696,14 @@ loc_063546:
 	swap d0
 	sub.l (a7)+,d0
 	move.l d0,unk_10eba4
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.l (8,a0),d0
 	move.l unk_10eba0,d1
 	jsr loc_002820
 	move.w d1,d0
 	swap d0
 	move.l d0,-(a7)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.l (4,a0),d0
 	move.l unk_10eb9c,d1
 	jsr loc_002820
@@ -7180,7 +7180,7 @@ loc_067bbc:
 
 loc_067bd0:
 	lea.l loc_0678ba(pc),a0
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	tst.w ($c,a1)
 	beq.w loc_067be6
 	lea.l loc_0678cc(pc),a0
@@ -8019,7 +8019,7 @@ loc_068540:
 
 ;==============================================
 loc_06854c:
-	cmpi.w #$d,unk_106fde
+	cmpi.w #$d,Selected_Club
 	beq.w loc_0685fa
 	cmpi.w #$11,unk_106fe8
 	bhi.w loc_0685fa
@@ -10352,7 +10352,7 @@ loc_06a342:
 	movem.w d0-d1,VRAMADDR
 	addi.w #$20,d0
 	dbra d7,loc_06a342
-	move.b unk_102eb8,d1
+	move.b Game_Difficulty,d1
 	addq.b #1,d1
 	addi.b #$d0,d1
 	movem.w d0-d1,VRAMADDR
@@ -11428,11 +11428,11 @@ loc_06b182:
 	cmp.b (a0)+,d1
 	bne.b loc_06b182
 	move.b d0,($41,a6)
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.b #3,d0
 	addq.b #8,d0
 	move.b d0,($1a,a6)
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.b #3,d0
 	ori.b #1,d0
 	move.b d0,($3f,a6)
@@ -12500,14 +12500,14 @@ loc_06c052:
 loc_06c05c:
 	cmpi.b #2,unk_102eba
 	beq.w loc_06c1b6
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #1,($22,a0)
 	beq.w loc_06c0aa
 	jsr loc_06cda2(pc)
 	bcc.w loc_06c132
 
 loc_06c080:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	lea.l loc_0713fe,a1
 	jsr loc_0004c6
@@ -12574,7 +12574,7 @@ loc_06c132:
 	bcc.b loc_06c0ee
 	lea.l loc_070ff6,a1
 	jsr loc_0004c6
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (a1),($11,a0)
 	clr.b ($11,a6)
 	move.l #loc_06c158,(a6)
@@ -12587,7 +12587,7 @@ loc_06c158:
 loc_06c162:
 	cmpi.b #1,($11,a6)
 	beq.b loc_06c0ee
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	jsr loc_06cda2(pc)
 	bcs.w loc_06c080
@@ -12611,7 +12611,7 @@ loc_06c1a2:
 loc_06c1b6:
 	jsr loc_06cda2(pc)
 	bcc.w loc_06c1e8
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	lea.l loc_0713fe,a1
 	jsr loc_0004c6
@@ -12628,7 +12628,7 @@ loc_06c1e8:
 	bcc.w loc_06c24e
 	lea.l loc_070fe4,a1
 	jsr loc_0004c6
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (a1),($11,a0)
 	clr.b ($11,a6)
 	move.l #loc_06c210,(a6)
@@ -12643,7 +12643,7 @@ loc_06c21a:
 	bne.w loc_06c24e
 	lea.l unk_107004,a1
 	lea.l unk_10702a,a2
-	cmpa.l unk_107076,a1
+	cmpa.l Player_Pointer,a1
 	beq.w loc_06c23c
 	exg.l a1,a2
 
@@ -12679,7 +12679,7 @@ loc_06c28a:
 	bcc.w loc_06c108
 	lea.l loc_070ff6,a1
 	jsr loc_0004c6
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (a1),($11,a0)
 	clr.b ($11,a6)
 	move.l #loc_06c2ba,(a6)
@@ -12692,11 +12692,11 @@ loc_06c2ba:
 loc_06c2c4:
 	cmpi.b #1,($11,a6)
 	beq.w loc_06c108
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	jsr loc_06cda2(pc)
 	bcc.w loc_06c30a
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	lea.l loc_0713fe,a1
 	jsr loc_0004c6
@@ -13307,7 +13307,7 @@ loc_06cb30:
 	tst.b ($22,a2)
 	bmi.w loc_06cb5e
 	lea.l loc_06cbba(pc),a3
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	move.b (2,a1),d0
 	sub.b (1,a0),d0
 	bmi.w loc_06cb5e
@@ -13399,7 +13399,7 @@ loc_06cc44:
 	bne.w loc_06ccde
 	lea.l unk_107004,a1
 	lea.l unk_10702a,a2
-	cmpa.l unk_107076,a1
+	cmpa.l Player_Pointer,a1
 	beq.w loc_06cc66
 	exg.l a1,a2
 
@@ -13464,7 +13464,7 @@ loc_06cce2:
 	beq.w loc_06cd66
 	cmpi.b #1,unk_102eba
 	bne.w loc_06cd24
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	lea.l unk_107004,a1
 	cmpa.l a1,a0
 	bne.w loc_06cd1c
@@ -13523,10 +13523,10 @@ loc_06cd9e:
 
 ;==============================================
 loc_06cda2:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #1,($22,a0)
 	beq.w loc_06cdc6
-	movea.l unk_10707a,a1
+	movea.l HoleData_Pointer,a1
 	move.b (1,a1),d0
 	addq.b #3,d0
 	cmp.b (2,a0),d0
@@ -13560,7 +13560,7 @@ loc_06cdf2:
 	move.w ($20,a0),($20,a6)
 	move.l ($2c,a0),($2c,a6)
 	move.w ($3c,a0),($3c,a6)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	addq.b #1,(2,a0)
 	move.l #loc_06ce26,(a6)
 	rts
@@ -13663,7 +13663,7 @@ loc_06cef0:
 
 loc_06cf3a:
 	moveq #0,d0
-	movea.l unk_107076,a2
+	movea.l Player_Pointer,a2
 	move.b (3,a2),d0
 	lsl.w #2,d0
 	movea.l (a0,d0.w),a0
@@ -13710,7 +13710,7 @@ loc_06cfaa:
 loc_06cfb2:
 	cmpi.w #2,unk_10d4aa
 	bhi.w loc_06cfec
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w unk_10d4c2,d0
 	move.w (8,a0),d1
 	sub.w (4,a0),d0
@@ -13822,7 +13822,7 @@ loc_06d126:
 	beq.w loc_06d218
 	cmpi.w #$12,unk_10d4bc
 	bcs.w loc_06d218
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	tst.b ($22,a1)
 	beq.w loc_06d218
 	lea.l loc_06d228(pc),a0
@@ -13836,7 +13836,7 @@ loc_06d15a:
 	rts
 
 loc_06d168:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),($11,a6)
 	move.w #$70ae,d0
 	jsr loc_071386
@@ -14167,12 +14167,12 @@ loc_06d55e:
 	cmp.b d1,d0
 	blt.w loc_06d5b0
 	move.w d0,-(a7)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),d0
 	jsr loc_05abc6
 	cmpi.b #1,d0
 	blt.w loc_06d5ae
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),d0
 	jsr loc_05ab82
 	move.b #$ff,($13,a6)
@@ -14184,7 +14184,7 @@ loc_06d5b0:
 	tst.b d0
 	bpl.w loc_06d5e8
 	move.b d0,d7
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #1,(2,a0)
 	bne.w loc_06d5cc
 	move.w #$fffd,d7
@@ -14205,7 +14205,7 @@ loc_06d5d6:
 loc_06d5e8:
 	lea.l loc_07c258,a1
 	jsr loc_0004c6
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (a1),($11,a0)
 	move.b ($13,a6),($13,a0)
 	clr.b ($11,a6)
@@ -14220,7 +14220,7 @@ loc_06d618:
 	cmpi.b #1,unk_102eba
 	bne.w loc_06d650
 	lea.l BIOS_PLAYER1_MOD,a0
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	moveq #0,d0
 	move.b (a1),d0
 	adda.w d0,a0
@@ -14743,7 +14743,7 @@ loc_06dc62:
 	beq.w loc_06dcd4
 	cmpi.b #2,unk_102eba
 	bne.w loc_06dcaa
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	jsr loc_05a8ba
 	lea.l loc_06de12(pc),a1
 	cmpi.b #1,d0
@@ -14755,7 +14755,7 @@ loc_06dc62:
 	bra.w loc_06dcd4
 
 loc_06dcaa:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),d0
 	jsr loc_083d58
 	lea.l loc_06de12(pc),a1
@@ -14987,7 +14987,7 @@ loc_06df5e:
 loc_06df76:
 	cmpi.w #9,($4a,a6)
 	bcc.w loc_06df8e
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.b #1,d0
 	move.b d0,($3e,a6)
 
@@ -15074,7 +15074,7 @@ loc_06e046:
 loc_06e05e:
 	move.w #$17c,($40,a6)
 	move.b #1,($13,a6)
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	moveq #0,d0
 	move.b (1,a0),d0
 	lea.l loc_080b74,a0
@@ -15126,7 +15126,7 @@ loc_06e0c8:
 	move.w d1,($58,a6)
 	swap d0
 	swap d1
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w (6,a0),d0
 	move.w ($a,a0),d1
 	not.w d1
@@ -15375,8 +15375,8 @@ loc_06e356:
 
 ;==============================================
 loc_06e428:
-	movea.l unk_107076,a0
-	movea.l unk_10707a,a1
+	movea.l Player_Pointer,a0
+	movea.l HoleData_Pointer,a1
 	move.b (2,a0),d0
 	sub.b (1,a1),d0
 	rts
@@ -15386,7 +15386,7 @@ loc_06e43e:
 	move.w #$19,d1
 	jsr loc_0b9a22
 	move.w #$a,($3c,a6)
-	movea.l unk_10707a,a0
+	movea.l HoleData_Pointer,a0
 	moveq #0,d0
 	move.b (1,a0),d0
 	subq.w #3,d0
@@ -15585,7 +15585,7 @@ loc_06e900:
 	move.l #loc_06e930,(a6)
 
 loc_06e930:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.l (4,a0),d0
 	move.l (8,a0),d1
 	jsr loc_06e356(pc)
@@ -15772,7 +15772,7 @@ loc_06eb6e:
 	rts
 
 loc_06eb7a:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.w unk_10d4c2,d0
 	sub.w (4,a0),d0
 	bpl.w loc_06eb90
@@ -16020,7 +16020,7 @@ loc_06eee2:
 	swap d1
 	sub.w d0,d0
 	sub.w d1,d1
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.l (4,a0),d2
 	move.l (8,a0),d3
 	sub.l d0,d2

@@ -907,7 +907,7 @@ loc_080c3c:
 
 ;==============================================
 loc_080c3e:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (1,a0),d0
 	andi.w #7,d0
 	add.w d0,d0
@@ -961,7 +961,7 @@ loc_080cd8:
 loc_080ce6:
 	tst.b ($3a,a6)
 	beq.w loc_080db6
-	cmpi.w #$d,unk_106fde
+	cmpi.w #$d,Selected_Club
 	beq.w loc_080c58
 	movea.l ($16,a6),a0
 	move.l (a0),($2c,a6)
@@ -1057,7 +1057,7 @@ loc_080e12:
 
 ;===============================================
 loc_080e20:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	cmpi.b #2,(3,a0)
 	bcs.w loc_080e3c
 	move.w #$109e,d0
@@ -1078,7 +1078,7 @@ loc_080e52:
 
 ;==============================================
 loc_080e5a:
-	cmpi.w #$d,unk_106fde
+	cmpi.w #$d,Selected_Club
 	beq.w loc_080e8c
 	move.w unk_106fe6,d0
 	lea.l loc_080e88(pc),a0
@@ -1137,7 +1137,7 @@ loc_080ed0:
 ;==============================================
 loc_080eda:
 	moveq #0,d0
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (1,a0),d0
 	lsl.w #2,d0
 	movea.l loc_080eee(pc,d0.w),a0
@@ -1182,12 +1182,12 @@ loc_080f4e:
 ;==============================================
 loc_080f56:
 	moveq #0,d0
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (1,a0),d0
 	lea.l loc_08318e(pc),a0
 	lsl.w #2,d0
 	movea.l (a0,d0.w),a0
-	move.w unk_106fde,d0
+	move.w Selected_Club,d0
 	lsl.w #2,d0
 	move.w (2,a0,d0.w),d0
 	rts
@@ -2441,13 +2441,13 @@ loc_083bbc:
 	btst #3,(7,a0)
 	bne.w loc_083c24
 	movem.l d7/a0,-(a7)
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.w #7,d0
 	move.w d0,-(a7)
-	jsr loc_0568c2
+	jsr RNG_Function
 	andi.w #7,d0
 	add.w (a7)+,d0
-	add.b unk_102eb8,d0
+	add.b Game_Difficulty,d0
 	movem.l (a7)+,d7/a0
 	movem.l d0/d7/a0,-(a7)
 	jsr loc_083c50(pc)
@@ -4283,7 +4283,7 @@ loc_0858ec:
 loc_085914:
 	clr.b ($16,a0)
 	clr.l ($36,a0)
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.w #$ffff,d0
 	move.b d0,($17,a0)
 	move.l d0,($18,a0)
@@ -4321,7 +4321,7 @@ loc_085966:
 
 loc_085996:
 	move.b d0,($16,a0)
-	movea.l unk_107076,a1
+	movea.l Player_Pointer,a1
 	move.b (1,a1),($17,a0)
 	move.l ($10,a1),($18,a0)
 	move.l ($14,a1),($1c,a0)
@@ -4501,13 +4501,13 @@ loc_085bfe:
 	bset #3,d1
 	cmpi.b #1,BIOS_PLAYER1_MOD
 	bne.w loc_085c3c
-	move.l #unk_107004,unk_107076
+	move.l #unk_107004,Player_Pointer
 	bra.w loc_085c52
 
 loc_085c3c:
 	cmpi.b #1,BIOS_PLAYER2_MOD
 	bne.w loc_085c52
-	move.l #unk_10702a,unk_107076
+	move.l #unk_10702a,Player_Pointer
 
 loc_085c52:
 	move.b d1,(7,a1)
@@ -4765,7 +4765,7 @@ loc_085f04:
 
 ;==============================================
 loc_085f06:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),d7
 	jsr loc_073b28
 	andi.l #$ff,d7
@@ -4815,7 +4815,7 @@ loc_085f96:
 
 ;==============================================
 loc_085fce:
-	movea.l unk_107076,a0
+	movea.l Player_Pointer,a0
 	move.b (a0),d0
 	jsr loc_083d58
 	cmpi.w #1,d0
@@ -4938,7 +4938,7 @@ loc_086140:
 	move.b #$ff,($11,a0)
 	lea.l loc_0863ac(pc),a0
 	move.w ($44,a6),d0
-	move.b (a0,d0.w),unk_102eb8
+	move.b (a0,d0.w),Game_Difficulty
 	jsr loc_000598
 	jmp loc_00054a
 

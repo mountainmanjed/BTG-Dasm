@@ -35021,6 +35021,5 @@ loc_0ad70c:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Palette Data Start
-loc_0ad730:
-
+PaletteData:
 	incbin "paldata.bin"
