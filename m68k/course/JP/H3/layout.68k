@@ -1,4 +1,4 @@
-loc_010f38:
+JPN_H3:
 	dc.b $01	;Unknown
 	dc.b $03	;Par
 	dc.l loc_0118e0	;Holes

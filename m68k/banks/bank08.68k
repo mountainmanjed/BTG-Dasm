@@ -151,7 +151,7 @@ loc_0802de:
 	move.b d0,unk_10ecde
 
 loc_0802f6:
-	lea.l unk_10ecb6,a0
+	lea.l SoundData,a0
 	move.w unk_10ecd8,d1
 	move.b d0,(a0,d1.w)
 	addq.w #1,d1
@@ -267,7 +267,7 @@ loc_080412:
 	move.w unk_10ecd6,d1
 	cmp.w unk_10ecd8,d1
 	beq.w loc_080448
-	lea.l unk_10ecb6,a0
+	lea.l SoundData,a0
 	move.b (a0,d1.w),SOUNDREG
 	addq.w #1,d1
 	andi.w #$1f,d1

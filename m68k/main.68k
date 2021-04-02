@@ -11851,7 +11851,8 @@ loc_00f4f8:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Courses
-	include "course/JP/H1/layout.68k"
+	include "course/SCO/h1/layout.68k"
+;	include "course/JP/H1/layout.68k"
 	include "course/JP/H2/layout.68k"
 	include "course/JP/H3/layout.68k"
 	include "course/JP/H4/layout.68k"

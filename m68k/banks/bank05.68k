@@ -5803,7 +5803,7 @@ loc_059fa0:
 	move.b (a0)+,(a1)+
 	dbra d7,loc_059fa0
 	move.w HoleNumber,unk_10d4be
-	move.w Course_ID,unk_10d4ba
+	move.w Course_ID,CourseID_B
 	move.l unk_102eb0,unk_102eb4
 	rts
 
@@ -5835,7 +5835,7 @@ loc_05a018:
 
 loc_05a026:
 	move.w unk_10d4be,HoleNumber
-	move.w unk_10d4ba,Course_ID
+	move.w CourseID_B,Course_ID
 	move.l unk_102eb4,unk_102eb0
 
 loc_05a044:

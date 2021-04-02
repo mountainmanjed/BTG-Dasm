@@ -472,7 +472,7 @@ loc_057ee4:
 ;JP_TABLE
 loc_0580ac:
 ;Hole 00
-	dc.l loc_00f4fa;Course Data
+	dc.l JPN_H1;Course Data
 	dc.l loc_0a3a68;Course Minimap
 	dc.w $0101,$01d6
 	dc.l loc_0a3990 ;Course Par GFX
@@ -480,7 +480,7 @@ loc_0580ac:
 	dc.w $00fe,$01e3
 
 ;Hole 01
-	dc.l loc_00f4fa;Course Data
+	dc.l JPN_H1;Course Data
 	dc.l loc_0a3a68;Course Minimap
 	dc.w $0109,$01d7;Course Map Loc
 	dc.l loc_0a3990;Course Par gfx
@@ -488,7 +488,7 @@ loc_0580ac:
 	dc.w $00fe,$01e3;Hud Hole Number
 
 ;Hole 02
-	dc.l loc_010170
+	dc.l JPN_H2
 	dc.l loc_0a3a8c
 	dc.w $0107,$01e7
 	dc.l loc_0a399c
@@ -496,7 +496,7 @@ loc_0580ac:
 	dc.w $00d8,$01e3
 
 ;Hole 03
-	dc.l loc_010f38
+	dc.l JPN_H3
 	dc.l loc_0a3abc
 	dc.w $010b,$01d6
 	dc.l loc_0a39a8
@@ -504,7 +504,7 @@ loc_0580ac:
 	dc.w $00fe,$01e3
 
 ;Hole 04
-	dc.l loc_011900
+	dc.l JPN_H4
 	dc.l loc_0a3ad8
 	dc.w $0102,$01d5
 	dc.l loc_0a39b4
@@ -512,7 +512,7 @@ loc_0580ac:
 	dc.w $00fe,$01e3
 
 ;Hole 05
-	dc.l loc_0132ce
+	dc.l JPN_H5
 	dc.l loc_0a3b06
 	dc.w $00fa,$01e7
 	dc.l loc_0a39c0
@@ -520,7 +520,7 @@ loc_0580ac:
 	dc.w $00e0,$01e3
 
 ;Hole 06
-	dc.l loc_0146d4
+	dc.l JPN_H6
 	dc.l loc_0a3b3e
 	dc.w $0107,$01d6
 	dc.l loc_0a39cc

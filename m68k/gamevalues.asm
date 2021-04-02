@@ -225,7 +225,7 @@ unk_106fed = 0x106fed
 unk_106fee = 0x106fee
 
 unk_106ffe = 0x106ffe
-unk_107000 = 0x107000
+unk_107000 = 0x107000;Ranking
 RNG_Counter = 0x107002
 unk_107004 = 0x107004
 unk_107005 = 0x107005
@@ -257,8 +257,8 @@ unk_107084 = 0x107084
 unk_107085 = 0x107085
 unk_107086 = 0x107086
 
-unk_107090 = 0x107090;Course Data Tilemap
 unk_1070a2 = 0x1070a2
+
 unk_108100 = 0x108100
 
 
@@ -270,10 +270,9 @@ unk_10d4aa = 0x10d4aa
 unk_10d4ac = 0x10d4ac
 unk_10d4ae = 0x10d4ae
 
-
 Course_ID = 0x10d4b8
 unk_10d4b9 = 0x10d4b9
-unk_10d4ba = 0x10d4ba
+CourseID_B = 0x10d4ba
 HoleNumber = 0x10d4bc
 unk_10d4bd = 0x10d4bd
 unk_10d4be = 0x10d4be
@@ -481,7 +480,7 @@ unk_10ebfe = 0x10ebfe
 
 unk_10ecb2 = 0x10ecb2
 unk_10ecb4 = 0x10ecb4
-unk_10ecb6 = 0x10ecb6 ;Start of Sound 
+SoundData = 0x10ecb6 ;Start of Sound 
 
 unk_10ecd6 = 0x10ecd6
 unk_10ecd8 = 0x10ecd8

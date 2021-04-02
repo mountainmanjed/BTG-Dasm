@@ -1,4 +1,4 @@
-loc_0146d4:
+JPN_H6:
 	dc.b $00	;Unknown
 	dc.b $04	;Par
 	dc.l loc_0151e2	;Holes
