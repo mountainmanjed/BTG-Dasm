@@ -4433,7 +4433,7 @@ loc_00501a:
 loc_00501c:
 	moveq #0,d1
 	movea.l Player_Pointer,a1
-	move.b (1,a1),d1
+	move.b (CharID,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005038(pc,d1.w),a1
 	move.w Selected_Club,d1
@@ -4519,7 +4519,7 @@ loc_0052fa:
 loc_005304:
 	moveq #0,d1
 	movea.l Player_Pointer,a1
-	move.b (1,a1),d1
+	move.b (CharID,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005330(pc,d1.w),a1
 	move.w Selected_Club,d1
@@ -4578,7 +4578,7 @@ loc_0053d4:
 loc_0053f0:
 	moveq #0,d1
 	movea.l Player_Pointer,a1
-	move.b (1,a1),d1
+	move.b (CharID,a1),d1
 	lsl.w #2,d1
 	movea.l loc_005410(pc,d1.w),a1
 	move.w Selected_Club,d1
@@ -4635,7 +4635,7 @@ loc_005540:
 loc_005578:
 	moveq #0,d1
 	movea.l Player_Pointer,a1
-	move.b (1,a1),d1
+	move.b (CharID,a1),d1
 	lsl.w #2,d1
 	movea.l loc_0055b2(pc,d1.w),a1
 	move.w Shot_Power,d1
@@ -4828,7 +4828,7 @@ loc_005dd0:
 loc_005de2:
  	moveq #0,d1
  	movea.l Player_Pointer,a1
- 	move.b (1,a1),d1
+ 	move.b (CharID,a1),d1
  	lsl.w #2,d1
  	movea.l loc_005e16(pc,d1.w),a1
  	moveq #0,d1
@@ -10949,8 +10949,8 @@ loc_00e790:
 	bset.b #7,unk_102eb9
 	bset.b #7,unk_10d5ee
 	move.b #5,unk_10ebbe
-	move.b #$ff,unk_107005
-	move.b #$ff,unk_10702b
+	move.b #$ff,P1_Char
+	move.b #$ff,P2_Char
 	lea.l loc_085484,a1
 	jsr loc_0004c6
 	clr.b ($11,a6)
@@ -11030,8 +11030,8 @@ loc_00e912:
 	jsr loc_00d9ec
 	move.b #2,BIOS_USER_MODE
 	bsr.w loc_00f3f2
-	move.b #$ff,unk_107005
-	move.b #$ff,unk_10702b
+	move.b #$ff,P1_Char
+	move.b #$ff,P2_Char
 	lea.l loc_07db0a,a1
 	jsr loc_0004c6
 	clr.b ($11,a6)
@@ -11602,7 +11602,7 @@ loc_00f1dc:
 	tst.b unk_102ebb
 	bne.w loc_00f21a
 	move.l Player_Pointer,d3
-	cmpi.l #unk_107004,d3
+	cmpi.l #Player1_Mem,d3
 	beq.w loc_00f21a
 	move.b unk_10d51f,d0
 	move.b unk_10d520,d1
@@ -11624,8 +11624,8 @@ loc_00f22e:
 	move.b unk_102ebb,d0
 	subq.b #1,d0
 	andi.w #7,d0
-	move.b loc_00f2d0(pc,d0.w),unk_107005
-	move.b #$ff,unk_10702b
+	move.b loc_00f2d0(pc,d0.w),P1_Char
+	move.b #$ff,P2_Char
 	jsr loc_059f26
 	move.b unk_102ebb,d0
 	subq.b #1,d0
@@ -11644,8 +11644,8 @@ loc_00f22e:
 	lea.l loc_00f2d6(pc,d0.w),a0
 	move.w (a0)+,d0
 	beq.w loc_00f2be
-	move.w d0,unk_107008
-	move.w (a0),unk_10700c
+	move.w d0,P1_Xpos
+	move.w (a0),P1_Ypos
 
 loc_00f2be:
 	lea.l loc_058274,a1
@@ -11851,8 +11851,7 @@ loc_00f4f8:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ;Courses
-	include "course/SCO/h1/layout.68k"
-;	include "course/JP/H1/layout.68k"
+	include "course/JP/H1/layout.68k"
 	include "course/JP/H2/layout.68k"
 	include "course/JP/H3/layout.68k"
 	include "course/JP/H4/layout.68k"
@@ -11939,6 +11938,11 @@ loc_00f4f8:
 	include "banks/bank0a.68k"
 	include "banks/bank0b.68k"
 	include "banks/bank0c.68k"
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+;Filler $ca99c
+EndofRom:
+	dcb.b $100000-EndofRom,00
 
 ;Second Megabyte
 	include "banks/bank20.68k"

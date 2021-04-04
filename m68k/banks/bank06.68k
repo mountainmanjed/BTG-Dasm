@@ -12641,8 +12641,8 @@ loc_06c210:
 loc_06c21a:
 	cmpi.b #1,($11,a6)
 	bne.w loc_06c24e
-	lea.l unk_107004,a1
-	lea.l unk_10702a,a2
+	lea.l Player1_Mem,a1
+	lea.l Player2_Mem,a2
 	cmpa.l Player_Pointer,a1
 	beq.w loc_06c23c
 	exg.l a1,a2
@@ -12896,10 +12896,10 @@ loc_06c51e:
 
 loc_06c562:
 	jsr loc_070a90
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	cmpi.b #1,BIOS_PLAYER1_MOD
 	beq.w loc_06c580
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 
 loc_06c580:
 	move.b (a0),d0
@@ -13397,8 +13397,8 @@ loc_06cc2a:
 loc_06cc44:
 	tst.b unk_107083
 	bne.w loc_06ccde
-	lea.l unk_107004,a1
-	lea.l unk_10702a,a2
+	lea.l Player1_Mem,a1
+	lea.l Player2_Mem,a2
 	cmpa.l Player_Pointer,a1
 	beq.w loc_06cc66
 	exg.l a1,a2
@@ -13465,10 +13465,10 @@ loc_06cce2:
 	cmpi.b #1,unk_102eba
 	bne.w loc_06cd24
 	movea.l Player_Pointer,a0
-	lea.l unk_107004,a1
+	lea.l Player1_Mem,a1
 	cmpa.l a1,a0
 	bne.w loc_06cd1c
-	lea.l unk_10702a,a1
+	lea.l Player2_Mem,a1
 
 loc_06cd1c:
 	tst.b (2,a1)
@@ -13796,10 +13796,10 @@ loc_06d0b6:
 	jsr loc_05aa76
 	tst.b d0
 	bpl.w loc_06d110
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	tst.b unk_10d4ec
 	bne.w loc_06d0ec
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 
 loc_06d0ec:
 	cmpi.b #1,(2,a0)
@@ -16288,7 +16288,7 @@ loc_06f2c2:
 	bne.w loc_06f2ea
 	lea.l loc_06f810,a0
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	lsl.w #1,d0
 	move.w (a0,d0.w),d0
 	jsr loc_0804de
@@ -16298,7 +16298,7 @@ loc_06f2ea:
 	bne.w loc_06f30e
 	lea.l loc_06f81c,a0
 	moveq #0,d0
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 	lsl.w #1,d0
 	move.w (a0,d0.w),d0
 	jsr loc_0804de
@@ -16408,7 +16408,7 @@ loc_06f45c:
 loc_06f4b2:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	jsr loc_06f632(pc)
 	move.w ($4e,a6),d1
 	jsr loc_0b9a22
@@ -16454,7 +16454,7 @@ loc_06f520:
 loc_06f568:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 	jsr loc_06f632(pc)
 	move.w ($4e,a6),d1
 	jsr loc_0b9a22
@@ -16550,7 +16550,7 @@ loc_06f6c4:
 ;==============================================
 loc_06f6c8:
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	lea.l loc_06f7aa,a1
 	lsl.w #2,d0
 	move.l (a1,d0.w),($2c,a6)
@@ -16560,7 +16560,7 @@ loc_06f6c8:
 ;==============================================
 loc_06f6e6:
 	moveq #0,d0
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 	lea.l loc_06f7aa,a1
 	lsl.w #2,d0
 	move.l (a1,d0.w),($2c,a6)
@@ -16849,7 +16849,7 @@ loc_06f9ee:
 loc_06fac2:
 	moveq #0,d0
 	move.b ($45,a6),d0
-	lea.l unk_107004,a1
+	lea.l Player1_Mem,a1
 	move.b ($10,a1,d0.w),($44,a6)
 	lea.l loc_06fc82(pc),a1
 	jsr loc_0004c6
@@ -16899,7 +16899,7 @@ loc_06fb82:
 loc_06fb88:
 	moveq #0,d0
 	move.b ($45,a6),d0
-	lea.l unk_107004,a1
+	lea.l Player1_Mem,a1
 	adda.l d0,a1
 	move.b ($10,a1),($44,a6)
 	clr.b ($13,a6)

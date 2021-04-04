@@ -1,10 +1,10 @@
 JPN_H2:
 	dc.b $00	;Unknown
 	dc.b $04	;Par
-	dc.l loc_010f18	;Holes
-	dc.l loc_010df2	;Objects
-	dc.l loc_010f16	;Rivers
-	dc.l loc_010e7e	;Display Ground
+	dc.l JPN_H2_HOLE	;Holes
+	dc.l JPN_H2_OBJ	;Objects
+	dc.l JPN_H2_RIV	;Rivers
+	dc.l JPN_H2_GRD	;Display Ground
 
 ;==============================================
 ;Tilemap Data
@@ -1317,7 +1317,7 @@ JPN_H2:
 
 ;==============================================
 ;Object
-loc_010df2:
+JPN_H2_OBJ:
 	dc.w $0302,$0000,$0000
 	dc.w $0004,$0100,$0120
 	dc.w $0701,$01b0,$0810
@@ -1345,7 +1345,7 @@ loc_010df2:
 
 ;==============================================
 ;Backview Ground
-loc_010e7e:
+JPN_H2_GRD:
 	dc.w $0100,$00b0
 	dc.w $00e0,$00b8
 	dc.w $00d0,$00c0
@@ -1387,12 +1387,12 @@ loc_010e7e:
 
 ;==============================================
 ;Backview River
-loc_010f16:
+JPN_H2_RIV:
 	dc.w $ffff
 
 ;==============================================
 ;Hole Locations
-loc_010f18:
+JPN_H2_HOLE:
 	dc.w $00d8,$0138
 	dc.w $0128,$0148
 	dc.w $00f8,$0142

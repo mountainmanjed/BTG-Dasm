@@ -601,8 +601,3 @@ loc_0ca986:
 loc_0ca996:
 	ori.b #$11,ccr
 	rts
-
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-;Filler $ca99c
-EndofRom:
-	dcb.b $100000-EndofRom,00

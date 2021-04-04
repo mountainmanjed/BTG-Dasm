@@ -889,14 +889,14 @@ loc_080bfe:
 ;==============================================
 loc_080c0a:
 	moveq #0,d0
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	move.b (1,a0),d0
 	cmpi.b #6,d0
 	bcc.w loc_080c24
 	move.b loc_080bf8(pc,d0.w),($23,a0)
 
 loc_080c24:
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 	move.b (1,a0),d0
 	cmpi.b #6,d0
 	bcc.w loc_080c3c
@@ -2310,7 +2310,7 @@ loc_083a5e:
 	addq.w #8,a0
 	dbra d7,loc_083a28
 	lea.l unk_10ee9a,a0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	bmi.w loc_083a92
 	move.l #loc_0838f2,(a0)
 	bset #3,(7,a0)
@@ -2319,7 +2319,7 @@ loc_083a5e:
 	subq.w #8,a0
 
 loc_083a92:
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 	bmi.w loc_083ab4
 	move.l #loc_0838fb,(a0)
 	bset #3,(7,a0)
@@ -2465,10 +2465,10 @@ loc_083c24:
 	movem.l d7/a0,-(a7)
 	jsr loc_05897a
 	movem.l (a7)+,d7/a0
-	lea.l unk_107006,a1
+	lea.l P1_Stroke,a1
 	btst #1,(7,a0)
 	bne.w loc_083c48
-	lea.l unk_10702c,a1
+	lea.l P2_Stroke,a1
 
 loc_083c48:
 	sub.b (a1),d0
@@ -4501,13 +4501,13 @@ loc_085bfe:
 	bset #3,d1
 	cmpi.b #1,BIOS_PLAYER1_MOD
 	bne.w loc_085c3c
-	move.l #unk_107004,Player_Pointer
+	move.l #Player1_Mem,Player_Pointer
 	bra.w loc_085c52
 
 loc_085c3c:
 	cmpi.b #1,BIOS_PLAYER2_MOD
 	bne.w loc_085c52
-	move.l #unk_10702a,Player_Pointer
+	move.l #Player2_Mem,Player_Pointer
 
 loc_085c52:
 	move.b d1,(7,a1)
@@ -5248,8 +5248,8 @@ loc_086498:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_0864ae:
-	dc.l unk_107004
-	dc.l unk_10702a
+	dc.l Player1_Mem
+	dc.l Player2_Mem
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_0864b6:

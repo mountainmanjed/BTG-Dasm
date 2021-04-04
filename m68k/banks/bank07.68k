@@ -3789,7 +3789,7 @@ loc_073796:
 	moveq #1,d6
 	tst.b unk_102eba
 	bne.w loc_0737b0
-	cmpi.b #$ff,unk_107005
+	cmpi.b #$ff,P1_Char
 	bne.w loc_0737b0
 	moveq #2,d6
 
@@ -4182,18 +4182,18 @@ loc_073bac:
 	clr.b ($11,a6)
 	tst.b unk_102eba
 	bne.b loc_073c2a
-	cmpi.b #$ff,unk_107005
+	cmpi.b #$ff,P1_Char
 	beq.w loc_073bd6
 	moveq #0,d7
 	jsr loc_073b28
-	move.l #unk_107004,Player_Pointer
+	move.l #Player1_Mem,Player_Pointer
 
 loc_073bd6:
-	cmpi.b #$ff,unk_10702b
+	cmpi.b #$ff,P2_Char
 	beq.w loc_073bf4
 	moveq #1,d7
 	jsr loc_073b28
-	move.l #unk_10702a,Player_Pointer
+	move.l #Player2_Mem,Player_Pointer
 
 loc_073bf4:
 	movea.l #unk_100018,a1
@@ -4220,15 +4220,15 @@ loc_073c2a
 	jsr loc_073b28
 	cmp.b d7,d0
 	bhi.w loc_073c5c
-	move.l #unk_107004,($40,a6)
-	move.l #unk_10702a,($44,a6)
+	move.l #Player1_Mem,($40,a6)
+	move.l #Player2_Mem,($44,a6)
 	move.b d0,($54,a6)
 	move.b d7,($56,a6)
 	bra.b loc_073c74
 
 loc_073c5c:
-	move.l #unk_10702a,($40,a6)
-	move.l #unk_107004,($44,a6)
+	move.l #Player2_Mem,($40,a6)
+	move.l #Player1_Mem,($44,a6)
 	move.b d7,($54,a6)
 	move.b d0,($56,a6)
 
@@ -4399,7 +4399,7 @@ loc_073e00:
 loc_073e74:
 	move.b unk_10d515,unk_10d52b
 	move.b unk_10d516,unk_10d52c
-	cmpi.l #unk_10702a,Player_Pointer
+	cmpi.l #Player2_Mem,Player_Pointer
 	bne.w loc_073eaa
 	move.b unk_10d520,unk_10d52b
 	move.b unk_10d521,unk_10d52c
@@ -5057,12 +5057,12 @@ loc_0746ca:
 	cmpi.b #2,unk_102eba
 	bne.w loc_074714
 	st.b ($44,a6)
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	move.w HoleNumber,d5
 	subq.w #1,d5
 	jsr loc_077e56
 	move.b d7,d0
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 	move.w HoleNumber,d5
 	subq.w #1,d5
 	jsr loc_077e56
@@ -5112,11 +5112,11 @@ loc_07478c:
 	jsr loc_0004c6
 	tst.b ($43,a6)
 	bne.w loc_0747ac
-	move.b unk_107005,($11,a0)
+	move.b P1_Char,($11,a0)
 	bra.w loc_0747b4
 
 loc_0747ac:
-	move.b unk_10702b,($11,a0)
+	move.b P2_Char,($11,a0)
 
 loc_0747b4:
 	move.b ($42,a6),d0
@@ -5348,10 +5348,10 @@ loc_074a9e:
 	clr.b ($11,a6)
 	lea.l loc_07f93c,a1
 	jsr loc_0004c6
-	move.b unk_107005,($13,a0)
+	move.b P1_Char,($13,a0)
 	tst.b ($43,a6)
 	beq.w loc_074acc
-	move.b unk_10702b,($13,a0)
+	move.b P2_Char,($13,a0)
 
 loc_074acc:
 	move.l #loc_074ad2,(a6)
@@ -5418,10 +5418,10 @@ loc_074b62:
 loc_074b64:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	tst.b ($43,a6)
 	beq.w loc_074b80
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_074b80:
 	lsl.w #2,d0
@@ -5469,10 +5469,10 @@ loc_074bf6:
 loc_074c18:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	tst.b ($43,a6)
 	beq.w loc_074c34
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_074c34:
 	lsl.w #2,d0
@@ -6518,7 +6518,7 @@ loc_075898:
 	rts
 
 loc_075904:
-	cmpi.b #$ff,unk_107005
+	cmpi.b #$ff,P1_Char
 	beq.w loc_0759cc
 	move.b #1,($59,a6)
 	moveq #1,d7
@@ -6569,7 +6569,7 @@ loc_0759b8:
 	rts
 
 loc_0759cc:
-	cmpi.b #$ff,unk_10702b
+	cmpi.b #$ff,P2_Char
 	beq.w loc_075a44
 	jsr loc_080454
 	move.b #2,($59,a6)
@@ -7271,7 +7271,7 @@ loc_0761c8:
 
 loc_0761cc:
 	clr.b ($44,a6)
-	lea.l unk_107004,a3
+	lea.l Player1_Mem,a3
 	move.w #$52,($40,a6)
 	move.b #9,($13,a6)
 	moveq #0,d7
@@ -7385,7 +7385,7 @@ loc_076320:
 
 loc_076376:
 	clr.b ($44,a6)
-	lea.l unk_10702a,a3
+	lea.l Player2_Mem,a3
 	move.w #$176,($42,a6)
 	move.w #$52,($40,a6)
 	move.b #9,($13,a6)
@@ -7602,14 +7602,14 @@ loc_0766b6:
 
 loc_0766ba:
 	moveq #0,d0
-	lea.l unk_107004,a5
+	lea.l Player1_Mem,a5
 	jsr loc_073b46
 	cmpi.b #$24,d7
 	bhi.w loc_0766d2
 	moveq #1,d0
 
 loc_0766d2:
-	lea.l unk_10702a,a5
+	lea.l Player2_Mem,a5
 	jsr loc_073b46
 	cmpi.b #$24,d7
 	bhi.w loc_0766e8
@@ -7731,7 +7731,7 @@ loc_07682a:
 	move.w #$a2,($40,a6)
 	move.w #$197,($42,a6)
 	move.l #loc_089898,($2c,a6)
-	cmpi.b #$ff,unk_107005
+	cmpi.b #$ff,P1_Char
 	bne.w loc_076870
 	move.l #loc_0898c2,($2c,a6)
 
@@ -8819,7 +8819,7 @@ loc_0776b6:
 	moveq #0,d7
 	subq.w #3,d5
 	bmi.b loc_0776dc
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	jsr loc_077e56(pc)
 
 loc_0776dc:
@@ -8828,19 +8828,19 @@ loc_0776dc:
 	moveq #0,d7
 	subq.w #3,d5
 	bmi.b loc_0776f2
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 	jsr loc_077e56(pc)
 
 loc_0776f2:
 	move.b d7,($41,a6)
 	move.w d0,d5
 	subq.w #2,d5
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	jsr loc_077e56(pc)
 	move.b d7,($42,a6)
 	move.w d0,d5
 	subq.w #2,d5
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 	jsr loc_077e56(pc)
 	move.b d7,($43,a6)
 	lea.l loc_077862(pc),a1
@@ -10029,12 +10029,12 @@ loc_07869c:
 ;==============================================
 loc_0786a6:
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0786c6
 	tst.b unk_102eba
 	bne.w loc_0786c6
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_0786c6:
 	lsl.w #2,d0
@@ -10046,12 +10046,12 @@ loc_0786c6:
 
 loc_0786e2:
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_078702
 	tst.b unk_102eba
 	bne.w loc_078702
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_078702:
 	lsl.w #2,d0
@@ -10064,12 +10064,12 @@ loc_078702:
 
 loc_078722:
 	move.l #$180015e,($30,a6)
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_078748
 	tst.b unk_102eba
 	bne.w loc_078748
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_078748:
 	cmpi.b #4,d0
@@ -10090,12 +10090,12 @@ loc_078766:
 
 loc_07877c:
 	move.w #$60,($30,a6)
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0787a0
 	tst.b unk_102eba
 	bne.w loc_0787a0
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_0787a0:
 	cmpi.b #4,d0
@@ -10112,12 +10112,12 @@ loc_0787b2:
 loc_0787b6:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0787dc
 	tst.b unk_102eba
 	bne.w loc_0787dc
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_0787dc:
 	jsr loc_06f632
@@ -10149,7 +10149,7 @@ loc_078830:
 loc_07883a:
 	jsr loc_073786
 	moveq #0,d0
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 	jsr loc_06f632
 	move.w ($4e,a6),d1
 	jsr loc_0b9a22
@@ -10557,7 +10557,7 @@ loc_078d3a:
 
 ;==============================================
 loc_078d3e:
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	jsr loc_05a8ba
 	tst.b d0
 	beq.w loc_078d88
@@ -11013,10 +11013,10 @@ loc_0792e8:
 ;==============================================
 loc_0792ee:
 	moveq #0,d0
-	move.b unk_107005,d0
+	move.b P1_Char,d0
 	btst #5,unk_10ebf9
 	beq.w loc_079308
-	move.b unk_10702b,d0
+	move.b P2_Char,d0
 
 loc_079308:
 	lea.l loc_07abac,a0
@@ -13813,10 +13813,10 @@ loc_07b6b4:
 	jmp loc_07b7aa(pc)
 
 loc_07b6da:
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	move.b unk_10d4ec,($45,a6)
 	beq.w loc_07b6f2
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 
 loc_07b6f2:
 	moveq #0,d1
@@ -13855,10 +13855,10 @@ loc_07b73a:
 	addq.w #1,d0
 
 loc_07b748:
-	lea.l unk_107004,a0
+	lea.l Player1_Mem,a0
 	tst.b ($42,a6)
 	beq.w loc_07b760
-	lea.l unk_10702a,a0
+	lea.l Player2_Mem,a0
 	subq.w #2,($3c,a6)
 
 loc_07b760:
@@ -15780,14 +15780,14 @@ loc_07ce5a:
 	jsr loc_00d0f6
 	lea.l loc_07d07a,a0
 	jsr loc_0b9cb6
-	tst.b unk_107005
+	tst.b P1_Char
 	bmi.w loc_07cea6
 	lea.l loc_07cf06(pc),a1
 	jsr loc_0004c6
 	clr.b ($13,a0)
 
 loc_07cea6:
-	tst.b unk_10702b
+	tst.b P2_Char
 	bmi.w loc_07cec0
 	lea.l loc_07cf06(pc),a1
 	jsr loc_0004c6
@@ -16860,7 +16860,7 @@ loc_07db0a:
 	jsr loc_00d0f6
 	lea.l loc_07e174,a0
 	jsr loc_0b9bde
-	jsr loc_07db7e(pc)
+	jsr Set_Golfer_Select_BG(pc)
 	lea.l loc_07db94(pc),a1
 	jsr loc_0004c6
 	clr.b ($11,a6)
@@ -16891,7 +16891,7 @@ loc_07db7c:
 
 ;==============================================
 ;Golfer Select BG
-loc_07db7e:
+Set_Golfer_Select_BG:
 	moveq #$14,d0
 	moveq #$10,d1
 	moveq #0,d2
@@ -17065,17 +17065,17 @@ loc_07dda8:
 
 loc_07ddb6:
 	clr.b ($48,a6,d0.w)
-	lea.l loc_07e2ce,a1
+	lea.l Golfer_Select_ID_Table,a1
 	moveq #0,d2
 	move.b ($40,a6,d0.w),d2
 	move.b (a1,d2.w),d3
 	tst.b d0
 	bne.w loc_07ddda
-	move.b d3,unk_107005
+	move.b d3,P1_Char
 	bra.w loc_07dde0
 
 loc_07ddda:
-	move.b d3,unk_10702b
+	move.b d3,P2_Char
 
 loc_07dde0:
 	bset d0,($44,a6)
@@ -17200,7 +17200,7 @@ loc_07df50:
 
 ;==============================================
 loc_07df56:
-	lea.l loc_07e2ce,a1
+	lea.l Golfer_Select_ID_Table,a1
 	moveq #0,d1
 
 loc_07df5e:
@@ -17471,7 +17471,7 @@ loc_07e2bc:
 	dc.l loc_09cbdc
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-loc_07e2ce:
+Golfer_Select_ID_Table:
 	dc.b $00,$05,$04,$02,$01,$03
 
 ;==============================================
