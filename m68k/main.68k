@@ -9831,7 +9831,7 @@ loc_00d54a:
 	clr.w unk_102eac
 	clr.w unk_102cd6
 	move.b d0,REG_NOSHADOW
-	move.b #$ff,unk_102eba
+	move.b #$ff,Game_Play_Mode
 	clr.b unk_102e58
 	bset.b #7,BIOS_SYSTEM_MODE
 	move.l #loc_00d59c,(a6)
@@ -10616,7 +10616,7 @@ loc_00e336:
 	beq.w loc_00e36a
 	tst.b unk_102ebb
 	bne.w loc_00e36a
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_00e36a
 	cmpi.b #1,(a0)
 	bne.w loc_00e36a
@@ -10806,7 +10806,7 @@ loc_00e544:
 loc_00e558:
 	clr.b unk_102eb9
 	bset.b #7,unk_10d5ee
-	move.b #$ff,unk_102eba
+	move.b #$ff,Game_Play_Mode
 	move.b BIOS_GAME_D4,Game_Difficulty
 	moveq #$50,d0
 	moveq #$1e,d1
@@ -10875,7 +10875,7 @@ loc_00e688:
 	clr.b unk_102eb9
 	bset.b #7,unk_10d5ee
 	move.b #5,unk_10ebbe
-	move.b #$ff,unk_102eba
+	move.b #$ff,Game_Play_Mode
 	jsr loc_00f2fe(pc)
 	clr.b unk_102ebb
 	jsr loc_000598
@@ -10967,7 +10967,7 @@ loc_00e804:
 	jsr loc_000598
 	clr.b unk_102eb9
 	bset.b #7,unk_10d5ee
-	move.b #$ff,unk_102eba
+	move.b #$ff,Game_Play_Mode
 	move.b #5,unk_10ebbe
 	clr.b unk_102ebb
 	clr.w unk_102cd6
@@ -10996,7 +10996,7 @@ loc_00e88e:
 	jsr loc_000598
 	move.b unk_10ef48,d0
 	clr.b unk_10ef48
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_00e8d0
 	tst.b d0
 	beq.w loc_00e8cc
@@ -11048,7 +11048,7 @@ loc_00e962:
 loc_00e968:
 	jsr loc_00f48e(pc)
 	move.l #loc_00e968,unk_102eb0
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_00e98e
 	clr.b unk_102ebd
 	clr.b unk_102ebe
@@ -11081,7 +11081,7 @@ loc_00e9ec:
 	jsr loc_000598
 	jsr loc_059f26
 	jsr loc_0b99fa
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_00ea70
 	jsr loc_083a0c
 
@@ -11208,7 +11208,7 @@ loc_00ebc0:
 	jsr loc_00f3d2(pc)
 	tst.w d0
 	beq.w loc_00ee70
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ec0a
 	jsr loc_00f3d2(pc)
 	cmpi.w #1,d0
@@ -11272,7 +11272,7 @@ loc_00eca4:
 	jsr loc_0804de
 	move.b #5,unk_10ebbe
 	jsr loc_00f3f2(pc)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ecf0
 	lea.l loc_06f828,a1
 	jsr loc_0004c6
@@ -11297,7 +11297,7 @@ loc_00ed12:
 	jsr loc_0b99fa
 	cmpi.w #$12,HoleNumber
 	bls.w loc_00ed36
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ed94
 
 loc_00ed36:
@@ -11313,7 +11313,7 @@ loc_00ed52:
 	bra.w loc_00eda8
 
 loc_00ed5a:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ed80
 	cmpi.w #$12,HoleNumber
 	bls.w loc_00ed80
@@ -11378,7 +11378,7 @@ loc_00ee28:
 	jsr loc_0804de
 	move.w #$106a,d0
 	jsr loc_0804de
-	move.b #2,unk_102eba
+	move.b #2,Game_Play_Mode
 	bset.b #7,unk_102ec1
 	bra.w loc_00e8da
 
@@ -11390,7 +11390,7 @@ loc_00ee70:
 	bset.b #7,unk_102eb9
 	bset.b #7,unk_10d5ee
 	move.b #5,unk_10ebbe
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_00eefa
 	cmpi.w #$12,HoleNumber
 	bls.w loc_00eefa
@@ -11471,7 +11471,7 @@ loc_00ef7e:
 	jsr loc_00d4ae
 	move.b d0,REG_DIPSW
 	jsr loc_059f6a
-	move.b #2,unk_102eba
+	move.b #2,Game_Play_Mode
 	jsr loc_0b99fa
 	jsr loc_00f3f2(pc)
 	move.b d0,REG_DIPSW
@@ -11620,7 +11620,7 @@ loc_00f22e:
 	move.b d0,unk_10d52a
 	move.b d0,unk_10d52b
 	move.b d0,unk_10d52c
-	clr.b unk_102eba
+	clr.b Game_Play_Mode
 	move.b unk_102ebb,d0
 	subq.b #1,d0
 	andi.w #7,d0
@@ -11831,7 +11831,7 @@ loc_00f4b6:
 
 ;==============================================
 loc_00f4c0:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00f4f8
 	btst.b #7,unk_10d514
 	beq.w loc_00f4f8

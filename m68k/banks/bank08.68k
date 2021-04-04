@@ -2342,7 +2342,7 @@ loc_083ac0:
 loc_083ace:
 	addq.w #8,a0
 	dbra d7,loc_083ac0
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_083af0
 	lea.l unk_10ee92,a0
 	move.b #$fb,(6,a0)
@@ -2423,7 +2423,7 @@ loc_083b98:
 
 ;==============================================
 loc_083ba2:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_083bb0
 	rts
 
@@ -4011,7 +4011,7 @@ loc_08551e:
 loc_085534:
 	jsr loc_083dd2
 	bcc.w loc_08565c
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_08565c
 	move.b #0,($42,a6)
 	cmpi.w #$13,HoleNumber
@@ -4092,7 +4092,7 @@ loc_085682:
 	addq.w #1,d0
 
 loc_085690:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0856a4
 	jsr loc_0858ec(pc)
 	jsr loc_0843ae

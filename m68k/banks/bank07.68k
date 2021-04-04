@@ -270,7 +270,7 @@ loc_070260:
 loc_070264:
 	clr.b ($11,a6)
 	clr.b ($13,a6)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0702ec
 	lea.l loc_070436(pc),a1
 	jsr loc_0004c6
@@ -3787,7 +3787,7 @@ loc_073792:
 ;==============================================
 loc_073796:
 	moveq #1,d6
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0737b0
 	cmpi.b #$ff,P1_Char
 	bne.w loc_0737b0
@@ -3934,7 +3934,7 @@ loc_073912:
 
 ;==============================================
 loc_07392c:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_073956
 	move.w ($42,a6),d0
 	subi.w #$14d,d0
@@ -4180,7 +4180,7 @@ loc_073ba2:
 
 loc_073bac:
 	clr.b ($11,a6)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.b loc_073c2a
 	cmpi.b #$ff,P1_Char
 	beq.w loc_073bd6
@@ -4997,7 +4997,7 @@ loc_074612:
 	clr.b unk_10ebe2
 	clr.b ($44,a6)
 	clr.b ($11,a6)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_0746ca
 	moveq #0,d0
 	moveq #1,d2
@@ -5015,7 +5015,7 @@ loc_074648:
 	move.b (4,a0),d3
 	btst #3,(7,a0)
 	beq.w loc_0746ac
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_07467c
 	move.b d2,($42,a6)
 	clr.b ($43,a6)
@@ -5027,7 +5027,7 @@ loc_074678:
 	bra.w loc_0746b2
 
 loc_07467c:
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_0746ac
 	addq.b #1,d1
 	cmpi.b #2,d1
@@ -5054,7 +5054,7 @@ loc_0746b2:
 	sne.b ($44,a6)
 
 loc_0746ca:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_074714
 	st.b ($44,a6)
 	lea.l Player1_Mem,a0
@@ -5192,11 +5192,11 @@ loc_07488c:
 
 loc_074894:
 	jsr loc_074b08(pc)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_0748b4
 	tst.b ($40,a6)
 	bne.w loc_0748b4
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.b loc_0748dc
 
 loc_0748b4:
@@ -5330,7 +5330,7 @@ loc_074a62:
 	beq.w loc_074a9c
 	move.w #$1062,d0
 	jsr loc_0804de
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_074a98
 	movea.l ($c,a6),a0
 	st.b ($11,a0)
@@ -6525,13 +6525,13 @@ loc_075904:
 	jsr loc_075afc(pc)
 	clr.w ($42,a6)
 	move.w #$c8,($14,a6)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_075936
 	move.w #$190,($14,a6)
 
 loc_075936:
 	move.w #$78,($14,a6)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_075976
 	tst.w unk_10ebea
 	beq.w loc_075976
@@ -6544,7 +6544,7 @@ loc_075936:
 	addi.w #$8c,($14,a6)
 
 loc_075976:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_0759b0
 	tst.w unk_10ebea
 	beq.w loc_0759b0
@@ -7109,7 +7109,7 @@ loc_075f80:
 	beq.w loc_075fae
 	cmpi.b #1,($59,a6)
 	bne.w loc_075fa0
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_075fa0
 	move.w #$1199,(a4)+
 
@@ -7151,7 +7151,7 @@ loc_07600a:
 	rts
 
 loc_076014:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0761cc
 	clr.b ($44,a6)
 	movea.l Player_Pointer,a3
@@ -7503,7 +7503,7 @@ loc_076526:
 	clr.b ($11,a6)
 	cmpi.w #$a,HoleNumber
 	beq.b loc_076560
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.b loc_076560
 	move.b #$20,($13,a6)
 	move.l #loc_076550,(a6)
@@ -7520,7 +7520,7 @@ loc_076560:
 	moveq #1,d7
 	move.l #loc_088cde,d6
 	move.l #loc_088cea,d5
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0765b2
 	lea.l loc_076874(pc),a1
 	jsr loc_0004c6
@@ -7568,7 +7568,7 @@ loc_0765b2:
 loc_07663a:
 	lea.l loc_0774d0,a5
 	jsr loc_07376e
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_076658
 	move.l #loc_088ac8,($2c,a6)
 
@@ -7582,7 +7582,7 @@ loc_076666:
 	bcc.w loc_07670c
 	cmpi.w #$a,HoleNumber
 	bne.w loc_076708
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0766ba
 	movea.l Player_Pointer,a5
 	jsr loc_073b46
@@ -7877,7 +7877,7 @@ loc_076a12:
 ;==============================================
 loc_076a32:
 	clr.b ($13,a6)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.b loc_076a6e
 	moveq #9,d0
 	lea.l unk_10eda2,a3
@@ -7990,7 +7990,7 @@ loc_076b44:
 	jsr loc_076c88(pc)
 	jsr loc_076c88(pc)
 	jsr loc_076c88(pc)
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_076bc0
 	jsr loc_076c88(pc)
 	tst.b ($11,a6)
@@ -8373,7 +8373,7 @@ loc_0770a0:
 	move.l (a2,d0.w),($4c,a6)
 	lea.l loc_077632,a0
 	lea.l loc_077642,a1
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_0770f6
 	lea.l loc_07764a,a0
 	lea.l loc_07765a,a1
@@ -8389,7 +8389,7 @@ loc_0770f6:
 	jsr loc_0b9a22
 	move.w #$197,d1
 	jsr loc_0b9a22
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_077260
 	move.w #$200,($40,a6)
 	move.w #$d8,($42,a6)
@@ -8431,7 +8431,7 @@ loc_0771ae:
 	bra.b loc_077212
 
 loc_0771b4:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_077212
 	jsr loc_060268
 	beq.w loc_0771fc
@@ -8621,7 +8621,7 @@ loc_077416:
 loc_07741a:
 	lea.l loc_0774d0,a5
 	jsr loc_07376e
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_077438
 	move.l #loc_088ac8,($2c,a6)
 
@@ -9806,7 +9806,7 @@ loc_0782e6:
 	jsr loc_0004c6
 	lea.l loc_0786e2(pc),a1
 	jsr loc_0004c6
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_07839c
 	lea.l loc_07883a(pc),a1
 	jsr loc_0004c6
@@ -9838,7 +9838,7 @@ loc_0783de:
 loc_0783f4:
 	lea.l loc_078aba(pc),a1
 	jsr loc_0004c6
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_07847c
 	jsr loc_073796
 	lea.l loc_078956(pc),a1
@@ -9939,7 +9939,7 @@ loc_078576:
 	rts
 
 loc_07858a:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0785aa
 	lea.l loc_0788c4(pc),a1
 	jsr loc_0004c6
@@ -10032,7 +10032,7 @@ loc_0786a6:
 	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0786c6
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0786c6
 	move.b P2_Char,d0
 
@@ -10049,7 +10049,7 @@ loc_0786e2:
 	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_078702
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_078702
 	move.b P2_Char,d0
 
@@ -10067,7 +10067,7 @@ loc_078722:
 	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_078748
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_078748
 	move.b P2_Char,d0
 
@@ -10093,7 +10093,7 @@ loc_07877c:
 	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0787a0
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0787a0
 	move.b P2_Char,d0
 
@@ -10115,7 +10115,7 @@ loc_0787b6:
 	move.b P1_Char,d0
 	cmpi.b #$ff,d0
 	bne.w loc_0787dc
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0787dc
 	move.b P2_Char,d0
 
@@ -10376,7 +10376,7 @@ loc_078ae2:
 	move.l #loc_078af4,(a6)
 
 loc_078af4:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_073912
 	move.w #$60,($30,a6)
 	jsr loc_073912
@@ -10540,7 +10540,7 @@ loc_078cee:
 
 ;==============================================
 loc_078d0a:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_078d3e
 	jsr loc_05aa76
 	tst.b d0
@@ -13282,7 +13282,7 @@ loc_07b082:
 
 loc_07b090:
 	move.w #$1f,($14,a6)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07b108
 	move.l #loc_07b0a8,(a6)
 
@@ -13560,7 +13560,7 @@ loc_07b398:
 	moveq #0,d3
 	jsr loc_07e4b4
 	clr.b ($42,a6)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_07b3ca
 	move.b #1,($42,a6)
 
@@ -13579,7 +13579,7 @@ loc_07b3ee:
 	clr.w ($30,a6)
 	move.w #9,($14,a6)
 	move.b #1,($11,a6)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07b446
 	tst.b ($13,a6)
 	bne.w loc_07b446
@@ -13740,7 +13740,7 @@ loc_07b5a2:
 
 ;==============================================
 loc_07b5ee:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07b604
 	cmpi.b #6,d1
 	scc.b ($11,a6)
@@ -13754,7 +13754,7 @@ loc_07b604:
 ;==============================================
 loc_07b60c:
 	move.w #$a,($3c,a6)
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07b71c
 	tst.b ($13,a6)
 	bne.w loc_07b6da
@@ -14737,7 +14737,7 @@ loc_07c260:
 	jsr loc_0b9cb6
 	clr.b unk_10ebfd
 	clr.b unk_10ebfc
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07c296
 	move.b #1,unk_10ebfc
 
@@ -14784,7 +14784,7 @@ loc_07c2fc:
 	jsr loc_07c70c(pc)
 	lea.l loc_07c620(pc),a1
 	jsr loc_0004c6
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_07c374
 	tst.b ($13,a6)
 	bpl.w loc_07c374
@@ -15095,7 +15095,7 @@ loc_07c6fc:
 loc_07c70c:
 	tst.b ($45,a6)
 	bne.w loc_07c7d0
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07c7ae
 	jsr loc_06d49c
 	jsr loc_06e428
@@ -15583,7 +15583,7 @@ loc_07cc38:
 	movea.w ($40,a6),a1
 	move.w #$f,d1
 	move.w #$c,d2
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_07cc62
 	tst.b ($43,a6)
 	beq.w loc_07cc5a
@@ -15609,7 +15609,7 @@ loc_07cc7c:
 	addq.w #1,($40,a6)
 
 loc_07cc88:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_07cc9a
 	move.w #$70cc,($40,a6)
 
@@ -16954,7 +16954,7 @@ loc_07dc44:
 
 loc_07dc58:
 	dbra d0,loc_07dc44
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_07dc9c
 	tst.b unk_102ec1
 	bne.w loc_07dc9c

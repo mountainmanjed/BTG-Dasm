@@ -10449,7 +10449,7 @@ loc_06a438:
 
 ;==============================================
 loc_06a43e:
-	move.b #$ff,unk_102eba
+	move.b #$ff,Game_Play_Mode
 	moveq #$14,d0
 	moveq #0,d1
 	moveq #0,d2
@@ -10626,7 +10626,7 @@ loc_06a666:
 loc_06a690:
 	move.w #$1061,d0
 	jsr loc_0804de
-	move.b ($13,a6),unk_102eba
+	move.b ($13,a6),Game_Play_Mode
 	move.b #1,unk_102eb9
 	lea.l loc_06a428(pc),a0
 	jsr loc_068600
@@ -10855,7 +10855,7 @@ loc_06a95c:
 
 ;==============================================
 loc_06a974:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bpl.w loc_06a992
 	jsr loc_00f3d2
 	cmpi.b #2,d0
@@ -10863,7 +10863,7 @@ loc_06a974:
 	move.w ($22,a6),($20,a6)
 
 loc_06a992:
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	blt.w loc_06a9a4
 	move.w ($22,a6),($20,a6)
 
@@ -12498,7 +12498,7 @@ loc_06c052:
 	rts
 
 loc_06c05c:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_06c1b6
 	movea.l Player_Pointer,a0
 	cmpi.b #1,($22,a0)
@@ -13026,7 +13026,7 @@ loc_06c6da:
 loc_06c6ea:
 	jsr loc_070d92
 	jsr loc_059fc6
-	clr.b unk_102eba
+	clr.b Game_Play_Mode
 
 loc_06c6fc:
 	movea.l ($c,a6),a0
@@ -13462,7 +13462,7 @@ loc_06cce2:
 	bmi.w loc_06cd66
 	cmpi.b #1,unk_10d4ed
 	beq.w loc_06cd66
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_06cd24
 	movea.l Player_Pointer,a0
 	lea.l Player1_Mem,a1
@@ -13791,7 +13791,7 @@ loc_06d0ac:
 loc_06d0b6:
 	tst.b ($3e,a6)
 	bne.w loc_06d110
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_06d110
 	jsr loc_05aa76
 	tst.b d0
@@ -13818,7 +13818,7 @@ loc_06d110:
 
 ;==============================================
 loc_06d126:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_06d218
 	cmpi.w #$12,HoleNumber
 	bcs.w loc_06d218
@@ -14217,7 +14217,7 @@ loc_06d60e:
 	rts
 
 loc_06d618:
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_06d650
 	lea.l BIOS_PLAYER1_MOD,a0
 	movea.l Player_Pointer,a1
@@ -14228,7 +14228,7 @@ loc_06d618:
 	beq.w loc_06d650
 	move.b #$ff,(1,a1)
 	jsr loc_083cfe
-	clr.b unk_102eba
+	clr.b Game_Play_Mode
 
 loc_06d650:
 	movea.l ($c,a6),a0
@@ -14741,7 +14741,7 @@ loc_06dc62:
 	lea.l loc_06de3e(pc),a1
 	cmpi.b #5,unk_102ebb
 	beq.w loc_06dcd4
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_06dcaa
 	movea.l Player_Pointer,a0
 	jsr loc_05a8ba

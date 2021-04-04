@@ -3634,7 +3634,7 @@ loc_057ad2:
 
 
 ;==============================================
-	include "course/coursetable.asm";loc_057b44
+	include "course/coursetable.asm";Course_Table
 
 
 ;==============================================
@@ -3958,7 +3958,7 @@ loc_0587ae:
 	bne.w loc_058816
 	jsr loc_06cda2
 	bcs.w loc_058816
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_0587dc
 	jsr loc_058c00(pc)
 	tst.b d0
@@ -4081,7 +4081,7 @@ loc_058938:
 loc_05893a:
 	move.w Course_ID,d0
 	lsl.w #2,d0
-	lea.l loc_057b44(pc),a0
+	lea.l Course_Table(pc),a0
 	movea.l (a0,d0.w),a0
 	move.w HoleNumber,d0
 	mulu.w #$18,d0
@@ -4116,7 +4116,7 @@ loc_058988:
 
 loc_058996:
 	lsl.w #2,d1
-	lea.l loc_057b44(pc),a0
+	lea.l Course_Table(pc),a0
 	movea.l (a0,d1.w),a0
 	mulu.w #$18,d0
 	adda.w d0,a0
@@ -4129,9 +4129,9 @@ loc_058996:
 loc_0589b0:
 	lea.l Player1_Mem,a1
 	lea.l Player2_Mem,a2
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_0589d8
-	tst.b (1,a1)
+	tst.b (CharID,a1)
 	bpl.w loc_0589d0
 	movea.l a2,a1
 
@@ -4203,8 +4203,8 @@ loc_058aa6:
 	rts
 
 loc_058aae:
-	move.b (PL_Stroke,a1),d0
-	cmp.b (PL_Stroke,a2),d0
+	move.b (2,a1),d0
+	cmp.b (2,a2),d0
 	beq.w loc_058ac8
 	bls.w loc_058ac0
 	movea.l a2,a1
@@ -4238,7 +4238,7 @@ loc_058aee:
 	jsr loc_00f3d2
 	tst.w d0
 	beq.w loc_058b5e
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	bne.w loc_058b30
 	move.b unk_107026,d0
 	cmpi.b #1,BIOS_PLAYER1_MOD
@@ -4251,7 +4251,7 @@ loc_058b26:
 	bra.w loc_058b5a
 
 loc_058b30:
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_058b50
 	move.b unk_107026,d0
 	and.b unk_10704c,d0
@@ -4273,7 +4273,7 @@ loc_058b5e:
 
 ;==============================================
 loc_058b64:
-	cmpi.b #1,unk_102eba
+	cmpi.b #1,Game_Play_Mode
 	bne.w loc_058ba4
 	lea.l Player1_Mem,a0
 	lea.l Player2_Mem,a1
@@ -4291,7 +4291,7 @@ loc_058b9a:
 	clr.b ($24,a1)
 
 loc_058ba4:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_058bc6
 	movea.l Player_Pointer,a0
 	move.w HoleNumber,d0
@@ -5493,7 +5493,7 @@ loc_059c5a:
 	jsr (a0)
 
 loc_059c5c:
-	btst #4,Debug_Dip0 ;0001 0000 | 0x10
+	btst #4,Debug_Dip0
 	beq.w loc_059cf0
 	jsr loc_057602
 	jsr loc_056826
@@ -5969,7 +5969,7 @@ loc_05a210:
 	sne.b d0
 	tst.b unk_102ebb
 	sne.b d1
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	seq.b d2
 	or.b d1,d0
 	or.b d2,d0
@@ -6463,7 +6463,7 @@ loc_05aa98:
 
 ;==============================================
 loc_05aa9a:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_05ab0a
 	move.l #0,unk_10d4e0
 	jsr RNG_Function
@@ -6593,7 +6593,7 @@ loc_05abe6:
 
 ;==============================================
 loc_05abec:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	bne.w loc_05ac4a
 	lea.l unk_107014,a0
 	moveq #0,d0
@@ -6647,7 +6647,7 @@ loc_05ac54:
 	jsr loc_0004c6
 
 loc_05ac6a:
-	tst.b unk_102eba
+	tst.b Game_Play_Mode
 	beq.w loc_05ac7e
 	lea.l loc_05b510(pc),a1
 	jsr loc_0004c6
@@ -7436,7 +7436,7 @@ loc_05b6c8:
 	rts
 
 loc_05b6d2:
-	cmpi.b #2,unk_102eba
+	cmpi.b #2,Game_Play_Mode
 	beq.w loc_05b6fc
 	cmpi.w #$12,HoleNumber
 	beq.w loc_05b6fc

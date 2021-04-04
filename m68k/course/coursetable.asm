@@ -1,4 +1,4 @@
-loc_057b44:
+Course_Table:
 	dc.l loc_057b54;US
 	dc.l loc_057ee4;GR
 	dc.l loc_0580ac;JP
