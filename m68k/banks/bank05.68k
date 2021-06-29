@@ -69,7 +69,7 @@ loc_054c3c:
 	jsr loc_0004c6
 	jsr loc_0553ee(pc)
 	jsr loc_056a40
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_054cd0
 	lea.l loc_079c34,a1
 	jsr loc_0004c6
@@ -87,7 +87,7 @@ loc_054cd0:
 	jsr loc_059cf2
 	lea.l loc_056582(pc),a1
 	jsr loc_0004c6
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_054d08
 	jsr loc_00d9e2
 	lea.l loc_057658,a1
@@ -219,7 +219,7 @@ loc_054e9a:
 loc_054eaa:
 	jsr loc_054fee(pc)
 	movea.l ($42,a6),a0
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_054ec2
 	movea.l ($46,a6),a0
 
@@ -698,7 +698,7 @@ loc_05548c:
 
 loc_0554c4:
 	move.b unk_107084,d0
-	or.b unk_107083,d0
+	or.b Ball_in_Hole_status,d0
 	beq.w loc_0554dc
 	tst.b ($44,a6)
 	bne.w loc_0555c2
@@ -1207,7 +1207,7 @@ loc_055d86:
 	addq.w #4,d0
 	cmpi.w #$d,d1
 	bne.b loc_055d86
-	move.w #$c,Selected_Club
+	move.w #Club_SW,Selected_Club
 	bra.w loc_055dd2
 
 loc_055da6:
@@ -1242,7 +1242,7 @@ loc_055de4:
 	jsr loc_06181e
 	tst.b d7
 	bne.w loc_055e04
-	move.w #1,Selected_Club
+	move.w #Club_D2,Selected_Club
 
 loc_055e04
 	rts
@@ -1649,7 +1649,7 @@ loc_0562d2:
 	bne.w loc_05640c
 	tst.b unk_106fed
 	bne.w loc_0563f2
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	beq.w loc_05638a
 	move.b unk_10d52b,d1
 	andi.b #$70,d1
@@ -1973,7 +1973,7 @@ loc_056704:
 
 ;==============================================
 loc_056730:
-	cmpi.b #5,unk_102ebb
+	cmpi.b #5,DEMO_ID
 	bne.w loc_056742
 	subi.w #$39,($32,a6)
 
@@ -2561,7 +2561,7 @@ loc_056eb4:
 
 ;==============================================
 Set_Wind_Game:
-	move.b unk_102ebb,d0
+	move.b DEMO_ID,d0
 	beq.w loc_056f02
 	subq.b #1,d0
 	andi.w #7,d0
@@ -3272,7 +3272,7 @@ loc_057658:
 	jmp loc_00054a
 
 loc_057668:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_057678
 	jmp loc_00054a
 
@@ -3640,7 +3640,7 @@ loc_057ad2:
 ;==============================================
 loc_058274:
 	moveq #0,d0
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bcs.w loc_058286
 	move.b #$ff,d0
 
@@ -3652,7 +3652,7 @@ loc_058286:
 	clr.b unk_107085
 	clr.b unk_107082
 	clr.b unk_106fec
-	clr.b unk_107083
+	clr.b Ball_in_Hole_status
 	clr.b unk_107084
 	clr.b unk_10ebe4
 	clr.l unk_10d4fc
@@ -3716,7 +3716,7 @@ loc_058376:
 	move.w #$98,d2
 
 loc_0583de:
-	cmpi.b #5,unk_102ebb
+	cmpi.b #5,DEMO_ID
 	bne.w loc_0583f0
 	moveq #0,d1
 	move.w #$aa,d2
@@ -3751,7 +3751,7 @@ loc_058442:
 
 loc_05845c:
 	move.b #1,unk_107082
-	clr.b unk_107083
+	clr.b Ball_in_Hole_status
 	move.b #1,unk_104fd0
 	move.b d0,REG_PALBANK0
 	move.b #$15,unk_10ebbe
@@ -3887,7 +3887,7 @@ loc_058680:
 	moveq #$20,d0
 	moveq #$1e,d1
 	moveq #$78,d2
-	cmpi.b #5,unk_102ebb
+	cmpi.b #5,DEMO_ID
 	bne.w loc_0586aa
 	move.w #$8c,d2
 
@@ -3925,7 +3925,7 @@ loc_058708:
 	jsr loc_0004c6
 	lea.l loc_05ac54,a1
 	jsr loc_0004c6
-	move.w #$d,Selected_Club
+	move.w #Club_PT,Selected_Club
 	move.l #loc_058752,(a6)
 	rts
 
@@ -4001,7 +4001,7 @@ loc_058820:
 loc_058840:
 	cmpi.b #2,BIOS_USER_MODE
 	bne.w loc_058874
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_058874
 	bset.b #7,unk_102ebc
 	bne.w loc_058874
@@ -4100,7 +4100,7 @@ loc_05893a:
 
 ;==============================================
 loc_05897a:
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	moveq #0,d0
 	move.b (1,a0),d0
 	rts
@@ -4233,7 +4233,7 @@ loc_058ae6:
 
 ;==============================================
 loc_058aee:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_058b5a
 	jsr loc_00f3d2
 	tst.w d0
@@ -4524,7 +4524,7 @@ loc_059218:
 
 ;==============================================
 loc_05922e:
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_059238:
@@ -4552,7 +4552,7 @@ loc_05925a:
 loc_05926c:
 	moveq #6,d0
 	move.w #$ffff,d1
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 	lea.l unk_10d4ae,a1
 
@@ -5353,7 +5353,7 @@ loc_059ac4:
 
 loc_059ada
 	moveq #0,d0
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_059b08
 	move.l unk_10d4c6,d0
 	move.l unk_10d4ca,d1
@@ -5468,7 +5468,7 @@ loc_059c12:
 
 ;==============================================
 loc_059c18:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_059c24
 	rts
 
@@ -5528,7 +5528,7 @@ loc_059cf0:
 
 ;==============================================
 loc_059cf2:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_059cfe
 	rts
 
@@ -5768,8 +5768,8 @@ loc_059f26:
 
 ;==============================================
 loc_059f4e:
-	lea.l unk_107014,a1
-	lea.l unk_10703a,a2
+	lea.l P1_SCORE,a1
+	lea.l P2_SCORE,a2
 	move.b #$ff,d0
 	moveq #$11,d7
 
@@ -5845,7 +5845,7 @@ loc_05a044:
 
 ;==============================================
 loc_05a054:
-	move.l a0,HoleData_Pointer
+	move.l a0,CourseData_Pointer
 	move.l a0,-(a7)
 	jsr loc_05a3a6(pc)
 	movea.l (a7)+,a0
@@ -5895,7 +5895,7 @@ loc_05a054:
 	adda.l #$16,a0
 	jsr loc_05a428(pc)
 	jsr loc_05a286(pc)
-	jsr Hole_Spawn(pc)
+	jsr Pin_Spawn(pc)
 	jsr loc_05a210(pc)
 	jsr Set_Wind_Init
 	jsr loc_05926c
@@ -5967,7 +5967,7 @@ loc_05a1dc:
 loc_05a210:
 	cmpi.b #2,BIOS_USER_MODE
 	sne.b d0
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	sne.b d1
 	cmpi.b #2,Game_Play_Mode
 	seq.b d2
@@ -6009,7 +6009,7 @@ loc_05a27a:
 
 ;==============================================
 loc_05a286:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_05a29e
 	move.b #1,unk_10d4d6
 	moveq #5,d0
@@ -6052,7 +6052,7 @@ loc_05a306:
 	dc.b $01,$01,$01,$01,$01,$00
 
 ;==============================================
-Hole_Spawn:
+Pin_Spawn:
 	jsr RNG_Function
 	andi.w #7,d0
 	move.w d0,-(a7)
@@ -6060,17 +6060,17 @@ Hole_Spawn:
 	andi.w #7,d0
 	add.w (a7)+,d0
 	add.b Game_Difficulty,d0
-	lea.l loc_05a390(pc),a0
+	lea.l Pin_Ids(pc),a0
 	move.b (a0,d0.w),d0
 	cmpi.w #8,d0
 	bcc.w loc_05a38e
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_05a356
 	sub.w d0,d0
 
 loc_05a356:
 	lsl.w #2,d0
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (2,a0),a1
 	adda.w d0,a1
 
@@ -6092,7 +6092,7 @@ loc_05a38e:
 	trap #$f
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-loc_05a390:
+Pin_Ids:
 	dc.b $00,$00,$00
 	dc.b $01,$01,$01
 	dc.b $02,$02,$02
@@ -6112,7 +6112,7 @@ loc_05a3a6:
 
 ;==============================================
 loc_05a3ba:
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_05a3c4:
@@ -6132,7 +6132,7 @@ loc_05a3de:
 
 ;==============================================
 loc_05a3e4:
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 	moveq #0,d0
 
@@ -6353,7 +6353,7 @@ loc_05a936:
 	swap d3
 	jsr loc_059eb2
 	lsr.l #2,d0
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	beq.w loc_05a978
 	moveq #0,d0
 
@@ -6529,7 +6529,7 @@ loc_05ab3e:
 ;==============================================
 loc_05ab4e:
 	moveq #0,d1
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_05ab7e
 	lea.l unk_10d52e,a0
 	tst.b d0
@@ -6551,7 +6551,7 @@ loc_05ab7e:
 ;==============================================
 loc_05ab82:
 	moveq #0,d1
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_05abc2
 	lea.l unk_10d52e,a0
 	lea.l P1_Char,a1
@@ -6576,7 +6576,7 @@ loc_05abc2:
 
 ;==============================
 loc_05abc6:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_05abd4
 	moveq #0,d0
 	rts
@@ -6595,7 +6595,7 @@ loc_05abe6:
 loc_05abec:
 	cmpi.b #2,Game_Play_Mode
 	bne.w loc_05ac4a
-	lea.l unk_107014,a0
+	lea.l P1_SCORE,a0
 	moveq #0,d0
 	moveq #$12,d7
 
@@ -6654,7 +6654,7 @@ loc_05ac6a:
 
 loc_05ac7e:
 	clr.b unk_10ebb0
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_05acac
 	tst.b unk_107082
 	bmi.w loc_05acac
@@ -6712,7 +6712,7 @@ loc_05ad58:
 	bhi.w loc_05ad84
 
 loc_05ad84:
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	beq.w loc_05ad98
 	jsr loc_00b6a0
 	bra.w loc_05add8
@@ -6740,17 +6740,17 @@ loc_05addc:
 	clr.b unk_10d510
 	lea.l loc_05b62c(pc),a1
 	jsr loc_0004c6
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_05ae04
 	bset.b #7,unk_102eb9
 
 loc_05ae04:
 	jsr loc_05a8d6
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	beq.w loc_05ae2a
 	clr.b unk_102ebc
 	jsr loc_08045a
-	lea.l loc_05b67e(pc),a1
+	lea.l Finished_the_Hole(pc),a1
 	jsr loc_0004c6
 
 loc_05ae2a:
@@ -6806,7 +6806,7 @@ loc_05aea0:
 	sub.w d4,d6
 	sub.w d5,($30,a6)
 	add.w d6,($32,a6)
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_05af0c
 	btst #1,unk_102c38
 	beq.w loc_05af0c
@@ -6864,7 +6864,7 @@ loc_05af94:
 	move.w ($32,a6),unk_10d506
 	move.w (8,a0),unk_10d508
 	move.w ($c,a0),unk_10d50c
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_05afea
 	move.w (a7),d0
 	jsr loc_05aff0(pc)
@@ -6989,7 +6989,7 @@ loc_05b146:
 	move.l #loc_05ae8c,(a6)
 
 loc_05b14c:
-	clr.b unk_107083
+	clr.b Ball_in_Hole_status
 
 loc_05b152:
 	move.b unk_10d52a,d2
@@ -7097,7 +7097,7 @@ loc_05b246:
 	asr.w #6,d0
 	subq.w #1,d0
 	add.w d0,($32,a6)
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_05b28a
 	movea.l ($c,a6),a0
 	tst.w ($2c,a0)
@@ -7237,7 +7237,7 @@ loc_05b43a:
 	bmi.w loc_05b4ae
 	movea.l Player_Pointer,a0
 	lea.l unk_107086,a1
-	move.w (4,a0),d0
+	move.w (PL_X,a0),d0
 	cmpi.w #$ac,d0
 	bge.w loc_05b468
 	subi.w #$ac,d0
@@ -7321,10 +7321,10 @@ loc_05b532:
 	cmp.w (8,a0),d0
 	bls.w loc_05b5ee
 	movea.l Player_Pointer,a1
-	move.w (4,a1),d0
-	move.w (8,a1),d1
-	move.w (4,a0),d2
-	move.w (8,a0),d3
+	move.w (PL_X,a1),d0
+	move.w (PL_Y,a1),d1
+	move.w (PL_X,a0),d2
+	move.w (PL_Y,a0),d3
 	sub.w d2,d0
 	sub.w d3,d1
 	move.w unk_10d4f8,d2
@@ -7407,7 +7407,9 @@ loc_05b678:
 	jmp loc_00054a
 
 ;==============================================
-loc_05b67e:
+;End of Hole ; 0x5b67e
+;==============================================
+Finished_the_Hole:
 	jsr loc_06e428
 	lea.l loc_05b71a(pc),a0
 	cmpi.b #$fe,d0
@@ -7438,7 +7440,7 @@ loc_05b6c8:
 loc_05b6d2:
 	cmpi.b #2,Game_Play_Mode
 	beq.w loc_05b6fc
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	beq.w loc_05b6fc
 	move.l #loc_05b6f0,(a6)
 

@@ -1,0 +1,253 @@
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+JP_CONFIG:
+	dc.b $da,$b7,$f6,$c7,$b7,$d3,$f9,$d4,$e1,$ed,$d3,$20,$c9,$b7,$e8,$db
+	dc.w $0030
+	dc.w $ffff
+	dc.b $03
+	dc.b $ff
+
+	dc.b $2f ;0
+	dc.b $04 ;1
+	dc.b $14 ;2
+	dc.b $12 ;3
+	dc.b $38 ;4
+	dc.b $01 ;5
+	dc.b $02 ;6
+	dc.b $02 ;7
+	dc.b $04 ;8
+	dc.b $00 ;9
+
+	dc.b $8d,$81,$88,$b7,$ad,$8b,$b7,$85,$ad,$20,$20,$20
+	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$28,$31,$73,$74,$29,$20
+
+	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$28,$43,$4f,$4e,$54,$29
+	dc.b " 1          "
+	dc.b " 2          "
+	dc.b " 3          "
+	dc.b " 4          "
+	dc.b " 5          "
+	dc.b " 6          "
+	dc.b " 7          "
+	dc.b " 8          "
+	dc.b " 9          "
+	dc.b "10          "
+	dc.b "11          "
+	dc.b "12          "
+	dc.b "13          "
+	dc.b "14          "
+	dc.b "15          "
+
+	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$9d,$f7,$b6,$8b,$b4,$82
+	dc.b $dd,$f7,$c6,$f7,$f9,$20,$20,$20,$20,$20,$20,$20
+	dc.b $d9,$f8,$f9,$20,$20,$20,$20,$20,$20,$20,$20,$20
+	dc.b $c6,$f7,$db,$f7,$c0,$f6,$db,$f8,$20,$20,$20,$20
+	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+
+	dc.b $de,$f6,$d0,$dd,$b9,$e8,$c9,$cc,$d3,$20,$20,$20
+	dc.b "WIN +/LOS 0 "
+	dc.b "WIN +/LOS - "
+	dc.b "WIN 0/LOS 0 "
+	dc.b "WIN 0/LOS - "
+
+	dc.b $c9,$ed,$d2,$ef,$d5,$f4,$f9,$20,$20,$20,$20,$20
+	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+
+	dc.b $94,$ad,$81,$93,$b7,$20,$20,$20,$20,$20,$20,$20
+	dc.b "LEVEL 1     "
+	dc.b "LEVEL 2     "
+	dc.b "LEVEL 3     "
+	dc.b "LEVEL 4     "
+	dc.b "LEVEL 5     "
+	dc.b "LEVEL 6     "
+	dc.b "LEVEL 7     "
+	dc.b "LEVEL 8     "
+
+	dc.b "next page   "
+	dc.b $13,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+
+	dc.b $80,$8e,$9a,$b7,$85,$8f,$8d,$91,$a1,$81,$20,$20
+	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+
+	dc.b $d2,$f7,$e2,$ca,$c2,$ed,$d3,$f7,$20,$20,$20,$20
+	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
+
+	dc.b $c7,$e9,$cb,$f7,$f6,$d3,$2f,$e9,$dc,$f7,$e8,$20
+	dc.b $80,$a7,$2f,$80,$a7,$20,$20,$20,$20,$20,$20,$20
+	dc.b $80,$a7,$2f,$94,$8b,$20,$20,$20,$20,$20,$20,$20
+	dc.b $94,$8b,$2f,$80,$a7,$20,$20,$20,$20,$20,$20,$20
+	dc.b $94,$8b,$2f,$94,$8b,$20,$20,$20,$20,$20,$20,$20
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+US_CONFIG:
+	dc.b "NEO TURF MASTERS"
+	dc.w $0030	;Play Timer
+	dc.w $ffff	;Unused Timer
+	dc.b $03	;Lives ;"Hole(1st)"
+	dc.b $ff	;Unused counter
+
+	dc.b $2f	;Lives after countine ;"hole(cont)"
+	dc.b $04	;Hole Penalty
+	dc.b $14	;Match Hole
+	dc.b $12	;Continue
+	dc.b $38	;Difficulty
+	dc.b $01	;Next Page
+	dc.b $02	;Play Manual
+	dc.b $02	;Demo Sound
+	dc.b $04	;Credit Level Display
+	dc.b $00	;Unused in USA
+
+	dc.b "TIME        "
+;	unused timer text here
+	dc.b "HOLE(1st)   "
+;	unused counter text here
+
+	dc.b "HOLE(cont)  "
+	dc.b " 1          "
+	dc.b " 2          "
+	dc.b " 3          "
+	dc.b " 4          "
+	dc.b " 5          "
+	dc.b " 6          "
+	dc.b " 7          "
+	dc.b " 8          "
+	dc.b " 9          "
+	dc.b "10          "
+	dc.b "11          "
+	dc.b "12          "
+	dc.b "13          "
+	dc.b "14          "
+	dc.b "15          "
+
+	dc.b "HOLE PENALTY"
+	dc.b "BOGEY       "
+	dc.b "PAR         "
+	dc.b "GIVE UP     "
+	dc.b "NO PENALTY  "
+
+	dc.b "MATCH HOLE  "
+	dc.b "WIN +/LOS 0 "
+	dc.b "WIN +/LOS - "
+	dc.b "WIN 0/LOS 0 "
+	dc.b "WIN 0/LOS - "
+
+	dc.b "CONTINUE    "
+	dc.b "OFF         "
+	dc.b "ON          "
+
+	dc.b "DIFFICULTY  "
+	dc.b "LEVEL 1     "
+	dc.b "LEVEL 2     "
+	dc.b "LEVEL 3     "
+	dc.b "LEVEL 4     "
+	dc.b "LEVEL 5     "
+	dc.b "LEVEL 6     "
+	dc.b "LEVEL 7     "
+	dc.b "LEVEL 8     "
+
+	dc.b "next page   "
+	dc.b $13,"           "
+
+	dc.b "PLAY MANUAL "
+	dc.b "ON          "
+	dc.b "OFF         "
+
+	dc.b "DEMO SOUND  "
+	dc.b "WITH        "
+	dc.b "WITH OUT    "
+
+	dc.b "CREDIT/LEVEL"
+	dc.b "ON/ON       "
+	dc.b "ON/OFF      "
+	dc.b "OFF/ON      "
+	dc.b "OFF/OFF     "
+
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+EU_CONFIG:
+	dc.b "NEO TURF MASTERS"
+	dc.w $0030	;Play Timer
+	dc.w $ffff	;Unused Timer
+	dc.b $03	;Lives ;"Hole(1st)"
+	dc.b $ff	;Unused counter
+
+	dc.b $2f	;Lives after countine ;"hole(cont)"
+	dc.b $04	;Hole Penalty
+	dc.b $14	;Match Hole
+	dc.b $12	;Continue
+	dc.b $38	;Difficulty
+	dc.b $01	;Next Page
+	dc.b $02	;Play Manual
+	dc.b $02	;Demo Sound
+	dc.b $04	;Credit Level Display
+	dc.b $03	;Language Select
+
+	dc.b "TIME        "
+
+	dc.b "HOLE(1st)   "
+
+	dc.b "HOLE(cont)  "
+	dc.b " 1          "
+	dc.b " 2          "
+	dc.b " 3          "
+	dc.b " 4          "
+	dc.b " 5          "
+	dc.b " 6          "
+	dc.b " 7          "
+	dc.b " 8          "
+	dc.b " 9          "
+	dc.b "10          "
+	dc.b "11          "
+	dc.b "12          "
+	dc.b "13          "
+	dc.b "14          "
+	dc.b "15          "
+
+	dc.b "HOLE PENALTY"
+	dc.b "BOGEY       "
+	dc.b "PAR         "
+	dc.b "GIVE UP     "
+	dc.b "NO PENALTY  "
+
+	dc.b "MATCH HOLE  "
+	dc.b "WIN +/LOS 0 "
+	dc.b "WIN +/LOS - "
+	dc.b "WIN 0/LOS 0 "
+	dc.b "WIN 0/LOS - "
+
+	dc.b "CONTINUE    "
+	dc.b "OFF         "
+	dc.b "ON          "
+
+	dc.b "DIFFICULTY  "
+	dc.b "LEVEL 1     "
+	dc.b "LEVEL 2     "
+	dc.b "LEVEL 3     "
+	dc.b "LEVEL 4     "
+	dc.b "LEVEL 5     "
+	dc.b "LEVEL 6     "
+	dc.b "LEVEL 7     "
+	dc.b "LEVEL 8     "
+
+	dc.b "next page   "
+	dc.b $13,"           "
+
+	dc.b "PLAY MANUAL "
+	dc.b "ON          "
+	dc.b "OFF         "
+
+	dc.b "DEMO SOUND  "
+	dc.b "WITH        "
+	dc.b "WITH OUT    "
+
+	dc.b "CREDIT/LEVEL"
+	dc.b "ON/ON       "
+	dc.b "ON/OFF      "
+	dc.b "OFF/ON      "
+	dc.b "OFF/OFF     "
+
+	dc.b "LANGUAGE    "
+	dc.b "ENGLISH     "
+	dc.b "SPANISH     "
+	dc.b "PORTUGUESE  "

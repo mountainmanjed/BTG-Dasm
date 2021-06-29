@@ -541,7 +541,7 @@ loc_061304:
 	clr.b unk_10d5f1
 	move.l #$ffffffff,unk_10eb8e
 	move.b d0,REG_DIPSW
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l ($e,a0),a0
 	tst.w (a0)
 	beq.w loc_061392
@@ -563,7 +563,7 @@ loc_061392:
 	move.w #$7707,unk_10eb92
 	jsr loc_06219a(pc)
 	jsr loc_061652(pc)
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l ($e,a0),a0
 	tst.w (a0)
 	beq.w loc_06141a
@@ -787,7 +787,7 @@ loc_0616d6:
 ;==============================================
 loc_0616e8:
 	movem.l d0/a0,-(a7)
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	btst #1,(a0)
 	movem.l (a7)+,d0/a0
 	bne.w loc_061702
@@ -919,7 +919,7 @@ loc_061834:
 loc_061848:
 	cmpi.w #$e,d1
 	bhi.w loc_061862
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	moveq #1,d7
 	btst #0,(a0)
 	beq.w loc_061862
@@ -1193,7 +1193,7 @@ loc_061b32:
 	bpl.w loc_061c06
 	movea.l Player_Pointer,a2
 	move.w (8,a2),d3
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l ($a,a0),a0
 	suba.l a1,a1
 	suba.l a2,a2
@@ -1477,7 +1477,7 @@ loc_061dfe:
 
 ;==============================================
 loc_061e34:
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_061e3e:
@@ -1780,7 +1780,7 @@ loc_0621ec:
 	tst.w ($c,a0)
 	beq.w loc_062264
 	jsr loc_057602
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_062218:
@@ -2571,7 +2571,7 @@ loc_062a40:
 loc_062a4a:
 	jsr loc_063546(pc)
 	moveq #$33,d7
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l ($e,a0),a0
 	lea.l unk_10d840,a1
 	tst.w (a0)
@@ -2579,10 +2579,13 @@ loc_062a4a:
 
 loc_062a66:
 	movem.l d7/a0-a1,-(a7)
+
+;Read Back View Data
 	move.w (a0),d0
 	move.w (2,a0),d1
 	andi.w #$7fff,d1
 	jsr loc_0635cc(pc)
+
 	movem.l (a7)+,d7/a0-a1
 	swap d0
 	move.w d0,(a1)+
@@ -2600,6 +2603,8 @@ loc_062a66:
 	move.w d0,(a1)+
 	subq.w #1,d7
 	beq.w loc_062ab6
+
+;Test Backview data
 	tst.w (a0)
 	bne.b loc_062a66
 
@@ -2814,7 +2819,7 @@ loc_062ce0:
 ;==============================================
 loc_062ce2:
 	jsr loc_063546(pc)
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	movea.l (6,a0),a0
 
 loc_062cf0:
@@ -3712,6 +3717,9 @@ loc_063546:
 	add.l (a7)+,d0
 	move.l d0,unk_10eba8
 	rts
+
+;==============================================
+
 
 ;==============================================
 loc_0635cc:
@@ -8019,7 +8027,7 @@ loc_068540:
 
 ;==============================================
 loc_06854c:
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	beq.w loc_0685fa
 	cmpi.w #$11,Shot_Height
 	bhi.w loc_0685fa
@@ -11890,7 +11898,7 @@ loc_06b838:
 
 loc_06b842:
 	jsr loc_000598
-	move.b unk_102ebb,d0
+	move.b DEMO_ID,d0
 	subq.b #1,d0
 	andi.l #3,d0
 	jsr loc_08500e
@@ -12381,7 +12389,7 @@ loc_06bedc:
 
 ;==============================================
 loc_06bee6:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_06bef8
 	bset.b #7,unk_102eb9
 
@@ -12398,7 +12406,7 @@ loc_06bf06:
 	rts
 
 loc_06bf18:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	beq.w loc_06bf2e
 	tst.b unk_107082
 	bpl.w loc_06bf2e
@@ -12424,7 +12432,7 @@ loc_06bf5e:
 	moveq #0,d0
 	cmpi.b #1,unk_107082
 	bne.w loc_06bf74
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	sne.b d0
 
 loc_06bf74:
@@ -12483,7 +12491,7 @@ loc_06c022:
 	jsr loc_000598
 
 loc_06c028:
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	beq.w loc_06c05c
 	tst.b unk_107082
 	bpl.w loc_06c05c
@@ -13307,7 +13315,7 @@ loc_06cb30:
 	tst.b ($22,a2)
 	bmi.w loc_06cb5e
 	lea.l loc_06cbba(pc),a3
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	move.b (2,a1),d0
 	sub.b (1,a0),d0
 	bmi.w loc_06cb5e
@@ -13395,7 +13403,7 @@ loc_06cc2a:
 
 ;==============================================
 loc_06cc44:
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_06ccde
 	lea.l Player1_Mem,a1
 	lea.l Player2_Mem,a2
@@ -13526,7 +13534,7 @@ loc_06cda2:
 	movea.l Player_Pointer,a0
 	cmpi.b #1,($22,a0)
 	beq.w loc_06cdc6
-	movea.l HoleData_Pointer,a1
+	movea.l CourseData_Pointer,a1
 	move.b (1,a1),d0
 	addq.b #3,d0
 	cmp.b (2,a0),d0
@@ -13820,7 +13828,7 @@ loc_06d110:
 loc_06d126:
 	cmpi.b #2,Game_Play_Mode
 	beq.w loc_06d218
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bcs.w loc_06d218
 	movea.l Player_Pointer,a1
 	tst.b ($22,a1)
@@ -13961,7 +13969,7 @@ loc_06d2b8:
 	beq.w loc_06d3e0
 	cmpi.b #1,unk_107082
 	bne.w loc_06d334
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	beq.w loc_06d334
 	lea.l loc_07ac3e,a1
 	jsr loc_0004c6
@@ -14157,7 +14165,7 @@ loc_06d548:
 
 ;==============================================
 loc_06d55e:
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bcc.w loc_06d666
 	jsr loc_06e428
 	move.w d0,-(a7)
@@ -14632,7 +14640,7 @@ loc_06daee:
 	jsr loc_0004c6
 	clr.b ($11,a0)
 	move.l a0,($16,a6)
-	cmpi.b #5,unk_102ebb
+	cmpi.b #5,DEMO_ID
 	bne.w loc_06db1a
 	lea.l loc_07d2ce,a1
 	jsr loc_0004c6
@@ -14649,7 +14657,7 @@ loc_06db30:
 	rts
 
 loc_06db3a:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_06db64
 	lea.l loc_079c34,a1
 	jsr loc_0004c6
@@ -14663,7 +14671,7 @@ loc_06db5a:
 
 loc_06db64:
 	clr.b unk_10d5ee
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_06db7a
 	jsr loc_00d9e2
 
@@ -14739,7 +14747,7 @@ loc_06dc44:
 ;==============================================
 loc_06dc62:
 	lea.l loc_06de3e(pc),a1
-	cmpi.b #5,unk_102ebb
+	cmpi.b #5,DEMO_ID
 	beq.w loc_06dcd4
 	cmpi.b #2,Game_Play_Mode
 	bne.w loc_06dcaa
@@ -15376,7 +15384,7 @@ loc_06e356:
 ;==============================================
 loc_06e428:
 	movea.l Player_Pointer,a0
-	movea.l HoleData_Pointer,a1
+	movea.l CourseData_Pointer,a1
 	move.b (2,a0),d0
 	sub.b (1,a1),d0
 	rts
@@ -15386,7 +15394,7 @@ loc_06e43e:
 	move.w #$19,d1
 	jsr loc_0b9a22
 	move.w #$a,($3c,a6)
-	movea.l HoleData_Pointer,a0
+	movea.l CourseData_Pointer,a0
 	moveq #0,d0
 	move.b (1,a0),d0
 	subq.w #3,d0
@@ -15833,7 +15841,7 @@ loc_06ec1a:
 loc_06ec56:
 	jsr loc_000f08
 	clr.b ($3e,a6)
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_06ecb2
 	move.l unk_102c70,-(a7)
 	move.l unk_102c68,d2
@@ -16097,7 +16105,7 @@ loc_06efd2:
 	move.l #loc_06f020,(a6)
 
 loc_06f020:
-	move.b unk_107083,($13,a6)
+	move.b Ball_in_Hole_status,($13,a6)
 	jmp loc_068618
 
 ;==============================================
@@ -16733,7 +16741,7 @@ loc_06f8c8:
 
 loc_06f8e6:
 	bcs.w loc_06f90a
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bls.w loc_06f90a
 	tst.b unk_10d4ee
 	bne.w loc_06f90a

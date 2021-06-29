@@ -28,9 +28,9 @@
 	dc.b $00			;114 let the BIOS show the logo
 	dc.b $68			;115 first tile of the logo
 
-	dc.l loc_00da2c	  ;116 Config_J
-	dc.l loc_00dcc8	  ;11a Config_U
-	dc.l loc_00df64	  ;11e Config_E
+	dc.l JP_Config	  ;116 Config_J
+	dc.l US_Config	  ;11a Config_U
+	dc.l EU_Config	  ;11e Config_E
 
 loc_000122:
 	jmp USER
@@ -2143,6 +2143,8 @@ loc_0028da:
 loc_0028de:
 	rts
 
+
+;==============================================
 loc_0028e0:
 	trap #$f
 	moveq #0,d3
@@ -2750,7 +2752,7 @@ loc_002d92:
 	rts
 
 loc_002da4:
-	movea.l HoleData_Pointer,a1
+	movea.l CourseData_Pointer,a1
 	movea.l (6,a1),a1
 	lea.l unk_102b84,a2
 
@@ -2789,7 +2791,7 @@ loc_002df8:
 
 ;==============================================
 loc_002e34:
-	movea.l HoleData_Pointer,a3
+	movea.l CourseData_Pointer,a3
 	movea.l Player_Pointer,a0
 	move.w (8,a0),d0
 	cmpi.w #$a0,d0
@@ -4238,12 +4240,12 @@ loc_004cbe:
 	clr.b unk_10ebbc
 	clr.b unk_102db6
 	clr.b unk_102d26
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_004d30
 	bset.b #0,unk_102c38
 
 loc_004d30:
-	moveq #$11,d0
+	moveq #17,d0
 	sub.w Shot_Height,d0
 	swap d0
 	sub.w d0,d0
@@ -4421,15 +4423,14 @@ loc_005006:
 	move.b d0,(3,a0)
 
 loc_00500a:
-	btst.b #3,Debug_Dip0
+	btst.b #DP_BALL_START,Debug_Dip0;08
 	beq.w loc_00501a
-	bsr.w loc_00bb68
+	bsr.w Print_Ball_Start
 
 loc_00501a:
 	rts
 
 ;==============================================
-;Deals with Characters
 loc_00501c:
 	moveq #0,d1
 	movea.l Player_Pointer,a1
@@ -4442,66 +4443,109 @@ loc_00501c:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_005038:
-	dc.l loc_005050;Spinner
-	dc.l loc_0050c0;Almeida
-	dc.l loc_005130;Landolt
-	dc.l loc_0051a0;Takeno
-	dc.l loc_005210;Adams
-	dc.l loc_005280;Stewert
+	dc.l Club_UnkownStats_Spinner
+	dc.l Club_UnkownStats_Almeida
+	dc.l Club_UnkownStats_Landolt
+	dc.l Club_UnkownStats_Takeno
+	dc.l Club_UnkownStats_Adams
+	dc.l Club_UnkownStats_Stewert
 
-loc_005050:
-	dc.l $00005f13,$00006702,$000064d0,$0000818f
-	dc.l $00005c7b,$00007f44,$00003d3a,$00006c6f
-	dc.l $00003d5b,$0000862a,$00003e5a,$00008d8f
-	dc.l $0000377a,$00008a7a,$0000359c,$00009714
-	dc.l $00002fb4,$000093bf,$00002e6b,$00009ff9
-	dc.l $00002eba,$0000b1b4,$000025dc,$0000b4e4
-	dc.l $00001dc2,$0000c5b4,$00000000,$00000000
+;5050
+Club_UnkownStats_Spinner:
+	dc.l $00005f13,$00006702;00 1W
+	dc.l $000064d0,$0000818f;01 3w
+	dc.l $00005c7b,$00007f44;02 4W
+	dc.l $00003d3a,$00006c6f;03 1I
+	dc.l $00003d5b,$0000862a;04 3I
+	dc.l $00003e5a,$00008d8f;05 4I
+	dc.l $0000377a,$00008a7a;06 5I
+	dc.l $0000359c,$00009714;07 6I
+	dc.l $00002fb4,$000093bf;08 7I
+	dc.l $00002e6b,$00009ff9;09 8I
+	dc.l $00002eba,$0000b1b4;0a 9I
+	dc.l $000025dc,$0000b4e4;0b Pw
+	dc.l $00001dc2,$0000c5b4;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
-loc_0050c0:
-	dc.l $00007023,$00006308,$0000642e,$0000653f
-	dc.l $000065b4,$00006eeb,$00005b68,$00006b36
-	dc.l $000050a1,$00008133,$0000581f,$00009027
-	dc.l $00004b12,$00008a38,$00004ab0,$00009573
-	dc.l $000046b8,$00009cb3,$000046b9,$0000a9d6
-	dc.l $00004449,$0000af9e,$00003e4c,$0000c945
-	dc.l $00003e7f,$000105e9,$00000000,$00000000
+Club_UnkownStats_Almeida:
+	dc.l $00007023,$00006308;00 1W
+	dc.l $0000642e,$0000653f;01 3w
+	dc.l $000065b4,$00006eeb;02 4W
+	dc.l $00005b68,$00006b36;03 5W
+	dc.l $000050a1,$00008133;04 3I
+	dc.l $0000581f,$00009027;05 4I
+	dc.l $00004b12,$00008a38;06 5I
+	dc.l $00004ab0,$00009573;07 6I
+	dc.l $000046b8,$00009cb3;08 7I
+	dc.l $000046b9,$0000a9d6;09 8I
+	dc.l $00004449,$0000af9e;0a 9I
+	dc.l $00003e4c,$0000c945;0b Pw
+	dc.l $00003e7f,$000105e9;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
-loc_005130:
-	dc.l $000051e4,$00006561,$00004cb1,$00006cb0
-	dc.l $000036c4,$0000636b,$000036a1,$0000691a
-	dc.l $00003195,$00006944,$00002d49,$000066db
-	dc.l $00002ddf,$0000734a,$00002b88,$000074f7
-	dc.l $00002701,$000067dc,$00002527,$00006f9b
-	dc.l $00002519,$00007b4d,$00001fbb,$000085f2
-	dc.l $00001633,$000095fa,$00000000,$00000000
+Club_UnkownStats_Landolt:
+	dc.l $000051e4,$00006561;00 1W
+	dc.l $00004cb1,$00006cb0;01 3W
+	dc.l $000036c4,$0000636b;02 1I
+	dc.l $000036a1,$0000691a;03 2I
+	dc.l $00003195,$00006944;04 3I
+	dc.l $00002d49,$000066db;05 4I
+	dc.l $00002ddf,$0000734a;06 5I
+	dc.l $00002b88,$000074f7;07 6I
+	dc.l $00002701,$000067dc;08 7I
+	dc.l $00002527,$00006f9b;09 8I
+	dc.l $00002519,$00007b4d;0a 9I
+	dc.l $00001fbb,$000085f2;0b Pw
+	dc.l $00001633,$000095fa;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
-loc_0051a0:
-	dc.l $00003a27,$00004217,$00003b22,$00005747
-	dc.l $0000405a,$000074ed,$00004046,$0000906c
-	dc.l $00003f7b,$00009e06,$00003732,$000098be
-	dc.l $00003414,$0000a244,$000030df,$0000a6ec
-	dc.l $00002b45,$0000a0bf,$00002939,$0000ac52
-	dc.l $000028e3,$0000bb46,$0000201c,$0000c1e9
-	dc.l $000017b8,$0000cec1,$00000000,$00000000
+Club_UnkownStats_Takeno:
+	dc.l $00003a27,$00004217;00 1W
+	dc.l $00003b22,$00005747;01 3W
+	dc.l $0000405a,$000074ed;02 5W
+	dc.l $00004046,$0000906c;03 2I
+	dc.l $00003f7b,$00009e06;04 3I
+	dc.l $00003732,$000098be;05 4I
+	dc.l $00003414,$0000a244;06 5I
+	dc.l $000030df,$0000a6ec;07 6I
+	dc.l $00002b45,$0000a0bf;08 7I
+	dc.l $00002939,$0000ac52;09 8I
+	dc.l $000028e3,$0000bb46;0a 9I
+	dc.l $0000201c,$0000c1e9;0b Pw
+	dc.l $000017b8,$0000cec1;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
-loc_005210:
-	dc.l $0000675f,$000074a2,$00006cc9,$00009c1e
-	dc.l $00006a46,$0000abcc,$00007091,$0000f756
-	dc.l $00006b56,$000101b4,$00005aa3,$0000ede0
-	dc.l $000058f0,$000103da,$000054e4,$00010fa0
-	dc.l $00004d93,$000114f5,$00004cc2,$00012b90
-	dc.l $00004b13,$00014826,$00004360,$00014451
-	dc.l $00003c99,$00015393,$00000000,$00000000
+Club_UnkownStats_Adams:
+	dc.l $0000675f,$000074a2;00 1W
+	dc.l $00006cc9,$00009c1e;01 3W
+	dc.l $00006a46,$0000abcc;02 4W
+	dc.l $00007091,$0000f756;03 2I
+	dc.l $00006b56,$000101b4;04 3I
+	dc.l $00005aa3,$0000ede0;05 4I
+	dc.l $000058f0,$000103da;06 5I
+	dc.l $000054e4,$00010fa0;07 6I
+	dc.l $00004d93,$000114f5;08 7I
+	dc.l $00004cc2,$00012b90;09 8I
+	dc.l $00004b13,$00014826;0a 9I
+	dc.l $00004360,$00014451;0b Pw
+	dc.l $00003c99,$00015393;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
-loc_005280:
-	dc.l $00005197,$000085b0,$000049d6,$000095d3
-	dc.l $00004a5c,$0000a38f,$00003b5b,$00009ecf
-	dc.l $000034c6,$0000ae00,$000031d3,$0000b3eb
-	dc.l $00002ef4,$0000bda4,$00002d91,$0000cb7f
-	dc.l $00002673,$0000c615,$000025d2,$0000d959
-	dc.l $00002174,$0000dd84,$00001be7,$0000e190
-	dc.l $00001585,$0000db4b,$00000000,$00000000
+Club_UnkownStats_Stewert:
+	dc.l $00005197,$000085b0;00 1W
+	dc.l $000049d6,$000095d3;01 3W
+	dc.l $00004a5c,$0000a38f;02 4W
+	dc.l $00003b5b,$00009ecf;03 1I
+	dc.l $000034c6,$0000ae00;04 3I
+	dc.l $000031d3,$0000b3eb;05 4I
+	dc.l $00002ef4,$0000bda4;06 5I
+	dc.l $00002d91,$0000cb7f;07 6I
+	dc.l $00002673,$0000c615;08 7I
+	dc.l $000025d2,$0000d959;09 8I
+	dc.l $00002174,$0000dd84;0a 9I
+	dc.l $00001be7,$0000e190;0b Pw
+	dc.l $00001585,$0000db4b;0c Sw
+	dc.l $00000000,$00000000;0d Putter
 
 ;==============================================
 loc_0052f0:
@@ -4531,48 +4575,108 @@ loc_005304:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_005330:
-	dc.l loc_005348
-	dc.l loc_005364
-	dc.l loc_005380
-	dc.l loc_00539c
-	dc.l loc_0053b8
-	dc.l loc_0053d4
+	dc.l Club_Height_Spinner
+	dc.l Club_Height_Almeida
+	dc.l Club_Height_Landolt
+	dc.l Club_Height_Takeno
+	dc.l Club_Height_Adams
+	dc.l Club_Height_Stewert
 
-loc_005348:
-	dc.w $0070,$007d,$0085,$00a3
-	dc.w $00ba,$00c5,$00d4,$00e4
-	dc.w $00f4,$0107,$011c,$0156
-	dc.w $01a0,$0000
+Club_Height_Spinner:
+	dc.w $0070;00 1W
+	dc.w $007d;01 3w
+	dc.w $0085;02 4W
+	dc.w $00a3;03 1I
+	dc.w $00ba;04 3I
+	dc.w $00c5;05 4I
+	dc.w $00d4;06 5I
+	dc.w $00e4;07 6I
+	dc.w $00f4;08 7I
+	dc.w $0107;09 8I
+	dc.w $011c;0a 9I
+	dc.w $0156;0b Pw
+	dc.w $01a0;0c Sw
+	dc.w $0000;0d Putter
 
-loc_005364:
-	dc.w $005e,$006b,$0071,$0078
-	dc.w $0095,$009d,$00a8,$00b2
-	dc.w $00be,$00cb,$00da,$0106
-	dc.w $013d,$0000
+Club_Height_Almeida:
+	dc.w $005e;00 1W
+	dc.w $006b;01 3w
+	dc.w $0071;02 4W
+	dc.w $0078;03 5W
+	dc.w $0095;04 3I
+	dc.w $009d;05 4I
+	dc.w $00a8;06 5I
+	dc.w $00b2;07 6I
+	dc.w $00be;08 7I
+	dc.w $00cb;09 8I
+	dc.w $00da;0a 9I
+	dc.w $0106;0b Pw
+	dc.w $013d;0c Sw
+	dc.w $0000;0d Putter
 
-loc_005380:
-	dc.w $0076,$0085,$00a5,$00ae
-	dc.w $00b8,$00c3,$00ce,$00db
-	dc.w $00ea,$00fa,$010c,$013f
-	dc.w $01a2,$0000
+Club_Height_Landolt:
+	dc.w $0076;00 1W
+	dc.w $0085;01 3W
+	dc.w $00a5;02 1I
+	dc.w $00ae;03 2I
+	dc.w $00b8;04 3I
+	dc.w $00c3;05 4I
+	dc.w $00ce;06 5I
+	dc.w $00db;07 6I
+	dc.w $00ea;08 7I
+	dc.w $00fa;09 8I
+	dc.w $010c;0a 9I
+	dc.w $013f;0b Pw
+	dc.w $01a2;0c Sw
+	dc.w $0000;0d Putter
 
-loc_00539c:
-	dc.w $0080,$0091,$00a3,$00b8
-	dc.w $00c5,$00d4,$00e4,$00f7
-	dc.w $010a,$0120,$0139,$0174
-	dc.w $01bd,$0000
+Club_Height_Takeno:
+	dc.w $0080;00 1W
+	dc.w $0091;01 3W
+	dc.w $00a3;02 4W
+	dc.w $00b8;03 2I
+	dc.w $00c5;04 3I
+	dc.w $00d4;05 4I
+	dc.w $00e4;06 5I
+	dc.w $00f7;07 6I
+	dc.w $010a;08 7I
+	dc.w $0120;09 8I
+	dc.w $0139;0a 9I
+	dc.w $0174;0b Pw
+	dc.w $01bd;0c Sw
+	dc.w $0000;0d Putter
 
-loc_0053b8:
-	dc.w $0072,$008a,$0094,$00b3
-	dc.w $00c1,$00d3,$00e3,$00f5
-	dc.w $010a,$0121,$013b,$015c
-	dc.w $0184,$0000
+Club_Height_Adams:
+	dc.w $0072;00 1W
+	dc.w $008a;01 3W
+	dc.w $0094;02 4W
+	dc.w $00b3;03 2I
+	dc.w $00c1;04 3I
+	dc.w $00d3;05 4I
+	dc.w $00e3;06 5I
+	dc.w $00f5;07 6I
+	dc.w $010a;08 7I
+	dc.w $0121;09 8I
+	dc.w $013b;0a 9I
+	dc.w $015c;0b Pw
+	dc.w $0184;0c Sw
+	dc.w $0000;0d Putter
 
-loc_0053d4:
-	dc.w $008d,$00a3,$00af,$00cd
-	dc.w $00ec,$00fe,$0112,$0129
-	dc.w $0142,$015d,$017d,$01a3
-	dc.w $01cf,$0000
+Club_Height_Stewert:
+	dc.w $008d;00 1W
+	dc.w $00a3;01 3W
+	dc.w $00af;02 4W
+	dc.w $00cd;03 1I
+	dc.w $00ec;04 3I
+	dc.w $00fe;05 4I
+	dc.w $0112;06 5I
+	dc.w $0129;07 6I
+	dc.w $0142;08 7I
+	dc.w $015d;09 8I
+	dc.w $017d;0a 9I
+	dc.w $01a3;0b Pw
+	dc.w $01cf;0c Sw
+	dc.w $0000;0d Putter
 
 ;==============================================
 loc_0053f0:
@@ -4588,48 +4692,108 @@ loc_0053f0:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_005410:
-	dc.l loc_005428
-	dc.l loc_005460
+	dc.l Club_Drive_Spinner
+	dc.l Club_Drive_Almeida
 	dc.l loc_005498
 	dc.l loc_0054d0
 	dc.l loc_005508
 	dc.l loc_005540
 
-loc_005428:
-	dc.l $0000c88e,$0000b8ac,$0000b082,$00009e15
-	dc.l $00008f25,$000088cb,$00008201,$00007b29
-	dc.l $00007569,$00006f4e,$00006971,$00005dce
-	dc.l $0000545c,$00002ed0
+Club_Drive_Spinner:
+	dc.l $0000c88e;00 1W
+	dc.l $0000b8ac;01 3w
+	dc.l $0000b082;02 4W
+	dc.l $00009e15;03 1I
+	dc.l $00008f25;04 3I
+	dc.l $000088cb;05 4I
+	dc.l $00008201;06 5I
+	dc.l $00007b29;07 6I
+	dc.l $00007569;08 7I
+	dc.l $00006f4e;09 8I
+	dc.l $00006971;0a 9I
+	dc.l $00005dce;0b Pw
+	dc.l $0000545c;0c Sw
+	dc.l $00002ed0;0d Putter
 
-loc_005460:
-	dc.l $0000e106,$0000cd28,$0000c4ca,$0000bca5
-	dc.l $0000a455,$00009da6,$000095e1,$00008f1f
-	dc.l $00008834,$00008150,$00007aa2,$00006c56
-	dc.l $00005fae,$00002ed0
+Club_Drive_Almeida:
+	dc.l $0000e106;00 1W
+	dc.l $0000cd28;01 3w
+	dc.l $0000c4ca;02 4W
+	dc.l $0000bca5;03 5W
+	dc.l $0000a455;04 3I
+	dc.l $00009da6;05 4I
+	dc.l $000095e1;06 5I
+	dc.l $00008f1f;07 6I
+	dc.l $00008834;08 7I
+	dc.l $00008150;09 8I
+	dc.l $00007aa2;0a 9I
+	dc.l $00006c56;0b Pw
+	dc.l $00005fae;0c Sw
+	dc.l $00002ed0;0d Putter
 
 loc_005498:
-	dc.l $0000c621,$0000b5ee,$00009fa2,$00009947
-	dc.l $000092e5,$00008c6a,$00008672,$00008070
-	dc.l $00007a48,$0000744c,$00006e6f,$0000629d
-	dc.l $00005460,$00002ed0
+	dc.l $0000c621
+	dc.l $0000b5ee
+	dc.l $00009fa2
+	dc.l $00009947
+	dc.l $000092e5
+	dc.l $00008c6a
+	dc.l $00008672
+	dc.l $00008070
+	dc.l $00007a48
+	dc.l $0000744c
+	dc.l $00006e6f
+	dc.l $0000629d
+	dc.l $00005460
+	dc.l $00002ed0
 
 loc_0054d0:
-	dc.l $0000bc01,$0000ac05,$00009e15,$000092e5
-	dc.l $00008bf4,$000084de,$00007e47,$000077b2
-	dc.l $000071c9,$00006bed,$00006651,$00005c3f
-	dc.l $0000546f,$00002ed0
+	dc.l $0000bc01
+	dc.l $0000ac05
+	dc.l $00009e15
+	dc.l $000092e5
+	dc.l $00008bf4
+	dc.l $000084de
+	dc.l $00007e47
+	dc.l $000077b2
+	dc.l $000071c9
+	dc.l $00006bed
+	dc.l $00006651
+	dc.l $00005c3f
+	dc.l $0000546f
+	dc.l $00002ed0
 
 loc_005508:
-	dc.l $0000c3fe,$0000aaae,$0000a26c,$00008ed4
-	dc.l $00008756,$00007f4a,$0000788f,$00007230
-	dc.l $00006b8d,$00006588,$00005fc7,$00005a2a
-	dc.l $000054ea,$00002ed0
+	dc.l $0000c3fe
+	dc.l $0000aaae
+	dc.l $0000a26c
+	dc.l $00008ed4
+	dc.l $00008756
+	dc.l $00007f4a
+	dc.l $0000788f
+	dc.l $00007230
+	dc.l $00006b8d
+	dc.l $00006588
+	dc.l $00005fc7
+	dc.l $00005a2a
+	dc.l $000054ea
+	dc.l $00002ed0
 
 loc_005540:
-	dc.l $0000b0f4,$0000a08b,$000098f0,$0000899a
-	dc.l $00007ca7,$00007689,$000070a1,$00006ad0
-	dc.l $0000657e,$0000608a,$00005bf8,$00005802
-	dc.l $000054d4,$00002ed0
+	dc.l $0000b0f4
+	dc.l $0000a08b
+	dc.l $000098f0
+	dc.l $0000899a
+	dc.l $00007ca7
+	dc.l $00007689
+	dc.l $000070a1
+	dc.l $00006ad0
+	dc.l $0000657e
+	dc.l $0000608a
+	dc.l $00005bf8
+	dc.l $00005802
+	dc.l $000054d4
+	dc.l $00002ed0
 
 ;==============================================
 loc_005578:
@@ -4639,7 +4803,7 @@ loc_005578:
 	lsl.w #2,d1
 	movea.l loc_0055b2(pc,d1.w),a1
 	move.w Shot_Power,d1
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_0055a4
 	lea.l loc_005c2a(pc),a1
 	bra.w loc_0055a6
@@ -4806,40 +4970,47 @@ loc_005c2a:
 
 ;==============================================
 loc_005dbe:
-	bsr.w loc_005de2
+	bsr.w Terrain_Stats
 	move.w (a1,d1.w),d1
+
+;Remove club data
 	swap d1
 	sub.w d1,d1
 	asr.l #8,d1
+
 	asr.l #2,d1
 	rts
 
 ;==============================================
 loc_005dd0:
-	bsr.w loc_005de2
+	bsr.w Terrain_Stats
 	move.w (2,a1,d1.w),d1
+
+;Remove club data
 	swap d1
 	sub.w d1,d1
 	asr.l #8,d1
+
+
 	asr.l #2,d1
 	rts
 
 ;==============================================
-loc_005de2:
- 	moveq #0,d1
- 	movea.l Player_Pointer,a1
- 	move.b (CharID,a1),d1
- 	lsl.w #2,d1
- 	movea.l loc_005e16(pc,d1.w),a1
- 	moveq #0,d1
- 	movea.l Player_Pointer,a0
- 	move.b (3,a0),d1
- 	add.w unk_106fd6,d1
- 	lsl.w #2,d1
- 	movea.l (a1,d1.w),a1
- 	move.w Selected_Club,d1
- 	lsl.w #2,d1
- 	rts
+Terrain_Stats:
+	moveq #0,d1
+	movea.l Player_Pointer,a1
+	move.b (CharID,a1),d1
+	lsl.w #2,d1
+	movea.l loc_005e16(pc,d1.w),a1
+	moveq #0,d1
+	movea.l Player_Pointer,a0
+	move.b (PL_Into_Ground,a0),d1
+	add.w unk_106fd6,d1
+	lsl.w #2,d1
+	movea.l (a1,d1.w),a1
+	move.w Selected_Club,d1
+	lsl.w #2,d1
+	rts
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_005e16:
@@ -4851,46 +5022,106 @@ loc_005e16:
 	dc.l loc_005f5a
 
 loc_005e2e:
-	dc.l loc_005f96,loc_005fce,loc_006006
-	dc.l loc_00603e,loc_006076,loc_0060ae
-	dc.l loc_0060e6,loc_00611e,loc_006156
-	dc.l loc_00618e,loc_0061c6,loc_0061fe
-	dc.l loc_006236,loc_00626e,loc_0062a6
+	dc.l loc_005f96 ; 00 Fairway
+	dc.l loc_005fce ; 01 Rough
+	dc.l loc_006006 ; 02 Heavy Rough
+	dc.l loc_00603e ; 03 Green
+	dc.l loc_006076 ; 04 Tee Ground
+	dc.l loc_0060ae ; 05 
+	dc.l loc_0060e6 ; 06 Water
+	dc.l loc_00611e ; 07 Ground but water?
+	dc.l loc_006156 ; 08
+	dc.l loc_00618e ; 09
+	dc.l loc_0061c6 ; 0a
+	dc.l loc_0061fe ; 0b Sand 0
+	dc.l loc_006236 ; 0c Sand 1
+	dc.l loc_00626e ; 0d Sand 2
+	dc.l loc_0062a6 ; 0e Sand 3
 
 loc_005e6a:
-	dc.l loc_0062de,loc_006316,loc_00634e
-	dc.l loc_006386,loc_0063be,loc_0063f6
-	dc.l loc_00642e,loc_006466,loc_00649e
-	dc.l loc_0064d6,loc_00650e,loc_006546
-	dc.l loc_00657e,loc_0065b6,loc_0065ee
+	dc.l loc_0062de ; 00 Fairway
+	dc.l loc_006316 ; 01 Rough
+	dc.l loc_00634e ; 02 Heavy Rough
+	dc.l loc_006386 ; 03 Green
+	dc.l loc_0063be ; 04 Tee Ground
+	dc.l loc_0063f6 ; 05 
+	dc.l loc_00642e ; 06 Water
+	dc.l loc_006466 ; 07
+	dc.l loc_00649e ; 08
+	dc.l loc_0064d6 ; 09
+	dc.l loc_00650e ; 0a
+	dc.l loc_006546 ; 0b Sand 0
+	dc.l loc_00657e ; 0c Sand 1
+	dc.l loc_0065b6 ; 0d Sand 2
+	dc.l loc_0065ee ; 0e Sand 3
 
 loc_005ea6:
-	dc.l loc_006626,loc_00665e,loc_006696
-	dc.l loc_0066ce,loc_006706,loc_00673e
-	dc.l loc_006776,loc_0067ae,loc_0067e6
-	dc.l loc_00681e,loc_006856,loc_00688e
-	dc.l loc_0068c6,loc_0068fe,loc_006936
+	dc.l loc_006626 ; 00 Fairway
+	dc.l loc_00665e ; 01 Rough
+	dc.l loc_006696 ; 02 Heavy Rough
+	dc.l loc_0066ce ; 03 Green
+	dc.l loc_006706 ; 04 Tee Ground
+	dc.l loc_00673e ; 05 
+	dc.l loc_006776 ; 06 Water
+	dc.l loc_0067ae ; 07
+	dc.l loc_0067e6 ; 08
+	dc.l loc_00681e ; 09
+	dc.l loc_006856 ; 0a
+	dc.l loc_00688e ; 0b Sand 0
+	dc.l loc_0068c6 ; 0c Sand 1
+	dc.l loc_0068fe ; 0d Sand 2
+	dc.l loc_006936 ; 0e Sand 3
 
 loc_005ee2:
-	dc.l loc_00696e,loc_0069a6,loc_0069de
-	dc.l loc_006a16,loc_006a4e,loc_006a86
-	dc.l loc_006abe,loc_006af6,loc_006b2e
-	dc.l loc_006b66,loc_006b9e,loc_006bd6
-	dc.l loc_006c0e,loc_006c46,loc_006c7e
+	dc.l loc_00696e ; 00 Fairway
+	dc.l loc_0069a6 ; 01 Rough
+	dc.l loc_0069de ; 02 Heavy Rough
+	dc.l loc_006a16 ; 03 Green
+	dc.l loc_006a4e ; 04 Tee Ground
+	dc.l loc_006a86 ; 05 
+	dc.l loc_006abe ; 06 Water
+	dc.l loc_006af6 ; 07
+	dc.l loc_006b2e ; 08
+	dc.l loc_006b66 ; 09
+	dc.l loc_006b9e ; 0a
+	dc.l loc_006bd6 ; 0b Sand 0
+	dc.l loc_006c0e ; 0c Sand 1
+	dc.l loc_006c46 ; 0d Sand 2
+	dc.l loc_006c7e ; 0e Sand 3
 
 loc_005f1e:
-	dc.l loc_006cb6,loc_006cee,loc_006d26
-	dc.l loc_006d5e,loc_006d96,loc_006dce
-	dc.l loc_006e06,loc_006e3e,loc_006e76
-	dc.l loc_006eae,loc_006ee6,loc_006f1e
-	dc.l loc_006f56,loc_006f8e,loc_006fc6
+	dc.l loc_006cb6 ; 00 Fairway
+	dc.l loc_006cee ; 01 Rough
+	dc.l loc_006d26 ; 02 Heavy Rough
+	dc.l loc_006d5e ; 03 Green
+	dc.l loc_006d96 ; 04 Tee Ground
+	dc.l loc_006dce ; 05 
+	dc.l loc_006e06 ; 06 Water
+	dc.l loc_006e3e ; 07
+	dc.l loc_006e76 ; 08
+	dc.l loc_006eae ; 09
+	dc.l loc_006ee6 ; 0a
+	dc.l loc_006f1e ; 0b Sand 0
+	dc.l loc_006f56 ; 0c Sand 1
+	dc.l loc_006f8e ; 0d Sand 2
+	dc.l loc_006fc6 ; 0e Sand 3
 
 loc_005f5a:
-	dc.l loc_006ffe,loc_007036,loc_00706e
-	dc.l loc_0070a6,loc_0070de,loc_007116
-	dc.l loc_00714e,loc_007186,loc_0071be
-	dc.l loc_0071f6,loc_00722e,loc_007266
-	dc.l loc_00729e,loc_0072d6,loc_00730e
+	dc.l loc_006ffe ; 00 Fairway
+	dc.l loc_007036 ; 01 Rough
+	dc.l loc_00706e ; 02 Heavy Rough
+	dc.l loc_0070a6 ; 03 Green
+	dc.l loc_0070de ; 04 Tee Ground
+	dc.l loc_007116 ; 05 
+	dc.l loc_00714e ; 06 Water
+	dc.l loc_007186 ; 07
+	dc.l loc_0071be ; 08
+	dc.l loc_0071f6 ; 09
+	dc.l loc_00722e ; 0a
+	dc.l loc_007266 ; 0b Sand 0
+	dc.l loc_00729e ; 0c Sand 1
+	dc.l loc_0072d6 ; 0d Sand 2
+	dc.l loc_00730e ; 0e Sand 3
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_005f96:
@@ -5029,140 +5260,252 @@ loc_0062a6:
 	dc.w $02f5,$0400,$028e,$028e
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+;Almeida Terrian Stats
+;Fairway
 loc_0062de:
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
+	dc.w $0400,$0400 ;00 1W
+	dc.w $0400,$0400 ;01 3w
+	dc.w $0400,$0400 ;02 4W
+	dc.w $0400,$0400 ;03 5W
+	dc.w $0400,$0400 ;04 3I
+	dc.w $0400,$0400 ;05 4I
+	dc.w $0400,$0400 ;06 5I
+	dc.w $0400,$0400 ;07 6I
+	dc.w $0400,$0400 ;08 7I
+	dc.w $0400,$0400 ;09 8I
+	dc.w $0400,$0400 ;0a 9I
+	dc.w $0400,$0400 ;0b Pw
+	dc.w $0400,$0400 ;0c Sw
+	dc.w $0400,$0400 ;0d Putter
 
+;Rough
 loc_006316:
-	dc.w $0357,$0357,$0350,$0350
-	dc.w $0350,$0350,$034c,$034c
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0376,$0400,$0370,$0400
-	dc.w $0375,$0400,$036c,$0400
-	dc.w $0370,$0400,$0357,$0357
+	dc.w $0357,$0357 ;00 1W
+	dc.w $0350,$0350 ;01 3w
+	dc.w $0350,$0350 ;02 4W
+	dc.w $034c,$034c ;03 5W
+	dc.w $0372,$0400 ;04 3I
+	dc.w $0371,$0400 ;05 4I
+	dc.w $0372,$0400 ;06 5I
+	dc.w $0371,$0400 ;07 6I
+	dc.w $0376,$0400 ;08 7I
+	dc.w $0370,$0400 ;09 8I
+	dc.w $0375,$0400 ;0a 9I
+	dc.w $036c,$0400 ;0b Pw
+	dc.w $0370,$0400 ;0c Sw
+	dc.w $0357,$0357 ;0d Putter
 
+;Heavy Rough
 loc_00634e:
-	dc.w $0318,$0318,$0318,$0318
-	dc.w $0319,$0319,$0315,$0315
-	dc.w $033b,$0400,$033a,$0400
-	dc.w $0338,$0400,$033a,$0400
-	dc.w $0337,$0400,$0336,$0400
-	dc.w $0339,$0400,$0332,$0400
-	dc.w $0335,$0400,$0318,$0318
+	dc.w $0318,$0318 ;00 1W
+	dc.w $0318,$0318 ;01 3w
+	dc.w $0319,$0319 ;02 4W
+	dc.w $0315,$0315 ;03 5W
+	dc.w $033b,$0400 ;04 3I
+	dc.w $033a,$0400 ;05 4I
+	dc.w $0338,$0400 ;06 5I
+	dc.w $033a,$0400 ;07 6I
+	dc.w $0337,$0400 ;08 7I
+	dc.w $0336,$0400 ;09 8I
+	dc.w $0339,$0400 ;0a 9I
+	dc.w $0332,$0400 ;0b Pw
+	dc.w $0335,$0400 ;0c Sw
+	dc.w $0318,$0318 ;0d Putter
 
+;Tee Ground
 loc_006386:
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
+	dc.w $0400,$0400 ;00 1W
+	dc.w $0400,$0400 ;01 3w
+	dc.w $0400,$0400 ;02 4W
+	dc.w $0400,$0400 ;03 5W
+	dc.w $0400,$0400 ;04 3I
+	dc.w $0400,$0400 ;05 4I
+	dc.w $0400,$0400 ;06 5I
+	dc.w $0400,$0400 ;07 6I
+	dc.w $0400,$0400 ;08 7I
+	dc.w $0400,$0400 ;09 8I
+	dc.w $0400,$0400 ;0a 9I
+	dc.w $0400,$0400 ;0b Pw
+	dc.w $0400,$0400 ;0c Sw
+	dc.w $0400,$0400 ;0d Putter
 
 loc_0063be:
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
+	dc.w $0400,$0400 ;00 1W
+	dc.w $0400,$0400 ;01 3w
+	dc.w $0400,$0400 ;02 4W
+	dc.w $0400,$0400 ;03 5W
+	dc.w $0400,$0400 ;04 3I
+	dc.w $0400,$0400 ;05 4I
+	dc.w $0400,$0400 ;06 5I
+	dc.w $0400,$0400 ;07 6I
+	dc.w $0400,$0400 ;08 7I
+	dc.w $0400,$0400 ;09 8I
+	dc.w $0400,$0400 ;0a 9I
+	dc.w $0400,$0400 ;0b Pw
+	dc.w $0400,$0400 ;0c Sw
+	dc.w $0400,$0400 ;0d Putter
 
 loc_0063f6:
-	dc.w $0357,$0357,$0350,$0350
-	dc.w $0350,$0350,$034c,$034c
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0376,$0400,$0370,$0400
-	dc.w $0375,$0400,$036c,$0400
-	dc.w $0370,$0400,$0357,$0357
+	dc.w $0357,$0357;00 1W
+	dc.w $0350,$0350;01 3w
+	dc.w $0350,$0350;02 4W
+	dc.w $034c,$034c;03 5W
+	dc.w $0372,$0400;04 3I
+	dc.w $0371,$0400;05 4I
+	dc.w $0372,$0400;06 5I
+	dc.w $0371,$0400;07 6I
+	dc.w $0376,$0400;08 7I
+	dc.w $0370,$0400;09 8I
+	dc.w $0375,$0400;0a 9I
+	dc.w $036c,$0400;0b Pw
+	dc.w $0370,$0400;0c Sw
+	dc.w $0357,$0357;0d Putter
 
+;06 Water
 loc_00642e:
-	dc.w $0005,$0005,$0006,$0006
-	dc.w $0007,$0007,$0007,$0007
-	dc.w $02fa,$0400,$02f5,$0400
-	dc.w $02fa,$0400,$02f9,$0400
-	dc.w $02f6,$0400,$02f4,$0400
-	dc.w $02f4,$0400,$02f1,$0400
-	dc.w $02f0,$0400,$0005,$0005
+	dc.w $0005,$0005;00 1W
+	dc.w $0006,$0006;01 3w
+	dc.w $0007,$0007;02 4W
+	dc.w $0007,$0007;03 5W
+	dc.w $02fa,$0400;04 3I
+	dc.w $02f5,$0400;05 4I
+	dc.w $02fa,$0400;06 5I
+	dc.w $02f9,$0400;07 6I
+	dc.w $02f6,$0400;08 7I
+	dc.w $02f4,$0400;09 8I
+	dc.w $02f4,$0400;0a 9I
+	dc.w $02f1,$0400;0b Pw
+	dc.w $02f0,$0400;0c Sw
+	dc.w $0005,$0005;0d Putter
 
 loc_006466:
-	dc.w $0005,$0005,$0006,$0006
-	dc.w $0007,$0007,$0007,$0007
-	dc.w $02fa,$0400,$02f5,$0400
-	dc.w $02fa,$0400,$02f9,$0400
-	dc.w $02f6,$0400,$02f4,$0400
-	dc.w $02f4,$0400,$02f1,$0400
-	dc.w $02f0,$0400,$0005,$0005
+	dc.w $0005,$0005;00 1W
+	dc.w $0006,$0006;01 3w
+	dc.w $0007,$0007;02 4W
+	dc.w $0007,$0007;03 5W
+	dc.w $02fa,$0400;04 3I
+	dc.w $02f5,$0400;05 4I
+	dc.w $02fa,$0400;06 5I
+	dc.w $02f9,$0400;07 6I
+	dc.w $02f6,$0400;08 7I
+	dc.w $02f4,$0400;09 8I
+	dc.w $02f4,$0400;0a 9I
+	dc.w $02f1,$0400;0b Pw
+	dc.w $02f0,$0400;0c Sw
+	dc.w $0005,$0005;0d Putter
 
 loc_00649e:
-	dc.w $0357,$0357,$0350,$0350
-	dc.w $0350,$0350,$034c,$034c
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0376,$0400,$0370,$0400
-	dc.w $0375,$0400,$036c,$0400
-	dc.w $0370,$0400,$0357,$0357
+	dc.w $0357,$0357;00 1W
+	dc.w $0350,$0350;01 3w
+	dc.w $0350,$0350;02 4W
+	dc.w $034c,$034c;03 5W
+	dc.w $0372,$0400;04 3I
+	dc.w $0371,$0400;05 4I
+	dc.w $0372,$0400;06 5I
+	dc.w $0371,$0400;07 6I
+	dc.w $0376,$0400;08 7I
+	dc.w $0370,$0400;09 8I
+	dc.w $0375,$0400;0a 9I
+	dc.w $036c,$0400;0b Pw
+	dc.w $0370,$0400;0c Sw
+	dc.w $0357,$0357;0d Putter
 
 loc_0064d6:
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
+	dc.w $0000,$0000;00 1W
+	dc.w $0000,$0000;01 3w
+	dc.w $0000,$0000;02 4W
+	dc.w $0000,$0000;03 5W
+	dc.w $0000,$0000;04 3I
+	dc.w $0000,$0000;05 4I
+	dc.w $0000,$0000;06 5I
+	dc.w $0000,$0000;07 6I
+	dc.w $0000,$0000;08 7I
+	dc.w $0000,$0000;09 8I
+	dc.w $0000,$0000;0a 9I
+	dc.w $0000,$0000;0b Pw
+	dc.w $0000,$0000;0c Sw
+	dc.w $0000,$0000;0d Putter
 
 loc_00650e:
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
-	dc.w $0000,$0000,$0000,$0000
+	dc.w $0000,$0000;00 1W
+	dc.w $0000,$0000;01 3w
+	dc.w $0000,$0000;02 4W
+	dc.w $0000,$0000;03 5W
+	dc.w $0000,$0000;04 3I
+	dc.w $0000,$0000;05 4I
+	dc.w $0000,$0000;06 5I
+	dc.w $0000,$0000;07 6I
+	dc.w $0000,$0000;08 7I
+	dc.w $0000,$0000;09 8I
+	dc.w $0000,$0000;0a 9I
+	dc.w $0000,$0000;0b Pw
+	dc.w $0000,$0000;0c Sw
+	dc.w $0000,$0000;0d Putter
 
+;Sand
 loc_006546:
-	dc.w $0357,$0357,$0350,$0350
-	dc.w $0350,$0350,$034c,$034c
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0372,$0400,$0371,$0400
-	dc.w $0376,$0400,$0370,$0400
-	dc.w $0375,$0400,$036c,$0400
-	dc.w $0370,$0400,$0357,$0357
+	dc.w $0357,$0357;00 1W
+	dc.w $0350,$0350;01 3w
+	dc.w $0350,$0350;02 4W
+	dc.w $034c,$034c;03 5W
+	dc.w $0372,$0400;04 3I
+	dc.w $0371,$0400;05 4I
+	dc.w $0372,$0400;06 5I
+	dc.w $0371,$0400;07 6I
+	dc.w $0376,$0400;08 7I
+	dc.w $0370,$0400;09 8I
+	dc.w $0375,$0400;0a 9I
+	dc.w $036c,$0400;0b Pw
+	dc.w $0370,$0400;0c Sw
+	dc.w $0357,$0357;0d Putter
 
 loc_00657e:
-	dc.w $0318,$0318,$0318,$0318
-	dc.w $0319,$0319,$0315,$0315
-	dc.w $033b,$0400,$033a,$0400
-	dc.w $0338,$0400,$033a,$0400
-	dc.w $0337,$0400,$0336,$0400
-	dc.w $0339,$0400,$0332,$0400
-	dc.w $0335,$0400,$0318,$0318
+	dc.w $0318,$0318;00 1W
+	dc.w $0318,$0318;01 3w
+	dc.w $0319,$0319;02 4W
+	dc.w $0315,$0315;03 5W
+	dc.w $033b,$0400;04 3I
+	dc.w $033a,$0400;05 4I
+	dc.w $0338,$0400;06 5I
+	dc.w $033a,$0400;07 6I
+	dc.w $0337,$0400;08 7I
+	dc.w $0336,$0400;09 8I
+	dc.w $0339,$0400;0a 9I
+	dc.w $0332,$0400;0b Pw
+	dc.w $0335,$0400;0c Sw
+	dc.w $0318,$0318;0d Putter
 
 loc_0065b6:
-	dc.w $02d6,$02d6,$02d4,$02d4
-	dc.w $02d3,$02d3,$02d0,$02d0
-	dc.w $02fa,$0400,$02f5,$0400
-	dc.w $02fa,$0400,$02f9,$0400
-	dc.w $02f6,$0400,$02f4,$0400
-	dc.w $02f4,$0400,$02f1,$0400
-	dc.w $02f0,$0400,$02d6,$02d6
+	dc.w $02d6,$02d6;00 1W
+	dc.w $02d4,$02d4;01 3w
+	dc.w $02d3,$02d3;02 4W
+	dc.w $02d0,$02d0;03 5W
+	dc.w $02fa,$0400;04 3I
+	dc.w $02f5,$0400;05 4I
+	dc.w $02fa,$0400;06 5I
+	dc.w $02f9,$0400;07 6I
+	dc.w $02f6,$0400;08 7I
+	dc.w $02f4,$0400;09 8I
+	dc.w $02f4,$0400;0a 9I
+	dc.w $02f1,$0400;0b Pw
+	dc.w $02f0,$0400;0c Sw
+	dc.w $02d6,$02d6;0d Putter
 
 loc_0065ee:
-	dc.w $0214,$0214,$0212,$0212
-	dc.w $0216,$0216,$0215,$0215
-	dc.w $0230,$0400,$0242,$0400
-	dc.w $0244,$0400,$0242,$0400
-	dc.w $0244,$0400,$0242,$0400
-	dc.w $023e,$0400,$0242,$0400
-	dc.w $0243,$0400,$0214,$0214
+	dc.w $0214,$0214;00 1W
+	dc.w $0212,$0212;01 3w
+	dc.w $0216,$0216;02 4W
+	dc.w $0215,$0215;03 5W
+	dc.w $0230,$0400;04 3I
+	dc.w $0242,$0400;05 4I
+	dc.w $0244,$0400;06 5I
+	dc.w $0242,$0400;07 6I
+	dc.w $0244,$0400;08 7I
+	dc.w $0242,$0400;09 8I
+	dc.w $023e,$0400;0a 9I
+	dc.w $0242,$0400;0b Pw
+	dc.w $0243,$0400;0c Sw
+	dc.w $0214,$0214;0d Putter
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_006626:
@@ -5439,40 +5782,68 @@ loc_006c7e:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_006cb6:
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
 
 loc_006cee:
-	dc.w $03ed,$0400,$03ed,$0400
-	dc.w $03ea,$0400,$03ed,$0400
-	dc.w $03ea,$0400,$03ea,$0400
-	dc.w $03e9,$0400,$03e9,$0400
-	dc.w $03eb,$0400,$03ea,$0400
-	dc.w $03ed,$0400,$03ea,$0400
-	dc.w $03ea,$0400,$03ed,$0400
+	dc.w $03ed,$0400
+	dc.w $03ed,$0400
+	dc.w $03ea,$0400
+	dc.w $03ed,$0400
+	dc.w $03ea,$0400
+	dc.w $03ea,$0400
+	dc.w $03e9,$0400
+	dc.w $03e9,$0400
+	dc.w $03eb,$0400
+	dc.w $03ea,$0400
+	dc.w $03ed,$0400
+	dc.w $03ea,$0400
+	dc.w $03ea,$0400
+	dc.w $03ed,$0400
 
 loc_006d26:
-	dc.w $03d4,$0400,$03d6,$0400
-	dc.w $03d5,$0400,$03d7,$0400
-	dc.w $03d4,$0400,$03d4,$0400
-	dc.w $03d4,$0400,$03d3,$0400
-	dc.w $03d4,$0400,$03d3,$0400
-	dc.w $03d3,$0400,$03d3,$0400
-	dc.w $03d3,$0400,$03d4,$0400
+	dc.w $03d4,$0400
+	dc.w $03d6,$0400
+	dc.w $03d5,$0400
+	dc.w $03d7,$0400
+	dc.w $03d4,$0400
+	dc.w $03d4,$0400
+	dc.w $03d4,$0400
+	dc.w $03d3,$0400
+	dc.w $03d4,$0400
+	dc.w $03d3,$0400
+	dc.w $03d3,$0400
+	dc.w $03d3,$0400
+	dc.w $03d3,$0400
+	dc.w $03d4,$0400
 
 loc_006d5e:
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
-	dc.w $0400,$0400,$0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
+	dc.w $0400,$0400
 
 loc_006d96:
 	dc.w $0400,$0400,$0400,$0400
@@ -8138,7 +8509,7 @@ loc_00b664:
 
 ;==============================================
 loc_00b6a0:
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_00b6ac
 	trap #$f
 
@@ -8398,7 +8769,7 @@ loc_00baa4:
 
 loc_00bab6:
 	cmpi.l #$10000,d1
-	bhi.w loc_00baf4
+	bhi.w Print_V_COSINE_ERR
 
 loc_00bac0:
 	addq.w #1,d2
@@ -8427,7 +8798,7 @@ loc_00bae0:
 	dc.l $00010000
 
 ;==============================================
-loc_00baf4:
+Print_V_COSINE_ERR:
 	movea.w #$7208,a1
 	move.w #$1300,d1
 	move.l unk_102c84,d0
@@ -8445,19 +8816,19 @@ loc_00baf4:
 	move.l unk_102c44,d0
 	jsr loc_056752
 	movea.w #$71a7,a1
-	lea.l loc_00bb5a(pc),a2
+	lea.l Text_Vertical_COSINE_ERR(pc),a2
 	move.w #$1300,d0
 	jsr loc_00d828
 	clr.w d2
 	rts
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-loc_00bb5a:
+Text_Vertical_COSINE_ERR:
 	dc.b "V COS ERROR!",$fe
 	even
 
 ;==============================================
-loc_00bb68:
+Print_Ball_Start:
 	movea.w #$70ce,a1
 	move.w #$1300,d1
 	move.l unk_102c68,d0;X
@@ -8537,12 +8908,12 @@ loc_00bc58:
 
 ;==============================================
 loc_00bc78:
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_00bc8a
 	bset.b #7,unk_102eb9
 
 loc_00bc8a:
-	move.b #$ff,unk_107083
+	move.b #$ff,Ball_in_Hole_status
 	movea.l Player_Pointer,a0
 	move.b #1,($22,a0)
 	cmpi.b #1,unk_107082
@@ -9017,7 +9388,7 @@ loc_00cc2c:
 	bhi.w loc_00cc68
 	move.w #$106c,d0
 	jsr loc_0804de
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_00cc66
 	move.w #$1174,d0
 	jsr loc_0804de
@@ -9048,7 +9419,7 @@ loc_00cc9e:
 	bhi.w loc_00ccd0
 	move.w #$106c,d0
 	jsr loc_0804de
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_00cccc
 	move.w #$1174,d0
 	jsr loc_0804de
@@ -9308,7 +9679,7 @@ loc_00d002:
 
 ;==============================================
 loc_00d00a:
-	tst.b unk_107083
+	tst.b Ball_in_Hole_status
 	bne.w loc_00d0ca
 	btst.b #0,unk_102c38
 	beq.w loc_00d0ca
@@ -9864,7 +10235,7 @@ loc_00d5d4:
 ;==============================================
 loc_00d5f6:
 	move.l a6,-(a7)
-	btst.b #1,Debug_Dip0
+	btst.b #1,Debug_Dip0; 00000010 02
 	beq.w loc_00d60a
 	move.b d0,REG_SHADOW
 
@@ -10015,6 +10386,8 @@ loc_00d786:
 	dbra d2,loc_00d782
 	bra.w loc_00d6f8
 
+;==============================================
+;Unused
 ;==============================================
 loc_00d7a4:
 	rts
@@ -10281,262 +10654,8 @@ loc_00da16:
 loc_00da2a:
 	rts
 
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-;JP_CONFIG
-loc_00da2c:
-	dc.b $da,$b7,$f6,$c7,$b7,$d3,$f9,$d4,$e1,$ed,$d3,$20,$c9,$b7,$e8,$db
-	dc.w $0030
-	dc.w $ffff
-	dc.b $03
-	dc.b $ff
-
-	dc.b $2f ;0
-	dc.b $04 ;1
-	dc.b $14 ;2
-	dc.b $12 ;3
-	dc.b $38 ;4
-	dc.b $01 ;5
-	dc.b $02 ;6
-	dc.b $02 ;7
-	dc.b $04 ;8
-	dc.b $00 ;9
-
-	dc.b $8d,$81,$88,$b7,$ad,$8b,$b7,$85,$ad,$20,$20,$20
-	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$28,$31,$73,$74,$29,$20
-
-	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$28,$43,$4f,$4e,$54,$29
-	dc.b " 1          "
-	dc.b " 2          "
-	dc.b " 3          "
-	dc.b " 4          "
-	dc.b " 5          "
-	dc.b " 6          "
-	dc.b " 7          "
-	dc.b " 8          "
-	dc.b " 9          "
-	dc.b "10          "
-	dc.b "11          "
-	dc.b "12          "
-	dc.b "13          "
-	dc.b "14          "
-	dc.b "15          "
-
-	dc.b $dd,$b9,$e8,$c9,$cc,$d3,$9d,$f7,$b6,$8b,$b4,$82
-	dc.b $dd,$f7,$c6,$f7,$f9,$20,$20,$20,$20,$20,$20,$20
-	dc.b $d9,$f8,$f9,$20,$20,$20,$20,$20,$20,$20,$20,$20
-	dc.b $c6,$f7,$db,$f7,$c0,$f6,$db,$f8,$20,$20,$20,$20
-	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-
-	dc.b $de,$f6,$d0,$dd,$b9,$e8,$c9,$cc,$d3,$20,$20,$20
-	dc.b "WIN +/LOS 0 "
-	dc.b "WIN +/LOS - "
-	dc.b "WIN 0/LOS 0 "
-	dc.b "WIN 0/LOS - "
-
-	dc.b $c9,$ed,$d2,$ef,$d5,$f4,$f9,$20,$20,$20,$20,$20
-	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-
-	dc.b $94,$ad,$81,$93,$b7,$20,$20,$20,$20,$20,$20,$20
-	dc.b "LEVEL 1     "
-	dc.b "LEVEL 2     "
-	dc.b "LEVEL 3     "
-	dc.b "LEVEL 4     "
-	dc.b "LEVEL 5     "
-	dc.b "LEVEL 6     "
-	dc.b "LEVEL 7     "
-	dc.b "LEVEL 8     "
-
-	dc.b "next page   "
-	dc.b $13,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-
-	dc.b $80,$8e,$9a,$b7,$85,$8f,$8d,$91,$a1,$81,$20,$20
-	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-
-	dc.b $d2,$f7,$e2,$ca,$c2,$ed,$d3,$f7,$20,$20,$20,$20
-	dc.b $80,$a7,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-	dc.b $94,$8b,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
-
-	dc.b $c7,$e9,$cb,$f7,$f6,$d3,$2f,$e9,$dc,$f7,$e8,$20
-	dc.b $80,$a7,$2f,$80,$a7,$20,$20,$20,$20,$20,$20,$20
-	dc.b $80,$a7,$2f,$94,$8b,$20,$20,$20,$20,$20,$20,$20
-	dc.b $94,$8b,$2f,$80,$a7,$20,$20,$20,$20,$20,$20,$20
-	dc.b $94,$8b,$2f,$94,$8b,$20,$20,$20,$20,$20,$20,$20
-
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-;US_CONFIG
-loc_00dcc8:
-	dc.b "NEO TURF MASTERS"
-	dc.w $0030
-	dc.w $ffff
-
-	dc.b $03
-	dc.b $ff
-
-	dc.b $2f
-	dc.b $04
-	dc.b $14
-	dc.b $12
-	dc.b $38
-	dc.b $01
-	dc.b $02
-	dc.b $02
-	dc.b $04
-	dc.b $00
-
-	dc.b "TIME        "
-	dc.b "HOLE(1st)   "
-
-	dc.b "HOLE(cont)  "
-	dc.b " 1          "
-	dc.b " 2          "
-	dc.b " 3          "
-	dc.b " 4          "
-	dc.b " 5          "
-	dc.b " 6          "
-	dc.b " 7          "
-	dc.b " 8          "
-	dc.b " 9          "
-	dc.b "10          "
-	dc.b "11          "
-	dc.b "12          "
-	dc.b "13          "
-	dc.b "14          "
-	dc.b "15          "
-
-	dc.b "HOLE PENALTY"
-	dc.b "BOGEY       "
-	dc.b "PAR         "
-	dc.b "GIVE UP     "
-	dc.b "NO PENALTY  "
-
-	dc.b "MATCH HOLE  "
-	dc.b "WIN +/LOS 0 "
-	dc.b "WIN +/LOS - "
-	dc.b "WIN 0/LOS 0 "
-	dc.b "WIN 0/LOS - "
-
-	dc.b "CONTINUE    "
-	dc.b "OFF         "
-	dc.b "ON          "
-
-
-	dc.b "DIFFICULTY  "
-	dc.b "LEVEL 1     "
-	dc.b "LEVEL 2     "
-	dc.b "LEVEL 3     "
-	dc.b "LEVEL 4     "
-	dc.b "LEVEL 5     "
-	dc.b "LEVEL 6     "
-	dc.b "LEVEL 7     "
-	dc.b "LEVEL 8     "
-
-	dc.b "next page   "
-	dc.b $13,"           "
-
-	dc.b "PLAY MANUAL "
-	dc.b "ON          "
-	dc.b "OFF         "
-
-	dc.b "DEMO SOUND  "
-	dc.b "WITH        "
-	dc.b "WITH OUT    "
-
-	dc.b "CREDIT/LEVEL"
-	dc.b "ON/ON       "
-	dc.b "ON/OFF      "
-	dc.b "OFF/ON      "
-	dc.b "OFF/OFF     "
-
-;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-;EU_CONFIG
-loc_00df64:
-	dc.b "NEO TURF MASTERS"
-	dc.w $0030
-	dc.w $ffff
-	dc.b $03
-	dc.b $ff
-
-	dc.b $2f
-	dc.b $04
-	dc.b $14
-	dc.b $12
-	dc.b $38
-	dc.b $01
-	dc.b $02
-	dc.b $02
-	dc.b $04
-	dc.b $03
-
-	dc.b "TIME        "
-
-	dc.b "HOLE(1st)   "
-
-	dc.b "HOLE(cont)  "
-	dc.b " 1          "
-	dc.b " 2          "
-	dc.b " 3          "
-	dc.b " 4          "
-	dc.b " 5          "
-	dc.b " 6          "
-	dc.b " 7          "
-	dc.b " 8          "
-	dc.b " 9          "
-	dc.b "10          "
-	dc.b "11          "
-	dc.b "12          "
-	dc.b "13          "
-	dc.b "14          "
-	dc.b "15          "
-
-	dc.b "HOLE PENALTY"
-	dc.b "BOGEY       "
-	dc.b "PAR         "
-	dc.b "GIVE UP     "
-	dc.b "NO PENALTY  "
-
-	dc.b "MATCH HOLE  "
-	dc.b "WIN +/LOS 0 "
-	dc.b "WIN +/LOS - "
-	dc.b "WIN 0/LOS 0 "
-	dc.b "WIN 0/LOS - "
-
-	dc.b "CONTINUE    "
-	dc.b "OFF         "
-	dc.b "ON          "
-
-	dc.b "DIFFICULTY  "
-	dc.b "LEVEL 1     "
-	dc.b "LEVEL 2     "
-	dc.b "LEVEL 3     "
-	dc.b "LEVEL 4     "
-	dc.b "LEVEL 5     "
-	dc.b "LEVEL 6     "
-	dc.b "LEVEL 7     "
-	dc.b "LEVEL 8     "
-
-	dc.b "next page   "
-	dc.b $13,"           "
-
-	dc.b "PLAY MANUAL "
-	dc.b "ON          "
-	dc.b "OFF         "
-
-	dc.b "DEMO SOUND  "
-	dc.b "WITH        "
-	dc.b "WITH OUT    "
-
-	dc.b "CREDIT/LEVEL"
-	dc.b "ON/ON       "
-	dc.b "ON/OFF      "
-	dc.b "OFF/ON      "
-	dc.b "OFF/OFF     "
-
-	dc.b "LANGUAGE    "
-	dc.b "ENGLISH     "
-	dc.b "SPANISH     "
-	dc.b "PORTUGUESE  "
+;==============================================
+	include "config.68k"
 
 ;==============================================
 loc_00e230:
@@ -10614,7 +10733,7 @@ loc_00e320:
 loc_00e336:
 	tst.b d7
 	beq.w loc_00e36a
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_00e36a
 	tst.b Game_Play_Mode
 	bne.w loc_00e36a
@@ -10822,14 +10941,14 @@ loc_00e558:
 	andi.b #3,d0
 	move.b d0,unk_100002
 	addq.b #1,d0
-	move.b d0,unk_102ebb
+	move.b d0,DEMO_ID
 	lea.l loc_06b7c8,a1
 	jsr loc_0004c6
 	move.l #loc_00e5ce,(a6)
 
 loc_00e5ce:
 	clr.b unk_102eb9
-	btst.b #0,Debug_Dip0
+	btst.b #DP_Course_Select,Debug_Dip0
 	beq.w loc_00e614
 	btst.b #6,unk_10d520
 	beq.w loc_00e614
@@ -10877,7 +10996,7 @@ loc_00e688:
 	move.b #5,unk_10ebbe
 	move.b #$ff,Game_Play_Mode
 	jsr loc_00f2fe(pc)
-	clr.b unk_102ebb
+	clr.b DEMO_ID
 	jsr loc_000598
 	jsr loc_0b99fa
 	jsr loc_080454
@@ -10908,7 +11027,7 @@ loc_00e70c:
 	jsr loc_0b99fa
 	moveq #4,d0
 	jsr loc_08500e
-	move.b #5,unk_102ebb
+	move.b #5,DEMO_ID
 	move.w #$32,d0
 	jsr loc_0804de
 	lea.l loc_07d2ce,a1
@@ -10944,7 +11063,7 @@ loc_00e790:
 	move.b d0,REG_PALBANK0
 	jsr loc_00f2fe(pc)
 	jsr loc_080454
-	clr.b unk_102ebb
+	clr.b DEMO_ID
 	jsr loc_000598
 	bset.b #7,unk_102eb9
 	bset.b #7,unk_10d5ee
@@ -10969,7 +11088,7 @@ loc_00e804:
 	bset.b #7,unk_10d5ee
 	move.b #$ff,Game_Play_Mode
 	move.b #5,unk_10ebbe
-	clr.b unk_102ebb
+	clr.b DEMO_ID
 	clr.w unk_102cd6
 	clr.b unk_102ebf
 	jsr loc_00d9ec
@@ -11147,7 +11266,7 @@ loc_00ead0:
 	lea.l loc_055304,a1
 	jsr loc_0004c6
 	jsr loc_05893a
-	move.l a0,HoleData_Pointer
+	move.l a0,CourseData_Pointer
 	move.l #loc_00eb18,(a6)
 	rts
 
@@ -11295,7 +11414,7 @@ loc_00ed08
 loc_00ed12:
 	jsr loc_000598
 	jsr loc_0b99fa
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bls.w loc_00ed36
 	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ed94
@@ -11315,7 +11434,7 @@ loc_00ed52:
 loc_00ed5a:
 	cmpi.b #2,Game_Play_Mode
 	bne.w loc_00ed80
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bls.w loc_00ed80
 	bset.b #7,unk_10d4ee
 	jsr loc_059f26
@@ -11392,7 +11511,7 @@ loc_00ee70:
 	move.b #5,unk_10ebbe
 	cmpi.b #2,Game_Play_Mode
 	beq.w loc_00eefa
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bls.w loc_00eefa
 	jsr loc_00f3f2(pc)
 	lea.l loc_073b72,a1
@@ -11599,7 +11718,7 @@ loc_00f1dc:
 	move.b unk_10d514,d0
 	move.b unk_10d515,d1
 	move.b unk_10d516,d2
-	tst.b unk_102ebb
+	tst.b DEMO_ID
 	bne.w loc_00f21a
 	move.l Player_Pointer,d3
 	cmpi.l #Player1_Mem,d3
@@ -11621,13 +11740,13 @@ loc_00f22e:
 	move.b d0,unk_10d52b
 	move.b d0,unk_10d52c
 	clr.b Game_Play_Mode
-	move.b unk_102ebb,d0
+	move.b DEMO_ID,d0
 	subq.b #1,d0
 	andi.w #7,d0
 	move.b loc_00f2d0(pc,d0.w),P1_Char
 	move.b #$ff,P2_Char
 	jsr loc_059f26
-	move.b unk_102ebb,d0
+	move.b DEMO_ID,d0
 	subq.b #1,d0
 	andi.w #7,d0
 	lsl.w #2,d0
@@ -11637,7 +11756,7 @@ loc_00f22e:
 	jsr loc_05893a
 	jsr loc_05a054
 	jsr loc_083a0c
-	move.b unk_102ebb,d0
+	move.b DEMO_ID,d0
 	subq.b #1,d0
 	andi.w #7,d0
 	lsl.w #2,d0
@@ -11835,9 +11954,9 @@ loc_00f4c0:
 	bne.w loc_00f4f8
 	btst.b #7,unk_10d514
 	beq.w loc_00f4f8
-	move.w #$12,HoleNumber
-	lea.l unk_107014,a0
-	lea.l unk_10703a,a1
+	move.w #18,HoleNumber
+	lea.l P1_SCORE,a0
+	lea.l P2_SCORE,a1
 	moveq #0,d1
 	moveq #$10,d0
 

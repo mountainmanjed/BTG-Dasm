@@ -2548,7 +2548,7 @@ loc_072300:
 
 loc_072352:
 	clr.b ($48,a6)
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_07236e
 	move.b #$3c,($42,a6)
 	move.b #1,($43,a6)
@@ -2633,7 +2633,7 @@ loc_072472:
 
 loc_072474:
 	move.b #1,unk_106fec
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_072496
 	st.b unk_106fec
 	move.w #$11,Shot_Height
@@ -2665,7 +2665,7 @@ loc_0724d2:
 	move.b ($40,a6),d0
 	cmp.b ($42,a6),d0
 	bne.w loc_072562
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	beq.w loc_072562
 	tst.b unk_106fec
 	beq.w loc_072540
@@ -2926,7 +2926,7 @@ loc_072840:
 	bra.w loc_0728a6
 
 loc_072844:
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bcc.w loc_0728a6
 	movea.l Player_Pointer,a5
 	moveq #0,d6
@@ -3141,7 +3141,7 @@ loc_072b00:
 	moveq #0,d0
 	movea.l Player_Pointer,a2
 	move.b ($23,a2),d0
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	bne.w loc_072b32
 	moveq #5,d0
 
@@ -3265,14 +3265,24 @@ loc_072e64:
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_072eac:
-	dc.w $0040,$0039
-	dc.w $002a,$003f
-	dc.w $0020,$0030
+	dc.w $0040
+	dc.w $0039
+	dc.w $002a
+	dc.w $003f
+	dc.w $0020
+	dc.w $0030
 
 ;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-loc_072eb8:
-	dc.w $0102,$0000,$0201
+;72eb8
+Putting_Gauges:
+	dc.b $01
+	dc.b $02
+	dc.b $00
+	dc.b $00
+	dc.b $02
+	dc.b $01
 
+;VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 loc_072ebe:
 	dc.w $0606,$0607,$0708,$0808
 	dc.w $0909,$090a,$0a0b
@@ -4115,10 +4125,10 @@ loc_073b0e:
 
 ;==============================================
 loc_073b28:
-	movea.l #unk_107014,a5
+	movea.l #P1_SCORE,a5
 	tst.b d7
 	beq.w loc_073b3a
-	movea.l #unk_10703a,a5
+	movea.l #P2_SCORE,a5
 
 loc_073b3a:
 	moveq #0,d7
@@ -5913,7 +5923,7 @@ loc_0751ec:
 	move.w Shot_Power,d7
 	movea.l Player_Pointer,a5
 	moveq #0,d4
-	move.b (1,a5),d4
+	move.b (CharID,a5),d4
 	lsl.w #2,d4
 	lea.l loc_08318e,a0
 	movea.l (a0,d4.w),a0
@@ -6612,7 +6622,7 @@ loc_075a5e:
 	jsr loc_080454
 	cmpi.w #$a,HoleNumber
 	beq.w loc_075fb0
-	cmpi.w #$13,HoleNumber
+	cmpi.w #19,HoleNumber
 	beq.w loc_075fb0
 	movea.l ($c,a6),a0
 	st.b ($11,a0)
@@ -7055,7 +7065,7 @@ loc_075efe:
 	move.b (5,a5),d5
 	cmp.b d6,d5
 	ble.w loc_075f3e
-	cmpi.w #$f,HoleNumber
+	cmpi.w #15,HoleNumber
 	bls.w loc_075f1e
 	moveq #$12,d1
 	jsr loc_075ae8(pc)
@@ -7198,7 +7208,7 @@ loc_07607a:
 	move.w d6,($5a,a0)
 	move.w #$24,($5c,a0)
 	clr.b ($11,a0)
-	cmpi.w #$13,HoleNumber
+	cmpi.w #19,HoleNumber
 	bne.w loc_0761c8
 	move.w #$52,($40,a6)
 	move.b #9,($13,a6)
@@ -7315,7 +7325,7 @@ loc_076228:
 	move.w d6,($5a,a0)
 	move.w #$24,($5c,a0)
 	clr.b ($11,a0)
-	cmpi.w #$13,HoleNumber
+	cmpi.w #19,HoleNumber
 	bne.w loc_076376
 	move.w #$52,($40,a6)
 	move.b #9,($13,a6)
@@ -7430,7 +7440,7 @@ loc_0763d8:
 	move.w d6,($5a,a0)
 	move.w #$24,($5c,a0)
 	clr.b ($11,a0)
-	cmpi.w #$13,HoleNumber
+	cmpi.w #19,HoleNumber
 	bne.w loc_076526
 	move.w #$52,($40,a6)
 	move.b #9,($13,a6)
@@ -7662,7 +7672,7 @@ loc_076758:
 	bne.w loc_076788
 
 loc_076768:
-	cmpi.w #$12,HoleNumber
+	cmpi.w #18,HoleNumber
 	bhi.b loc_07679c
 	lea.l loc_00f42c,a1
 	jsr loc_0004c6
@@ -9495,8 +9505,8 @@ loc_077ecc:
 	move.w #$1c,($4e,a6)
 	movea.l Player_Pointer,a0
 	moveq #0,d0
-	move.b (1,a0),d0
-	lea.l loc_072eb8,a0
+	move.b (CharID,a0),d0
+	lea.l Putting_Gauges,a0
 	moveq #0,d7
 	move.b (a0,d0.w),d7
 	move.b d7,($44,a6)
@@ -9564,6 +9574,8 @@ loc_077fbc:
 	move.b ($44,a6),d0
 	lea.l loc_0782c2,a0
 	move.b (a0,d0.w),d0
+
+;Write Putt Strength
 	moveq #0,d1
 	move.b ($40,a6),d1
 	addq.w #1,d1

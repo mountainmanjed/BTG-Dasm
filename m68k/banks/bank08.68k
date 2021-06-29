@@ -961,7 +961,7 @@ loc_080cd8:
 loc_080ce6:
 	tst.b ($3a,a6)
 	beq.w loc_080db6
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	beq.w loc_080c58
 	movea.l ($16,a6),a0
 	move.l (a0),($2c,a6)
@@ -1078,7 +1078,7 @@ loc_080e52:
 
 ;==============================================
 loc_080e5a:
-	cmpi.w #$d,Selected_Club
+	cmpi.w #Club_PT,Selected_Club
 	beq.w loc_080e8c
 	move.w Shot_Power,d0
 	lea.l loc_080e88(pc),a0
@@ -4014,7 +4014,7 @@ loc_085534:
 	tst.b Game_Play_Mode
 	bne.w loc_08565c
 	move.b #0,($42,a6)
-	cmpi.w #$13,HoleNumber
+	cmpi.w #19,HoleNumber
 	blt.w loc_08558c
 	move.b #$ff,($42,a6)
 	move.l unk_10ef3e,($46,a6)

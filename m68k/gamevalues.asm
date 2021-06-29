@@ -1,5 +1,23 @@
 Debug_Dip0 = 0x100000
+DP_Course_Select = 0;01
+DP_Cpu_Usage = 1 ;02
+;2 ;04
+DP_BALL_START = 3 ;08
+DP_BALL_MOVEMENT = 4 ;10
+;= 5 ;20
+;= 6 ;40
+;= 7 ;80
+
 Debug_Dip1 = 0x100001
+;0 ;01
+;1 ;02
+;2 ;04
+;3 ;08
+;4 ;10
+;5 ;20
+;6 ;40
+;7 ;80
+
 
 unk_100002 = 0x100002
 unk_100003 = 0x100003
@@ -178,7 +196,7 @@ unk_102eb4 = 0x102eb4
 Game_Difficulty = 0x102eb8
 unk_102eb9 = 0x102eb9
 Game_Play_Mode = 0x102eba
-unk_102ebb = 0x102ebb
+DEMO_ID = 0x102ebb
 unk_102ebc = 0x102ebc
 unk_102ebd = 0x102ebd
 unk_102ebe = 0x102ebe
@@ -207,7 +225,7 @@ unk_104fd2 = 0x104fd2
 unk_104fd0 = 0x104fd0
 unk_106fd2 = 0x106fd2
 unk_106fd4 = 0x106fd4
-unk_106fd6 = 0x106fd6
+unk_106fd6 = 0x106fd6;Terrain Calculation
 unk_106fd7 = 0x106fd7
 unk_106fd8 = 0x106fd8
 unk_106fda = 0x106fda
@@ -217,8 +235,8 @@ Wind_Power = 0x106fe0
 Wind_Direction = 0x106fe2
 unk_106fe4 = 0x106fe4
 unk_106fe5 = 0x106fe5
-Shot_Power = 0x106fe6;Shot Power
-Shot_Height = 0x106fe8;Shot Height
+Shot_Power = 0x106fe6
+Shot_Height = 0x106fe8
 unk_106fea = 0x106fea
 unk_106fec = 0x106fec
 unk_106fed = 0x106fed
@@ -232,12 +250,12 @@ RNG_Counter = 0x107002
 unk_107050 = 0x107050
 unk_107051 = 0x107051
 
-Player_Pointer = 0x107076;Player Data Pointer
-HoleData_Pointer = 0x10707a;Course Data Pointer
+Player_Pointer = 0x107076
+CourseData_Pointer = 0x10707a
 unk_10707e = 0x10707e
 unk_107080 = 0x107080
 unk_107082 = 0x107082
-unk_107083 = 0x107083
+Ball_in_Hole_status = 0x107083
 unk_107084 = 0x107084
 unk_107085 = 0x107085
 unk_107086 = 0x107086
@@ -416,8 +434,10 @@ unk_10eb8e = 0x10eb8e
 unk_10eb92 = 0x10eb92
 unk_10eb94 = 0x10eb94
 unk_10eb98 = 0x10eb98
+
 unk_10eb9c = 0x10eb9c
-unk_10eba0 = 0x10eba0
+unk_10eba0 = 0x10eba0;View Angle? Drive Math?
+
 unk_10eba4 = 0x10eba4
 unk_10eba8 = 0x10eba8
 unk_10ebac = 0x10ebac
@@ -528,14 +548,39 @@ unk_10ef48 = 0x10ef48
 
 ;==============================================
 ;Player Memory
+;p1 0x107004
+;p2 0x10702a
 ;==============================================
-PLMEM_00 = 0x00
+PL_Active = 0x00
 CharID = 0x01
 PL_Stroke = 0x02
+PL_Into_Ground = 0x03;only changes with sand depth
 PL_X = 0x04
 PL_Y = 0x08
+PL_Z = 0x0c
+PL_Score_H01 = 0x10
+PL_Score_H02 = 0x11
+PL_Score_H03 = 0x12
+PL_Score_H04 = 0x13
+PL_Score_H05 = 0x14
+PL_Score_H06 = 0x15
+PL_Score_H07 = 0x16
+PL_Score_H08 = 0x17
+PL_Score_H09 = 0x18
+PL_Score_H10 = 0x19
+PL_Score_H11 = 0x1a
+PL_Score_H12 = 0x1b
+PL_Score_H13 = 0x1c
+PL_Score_H14 = 0x1d
+PL_Score_H15 = 0x1e
+PL_Score_H16 = 0x1f
+PL_Score_H17 = 0x20
+PL_Score_H18 = 0x21
+;PL_Turn_Done? = 0x22 ;??
+;0x23 ;??
+;0x24 ;??
+;0x25 ;??
 
-PLMEM_22 = 0x22
 
 ;==============================================
 Player1_Mem = 0x107004
@@ -544,7 +589,7 @@ P1_Stroke = 0x107006
 P1_Xpos = 0x107008
 P1_Ypos = 0x10700c
 
-unk_107014 = 0x107014
+P1_SCORE = 0x107014
 unk_107026 = 0x107026
 unk_107028 = 0x107028
 
@@ -554,6 +599,39 @@ P2_Stroke = 0x10702c
 P2_Xpos = 0x10702e
 P2_Ypos = 0x107030
 
-unk_10703a = 0x10703a
+P2_SCORE = 0x10703a
 unk_10704c = 0x10704c
 unk_10704e = 0x10704e
+
+;==============================================
+;Character Ids
+ID_Spinner = 0x0
+ID_Almeida = 0x1
+ID_Landolt = 0x2
+ID_Takeno = 0x3
+ID_Adams = 0x4
+ID_Stewert = 0x5
+
+;==============================================
+;Course Ids
+ID_USA = 0x0
+ID_Germany = 0x1
+ID_Japan = 0x2
+ID_Austrailia = 0x3
+
+;==============================================
+;Selected_Club = 0x106fde
+Club_D1 = 0x0
+Club_D2 = 0x1
+Club_03 = 0x2
+Club_04 = 0x3
+Club_05 = 0x4
+Club_06 = 0x5
+Club_07 = 0x6
+Club_08 = 0x7
+Club_09 = 0x8
+Club_10 = 0x9
+Club_11 = 0xa
+Club_PW = 0xb
+Club_SW = 0xc
+Club_PT = 0xd
